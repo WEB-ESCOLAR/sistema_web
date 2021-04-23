@@ -1,2 +1,1 @@
 # Sistema Escolar
-Escuelitaaaaaa 
