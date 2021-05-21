@@ -1,0 +1,99 @@
+*{
+  padding:0px;
+  margin: 0px;
+}
+
+.fondo {
+   height:100%;
+  width:100%;
+background:url(https://res.cloudinary.com/df3uvqrte/image/upload/v1619064425/backgorund_login_h0umxd.jpg)no-repeat fixed center;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+height: 100%;
+width: 100% ;
+text-align: center;
+}
+
+.Login-box{
+position: absolute;
+width: 370px;
+height: 339px;
+left: 50%;
+top: 50%;
+background: linear-gradient(180deg, #778CA3 0%, rgba(255, 255, 255, 0) 100%), rgba(58, 55, 47, 0.72);
+border-radius: 36px;
+transform: translate(-50%, -50%);
+}
+
+.Login-box .avatar{
+  width:150px;
+  height:150px;
+  position:absolute;
+  top:10px;
+  left: calc(50% - 70px);
+}
+
+.Login-box .input{
+  width:100%;
+  margin-botoom:20px;
+}
+
+.Login-box .user{
+position: absolute;
+width: 300px;
+height: 38px;
+left: 30px;
+top: 160px;
+background: #778CA3;
+border-radius: 15px;
+color: #ffffff;
+box-shadow: -1px 4px 10px 0 #504846;
+border:none;
+outline:none;
+}
+
+.Login-box .user::-webkit-input-placeholder {
+  text-align: center;
+  line-height: 100px;
+  color:#fff;
+}
+
+.Login-box .contra{
+position: absolute;
+width: 300px;
+height: 38px;
+left: 30px;
+top: 215px;
+background: #778CA3;
+border-radius: 15px;
+color: #ffffff;
+box-shadow: -1px 4px 10px 0 #504846;
+border:none;
+outline:none;
+}
+
+.Login-box .contra::-webkit-input-placeholder {
+  text-align: center;
+  line-height: 100px;
+  color:#fff;
+}
+
+.Login-box .ingresar{
+ position: absolute;
+ cursor:pointer;
+width: 220px;
+height: 38px;
+left: 71px;
+top: 280px;
+background: #201F1F;
+border-radius: 11px;
+color:#fff;
+box-shadow: -1px 4px 10px 0 #575353;
+box-shadow: inset 0 0 5px 0px #484343;
+border:none;
+}
+.container{
+  padding:50px;
+}
