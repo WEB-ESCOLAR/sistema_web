@@ -1,8 +1,5 @@
 <?php 
-// require("../core/initial.php")
-const URL ="http://localhost:8084/ProyectoEscolar";
- $URLViews ="http://localhost:8084/ProyectoEscolar/View";
-
+require("core/initial.php")
  ?>
 <html>
 <head>
