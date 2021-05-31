@@ -1,4 +1,0 @@
-
-    <p>
-   		 Cursos here
-    </p>

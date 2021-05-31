@@ -1,0 +1,39 @@
+:root {
+    /* 
+    * COLORS
+    */
+    /*
+    * Fonts
+    */
+    --font-quicksanLight:"Quicksand-Light";
+    --font-quicksandBold:"Quicksand-Bold";
+    --font-quicksandMedium:"Quicksand-Medium";
+    --font-quicksandRegular:"Quicksand-Regular";
+    /* PALETA DE COLORES */
+    --crimson:#C1121F;
+    --vine:#780000;
+    --skin:#FDF0D5;
+    --blue--bold:#003049;
+    --teal-light:#669BBC;
+   
+
+    /* --base-header-font-size: 24px;
+    --base-body-font-size: 18px;
+    --base-footer-font-size: 12px; */
+  }
+  @font-face{
+    src:url(../Fonts/Quicksand-Light.ttf);
+    font-family: "Quicksand-Light";
+  }
+  @font-face{
+    src:url(../Fonts/Quicksand-Bold.ttf);
+    font-family: "Quicksand-Bold";
+  }
+  @font-face{
+    src:url(../Fonts/Quicksand-Medium.ttf);
+    font-family: "Quicksand-Medium";
+  }
+  @font-face{
+    src:url(../Fonts/Quicksand-Regular.ttf);
+    font-family: "Quicksand-Regular";
+  }
