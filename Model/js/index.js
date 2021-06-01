@@ -143,7 +143,7 @@ $(document).ready(function(){
                 }).done(function(response){
                     console.log("RESULTADO ESPERADO AGREGAR " + response);
                     $('#formulario_material').hide();
-                    // location.reload();
+                    location.reload();
 
                 })
             });
