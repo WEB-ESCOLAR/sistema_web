@@ -1,0 +1,66 @@
+/*FORMULARIO MATERIALES*/
+.form{
+		position: absolute;
+		width: 454px;
+   	left: 385px;
+		top: 170px;
+    background: #FFFFFF;
+		border: 1px solid #4064E3;
+		box-sizing: border-box;
+		border-radius: 10px;
+    padding:10px 10px;
+		}
+.title_form{
+	    text-align: left;
+	    color: #4064E3;
+		  font-weight: normal;
+		  font-size: 25px;
+		  line-height: 20px;
+		}
+
+   label{
+  font-size: 14px;
+  }
+
+.cajitas_form{
+  width: 425px;
+  height: 38px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+#button_close_material{
+  cursor:pointer;
+  width:28px;
+  height:26px;
+  background: #E92453;
+  border:none;
+  border-radius:3px;
+  color:#FFFFFF;
+ }
+ .form-group-material{
+  margin-top:10px;
+ }
+/*.container_{
+  position: absolute;
+  left: 90%;
+  top: 5%;
+}*/
+.button_form{
+  width: 150px;
+  height: 35.3px;
+  margin-left: 50px;
+  text-align: center;
+  border-radius: 12px;
+}
+  	.btn_send{
+		width: 130px;
+		height: 35px;
+		background-color: transparent;
+		border: none;
+		font-family: Roboto;
+		font-size: 14px;
+		color: #FFFFFF;
+	  	}
+
+ /*END FORMULARIO MATERIALES*/

@@ -98,3 +98,149 @@ border:none;
 .container{
   padding:50px;
 }
+
+/*tabla en general */
+.estudiantes{
+  background: white;
+  margin: 0 auto;
+  width: 800px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px
+}
+
+.estudiantes label{
+  background-color: green;
+}
+
+table{
+  width: 50%;
+  border: 1px;
+  }
+
+h1{
+  text-align: center;
+  color: green;
+}
+
+button{
+  cursor: pointer;
+}
+/*tabla diseño aqui*/
+
+.cont_Table {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.table-general{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+}
+
+
+.table-general tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+}
+
+.table-general th, .table-general td {
+    font-size: 16px;
+    padding: 8px;
+    text-align: center;
+}
+
+.table-general thead th{ 
+    text-transform: uppercase;
+    background-color: #00C7A3;
+}
+
+.btn_TblDelete{
+    width:28px;
+    height:26px;
+    background: #E92453;
+    border:none;
+    border-radius:3px;
+    color:#ffffff;
+} 
+.btn_TblUpdate{
+    width:28px;
+    height:26px;
+    background: #FFC300;
+    border:none;
+    border-radius:3px;
+    color:#ffffff;
+}
+.btn_TblPrint{
+    width:28px;
+    height:26px;
+    background: #CBCBCB;
+    border:none;
+    border-radius:3px;
+    color:#00000;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 600px) {
+    .table-general {
+        border: 0px;
+    }
+    .table-general caption {
+        font-size: 22px;
+    }
+    .table-general thead {
+        display: none;
+    }
+    .table-general tr {
+        margin-bottom: 8px;
+        border-bottom: 4px solid #ddd;
+        display: block;
+    }
+    .table-general th, .table td {
+        font-size: 12px;
+    }
+    .table-general td {
+        display: block;
+        border-bottom: 1px solid #ddd;
+        text-align: right;
+    }
+    .table-general  td:last-child {
+        border-bottom: 0px;
+    }
+    .table-general td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        float: left;
+    }
+}
+
+/*estilos danger*/
+
+.btn-success,.btn-danger{
+  background:var(--blue--bold);
+  color:white;
+  padding:10px;
+  border:none;
+  margin-left:10px;
+}
+.btn-danger{
+  background:var(--crimson);
+}
+.btn-success{
+   background:var(--blue--bold);
+}
+/*a{
+background: #e6e6e6;
+color: green;
+text-decoration: none;
+padding: 5px 15px;
+border: 1px solid #c1c1c1;
+width: 100px;
+display: inline-block;
+text-align: center;
+}*/

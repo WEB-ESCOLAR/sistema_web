@@ -1,9 +1,7 @@
 <?php
-
     DEFINE("HOST","localhost");
-    DEFINE("user","root");
-    DEFINE("password","root");
-    DEFINE("port","3306");
-
-
+    DEFINE("USER","root");
+    DEFINE("PASSWORD","root");
+    DEFINE("PORT","3306");
+    DEFINE("DATABASE","escuela_web");
 ?>

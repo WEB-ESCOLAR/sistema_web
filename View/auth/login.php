@@ -6,12 +6,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   
  if($email == "secretaria@hotmail.com"){
     $_SESSION["newsession"]="Secretaria";
-    header("Location:Home");
+      header("Location:Home");
  }if($email == "docente@hotmail.com"){
-  $_SESSION["newsession"]="Docente";
-  header("Location:Home");
+   $_SESSION["newsession"]="Docente";
+   header("Location:Home");
  }else{
-  echo 'no existe el usuario ingresado';
+   echo 'no existe el usuario ingresado';
  }
 }
 

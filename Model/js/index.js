@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	console.log("js ready");
+
+    probarConexion();
 	$('.bar').on('click', function(){
 	  $('.contenido').toggleClass('open');
 	})
@@ -8,52 +9,137 @@ $(document).ready(function(){
 	  // $('.contenido').toggleClass('open');
 	})
 
-	// $('#home').on('click',function(e){
-	// 	console.log("show home window");
-	// 	e.preventDefault();
-	// 	$('·screen_swap').reload("screens/alumnos.php")
-	// })
 
-	// $('#alumnos').on('click',function(e){
-	// 	console.log("show home window");
-	// 	e.preventDefault();
-	// 	// window.location.replace('screens/home.php');
-	// })
-
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+    // FUNCION DE CONEXION A SU BASE DE DATOS (obligatorio * )
+    function probarConexion(){
+        $.ajax({
+                url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                data:{action:"Conexion"},
+         }).done(function(response){
+                    console.log(response);
+        })
     }
-});
+    // -------
 
+
+
+
+            function hide(){
+                 $('#formulario_material').hide();
+            }
+	
+            $('.button_material').click(function(e){
+                e.preventDefault();
+                console.log("show form material")
+                $('#formulario_material').show();
+            })
+            $('#button_close_material').click(function(e){
+                e.preventDefault();
+                console.log("close material");
+                $('#formulario_material').hide();
+            })
+
+
+
+            mostrarMateriales();
+            function mostrarMateriales(){
+                $.ajax({
+                    url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                    data:{action:"Mostrar"},
+                })
+                .done(function(response){
+                    console.log(response);
+                    const respuestaArray = JSON.parse(response)
+                        let count=1;
+                          respuestaArray.forEach((element)=>{
+                                    $('#resultado_json').append(
+                                        `
+                                        <tr>
+                                        <td>${count++}</td>
+                                        <td>${element.curse}</td>
+                                         <td>${element.tipoMaterial == "Libros" ? "Libros" : element.tipoMaterial+'-'+element.nameMaterial}</td>
+                                        <td>${element.grade}</td>
+                                         <td>requererido aca</td>
+                                         <td>requererido aca</td>
+                                          <td>${element.ReceptionDate}</td>
+                                          <td>${element.amount}</td>
+                                          <td>
+                                          <div class=buttons_table>
+                                              <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
+                                             <button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>
+                                           </div>
+                                          </td>
+                                        </tr>
+                                        `
+                                        );
+                                 })
+                })
+
+            }
+            $(document).on('click','.btn_TblDelete',function(e){
+                var id = $(this).attr("id");
+                e.preventDefault();
+                const param={
+                    "id":id,
+                    "action":"Eliminar"
+                }
+                Swal.fire({
+                  title: 'Esta seguro de eliminar?',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    $.ajax({
+                        url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                        type:"POST",
+                        data:param
+                    }).done(function(response){
+                        
+                         Swal.fire(
+                              'Deleted!',
+                              'Your file has been deleted.',
+                              'success'
+                            )
+                        location.reload();
+                    })
+                  }
+                })
+            })
+
+            $("#tipoMaterial").on('change',function(){
+                var dato = $('#tipoMaterial').val();
+                if(dato == "Otros"){
+                    $('#box_name_material').show();
+                }else{
+                    $('#box_name_material').hide();
+                }
+                console.log("dato es " + dato);
+            })
+
+            $(document).on('click','#agregar_material',function(e){
+                e.preventDefault();
+                var param={
+                    curso: $('#curso').val(),
+                    grado: $('#grado').val(),
+                    fechaRecepcion: $('#fecha_recepcion').val(),
+                    cantidad: $('#cantidad').val(),
+                    tipoMaterial: $('#tipoMaterial').val(),
+                    nombreMaterial:$('#nombreMaterial').val(),
+                    action:"Agregar"
+                }
+                 console.log(param);
+                 $.ajax({
+                    url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                    type:"POST",
+                    data:param
+                }).done(function(response){
+                    console.log("RESULTADO ESPERADO AGREGAR " + response);
+                    $('#formulario_material').hide();
+                    location.reload();
+
+                })
+            });
 })
