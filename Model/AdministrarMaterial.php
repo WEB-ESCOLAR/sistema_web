@@ -2,7 +2,7 @@
 	require_once "AdministradorModelo.php";
 	class AdministrarMaterial extends AdministrarModelo{
 
-		private $table="material";
+		// private $table="material";
 
 		function listAll(){ //obtener registros de la db.
 			$sql="SELECT * from material";

@@ -16,7 +16,7 @@ $(document).ready(function(){
                 url:"Controller/ControllerMaterial.php",
                 data:{action:"Conexion"},
          }).done(function(response){
-                    // console.log(response);
+                    console.log(response);
         })
     }
     // -------
@@ -48,13 +48,9 @@ $(document).ready(function(){
                     data:{action:"Mostrar"},
                 })
                 .done(function(response){
+                    // console.log(response)
                     const respuestaArray = JSON.parse(response)
                         let count=1;
-                        if (respuestaArray.length) {
-                            console.log("exists")
-                        }else{
-                            console.log("vacio")
-                        }
                          // if(respuestaArray.length > 0){
                              respuestaArray.forEach((element)=>{
                                     $('#resultado_json').append(
@@ -147,7 +143,7 @@ $(document).ready(function(){
                 }).done(function(response){
                     console.log("RESULTADO ESPERADO AGREGAR " + response);
                     $('#formulario_material').hide();
-                    location.reload();
+                    // location.reload();
 
                 })
             });

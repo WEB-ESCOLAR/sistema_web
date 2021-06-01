@@ -1,7 +1,7 @@
 <?php 
 
 require_once "AdministradorModelo.php";
-	class AdministrarEstudiante extends AdministrarModelo{
+	class AdministrarMaterial extends AdministrarModelo{
 
 
 		function listAllApoderados(){ //obtener registros de la db.
