@@ -8,9 +8,9 @@
 			$sql="SELECT * from material";
 			$respuestaConsulta = $this->consulta($sql);
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
-				$productos[]=$filas;
+				$materiales[]=$filas;
 			}
-			return $productos;
+			return $materiales;
 		}
 		function Create(Material $material){
 			$sql="INSERT INTO material(curse,grade,ReceptionDate,tipoMaterial,nameMaterial,amount) values(?,?,?,?,?,?)";
@@ -24,7 +24,7 @@
 			$response->execute();
 		}
 		// function CreateDetalleMaterial(){
-
+		// 	$sql="INSERT INTO detallematerial ";
 		// }
 		function Delete($id){
 			$sql="DELETE FROM material where idMaterial=?";

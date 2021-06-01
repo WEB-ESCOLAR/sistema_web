@@ -9,9 +9,9 @@
 			// if($con){
 			// 	echo 'conexion establecida';
 			// }else{
-			// 	echo 'problema de conexion';
+			// 	echo 'probema de conexion';
 			// }
-			return $con;
+		return $con;
 		}
 
 		public function consulta($sql){

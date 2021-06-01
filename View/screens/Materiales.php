@@ -96,6 +96,9 @@
             </thead>
             <tbody id="resultado_json">
             </tbody>
+            <div id="table_text_message">
+              
+            </div>
         </table>
     </div>
 	

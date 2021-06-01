@@ -13,10 +13,10 @@ $(document).ready(function(){
     // FUNCION DE CONEXION A SU BASE DE DATOS (obligatorio * )
     function probarConexion(){
         $.ajax({
-                url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                url:"Controller/ControllerMaterial.php",
                 data:{action:"Conexion"},
          }).done(function(response){
-                    console.log(response);
+                    // console.log(response);
         })
     }
     // -------
@@ -44,14 +44,19 @@ $(document).ready(function(){
             mostrarMateriales();
             function mostrarMateriales(){
                 $.ajax({
-                    url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                    url:"Controller/ControllerMaterial.php",
                     data:{action:"Mostrar"},
                 })
                 .done(function(response){
-                    console.log(response);
                     const respuestaArray = JSON.parse(response)
                         let count=1;
-                          respuestaArray.forEach((element)=>{
+                        if (respuestaArray.length) {
+                            console.log("exists")
+                        }else{
+                            console.log("vacio")
+                        }
+                         // if(respuestaArray.length > 0){
+                             respuestaArray.forEach((element)=>{
                                     $('#resultado_json').append(
                                         `
                                         <tr>
@@ -73,6 +78,10 @@ $(document).ready(function(){
                                         `
                                         );
                                  })
+                         // }else{
+                         //    console.log("no hay registros");
+                         //    $('#table_text_message').html("<h1>No hay Registros Aun...</h1>")
+                         // }
                 })
 
             }
@@ -93,7 +102,7 @@ $(document).ready(function(){
                 }).then((result) => {
                   if (result.isConfirmed) {
                     $.ajax({
-                        url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                        url:"Controller/ControllerMaterial.php",
                         type:"POST",
                         data:param
                     }).done(function(response){
@@ -132,7 +141,7 @@ $(document).ready(function(){
                 }
                  console.log(param);
                  $.ajax({
-                    url:"../../ProyectoEscolar/Controller/ControllerMaterial.php",
+                    url:"Controller/ControllerMaterial.php",
                     type:"POST",
                     data:param
                 }).done(function(response){
@@ -142,4 +151,8 @@ $(document).ready(function(){
 
                 })
             });
+
+            // ALUMNOS
+
+
 })

@@ -2,12 +2,13 @@
 
 # Inicializar el Proyecto Sistema Escolar
 
- 1.En el Archivo cambia la url dependiendo de su puerto de apache y el nombre del proyecto
+ 1.En la carpeta core , en el archivo initial.php cambia la url dependiendo de su puerto de apache y el nombre del proyecto
 
 	`
 	 DEFINE("URL","http://localhost:8084/ProyectoEscolar");
 	`
 2.El archivo database.php debe definir segun su host:
+
 	`
 	    DEFINE("HOST","localhost");
 	    DEFINE("USER","root");

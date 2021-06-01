@@ -33,7 +33,12 @@
 		require_once("../Model/AdministrarMaterial.php");
 		$materialModel = new AdministrarMaterial();
 		$resultado = $materialModel->listAll();
-		echo json_encode($resultado);
+		if(empty($resultado)){
+			echo json_encode([]);
+		}else{
+			echo json_encode($resultado);
+		}
+		
 	}	
 	function agregarMaterial(){
 		require_once("../Model/AdministrarMaterial.php");
