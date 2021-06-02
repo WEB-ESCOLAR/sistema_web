@@ -1,16 +1,15 @@
-<?php 
+<?php
 
 require_once "AdministradorModelo.php";
-	class AdministrarMaterial extends AdministrarModelo{
+	class AdministrarEstudiante extends AdministrarModelo{
 
-
-		function listAllApoderados(){ //obtener registros de la db.
-			$sql="SELECT * from material";
+		function listaEstudiantes(){ //obtener registros de la db.
+			$sql="SELECT * from estudiante";
 			$respuestaConsulta = $this->consulta($sql);
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
-				$productos[]=$filas;
+				$alumnos[]=$filas;
 			}
-			return $productos;
+			return $alumnos;
 		}
 
 	}

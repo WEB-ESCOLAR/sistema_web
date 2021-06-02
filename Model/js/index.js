@@ -13,7 +13,7 @@ $(document).ready(function(){
     // FUNCION DE CONEXION A SU BASE DE DATOS (obligatorio * )
     function probarConexion(){
         $.ajax({
-                url:"Controller/ControllerMaterial.php",
+                url:"Controller/ControllerEstudiante.php",
                 data:{action:"Conexion"},
          }).done(function(response){
                     console.log(response);
@@ -27,7 +27,7 @@ $(document).ready(function(){
             function hide(){
                  $('#formulario_material').hide();
             }
-	
+
             $('.button_material').click(function(e){
                 e.preventDefault();
                 console.log("show form material")
@@ -41,7 +41,7 @@ $(document).ready(function(){
 
 
 
-            mostrarMateriales();
+            //mostrarMateriales();
             function mostrarMateriales(){
                 $.ajax({
                     url:"Controller/ControllerMaterial.php",
@@ -102,7 +102,7 @@ $(document).ready(function(){
                         type:"POST",
                         data:param
                     }).done(function(response){
-                        
+
                          Swal.fire(
                               'Deleted!',
                               'Your file has been deleted.',
@@ -150,5 +150,46 @@ $(document).ready(function(){
 
             // ALUMNOS
 
+            mostrarEstudiantes();
+            function mostrarEstudiantes(){
+                $.ajax({
+                    url:"Controller/ControllerEstudiante.php",
+                    data:{action:"MostrarEstudiante"},
+                })
+                .done(function(response){
+                    // console.log(response)
+                    const respuestaArray = JSON.parse(response)
+                        let count=1;
+                         // if(respuestaArray.length > 0){
+                             respuestaArray.forEach((element)=>{
+                                    $('#resultado_json').append(
+                                        `
+                                        <tr>
+                                        <td>${count++}</td>
+                                        <td>${element.dni}</td>
+                                         <td>${element.firstName}</td>
+                                        <td>${element.LastName}</td>
+                                          <td>${element.grado}</td>
+                                          <td>${element.section}</td>
+                                          <td>${element.idUsuario}</td>
+                                          <td>${element.idApoderado}</td>
+                                          <td>${element.created_at}</td>
+                                          <td>
+                                          <div class=buttons_table>
+                                              <button class="btn_TblUpdate"><i class="fas fa-edit"></i></button>
+                                             <button class="btn_TblDelete" id="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
+                                           </div>
+                                          </td>
+                                        </tr>
+                                        `
+                                        );
+                                 })
+                         // }else{
+                         //    console.log("no hay registros");
+                         //    $('#table_text_message').html("<h1>No hay Registros Aun...</h1>")
+                         // }
+                })
+
+            }
 
 })
