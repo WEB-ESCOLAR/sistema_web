@@ -40,8 +40,9 @@ $(document).ready(function(){
             })
 
 
-
+             mostrarApoderados();
             mostrarMateriales();
+           
             function mostrarMateriales(){
                 $.ajax({
                     url:"Controller/ControllerMaterial.php",
@@ -66,7 +67,7 @@ $(document).ready(function(){
                                           <td>${element.amount}</td>
                                           <td>
                                           <div class=buttons_table>
-                                              <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
+                                             <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
                                              <button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>
                                            </div>
                                           </td>
@@ -81,6 +82,100 @@ $(document).ready(function(){
                 })
 
             }
+            // APODERADOS
+            function mostrarApoderados(){
+                  $.ajax({
+                    url:"Controller/ControllerEstudiante.php",
+                    data:{action:"MostrarApoderado"},
+                })
+                .done(function(responseApoderado){
+                  console.log(responseApoderado);
+                    const arrApoderados = JSON.parse(responseApoderado)
+                    console.log("apoderados " + arrApoderados)
+                        let count=1;
+                             arrApoderados.forEach((element)=>{
+                                    $('#response_table_apoderado').append(
+                                        `
+                                        <tr>
+                                        <td>${count++}</td>
+                                        <td>${element.DNI}</td>
+                                         <td>${element.firstName} ${element.lastName}</td>
+                                         <th>${element.state  === "NO PAGO" ? "<div class='requirement_payment'>No Pago</div>" : "<div class='sucess_payment'>Pago</div>"} </th>
+                                          <td>${element.phone}</td>
+                                          <td>
+                                          <div style="display:flex;justify-content:space-between;">
+                                             <div style="text-align:left;">
+                                              <button class="btn_TblUpdate" id="editar_apoderado" "><i class="fas fa-edit"></i></button>
+                                             <button class="btn_TblPrint print_apafa" name="${element.firstName}"><i class="fas fa-print"></i></button>
+                                             </div>
+                                            <button class="btn_TblPagoApafa" id="pagoApafa" name="${element.firstName}"
+                                            ${element.state === "PAGO" ? 'style=display:none;' : null}
+                                            >Pago Apafa</button>
+
+                                           </div>
+                                          </td>
+                                        </tr>
+                                        `
+                                        );
+                                 })
+                })
+            }
+            // $(document).('click','#editar_apoderado',function(e){
+            //   e.preventDefault();
+            // })
+            //-----------------------------------------------------
+         
+            $(document).on('click','#pagoApafa',function(e){
+              e.preventDefault();
+               var name = $(this).attr("name");
+                 Swal.fire({
+                title: 'El apoderado ' + name + " realizara el pago de la boleta APAFA?",
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Boleta Generado con Exito!',
+                    '',
+                    'success'
+                  )
+                }
+              })
+            })
+
+
+             $(document).on('click','.print_apafa',function(e){
+             e.preventDefault();
+              var name = $(this).attr("name");
+              Swal.fire({
+                title: 'Esta Seguro de Generar una boleta de Pago Apafa para ' + name,
+                text: "",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Boleta Generado con Exito!',
+                    '',
+                    'success'
+                  )
+                }
+              })
+
+                            
+            });
+
+
+
+
+
             $(document).on('click','.btn_TblDelete',function(e){
                 var id = $(this).attr("id");
                 e.preventDefault();
@@ -147,6 +242,8 @@ $(document).ready(function(){
 
                 })
             });
+
+
 
             // ALUMNOS
 
