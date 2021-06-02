@@ -3,6 +3,7 @@
 	switch($action){
 		case "MostrarApoderado":
 			fetchAllApoderado();
+			break;
 		case "MostrarEstudiante":
 			fetchAllEstudiante();
 			break;

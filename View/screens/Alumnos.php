@@ -9,13 +9,10 @@
                     <th>Apellidos</th>
                     <th>Grado</th>
                     <th>Seccion</th>
-                    <th>Usuario</th>
-                    <th>Apoderado</th>
-                    <th>Fecha</th>
                     <th>ACCIONES</th>
                 </tr>
             </thead>
-            <tbody id="resultado_json">
+            <tbody id="response_table_alumnos">
             </tbody>
         </table>
     </div>

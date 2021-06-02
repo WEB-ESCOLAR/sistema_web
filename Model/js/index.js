@@ -42,6 +42,7 @@ $(document).ready(function(){
 
              mostrarApoderados();
             mostrarMateriales();
+            mostrarEstudiantes();
            
 
             //mostrarMateriales();
@@ -249,7 +250,7 @@ $(document).ready(function(){
 
             // ALUMNOS
 
-            mostrarEstudiantes();
+           
             function mostrarEstudiantes(){
                 $.ajax({
                     url:"Controller/ControllerEstudiante.php",
@@ -261,7 +262,7 @@ $(document).ready(function(){
                         let count=1;
                          // if(respuestaArray.length > 0){
                              respuestaArray.forEach((element)=>{
-                                    $('#resultado_json').append(
+                                    $('#response_table_alumnos').append(
                                         `
                                         <tr>
                                         <td>${count++}</td>
@@ -270,9 +271,6 @@ $(document).ready(function(){
                                         <td>${element.LastName}</td>
                                           <td>${element.grado}</td>
                                           <td>${element.section}</td>
-                                          <td>${element.idUsuario}</td>
-                                          <td>${element.idApoderado}</td>
-                                          <td>${element.created_at}</td>
                                           <td>
                                           <div class=buttons_table>
                                               <button class="btn_TblUpdate"><i class="fas fa-edit"></i></button>
