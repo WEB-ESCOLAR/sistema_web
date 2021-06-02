@@ -3,6 +3,8 @@
 	switch($action){
 		case "MostrarApoderado":
 			fetchAllApoderado();
+		case "MostrarEstudiante":
+			fetchAllEstudiante();
 			break;
 		default:
 			echo 'error de seleccion';
@@ -16,10 +18,27 @@
 		$apoderados = $administrarEstudiante->listAllApoderados();
 		echo json_encode($apoderados); 
 	}
+
+
+	function conexionDatabase(){
+		require_once("../Model/AdministradorModelo.php");
+		$conexionPrueba = new AdministrarModelo();
+		echo json_encode($conexionPrueba->getConexion());
+	}
+
+	function fetchAllEstudiante(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$estudianteModel = new AdministrarEstudiante();
+		$resultado = $estudianteModel->listaEstudiantes();
+		echo json_encode($resultado);
+
+	}
+
+
 	// require_once("../Model/Material.php");
 
-	
 
-	
-	
+
+
+
  ?>

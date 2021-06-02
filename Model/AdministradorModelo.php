@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once("../core/database.php");
 	class AdministrarModelo{
 
@@ -7,10 +7,10 @@
 		$con = new PDO($url,USER,PASSWORD);
 		$con->query("set names utf8");
 			// if($con){
-			// 	echo 'conexion establecida';
-			// }else{
-			// 	echo 'probema de conexion';
-			// }
+			 	//echo 'conexion establecida';
+			 //}else{
+			 	//echo 'probema de conexion';
+			 //}
 		return $con;
 		}
 
