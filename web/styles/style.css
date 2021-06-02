@@ -183,6 +183,33 @@ button{
     border-radius:3px;
     color:#00000;
 }
+.btn_TblPagoApafa{
+    height:26px;
+    background: var(--teal-light);
+    border:none;
+    border-radius:3px;
+    color:white;
+    padding:5px;
+}
+/*badges payments*/
+.requirement_payment{
+    background: var(--crimson);
+     border:none;
+    border-radius:10px;
+    color:white;
+     padding:5px;
+     width:100px;
+     margin:auto;
+}
+.sucess_payment{
+   background: var(--success);
+    border:none;
+    border-radius:10px;
+    width:100px;
+    color:white;
+    padding:5px;
+      margin:auto;
+}
 
 /*RESPONSIVE*/
 @media screen and (max-width: 600px) {
