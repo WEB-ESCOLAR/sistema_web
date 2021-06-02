@@ -1,8 +1,7 @@
 
-    <div>
-   		<button style="margin-top:10px;" class="button_material">Agregar Materiales</button>
-   		 <p>hola</p>
-    </div>
+    <!-- <div> -->
+   		 <button type="submit" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Material</button>
+    <!-- </div> -->
    
     <form id="formulario_material" style="display:none;">
 		<fieldset class="form">
@@ -63,7 +62,7 @@
       
       <div style="display:flex;margin-top:15px;">   
         <div style="background: #C42C50"class="button_form">
-            <input id="button_close_material" type="button" value="Atras"                                              class="btn_send" required>           
+            <input id="button_close_material" type="button" value="Atras"   class="btn_send" required>           
         </div>
          <div style=" background: #003049;" class="button_form">
             <input id="agregar_material" type="submit" value="Registrar" class="btn_send" required>           

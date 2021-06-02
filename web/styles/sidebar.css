@@ -53,26 +53,41 @@
   margin-left:250px;
 }
 
+
 .navar{
+  padding:10px;
   height:50px;
-  background:var(--crimson);
-  display:flex;
+   background:var(--crimson);
+  border-left:2px solid #fff;
 }
 
 .bar{
-  top:10px;
+  margin-left:10px;
   cursor:pointer;
-  position:relative;
-  display:block;
+  position:absolute;
   width:50px;
   text-align:center;
   font-size:30px;
   color:#eee;
 }
 
+.logout{
+  float:right;
+  margin-right:20px;
+}
+.logout li{
+  list-style:none;
+  line-height: 30px;
+}
+.logout a{
+  text-decoration:none ;
+  color:#EACB5E;
+}
+
 
 .title-header{
-  font-size:30px;
+  font-size:35px;
+  font-family: var(--font-quicksandMedium);
 }
 
 /*line contianer width*/

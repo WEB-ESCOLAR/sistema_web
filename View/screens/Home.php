@@ -4,7 +4,14 @@
     session_destroy();
     header("Location:Login");
   }
-  $modulos=["Inicio","Materiales","Alumnos","Apoderados","ControlDeLibros"];
+  // "Inicio","Materiales","Alumnos","Apoderados","ControlDeLibros"
+  $modulos=[
+    ["name"=>"Inicio","icon"=>"fa-home"],
+    ["name"=>"Materiales","icon"=>"fa-book"],
+    ["name"=>"Alumnos","icon"=>"fa-user-graduate"],
+    ["name"=>"Apoderados","icon"=>"fa-user-tie"],
+    ["name"=>"ControlDeLibros","icon"=>"fa-book"]
+  ];
   // echo $_SESSION["newsession"];
  ?>
  <body>
@@ -15,7 +22,7 @@
   <ul>
  <?php 
     foreach ($modulos as $value) { 
-     echo "<li><a href=".$value."><i class='fas fa-home' ></i>".$value."</a></li>";
+     echo "<li><a href=".$value["name"]."><i class='fa {$value["icon"]}' ></i>".$value["name"]."</a></li>";
     }
   ?> 
   </ul>
@@ -25,8 +32,10 @@
     <div class="bar" style="display:flex;justify-content: space-between;">
       <span class="fas fa-bars"></span>
     </div>
-    <!-- <p>USER</p> -->
-    <!-- <p>Logout</p> -->
+    <div class="logout">
+      <li><a style=""href="#">LOGOUT</a></li>
+    </div> 
+
   </nav>
     <div class="container">
       <div class="header-container">
@@ -34,9 +43,9 @@
           <hr class="line-hr"/>
      </div>
       <div class="body-container">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+        <!-- <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
           <button name="logout">Logout</button>
-        </form>
+        </form> -->
            <?php   
            if($_GET["view"] == "Home"){
               require_once 'Inicio.php';

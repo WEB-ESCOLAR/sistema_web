@@ -112,6 +112,7 @@ border:none;
   background-color: green;
 }
 
+
 table{
   width: 50%;
   border: 1px;
@@ -129,7 +130,8 @@ button{
 
 .cont_Table {
     width: 100%;
-    max-width: 1000px;
+    /*max-width: 1000px;*/
+    padding-top:20px;
     margin: auto;
 }
 
@@ -152,13 +154,17 @@ button{
     font-size: 16px;
     padding: 8px;
     text-align: center;
+    font-family: var(--font-quicksandMedium);
 }
 
 .table-general thead th{ 
     text-transform: uppercase;
     background-color: #00C7A3;
+    font-family: var(--font-quicksanLight);
 }
-
+/*********************/
+/************ BUTTONS */
+/******************/
 .btn_TblDelete{
     width:28px;
     height:26px;
@@ -210,6 +216,21 @@ button{
     padding:5px;
       margin:auto;
 }
+.btn_add_data{
+  width: 170px;
+  height: 40px;
+  font-size: 15px;
+  border-radius: 10px;
+  border:none;
+  background: var(--vine);
+  color:white;
+  font-family: var(--font-quicksandRegular)
+}
+.fa-lg{
+  margin-right:10px;
+}
+
+
 
 /*RESPONSIVE*/
 @media screen and (max-width: 600px) {

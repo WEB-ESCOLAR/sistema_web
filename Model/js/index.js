@@ -28,7 +28,7 @@ $(document).ready(function(){
                  $('#formulario_material').hide();
             }
 
-            $('.button_material').click(function(e){
+            $('#button_material').click(function(e){
                 e.preventDefault();
                 console.log("show form material")
                 $('#formulario_material').show();
