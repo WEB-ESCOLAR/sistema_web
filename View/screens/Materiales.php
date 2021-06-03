@@ -1,8 +1,8 @@
 
     <!-- <div> -->
-   		 <button type="submit" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Material</button>
+   		 <button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Material</button>
     <!-- </div> -->
-   
+   <div class="modal">
     <form id="formulario_material" style="display:none;">
 		<fieldset class="form">
 	 <button id="button_close_material"><i class="fas fa-times"></i></button>
@@ -75,6 +75,7 @@
                  
 		</fieldset>
 	</form>
+  </div>
 
 
 

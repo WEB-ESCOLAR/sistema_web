@@ -28,15 +28,23 @@ $(document).ready(function(){
                  $('#formulario_material').hide();
             }
 
+            //fomrulario material
             $('#button_material').click(function(e){
                 e.preventDefault();
                 console.log("show form material")
-                $('#formulario_material').show();
+                 $('.modal').show();
+                 $('#formulario_material').show();
+                // $('#formulario_apoderado').show();
             })
             $('#button_close_material').click(function(e){
-                e.preventDefault();
-                console.log("close material");
-                $('#formulario_material').hide();
+              e.preventDefault();
+              $('.modal').hide();
+            });
+
+            //fomrulario apoderado
+            $('.btn_exit_X').click(function(e){
+                e.preventDefault()
+                $('.modal').hide();
             })
 
 
@@ -85,6 +93,7 @@ $(document).ready(function(){
                 })
 
             }
+            // ACTIVIDAD DE JOSE  *****************************
             // APODERADOS
             function mostrarApoderados(){
                   $.ajax({
@@ -108,7 +117,7 @@ $(document).ready(function(){
                                           <td>
                                           <div style="display:flex;justify-content:space-between;">
                                              <div style="text-align:left;">
-                                              <button class="btn_TblUpdate" id="editar_apoderado" "><i class="fas fa-edit"></i></button>
+                                              <button class="btn_TblUpdate" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
                                              <button class="btn_TblPrint print_apafa" name="${element.firstName}"><i class="fas fa-print"></i></button>
                                              </div>
                                             <button class="btn_TblPagoApafa" id="pagoApafa" name="${element.firstName}"
@@ -123,9 +132,7 @@ $(document).ready(function(){
                                  })
                 })
             }
-            // $(document).('click','#editar_apoderado',function(e){
-            //   e.preventDefault();
-            // })
+         
             //-----------------------------------------------------
          
             $(document).on('click','#pagoApafa',function(e){
@@ -175,10 +182,58 @@ $(document).ready(function(){
                             
             });
 
+            //-.----------------------------
+            $(document).on('click','#editar_apoderado',function(e){
+              e.preventDefault();
+               var id = $(this).attr("name");
+                 const param={
+                    "id":id,
+                    "action":"DetalleApoderado"
+                }
+               $.ajax({
+                  url:"Controller/ControllerEstudiante.php",
+                  type:"GET",
+                  data:param,
+                  dataType: 'json',
+               }).done(function(response){
+                 $('.modal').show();
+                 $('#nombre').val(response.firstName);
+                 $('#apellido').val(response.lastName);
+                 $('#telefono').val(response.phone);
+                 $('#dni').val(response.DNI);
+                 $('#dni').prop("disabled",true);
+                // console.log(id);
+                // console.log(response);
+               });
+               
+            })
 
 
+              $(document).on('click','#btn_update_apoderado',function(e){
+              e.preventDefault();
+              console.log("press");
+               var datastring = $("#formulario_apoderado").serialize();
+               const dni = $('#dni').val();
+               const param={
+                    nombre:   $('#nombre').val(),
+                    apellido :  $('#apellido').val(),
+                     telefono : $('#telefono').val(),
+                    dni : $('#dni').val(),
+                    action :"UpdateApoderado"
+               }
+               console.log(datastring);
+                 $.ajax({
+                  url:"Controller/ControllerEstudiante.php",
+                  type:"POST",
+                  data:param,
+               }).done(function(response){
+                  console.log("respone is " + response )
+               })
+               // console.log(datastring);
+            })
+            // btn_update_apoderado
 
-
+            // END APODERADO -------------------
             $(document).on('click','.btn_TblDelete',function(e){
                 var id = $(this).attr("id");
                 e.preventDefault();
