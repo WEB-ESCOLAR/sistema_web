@@ -18,6 +18,8 @@
 			break;
 	}
 
+
+	
 	
 	function fetchAllApoderado(){
 		require_once("../Model/AdministrarEstudiante.php");

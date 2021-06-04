@@ -25,7 +25,7 @@
     <div class="form-group">
     	  <label class="label_group">  Seleccione el Grado:  </label> 
     <select id="grado" class="input_txt" required>
-    <option  value="Seleccione el grado">Seleccione el    grado</option>
+    <option  value="Seleccione el grado">Seleccione el grado</option>
     <option  value="Primer">Primer</option>
     <option  value="Segundo">Segundo</option>
     <option  value="Tercero">Tercero</option>
@@ -66,12 +66,6 @@
       <div style="display:flex;margin-top:15px;">   
         <button type="button" style="background: var(--danger)" id="button_close_material" class="btn_box">Cancelar</button>
          <button type="button" style="background: var(--primary)" id="agregar_material" class="btn_box">Registrar</button>
-      <!--   <div style="background: var(--danger)" class="btn_box" >
-          
-        </div>
-         <div style=" background: #003049;" class="btn_box">
-            
-         </div> -->
       </div> 
    
           </div>
@@ -95,7 +89,8 @@
                     <th>ACCIONES</th>
                 </tr>
             </thead>
-            <tbody id="resultado_json">
+            <tbody id="data_materiales_table">
+              
             </tbody>
         </table>
     </div>

@@ -10,6 +10,35 @@ $(document).ready(function(){
 	})
 
 
+    // LOGIN USER 
+
+    $('#formulario_login').on('submit',function(e){
+        e.preventDefault();
+        var param = $(this).serialize()
+        $.ajax({
+          url:"Controller/ControllerLogin.php",
+          data:param+"&action=Login",
+          dataType:"json"
+        }).done(function(response){
+          if(response == 1){
+            window.location="Home";
+          }
+          $('#message_login').text(response);
+        })
+    })
+
+    $(document).on('click','#logoutUser',function(e){
+      e.preventDefault();
+        $.ajax({
+                url:"Controller/ControllerLogin.php",
+                data:{action:"Logout"},
+         }).done(function(response){
+                  window.location="Login";
+        })
+    })
+    // END LOGIN USER
+
+
     // FUNCION DE CONEXION A SU BASE DE DATOS (obligatorio * )
     function probarConexion(){
         $.ajax({
@@ -76,10 +105,15 @@ $(document).ready(function(){
                 .done(function(response){
                     // console.log(response)
                     const respuestaArray = JSON.parse(response)
+                    // console.log(respuestaArray);
                         let count=1;
                          // if(respuestaArray.length > 0){
+                             var url = window.location.href;
+                             const nombreModulo =url.split("/")[4];
+                             console.log(nombreModulo);
                              respuestaArray.forEach((element)=>{
-                                    $('#resultado_json').append(
+                                    $('#data_materiales_table').append(
+
                                         `
                                         <tr>
                                         <td>${count++}</td>
@@ -92,8 +126,12 @@ $(document).ready(function(){
                                           <td>${element.amount}</td>
                                           <td>
                                           <div class=buttons_table>
-                                             <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
-                                             <button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>
+                                             <button class="btn_TblUpdate" id="detalleMaterial"><i class="fas fa-eye"></i></button>
+                                              ${
+                                                nombreModulo == "Materiales" ?  
+                                                  `<button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>`
+                                                : ''
+                                              }
                                            </div>
                                           </td>
                                         </tr>
@@ -105,8 +143,14 @@ $(document).ready(function(){
                          //    $('#table_text_message').html("<h1>No hay Registros Aun...</h1>")
                          // }
                 })
-
             }
+
+            $(document).on('click','#detalleMaterial',function(e){
+              e.preventDefault();
+              console.log("detalle material")
+              window.location="DetalleMateriales";
+              $('#title_detalleMaterial').text("raaa");
+            })
             // ACTIVIDAD DE JOSE  *****************************
             // APODERADOS
             function mostrarApoderados(){
@@ -167,6 +211,7 @@ $(document).ready(function(){
                     '',
                     'success'
                   )
+                  console.log("pago apafa enviado")
                 }
               })
             })

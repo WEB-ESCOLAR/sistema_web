@@ -1,40 +1,42 @@
  
   <div class="modal">
-        <form id="formulario_apoderado">
-            <fieldset class="form_ADA">
+        <form id="formulario_apoderado" class="box_form">
+              <div style="padding:10px 10px;">
               
-            <div class=button_exit_X >  
-                <button class="btn_exit_X"><i class="fas fa-times"></i></button>
-            </div>
-              <div class="title_form_ADA"><h2>Actualizar Datos del <br>Apoderado</h2></div>
+                 <button id="button_close_material" class="btn_close"><i style="font-size: 20px;" class="fas fa-times"></i></button>
+             
+      <header><h2 class="title_form">Actualizados datos del Apoderado</h2></header>
               
-            <div class="form_text_box">  
-                <div>
-                  <label class= input_label>Nombres:</label>
-                  <input type="text" id="nombre" name="nombre" class="input_nom_ape" placeholder="Escriba su nombres aquí">
+            <div  style="display:flex;width:100%;" class="form-group">  
+                <div style="width:50%;">
+                  <label class= label_group>Nombres:</label>
+                  <input type="text" id="nombre" name="nombre" class="input_txt_50" placeholder="Escriba su nombres aquí">
                 </div>
-                <div>
-                  <label class= input_label> Apellidos:</label>
-                  <input type="text" id="apellido"  name="apellido" class="input_nom_ape" placeholder="Escriba su apellidos aquí">
+
+                <div style="width:50%;">
+                  <label class= label_group> Apellidos:</label>
+                  <input type="text" id="apellido"  name="apellido" class="input_txt_50" placeholder="Escriba su apellidos aquí">
                 </div>
-                <div class="without_column">
-                  <label class= input_label>Dni:</label>
-                  <input type="text" id="dni"  name="dni" class="input_dni_tel"placeholder="Escriba su dni aquí">
+
+                 </div>
+
+                <div class="form-group">
+                    <label class= label_group>Dni:</label>
+                  <input type="text" id="dni"  name="dni" class="input_txt"placeholder="Escriba su dni aquí">
                 </div>
-                <div class="without_column">
-                  <label>Teléfono:</label>
-                  <input type="number" id="telefono"  name="telefono" class="input_dni_tel" placeholder="Escriba su celular aquí">
-                </div>
-            </div>
-         <div class="buttons_exit_send">
-              <div class="button_behind">
-                 <button type="button" class="btn_text">Volver Atrás</button>
+
+                  <div class="form-group">
+                    <label class="label_group">Teléfono:</label>
+                  <input type="number" id="telefono"  name="telefono" class="input_txt" placeholder="Escriba su celular aquí">
+                  </div>
+
+            <div style="display:flex;margin-top:15px;">   
+        <button type="button" style="background: var(--danger)" id="button_close_material" class="btn_box">Cancelar</button>
+         <button type="button" style="background: var(--primary)" id="agregar_material" class="btn_box">Actualizar</button>
+      </div> 
+        
+
               </div>
-              <div class="button_submit_send">   
-                 <button type="submit" class="btn_text" id="btn_update_apoderado">Actualizar</b>
-              </div>
-         </div>
-            </fieldset>
          </form> 
   </div>
 

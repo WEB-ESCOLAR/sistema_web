@@ -2,7 +2,7 @@
 
 	session_start();
 	require_once("layouts/Navbar.php");
-	if(!isset($_SESSION["newsession"])){
+	if(!isset($_SESSION["rol"])){
 		require_once("auth/login.php");
 	}else{	
 		require_once 'Screens/Home.php';

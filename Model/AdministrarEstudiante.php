@@ -31,7 +31,6 @@
 
 		function updateApoderados(Apoderado $apoderado){
 			$sql="UPDATE apoderado set firstName=?,lastName=?,phone=? where DNI=?";
-			// echo UUID();
 			$data = $this->getConexion()->prepare($sql);
 			$data->bindParam(1,"qweqwe",PDO::PARAM_STR);
 			$data->bindParam(2,"qweqwe",PDO::PARAM_STR);
