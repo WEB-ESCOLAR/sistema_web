@@ -28,17 +28,31 @@ $(document).ready(function(){
                  $('#formulario_material').hide();
             }
 
-            //fomrulario material
+            //BUTTONS MODALS 
             $('#button_material').click(function(e){
                 e.preventDefault();
-                console.log("show form material")
                  $('.modal').show();
                  $('#formulario_material').show();
                 // $('#formulario_apoderado').show();
             })
-            $('#button_close_material').click(function(e){
-              e.preventDefault();
-              $('.modal').hide();
+
+            $('#button_alumno').click(function(e){
+                e.preventDefault();
+                   $('.modal').show();
+                   $('#formulario_alumno').show();
+            })
+
+
+
+            // $('#button_close_material').click(function(e){
+            //   e.preventDefault();
+            //   $('.modal').hide();
+            // });
+
+
+            $(document).on('click','#button_close_material',function(e){
+                e.preventDefault();
+                $('.modal').hide();
             });
 
             //fomrulario apoderado
