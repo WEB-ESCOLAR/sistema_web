@@ -3,98 +3,183 @@
   padding:0px;
   margin: 0px;
 }
-
-.fondo {
-   height:100%;
-  width:100%;
-background:url(https://res.cloudinary.com/df3uvqrte/image/upload/v1619064425/backgorund_login_h0umxd.jpg)no-repeat fixed center;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-height: 100%;
-width: 100% ;
-text-align: center;
+/*login */
+section{
+  position:relative;
+  width: 100%;
+  height:100vh;
+  display:flex;
+}
+#message_login{
+  color: var(--vine);
+  font-family: var(--font-quicksandMedium);
+  font-size: 17px;
 }
 
-.Login-box{
-position: absolute;
-width: 370px;
-height: 339px;
-left: 50%;
-top: 50%;
-background: linear-gradient(180deg, #778CA3 0%, rgba(255, 255, 255, 0) 100%), rgba(58, 55, 47, 0.72);
-border-radius: 36px;
-transform: translate(-50%, -50%);
+section .imgBx{
+  position:relative;
+  width:50%;
+  height:100%;
 }
 
-.Login-box .avatar{
-  width:150px;
-  height:150px;
+section .imgBx:before{
+  content:'';
   position:absolute;
-  top:10px;
-  left: calc(50% - 70px);
-}
-
-.Login-box .input{
+  top:0;
+  left:0;
   width:100%;
-  margin-botoom:20px;
+  height:100%;
+  z-index:1;
+  mix-blend-mode:screen;
 }
 
-.Login-box .user{
-position: absolute;
-width: 300px;
-height: 38px;
-left: 30px;
-top: 160px;
-background: #778CA3;
-border-radius: 15px;
-color: #ffffff;
-box-shadow: -1px 4px 10px 0 #504846;
-border:none;
-outline:none;
+section .imgBx img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.Login-box .user::-webkit-input-placeholder {
-  text-align: center;
-  line-height: 100px;
+section .contentBx{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 50%;
+  height: 100%;
+}
+
+section .contentBx .formBx{
+  width: 65%; 
+}
+
+
+
+section .contentBx .formBx .inputBx{
+  margin-bottom:20px;
+  border-bottom: 2px solid #ffa3a3;
+}
+
+section .contentBx .formBx .logo img{
+  display:block;
+  margin:auto;
+}
+
+section .contentBx .formBx .inputBx span{
+  font-size: 16px;
+  margin-bottom: 15px;
+  display:inline-block;
+  color:#607d8b;
+  font-size:16px;
+  font-family: var(--font-quicksandMedium);
+  letter-spacing:1px;
+}
+
+section .contentBx .formBx .inputBx input{
+  width:100%;
+  padding:0px 5px;
+  outline:none;
+  font-family: var(--font-quicksandRegular);
+  border:none;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color:#607d8b;
+  background:transparent;
+}
+
+section .contentBx .formBx .ingresar input{
+  width:100%;
+  padding:12px 10px;
+  outline:none;
+  font-weight:400;
+  border:none;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color:#607d8b;
+  background:transparent;
+  border-radius:11px;
+  margin-top: 10px;
+}
+
+section .contentBx .formBx .ingresar input[type="submit"]{
+  background: var(--crimson);
   color:#fff;
+  outline:none;
+  border:none;
+  font-family: var(--font-quicksandBold);
+  cursor:pointer;
+  font-size: 20px;
 }
 
-.Login-box .contra{
-position: absolute;
-width: 300px;
-height: 38px;
-left: 30px;
-top: 215px;
-background: #778CA3;
-border-radius: 15px;
-color: #ffffff;
-box-shadow: -1px 4px 10px 0 #504846;
-border:none;
-outline:none;
+section .contentBx .formBx .ingresar input[type="submit"]:hover{
+  background:#e31b29;
+}
+/*400px es la medida para celular*/
+@media (max-width: 768px){
+  section .imgBx{
+   position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
+  
+  section .contentBx{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:100%;
+    z-index:1;
+  }
+  
+  section .contentBx .formBx{
+    width:100%;
+    padding:40px;
+    background: rgb(255 255 255 / 0.9);
+    margin:50px;
+  }
 }
 
-.Login-box .contra::-webkit-input-placeholder {
-  text-align: center;
-  line-height: 100px;
-  color:#fff;
+@media (max-width: 422px){
+  section .imgBx{
+   position:absolute;
+    top:0;
+    left:0;
+    width:;
+    height:60%;
+  }
+  
+  section .contentBx .formBx .logo img{
+    display:block;
+    margin:0px 190px;
+    width:20%;
+}
+  
+  section .contentBx{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:100%;
+    z-index:1;
+  }
+  
+  section .contentBx .formBx{
+    position:absolute;
+    width:100%;
+    padding:30px;
+    background: rgb(255 255 255 / 0.9);
+    margin:0px;
+    bottom:0px;
+    border-top: 20px solid transparent;
+    clip-path: polygon(100% 2%, 0% 30%, 0% 100%, 100% 100%);
+  }
 }
 
-.Login-box .ingresar{
- position: absolute;
- cursor:pointer;
-width: 220px;
-height: 38px;
-left: 71px;
-top: 280px;
-background: #201F1F;
-border-radius: 11px;
-color:#fff;
-box-shadow: -1px 4px 10px 0 #575353;
-box-shadow: inset 0 0 5px 0px #484343;
-border:none;
-}
+/*END LOGIN*/
+
 .container{
   padding:50px;
 }
@@ -165,7 +250,7 @@ button{
 /*********************/
 /************ BUTTONS */
 /******************/
-.btn_TblDelete{
+.btn_TblDelete,.btn_TblDeleteEs{
     width:28px;
     height:26px;
     background: #E92453;
@@ -267,21 +352,11 @@ button{
     }
 }
 
+
+
+
 /*estilos danger*/
 
-.btn-success,.btn-danger{
-  background:var(--blue--bold);
-  color:white;
-  padding:10px;
-  border:none;
-  margin-left:10px;
-}
-.btn-danger{
-  background:var(--crimson);
-}
-.btn-success{
-   background:var(--blue--bold);
-}
 /*a{
 background: #e6e6e6;
 color: green;

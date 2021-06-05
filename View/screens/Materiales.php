@@ -1,16 +1,19 @@
 
     <!-- <div> -->
-   		 <button type="submit" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Material</button>
+   		 <button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Material</button>
     <!-- </div> -->
-   
-    <form id="formulario_material" style="display:none;">
-		<fieldset class="form">
-	 <button id="button_close_material"><i class="fas fa-times"></i></button>
+   <div class="modal">
+
+    <form id="formulario_material" style="display:none;" class="box_form">
+      <div style="padding:10px 10px;">
+        
+      
+	 <button id="button_close_material" class="btn_close"><i style="font-size: 20px;" class="fas fa-times"></i></button>
 			<header><h2 class="title_form">Registrar Material</h2></header>
        
-     <div class="form-group-material">
-     	 <label>  Seleccione el Curso:  </label> 
-    <select  id="curso" class="cajitas_form" required>
+     <div class="form-group">
+     	 <label class="label_group"> Seleccione el Curso:</label> 
+    <select  id="curso" class="input_txt" required>
     <option value="Seleccione el curso">Seleccione el    Curso</option>
       <option value="Personal Social">Personal Social</option>
        <option value="Comunicacion Integral">Comunicacion Integral</option>
@@ -19,35 +22,35 @@
     </select> 
      </div> 
       
-    <div class="form-group-material">
-    	 <p> <label>  Seleccione el Grado:  </label> 
-    <select id="grado" class="cajitas_form" required>
-    <option  value="Seleccione el grado">Seleccione el    grado</option>
+    <div class="form-group">
+    	  <label class="label_group">  Seleccione el Grado:  </label> 
+    <select id="grado" class="input_txt" required>
+    <option  value="Seleccione el grado">Seleccione el grado</option>
     <option  value="Primer">Primer</option>
     <option  value="Segundo">Segundo</option>
     <option  value="Tercero">Tercero</option>
     <option  value="Cuarto">Cuarto</option>
     <option  value="Quinto">Quinto</option>
     <option  value="Sexto">Sexto</option>
-       </select> </p>
+       </select> 
     </div>
       
 
-   <div class="form-group-material" style="display:flex">
-         <div>
-         <label>Fecha de recepcion:</label> 
-        <input id="fecha_recepcion" type="date" style="width:200px" class="cajitas_form" required>
+   <div style="display:flex;width:100%;" class="form-group">
+        <div style="width: 50%;">
+         <label class="label_group">Fecha de recepcion:</label> 
+        <input id="fecha_recepcion" type="date" class="input_txt_50" required>
       </div>
 
-      <div>
-         <label>  Cantidad:  </label> 
-      <input id="cantidad"  type="text" class="cajitas_form" placeholder="Ingresa cantidad aquí..." style="width:200px" required>
+      <div style="width:50%;">
+         <label class="label_group">  Cantidad:  </label> 
+      <input id="cantidad"  type="text" class="input_txt_50" placeholder="Ingresa cantidad aquí..." required>
       </div>  
    </div>
       
-       <div class="form-group-material">
-       	 <p><label>  Seleccion de Tipo de Material:  </label> 
-    <select id="tipoMaterial" class="cajitas_form" required>
+       <div class="form-group">
+       	 <label class="label_group"> Seleccion de Tipo de Material:  </label> 
+    <select id="tipoMaterial" class="input_txt" required>
          <option value="Seleccione el grado">Seleccione el Grado</option>
          <option value="Libros">Libros</option>
     <option value="Otros">Otros</option>
@@ -55,26 +58,19 @@
        </div>
 
 
-      <div class="form-group-material" id="box_name_material" style="display:none;">
-      	 <p><label>  Nombre del Material:  </label> 
-         <input id="nombreMaterial" type="text" class="cajitas_form" placeholder="Ingresa nombre aquí..." required></p>
+      <div class="form-group" id="box_name_material" style="display:none;">
+      	 <label class="label_group">  Nombre del Material:  </label> 
+         <input id="nombreMaterial" type="text" class="input_txt" placeholder="Ingresa nombre aquí..." required></p>
       </div>
       
       <div style="display:flex;margin-top:15px;">   
-        <div style="background: #C42C50"class="button_form">
-            <input id="button_close_material" type="button" value="Atras"   class="btn_send" required>           
-        </div>
-         <div style=" background: #003049;" class="button_form">
-            <input id="agregar_material" type="submit" value="Registrar" class="btn_send" required>           
-         </div>
+        <button type="button" style="background: var(--danger)" id="button_close_material" class="btn_box">Cancelar</button>
+         <button type="button" style="background: var(--primary)" id="agregar_material" class="btn_box">Registrar</button>
       </div> 
-        
-      <!-- <div class="container"> -->
-       <!-- id="resultado_json" -->
-      <!-- </div>   -->
-                 
-		</fieldset>
+   
+          </div>
 	</form>
+  </div>
 
 
 
@@ -93,7 +89,8 @@
                     <th>ACCIONES</th>
                 </tr>
             </thead>
-            <tbody id="resultado_json">
+            <tbody id="data_materiales_table">
+              
             </tbody>
         </table>
     </div>

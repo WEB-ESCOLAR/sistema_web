@@ -1,67 +1,94 @@
-/*FORMULARIO MATERIALES*/
-.form{
-		position: absolute;
-		width: 454px;
-   	left: 385px;
-		top: 170px;
+/*efect oscuro*/
+.modal{
+  background:rgba(0,0,0,0.25);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width:100%;
+  height:100%;
+  display:none;
+}
+.form-group{
+  margin-top: 10px;
+}
+.box_form{
+    position: absolute;
+    width: 454px;
+    left: 385px;
+    top: 140px;
     background: #FFFFFF;
-		border: 1px solid #4064E3;
-		box-sizing: border-box;
-		border-radius: 10px;
-    padding:10px 10px;
-		}
-.title_form{
-	    text-align: left;
-	    color: #4064E3;
-		  font-weight: normal;
-		  font-size: 25px;
-		  line-height: 20px;
-		}
-
-   label{
-  font-size: 14px;
-  }
-
-.cajitas_form{
+    border: 3px solid var(--blue--bold);
+    box-sizing: border-box;
+    border-radius: 10px;
+    }
+.input_txt{
   width: 425px;
   height: 38px;
   border: 1px solid #000000;
   box-sizing: border-box;
+  padding-left: 10px;
   border-radius: 10px;
+  font-family: var(--font-quicksandRegular);
 }
-#button_close_material{
-  cursor:pointer;
-  width:28px;
-  height:26px;
-  background: #E92453;
-  border:none;
-  border-radius:3px;
-  color:#FFFFFF;
- }
- .form-group-material{
-  margin-top:10px;
- }
-/*.container_{
-  position: absolute;
-  left: 90%;
-  top: 5%;
+.input_txt_50{
+  width:95%; 
+  height: 38px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-family: var(--font-quicksandRegular);
+  box-sizing: border-box;
+
+}
+
+/*.btn_send{
+  width: 130px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  font-family: var(--font-quicksandRegular);
+  font-size: 14px;
+  color: #FFFFFF;
 }*/
-.button_form{
+.btn_box{
   width: 150px;
   height: 35.3px;
   margin-left: 50px;
   text-align: center;
   border-radius: 12px;
+  color:white;
+   border: none;
+  font-family: var(--font-quicksandRegular);
+  cursor: pointer;
 }
-  	.btn_send{
-		width: 130px;
-		height: 35px;
-		background-color: transparent;
-		border: none;
-		font-family: Roboto;
-		font-size: 14px;
-		color: #FFFFFF;
-	  	}
 
 
- /*END FORMULARIO MATERIALES*/
+.title_form{
+      text-align: left;
+      color: var(--blue--bold);
+      font-weight: normal;
+      font-size: 30px;
+      line-height: 20px;
+      margin-bottom: 20px;
+      font-family:  var(--font-quicksandBold);
+    }
+.label_group{
+  font-family: var(--font-quicksandMedium);
+ }
+.btn_close{
+  position: absolute;
+  width:28px;
+  height:26px;
+  background: var(--danger);
+  border:none;
+  border-radius:3px;
+  color:#FFFFFF;
+  right: -15px;
+  top: -10px;
+ }
+.btn_box_close{
+  position: absolute;
+  left: 90%;
+  top: 5%;
+
+}

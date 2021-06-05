@@ -10,6 +10,35 @@ $(document).ready(function(){
 	})
 
 
+    // LOGIN USER 
+
+    $('#formulario_login').on('submit',function(e){
+        e.preventDefault();
+        var param = $(this).serialize()
+        $.ajax({
+          url:"Controller/ControllerLogin.php",
+          data:param+"&action=Login",
+          dataType:"json"
+        }).done(function(response){
+          if(response == 1){
+            window.location="Home";
+          }
+          $('#message_login').text(response);
+        })
+    })
+
+    $(document).on('click','#logoutUser',function(e){
+      e.preventDefault();
+        $.ajax({
+                url:"Controller/ControllerLogin.php",
+                data:{action:"Logout"},
+         }).done(function(response){
+                  window.location="Login";
+        })
+    })
+    // END LOGIN USER
+
+
     // FUNCION DE CONEXION A SU BASE DE DATOS (obligatorio * )
     function probarConexion(){
         $.ajax({
@@ -27,16 +56,41 @@ $(document).ready(function(){
             function hide(){
                  $('#formulario_material').hide();
             }
+            function hide(){
+              $('#formulario_alumno').hide();
+            }
 
+            //BUTTONS MODALS 
             $('#button_material').click(function(e){
                 e.preventDefault();
-                console.log("show form material")
-                $('#formulario_material').show();
+                 $('.modal').show();
+                 $('#formulario_material').show();
+                // $('#formulario_apoderado').show();
             })
-            $('#button_close_material').click(function(e){
+
+            $('#button_alumno').click(function(e){
                 e.preventDefault();
-                console.log("close material");
-                $('#formulario_material').hide();
+                   $('.modal').show();
+                   $('#formulario_alumno').show();
+            })
+
+
+
+            // $('#button_close_material').click(function(e){
+            //   e.preventDefault();
+            //   $('.modal').hide();
+            // });
+
+
+            $(document).on('click','#button_close_material',function(e){
+                e.preventDefault();
+                $('.modal').hide();
+            });
+
+            //fomrulario apoderado
+            $('.btn_exit_X').click(function(e){
+                e.preventDefault()
+                $('.modal').hide();
             })
 
 
@@ -54,12 +108,17 @@ $(document).ready(function(){
                 .done(function(response){
                     // console.log(response)
                     const respuestaArray = JSON.parse(response)
+                    // console.log(respuestaArray);
                         let count=1;
                          // if(respuestaArray.length > 0){
                          var url= window.location.href;
                          const nombreModulo = url.split("/")[4];
+                             var url = window.location.href;
+                             const nombreModulo =url.split("/")[4];
+                             console.log(nombreModulo);
                              respuestaArray.forEach((element)=>{
-                                    $('#resultado_json').append(
+                                    $('#data_materiales_table').append(
+
                                         `
                                         <tr>
                                         <td>${count++}</td>
@@ -79,6 +138,12 @@ $(document).ready(function(){
                                             : ''
                                           }
 
+                                             <button class="btn_TblUpdate" id="detalleMaterial"><i class="fas fa-eye"></i></button>
+                                              ${
+                                                nombreModulo == "Materiales" ?  
+                                                  `<button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>`
+                                                : ''
+                                              }
                                            </div>
                                           </td>
                                         </tr>
@@ -90,8 +155,15 @@ $(document).ready(function(){
                          //    $('#table_text_message').html("<h1>No hay Registros Aun...</h1>")
                          // }
                 })
-
             }
+
+            $(document).on('click','#detalleMaterial',function(e){
+              e.preventDefault();
+              console.log("detalle material")
+              window.location="DetalleMateriales";
+              $('#title_detalleMaterial').text("raaa");
+            })
+            // ACTIVIDAD DE JOSE  *****************************
             // APODERADOS
             function mostrarApoderados(){
                   $.ajax({
@@ -115,7 +187,7 @@ $(document).ready(function(){
                                           <td>
                                           <div style="display:flex;justify-content:space-between;">
                                              <div style="text-align:left;">
-                                              <button class="btn_TblUpdate" id="editar_apoderado" "><i class="fas fa-edit"></i></button>
+                                              <button class="btn_TblUpdate" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
                                              <button class="btn_TblPrint print_apafa" name="${element.firstName}"><i class="fas fa-print"></i></button>
                                              </div>
                                             <button class="btn_TblPagoApafa" id="pagoApafa" name="${element.firstName}"
@@ -133,6 +205,10 @@ $(document).ready(function(){
             // $(document).('click','#editar_apoderado',function(e){
             //   e.preventDefault();
             // })
+                                 })
+                })
+            }
+         
             //-----------------------------------------------------
 
             $(document).on('click','#pagoApafa',function(e){
@@ -153,6 +229,7 @@ $(document).ready(function(){
                     '',
                     'success'
                   )
+                  console.log("pago apafa enviado")
                 }
               })
             })
@@ -182,10 +259,58 @@ $(document).ready(function(){
 
             });
 
+            //-.----------------------------
+            $(document).on('click','#editar_apoderado',function(e){
+              e.preventDefault();
+               var id = $(this).attr("name");
+                 const param={
+                    "id":id,
+                    "action":"DetalleApoderado"
+                }
+               $.ajax({
+                  url:"Controller/ControllerEstudiante.php",
+                  type:"GET",
+                  data:param,
+                  dataType: 'json',
+               }).done(function(response){
+                 $('.modal').show();
+                 $('#nombre').val(response.firstName);
+                 $('#apellido').val(response.lastName);
+                 $('#telefono').val(response.phone);
+                 $('#dni').val(response.DNI);
+                 $('#dni').prop("disabled",true);
+                // console.log(id);
+                // console.log(response);
+               });
+               
+            })
 
 
+              $(document).on('click','#btn_update_apoderado',function(e){
+              e.preventDefault();
+              console.log("press");
+               var datastring = $("#formulario_apoderado").serialize();
+               const dni = $('#dni').val();
+               const param={
+                    nombre:   $('#nombre').val(),
+                    apellido :  $('#apellido').val(),
+                     telefono : $('#telefono').val(),
+                    dni : $('#dni').val(),
+                    action :"UpdateApoderado"
+               }
+               console.log(datastring);
+                 $.ajax({
+                  url:"Controller/ControllerEstudiante.php",
+                  type:"POST",
+                  data:param,
+               }).done(function(response){
+                  console.log("respone is " + response )
+               })
+               // console.log(datastring);
+            })
+            // btn_update_apoderado
 
-
+            // END APODERADO -------------------
             $(document).on('click','.btn_TblDelete',function(e){
                 var id = $(this).attr("id");
                 e.preventDefault();
@@ -280,8 +405,8 @@ $(document).ready(function(){
                                           <td>${element.section}</td>
                                           <td>
                                           <div class=buttons_table>
-                                              <button class="btn_TblUpdate"><i class="fas fa-edit"></i></button>
-                                             <button class="btn_TblDelete" id="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn_TblUpdate"><i class="fas fa-edit"></i></button>
+                                            <button class="btn_TblDeleteEs" id="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
                                            </div>
                                           </td>
                                         </tr>
@@ -294,6 +419,67 @@ $(document).ready(function(){
                          // }
                 })
 
+
             }
+            $(document).on('click','.btn_TblDeleteEs',function(e){
+              var id = $(this).attr("id");
+              e.preventDefault();
+              const param={
+                  "id":id,
+                  "action":"EliminarEstudiante"
+              }
+              console.log("id"+id);
+              Swal.fire({
+                title: '¿Esta seguro de eliminar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  $.ajax({
+                      url:"Controller/ControllerEstudiante.php",
+                      type:"POST",
+                      data:param
+                  }).done(function(response){
+
+                       Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          )
+                      location.reload();
+                  })
+                }
+              })
+          })
+
+          $(document).on('click','#agregar_Estudiante',function(e){
+            e.preventDefault();
+            var param={
+                nombreEstudiante: $('#nombreEstudiante').val(),
+                apellidoEstudiante: $('#apellidoEstudiante').val(),
+                DniEstudiante: $('#DniEstudiante').val(),
+                gradoEstudiante: $('#gradoEstudiante').val(),
+                seccionEstudiante: $('#seccionEstudiante').val(),
+                nombreApoderado: $('#nombreApoderado').val(),
+                apellidoApoderado: $('#apellidoApoderado').val(),
+                DniApoderado: $('#DniApoderado').val(),
+                telefonoApoderado: $('#telefonoApoderado').val(),
+                action:"AgregarEstudiante"
+            }
+             console.log(param);
+             $.ajax({
+                url:"Controller/ControllerEstudiante.php",
+                type:"POST",
+                data:param
+            }).done(function(response){
+                console.log("RESULTADO ESPERADO AGREGAR " + response);
+                $('#formulario_alumno').hide();
+                location.reload();
+
+            })
+        });
 
 })

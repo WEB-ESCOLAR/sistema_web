@@ -6,11 +6,12 @@
   }
   // "Inicio","Materiales","Alumnos","Apoderados","ControlDeLibros"
   $modulos=[
-    ["name"=>"Inicio","icon"=>"fa-home"],
-    ["name"=>"Materiales","icon"=>"fa-book"],
-    ["name"=>"Alumnos","icon"=>"fa-user-graduate"],
-    ["name"=>"Apoderados","icon"=>"fa-user-tie"],
-    ["name"=>"ControlDeLibros","icon"=>"fa-book"]
+    ["name"=>"Inicio","icon"=>"fa fa-home"],
+    ["name"=>"Materiales","icon"=>"fa fa-book"],
+    ["name"=>"Alumnos","icon"=>"fa fa-user-graduate"],
+    ["name"=>"Apoderados","icon"=>"fa fa-user-tie"],
+    ["name"=>"ControlDeLibros","icon"=>"fa fa-book"],
+    ["name"=>"Configuracion","icon"=>"fas fa-cog"]
   ];
   // echo $_SESSION["newsession"];
  ?>
@@ -22,7 +23,7 @@
   <ul>
  <?php 
     foreach ($modulos as $value) { 
-     echo "<li><a href=".$value["name"]."><i class='fa {$value["icon"]}' ></i>".$value["name"]."</a></li>";
+     echo "<li><a href=".$value["name"]."><i class='{$value["icon"]}' ></i>".$value["name"]."</a></li>";
     }
   ?> 
   </ul>
@@ -39,13 +40,15 @@
   </nav>
     <div class="container">
       <div class="header-container">
-           <p class="title-header"><?php echo $_GET["view"]; ?></p> 
+           <p class="title-header"><?php echo $_GET["view"]; ?><span>- <?= $_SESSION["nombre"]; ?></span></p> 
           <hr class="line-hr"/>
      </div>
       <div class="body-container">
-        <!-- <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
-          <button name="logout">Logout</button>
-        </form> -->
+          <button name="logout" id="logoutUser">Logout</button>
+          <?php       
+          $dateAndHour = date("Y/m/d H:i:s");
+          
+           ?>
            <?php   
            if($_GET["view"] == "Home"){
               require_once 'Inicio.php';
