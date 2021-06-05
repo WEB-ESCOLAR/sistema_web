@@ -1,6 +1,6 @@
 <?php
 
-    DEFINE("URL","http://localhost:8084/ProyectoEscolar");
+    DEFINE("URL","http://localhost/sistema_web/");
     DEFINE("TITLE","Proyecto Escolar");
 
 

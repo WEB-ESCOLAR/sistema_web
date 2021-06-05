@@ -27,6 +27,9 @@ $(document).ready(function(){
             function hide(){
                  $('#formulario_material').hide();
             }
+            function hide(){
+              $('#formulario_alumno').hide();
+            }
 
             //BUTTONS MODALS 
             $('#button_material').click(function(e){
@@ -342,8 +345,8 @@ $(document).ready(function(){
                                           <td>${element.section}</td>
                                           <td>
                                           <div class=buttons_table>
-                                              <button class="btn_TblUpdate"><i class="fas fa-edit"></i></button>
-                                             <button class="btn_TblDelete" id="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn_TblUpdate"><i class="fas fa-edit"></i></button>
+                                            <button class="btn_TblDeleteEs" id="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
                                            </div>
                                           </td>
                                         </tr>
@@ -356,6 +359,67 @@ $(document).ready(function(){
                          // }
                 })
 
+
             }
+            $(document).on('click','.btn_TblDeleteEs',function(e){
+              var id = $(this).attr("id");
+              e.preventDefault();
+              const param={
+                  "id":id,
+                  "action":"EliminarEstudiante"
+              }
+              console.log("id"+id);
+              Swal.fire({
+                title: '¿Esta seguro de eliminar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  $.ajax({
+                      url:"Controller/ControllerEstudiante.php",
+                      type:"POST",
+                      data:param
+                  }).done(function(response){
+
+                       Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          )
+                      location.reload();
+                  })
+                }
+              })
+          })
+
+          $(document).on('click','#agregar_Estudiante',function(e){
+            e.preventDefault();
+            var param={
+                nombreEstudiante: $('#nombreEstudiante').val(),
+                apellidoEstudiante: $('#apellidoEstudiante').val(),
+                DniEstudiante: $('#DniEstudiante').val(),
+                gradoEstudiante: $('#gradoEstudiante').val(),
+                seccionEstudiante: $('#seccionEstudiante').val(),
+                nombreApoderado: $('#nombreApoderado').val(),
+                apellidoApoderado: $('#apellidoApoderado').val(),
+                DniApoderado: $('#DniApoderado').val(),
+                telefonoApoderado: $('#telefonoApoderado').val(),
+                action:"AgregarEstudiante"
+            }
+             console.log(param);
+             $.ajax({
+                url:"Controller/ControllerEstudiante.php",
+                type:"POST",
+                data:param
+            }).done(function(response){
+                console.log("RESULTADO ESPERADO AGREGAR " + response);
+                $('#formulario_alumno').hide();
+                location.reload();
+
+            })
+        });
 
 })
