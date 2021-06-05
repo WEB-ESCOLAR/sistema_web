@@ -13,6 +13,9 @@
 		case "UpdateApoderado":
 			updateApoderado();
 			break;
+		case "EliminarEstudiante":
+			deleteEstudiante();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -69,7 +72,15 @@
 	// require_once("../Model/Material.php");
 
 
-
+	//DELETE ESTUDIANTE
+	function deleteEstudiante(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$estudianteModel = new AdministrarEstudiante();
+		$idEstudiante = $_POST["id"];
+		$estudianteModel->Delete($idEstudiante);
+		echo json_encode("Eliminando");
+	}
+	//END DELETE ESTUDIANTE
 
 
  ?>
