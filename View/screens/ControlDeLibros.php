@@ -13,7 +13,7 @@
 									 <th>Acciones</th>
 							 </tr>
 					 </thead>
-					 <tbody id="resultado_json">
+					 <tbody id="data_materiales_table">
 					 </tbody>
 			 </table>
 	 </div>

@@ -60,7 +60,7 @@
 			$response->execute();
 			$query="INSERT INTO apoderado(DNI,firstName,lastName,phone) values(?,?,?,?)";
 			$response->bindParam(1,$apoderado->DniApoderado);
-			$response->bindParam(2,$apoderado->nombreApoderado;
+			$response->bindParam(2,$apoderado->nombreApoderado);
 			$response->bindParam(3,$apoderado->apellidoApoderado);
 			$response->bindParam(4,$apoderado->telefonoApoderado);
 			$response->execute();
