@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	switch($action){
@@ -19,8 +19,8 @@
 			break;
 	}
 
-	
-	
+
+
 	// require_once("../Model/Material.php");
 
 	function conexionDatabase(){
@@ -34,8 +34,8 @@
 		$materialModel = new AdministrarMaterial();
 		$resultado = $materialModel->listAll();
 		echo json_encode($resultado);
-		
-	}	
+
+	}
 	function agregarMaterial(){
 		require_once("../Model/AdministrarMaterial.php");
 		require_once("../Model/Material.php");
@@ -57,5 +57,7 @@
 		$materialModel->Delete($idMaterial);
 		echo json_encode("Eliminando");
 	}
+
+
 
  ?>

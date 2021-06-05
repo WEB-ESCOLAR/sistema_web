@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once "AdministradorModelo.php";
 	class AdministrarMaterial extends AdministrarModelo{
 
@@ -12,6 +12,7 @@
 			}
 			return $materiales;
 		}
+
 		function Create(Material $material){
 			$sql="INSERT INTO material(curse,grade,ReceptionDate,tipoMaterial,nameMaterial,amount) values(?,?,?,?,?,?)";
 			$response = $this->getConexion()->prepare($sql);
@@ -23,6 +24,9 @@
 			$response->bindParam(6,$material->cantidad);
 			$response->execute();
 		}
+
+		
+
 		// function CreateDetalleMaterial(){
 		// 	$sql="INSERT INTO detallematerial ";
 		// }

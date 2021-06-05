@@ -43,19 +43,21 @@ $(document).ready(function(){
              mostrarApoderados();
             mostrarMateriales();
             mostrarEstudiantes();
-           
+
 
             //mostrarMateriales();
             function mostrarMateriales(){
                 $.ajax({
-                    url:"Controller/ControllerMaterial.php",
-                    data:{action:"Mostrar"},
+                  url:"Controller/ControllerMaterial.php",
+                  data:{action:"Mostrar"},
                 })
                 .done(function(response){
                     // console.log(response)
                     const respuestaArray = JSON.parse(response)
                         let count=1;
                          // if(respuestaArray.length > 0){
+                         var url= window.location.href;
+                         const nombreModulo = url.split("/")[4];
                              respuestaArray.forEach((element)=>{
                                     $('#resultado_json').append(
                                         `
@@ -64,14 +66,19 @@ $(document).ready(function(){
                                         <td>${element.curse}</td>
                                          <td>${element.tipoMaterial == "Libros" ? "Libros" : element.tipoMaterial+'-'+element.nameMaterial}</td>
                                         <td>${element.grade}</td>
-                                         <td>requererido aca</td>
+                                         <td>requerido aca</td>
                                          <td>requererido aca</td>
                                           <td>${element.ReceptionDate}</td>
                                           <td>${element.amount}</td>
                                           <td>
                                           <div class=buttons_table>
-                                             <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
-                                             <button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>
+                                          <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
+                                          ${
+                                            nombreModulo == "Materiales" ?
+                                            `<button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>`
+                                            : ''
+                                          }
+
                                            </div>
                                           </td>
                                         </tr>
@@ -120,14 +127,14 @@ $(document).ready(function(){
                                         </tr>
                                         `
                                         );
-                                 })
-                })
-            }
+                                      })
+                                    })
+                                  }
             // $(document).('click','#editar_apoderado',function(e){
             //   e.preventDefault();
             // })
             //-----------------------------------------------------
-         
+
             $(document).on('click','#pagoApafa',function(e){
               e.preventDefault();
                var name = $(this).attr("name");
@@ -172,7 +179,7 @@ $(document).ready(function(){
                 }
               })
 
-                            
+
             });
 
 
@@ -250,7 +257,7 @@ $(document).ready(function(){
 
             // ALUMNOS
 
-           
+
             function mostrarEstudiantes(){
                 $.ajax({
                     url:"Controller/ControllerEstudiante.php",
