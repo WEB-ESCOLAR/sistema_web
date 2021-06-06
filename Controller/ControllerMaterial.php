@@ -14,6 +14,9 @@
 		case "Eliminar":
 			deleteMaterial();
 			break;
+			case "DetalleMaterial":
+				fetchAllDetalleMaterial();
+				break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -58,7 +61,12 @@
 		echo json_encode("Eliminando");
 	}
 
+	function fetchAllDetalleMaterial(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$resultado = $materialModel->listDetalleMaterial();
+		echo json_encode($resultado);
+	}
 
 
-	
  ?>

@@ -25,7 +25,7 @@
 			$response->execute();
 		}
 
-		
+
 
 		// function CreateDetalleMaterial(){
 		// 	$sql="INSERT INTO detallematerial ";
@@ -35,6 +35,15 @@
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$id);
 			$response->execute();
+		}
+
+		function listDetalleMaterial(){ //obtener registros de la db.
+			$sql="SELECT * from detallematerial";
+			$respuestaConsulta = $this->consulta($sql);
+			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+				$materiales[]=$filas;
+			}
+			return $materiales;
 		}
 
 	}

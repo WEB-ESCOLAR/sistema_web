@@ -1,8 +1,9 @@
 $(document).ready(function(){
-  
+
     mostrarApoderados();
     mostrarMateriales();
     mostrarEstudiantes();
+    mostrarDetalleMaterial();
 
     function mostrarMateriales(){
                 $.ajax({
@@ -30,7 +31,7 @@ $(document).ready(function(){
                                           <td>${element.amount}</td>
                                           <td>
                                           <div class=buttons_table>
-                                          <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
+                                          <button class="btn_TblUpdate" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "Materiales" ?
                                             `<button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>`
@@ -117,5 +118,31 @@ $(document).ready(function(){
                 })
             }
 
+            function mostrarDetalleMaterial(){
+              $.ajax({
+                url:"Controller/ControllerMaterial.php",
+                data:{action:"DetalleMaterial"},
+              })
+              .done(function(response){
+                  const respuestaArray = [JSON.parse(response)]
+                      let count=1;
+                           respuestaArray.forEach((element)=>{
+                                  $('#data_detalleMaterial_table').append(
 
+                                      `
+                                      <tr>
+                                      <td>${count++}</td>
+                                      <td>${element.codigo}</td>
+                                      <td>${element.state}</td>
+                                        <td>
+                                        <div class=buttons_table>
+                                        <button class=""><i class="">Prestar</i></button>
+                                         </div>
+                                        </td>
+                                      </tr>
+                                      `
+                                      );
+                               })
+              })
+            }
 })
