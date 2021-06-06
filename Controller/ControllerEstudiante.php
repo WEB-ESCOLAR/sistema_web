@@ -16,6 +16,9 @@
 		case "EliminarEstudiante":
 			deleteEstudiante();
 			break;
+		case "PagoApafa":
+			updatePagoApafa();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -81,6 +84,12 @@
 		echo json_encode("Eliminando");
 	}
 	//END DELETE ESTUDIANTE
-
+	 function updatePagoApafa(){
+	//require_once("../Model/PagoApafa.php");
+		require_once("../Model/AdministrarEstudiante.php");
+		$pagoapafaModel = new AdministrarEstudiante();
+		$id = $_POST["id"];
+		$output = $pagoapafaModel->PagoApafa($id);
+	}
 
  ?>

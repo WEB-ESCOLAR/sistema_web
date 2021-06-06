@@ -71,7 +71,7 @@ $(document).ready(function(){
                                               <button class="btn_TblUpdate" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
                                              <button class="btn_TblPrint print_apafa" name="${element.firstName}"><i class="fas fa-print"></i></button>
                                              </div>
-                                            <button class="btn_TblPagoApafa" id="pagoApafa" name="${element.firstName}"
+                                            <button class="btn_TblPagoApafa" id="${element.DNI}" name="${element.firstName}"
                                             ${element.state === "PAGO" ? 'style=display:none;' : null}
                                             >Pago Apafa</button>
 

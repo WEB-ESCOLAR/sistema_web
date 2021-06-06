@@ -1,8 +1,13 @@
 $(document).ready(function(){
 
 
-	$(document).on('click','#pagoApafa',function(e){
+	$(document).on('click','.btn_TblPagoApafa',function(e){
               e.preventDefault();
+              var id = $(this).attr("id");
+                 const param={
+                  "id":id,
+                  "action":"PagoApafa"
+                }
                var name = $(this).attr("name");
                  Swal.fire({
                 title: 'El apoderado ' + name + " realizara el pago de la boleta APAFA?",
@@ -13,16 +18,22 @@ $(document).ready(function(){
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Si'
               }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire(
-                    'Boleta Generado con Exito!',
-                    '',
-                    'success'
-                  )
-                  console.log("pago apafa enviado")
-                }
-              })
-            })
+                   $.ajax({
+                      url:"Controller/ControllerEstudiante.php",
+                      type:"POST",
+                      data:param
+                  }).done(function(responseApoderado){
+                       Swal.fire(
+                         'Modificado!',
+                         'Pago realizado con Exito!',
+                          'success'
+                         )
+                      location.reload();
+                  })
+                })
+
+          })
+
 
      $(document).on('click','.print_apafa',function(e){
              e.preventDefault();

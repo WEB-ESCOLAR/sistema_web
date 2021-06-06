@@ -66,5 +66,11 @@
 			$response->execute();
 		}
 		//END CREATE ESTUDIANTE
+		 function PagoApafa($id){
+			$sql="UPDATE pagoapafa set state=1 where idApoderado=?";
+			$data=$this->getConexion()->prepare($sql);
+			$data->bindParam(1,$id);
+			$data->execute();
+   		}
 	}
 ?>
