@@ -49,9 +49,9 @@
 		$apellido = $_POST["apellido"];
 		$telefono= $_POST["telefono"];
 		$apoderado = new Apoderado($dni,$nombre,$apellido,$telefono);
-	 	$administrarEstudiante->updateApoderados($apoderado);
+	 	$affect = $administrarEstudiante->updateApoderados($apoderado);
 	 	// UUID()
-		// echo json_encode(UUID());
+		// echo json_encode(var_dump($apoderado));
 		// $count=$re->rowCount();
 		// echo json_encode($affect);
 	}

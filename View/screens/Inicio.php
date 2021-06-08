@@ -2,21 +2,45 @@
 	
 	<?php if($_SESSION["rol"] == "director"){?>
 
-			<div style="width:400px;">
-				<canvas id="myChart" width="300" height="200"></canvas>
-			</div>
+			
 
-			<h3>Director</h3>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-			<br>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-			<br>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-				<br>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		<div style="margin:auto;">
+		<div style="display:flex;justify-content: space-between;">
+			<div style="width:45%">
+				<canvas id="myChart" width="300" height="150"></canvas>
+			</div>
+			<div style="background: green;width:45%;height:280px;">
+				
+			</div>
+		</div>
+			<div style="background: dodgerblue;width:100%;height:250px;margin-top:20px;">
+					
+			</div>
+		<div style="display:flex;justify-content: space-between;margin-top:20px;">
+			<div style="background: yellow;width:45%;height:280px;">
+				
+			</div>
+			<div style="background: green;width:45%;height:280px;">
+				
+			</div>
+		</div>
+
+
+		</div>
+
 	<?php }else{ ?>
-		<h3>Secretaria</h3>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-		<br>
+		<div style="margin:auto;">
+			<div style="display:flex;justify-content: space-between;">
+			<div style="background: yellow;width:45%;height:280px;">
+			
+			</div>
+			<div style="background: green;width:45%;height:280px;">
+				
+			</div>
+		</div>
+			<div style="background: dodgerblue;width:100%;height:250px;margin-top:20px;">
+					
+			</div>
+		</div>
  
 	<?php } ?>

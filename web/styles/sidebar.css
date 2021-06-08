@@ -74,16 +74,18 @@
 .logout{
   float:right;
   margin-right:20px;
+  position: absolute;
+  right:15%;
+  display: flex;
+  transition: 0.5s;
 }
-.logout li{
-  list-style:none;
-  line-height: 30px;
+.menu_link_logout{
+  font-family: var(--font-quicksandMedium);
+  font-size: 25px;
+  line-height: 45px;
+  margin-left: 15px;
+  color:white;
 }
-.logout a{
-  text-decoration:none ;
-  color:#EACB5E;
-}
-
 
 .title-header{
   font-size:35px;
@@ -102,12 +104,16 @@
 /*contenedor*/
 .container{
   /*margin:1.5px;*/
+    transition: 0.5s;
   padding:20px;
 }
 .body-container{
   width:80%;
   padding-top:20px;
   margin-left:10px;
+    transition: 0.5s;
+
+  
 }
 
 

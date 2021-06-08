@@ -82,7 +82,8 @@
     </form>
 </div>
 
- <div class="cont_Table">
+<div>
+   <div class="cont_Table">
         <table class="table-general">
             <thead>
                 <tr>
@@ -99,3 +100,4 @@
             </tbody>
         </table>
     </div>
+</div>

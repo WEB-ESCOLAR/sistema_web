@@ -28,23 +28,24 @@
   ?> 
   </ul>
 </div>
-<div class="contenido open">
+<div class="contenido open" id="content_sidebar">
   <nav class="navar">
-    <div class="bar" style="display:flex;justify-content: space-between;">
+      <div class="bar" >
       <span class="fas fa-bars"></span>
     </div>
     <div class="logout">
-      <li><a style=""href="#">LOGOUT</a></li>
+      <p class="menu_link_logout"><?= strtoupper($_SESSION["rol"]);  ?></p>
+      <p class="menu_link_logout" id="logoutUser" style="cursor: pointer;">Logout</p>
+        <!-- <li><a style=""href="#">LOGOUT</a></li> -->
     </div> 
-
   </nav>
     <div class="container">
-      <div class="header-container">
-           <p class="title-header"><?php echo $_GET["view"]; ?><span>- <?= $_SESSION["nombre"]; ?></span></p> 
+          <div class="header-container">
+           <p class="title-header"><?php echo $_GET["view"]; ?></p> 
           <hr class="line-hr"/>
      </div>
       <div class="body-container">
-          <button name="logout" id="logoutUser">Logout</button>
+          <!-- <button name="logout" id="logoutUser">Logout</button> -->
           <?php       
           $dateAndHour = date("Y/m/d H:i:s");
           
@@ -58,6 +59,6 @@
           }
          ?>        
       </div>
-    </div>
+        </div>
   </div>
 </body>

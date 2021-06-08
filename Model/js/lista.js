@@ -1,8 +1,8 @@
 $(document).ready(function(){
   
-    mostrarApoderados();
-    mostrarMateriales();
-    mostrarEstudiantes();
+    // mostrarApoderados();
+    // mostrarMateriales();
+    // mostrarEstudiantes();
 
     function mostrarMateriales(){
                 $.ajax({

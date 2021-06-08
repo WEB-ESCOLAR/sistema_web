@@ -182,6 +182,8 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
 
 .container{
   padding:50px;
+  margin:auto;
+  width:95%;
 }
 
 /*tabla en general */
@@ -215,7 +217,6 @@ button{
 
 .cont_Table {
     width: 100%;
-    /*max-width: 1000px;*/
     padding-top:20px;
     margin: auto;
 }
