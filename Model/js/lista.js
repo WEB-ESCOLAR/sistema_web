@@ -31,7 +31,7 @@ $(document).ready(function(){
                                           <td>${element.amount}</td>
                                           <td>
                                           <div class=buttons_table>
-                                          <button class="btn_TblUpdate" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
+                                          <button class="btn_TblUpdate" name="${element.idMaterial}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "Materiales" ?
                                             `<button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>`
@@ -124,19 +124,26 @@ $(document).ready(function(){
                 data:{action:"DetalleMaterial"},
               })
               .done(function(response){
-                  const respuestaArray = [JSON.parse(response)]
+                  //const respuestaArray = JSON.parse(response)
+                  const respuestaArray =[
+                    {idDetalleMaterial:1,idMaterial:10, status:"DISPONIBLE", idDevolucion:1},
+                    {idDetalleMaterial:2,idMaterial:10, status:"DISPONIBLE", idDevolucion:2},
+                    {idDetalleMaterial:3,idMaterial:10, status:"DISPONIBLE", idDevolucion:3},
+                    {idDetalleMaterial:4,idMaterial:10, status:"DISPONIBLE", idDevolucion:4}
+                  ]
                       let count=1;
                            respuestaArray.forEach((element)=>{
                                   $('#data_detalleMaterial_table').append(
-
                                       `
                                       <tr>
                                       <td>${count++}</td>
-                                      <td>${element.codigo}</td>
-                                      <td>${element.state}</td>
+                                      <td>${element.idMaterial}</td>
+                                      <td>${element.status}</td>
                                         <td>
                                         <div class=buttons_table>
-                                        <button class=""><i class="">Prestar</i></button>
+                                        <button class="btn_Prestar" id="mostrar_alumno" name="${element.idDetalleMaterial}"><i class="">Prestar</i></button>
+                                        <button class="btn_Devolver" id="mostrar_devolucion" name="${element.idDetalleMaterial}"><i class="">Devolver</i></button>
+                                        <button class="btn_VerMotivo" id="mostrar_motivo" name="${element.idDevolucion}"><i class="">Ver Motivo</i></button>
                                          </div>
                                         </td>
                                       </tr>

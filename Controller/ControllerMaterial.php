@@ -17,6 +17,18 @@
 			case "DetalleMaterial":
 				fetchAllDetalleMaterial();
 				break;
+			case "buscarAlumno":
+				buscar();
+				break;
+			case "prestarMaterial":
+				prestar();
+				break;
+			case "Devolver":
+				devolucion();
+				break;
+			case "verMotivo":
+				verMotivo();
+				break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -68,5 +80,39 @@
 		echo json_encode($resultado);
 	}
 
+	function buscar(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$dniEstudiante = $_GET["DNI"];
+		$resultado = $materialModel->buscarEstudiante($dniEstudiante);
+		echo json_encode($resultado);
+	}
+
+	function prestar(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$idEstudiante = $_POST["idEstu"];
+		$idDetalleMaterial = $_POST["idDetaMate"];
+		$materialModel->prestarMaterial($idEstudiante,$idDetalleMaterial);
+		echo json_encode("Prestando");
+	}
+
+	function devolucion(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$idDetaMate = $_POST["idDetaMate"];
+		$motivo = $_POST["motivo"];
+		$fecha=date('Y-m-d h:i:s', time());
+		$materialModel->devolverMaterial($idDetaMate,$fecha,$motivo);
+		echo json_encode("Devolviendo");
+	}
+
+	function verMotivo(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$idDevo = $_GET["idDevo"];
+		$resultado=$materialModel->verMotivo($idDevo);
+		echo json_encode($resultado);
+	}
 
  ?>
