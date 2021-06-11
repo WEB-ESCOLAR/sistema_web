@@ -24,21 +24,23 @@
 			break;
 	}
 
+  //$fechaActual = date('d-m-Y');
+	//echo $fechaActual
 
-	
-	
+
+
 	function fetchAllApoderado(){
 		require_once("../Model/AdministrarEstudiante.php");
 		$administrarEstudiante = new AdministrarEstudiante();
 		$apoderados = $administrarEstudiante->listAllApoderados();
-		echo json_encode($apoderados); 
+		echo json_encode($apoderados);
 	}
 	function detailApoderado(){
 		require_once("../Model/AdministrarEstudiante.php");
 		$administrarEstudiante = new AdministrarEstudiante();
 		$id = $_GET["id"];
 		$data = $administrarEstudiante->readApoderado($id);
-		echo json_encode($data); 
+		echo json_encode($data);
 	}
 	function updateApoderado(){
 		require_once("../Model/Apoderado.php");
@@ -89,7 +91,8 @@
 		require_once("../Model/AdministrarEstudiante.php");
 		$pagoapafaModel = new AdministrarEstudiante();
 		$id = $_POST["id"];
-		$output = $pagoapafaModel->PagoApafa($id);
+		$fecha = date('Y-m-d', time());
+		$output = $pagoapafaModel->PagoApafa($fecha,$id);
 	}
 
  ?>

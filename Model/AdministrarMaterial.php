@@ -25,7 +25,7 @@
 			$response->execute();
 		}
 
-		
+
 
 		// function CreateDetalleMaterial(){
 		// 	$sql="INSERT INTO detallematerial ";
@@ -36,6 +36,33 @@
 			$response->bindParam(1,$id);
 			$response->execute();
 		}
+
+		function listDetalleMaterial(){
+			$sql="SELECT * from detallematerial where idMaterial=10";
+     	$respuestaConsulta=$this->consulta($sql);
+
+			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)){
+				$materiales[]=$filas;
+			}
+				return $materiales;
+
+		}
+		/////AGREGAR DETALLE MATERIAL////
+		function AgregarDetalle($cantidad){
+			for ($i=0; $i < $cantidad ; $i++) {
+				$sql="INSERT INTO detallematerial (idMaterial,status) values (10,1)";
+				$response = $this->getConexion()->prepare($sql);
+				$response->execute();
+			}
+
+			}
+		/////ELIMINAR DETALLE MATERIAL///////
+			function DeleteDetalle($id){
+				$sql="DELETE FROM detallematerial where idDetalleMaterial=?";
+				$response = $this->getConexion()->prepare($sql);
+				$response->bindParam(1,$id);
+				$response->execute();
+			}
 
 	}
 

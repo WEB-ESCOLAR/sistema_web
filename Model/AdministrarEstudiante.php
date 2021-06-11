@@ -20,7 +20,7 @@
 			return $alumnos;
 		}
 
-		function readApoderado($id){ 
+		function readApoderado($id){
 			$sql="SELECT * from apoderado where DNI=?";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$id);
@@ -66,10 +66,13 @@
 			$response->execute();
 		}
 		//END CREATE ESTUDIANTE
-		 function PagoApafa($id){
-			$sql="UPDATE pagoapafa set state=1 where idApoderado=?";
+		 function PagoApafa($fecha,$id){
+			//$fechaactual=date('d-m-y');
+			$sql="UPDATE pagoapafa set state=1, fechapago=? where idApoderado=?";
 			$data=$this->getConexion()->prepare($sql);
-			$data->bindParam(1,$id);
+      $data->bindParam(1,$fecha);
+			$data->bindParam(2,$id);
+
 			$data->execute();
    		}
 	}
