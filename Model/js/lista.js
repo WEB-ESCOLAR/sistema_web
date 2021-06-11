@@ -1,8 +1,8 @@
 $(document).ready(function(){
   
-    // mostrarApoderados();
+    mostrarApoderados();
     mostrarMateriales();
-    // mostrarEstudiantes();
+    mostrarEstudiantes();
 
     function mostrarMateriales(){
                 $.ajax({
@@ -10,7 +10,9 @@ $(document).ready(function(){
                   data:{action:"Mostrar"},
                 })
                 .done(function(response){
+                  // console.log(response)
                     const respuestaArray = JSON.parse(response)
+                    console.log(respuestaArray)
                         let count=1;
                              var url = window.location.href;
                              const nombreModulo =url.split("/")[4];
@@ -21,19 +23,19 @@ $(document).ready(function(){
                                         `
                                         <tr>
                                         <td>${count++}</td>
-                                        <td>${element.curse}</td>
-                                         <td>${element.tipoMaterial == "Libros" ? "Libros" : element.tipoMaterial+'-'+element.nameMaterial}</td>
-                                        <td>${element.grade}</td>
-                                         <td>requerido aca</td>
-                                         <td>requererido aca</td>
-                                          <td>${element.ReceptionDate}</td>
-                                          <td>${element.amount}</td>
+                                        <td>${element.nombreCurso}</td>
+                                         <td>${element.tipoMaterial == "Libros" ? "Libros" : element.tipoMaterial+'-'+element.nombreMaterial}</td>
+                                        <td>${element.grado}</td>
+                                         <td>${element.totalDisponible}</td>
+                                         <td>${element.totalInactivo}</td>
+                                          <td>${element.fechaRecepcion}</td>
+                                          <td>${element.cantidad}</td>
                                           <td>
                                           <div class=buttons_table>
-                                          <button class="btn_TblUpdate" id="idMaterial" name="${element.idMaterial}"><i class="fas fa-eye"></i></button>
+                                          <button class="btn_TblUpdate" id="idMaterial" name="${element.id}"><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "Materiales" ?
-                                            `<button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>`
+                                            `<button class="btn_TblDelete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
                                             : ''
                                           }
                                            </div>

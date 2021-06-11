@@ -46,7 +46,7 @@
 		$cantidad = $_POST["cantidad"];
 		$tipoMaterial = $_POST["tipoMaterial"];
 		$nombreMaterial = $_POST["nombreMaterial"];
-		$material = new Material(null,$curso,$tipoMaterial,$grado,$fechaRecepcion,$nombreMaterial,$cantidad);
+		$material = new Material(null,$curso,$tipoMaterial,$grado,null,null,$fechaRecepcion,$nombreMaterial,$cantidad);
 		$materialModel->Create($material);
 	}
 
