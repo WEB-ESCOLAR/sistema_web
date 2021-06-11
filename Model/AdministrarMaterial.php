@@ -88,6 +88,22 @@
 			return $result;
 		}
 
+		function agregarDetalle($cantidad){
+
+			for ($i=0; $i < $cantidad ; $i++) {
+				$sql="insert into detallematerial(idMaterial, status) values (10, 1)";
+				$response = $this->getConexion()->prepare($sql);
+				$response->execute();
+			}
+		}
+
+		function deleteDetalleMaterial($id){
+			$sql="DELETE FROM detallematerial where idDetalleEliminar=?";
+			$response = $this->getConexion()->prepare($sql);
+			$response->bindParam(1,$id);
+			$response->execute();
+		}
+
 	}
 
  ?>

@@ -115,4 +115,19 @@
 		echo json_encode($resultado);
 	}
 
+function agregarDetalleMaterial(){
+	require_once("../Model/AdministrarMaterial.php");
+	$materialModel = new AdministrarMaterial();
+	$cant = $_POST[""];
+	$materialModel->agregarDetalle($cant);
+}
+
+function deleteDetaMate(){
+	require_once("../Model/AdministrarMaterial.php");
+	$materialModel = new AdministrarMaterial();
+	$idDetaMaterial = $_POST["id"];
+	$materialModel->deleteDetalleMaterial($idDetaMaterial);
+	echo json_encode("Eliminando");
+}
+
  ?>
