@@ -34,10 +34,15 @@ $(document).ready(function(){
 
                 })
             });
+
+
+
             $(document).on('click','#detalleMaterial',function(e){
 	          e.preventDefault();
 	          console.log("detalle material")
 	          window.location="DetalleMateriales";
-	      })
+	       })
+
+        
 
 })

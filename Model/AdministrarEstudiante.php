@@ -19,6 +19,29 @@
 			}
 			return $alumnos;
 		}
+		function listaEstudiantesForGradeAndSection($grade,$section){ //obtener registros de la db.
+			$sql="SELECT * from estudiante where grado='$grade' and section='$section'";
+			$respuestaConsultaSearch = $this->consulta($sql);
+			$row = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC);
+			if(!$row){
+				return "not found";
+			}else{
+				while($filas = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC)) {
+				$searchAlumnos[]=$filas;
+				}
+				return $searchAlumnos;
+			}
+			
+		}
+
+		function totalEstudiantes(){
+			$sql="SELECT count(*) from estudiante";
+			$response = $this->getConexion()->prepare($sql);
+			$response->execute();
+			$result = $response->fetch(PDO::FETCH_ASSOC);
+			return $result;
+		}
+
 
 		function readApoderado($id){ 
 			$sql="SELECT * from apoderado where DNI=?";

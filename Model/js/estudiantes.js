@@ -62,4 +62,23 @@
             })
         });
 
+        $('#search_student').click(function(e){
+        e.preventDefault();
+        const param={
+          grade: $('#search_grade_student').val(),
+          section: $('#search_section_student').val(),
+          action: 'BuscarGradoAndSection'
+        }
+        $.ajax({
+          url:"Controller/ControllerEstudiante.php",
+          type:"POST",
+          data:param
+        }).done(function(response){
+          console.log("resultado esperado es " + response)
+        })
+        
+      })
+
+
+
   });

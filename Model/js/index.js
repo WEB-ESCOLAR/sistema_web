@@ -82,6 +82,9 @@ $(document).ready(function(){
           $('.modal').hide();
       })
 
+
+   
+
           //
           var ctx = document.getElementById('myChart').getContext('2d');
           function graphics(){

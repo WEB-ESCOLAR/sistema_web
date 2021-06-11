@@ -2,8 +2,8 @@
 	
 	<?php if($_SESSION["rol"] == "director"){?>
 
-			
-
+		<p class="saludoMundo">hola mundo</p>
+<!-- 
 		<div style="margin:auto;">
 		<div style="display:flex;justify-content: space-between;">
 			<div style="width:45%">
@@ -26,7 +26,7 @@
 		</div>
 
 
-		</div>
+		</div> -->
 
 	<?php }else{ ?>
 		<div style="margin:auto;">

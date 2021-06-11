@@ -19,6 +19,9 @@
 		case "PagoApafa":
 			updatePagoApafa();
 			break;
+		case "BuscarGradoAndSection":
+			fetchAllSectionAndGrade();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -91,5 +94,14 @@
 		$id = $_POST["id"];
 		$output = $pagoapafaModel->PagoApafa($id);
 	}
+
+	function fetchAllSectionAndGrade(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$section = $_POST["section"];
+		$grade = $_POST["grade"];
+		$administrarEstudiante = new AdministrarEstudiante();
+		$estudiantes = $administrarEstudiante->listaEstudiantesForGradeAndSection($grade,$section);
+		echo json_encode($estudiantes); 
+	}	
 
  ?>
