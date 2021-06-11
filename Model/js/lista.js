@@ -1,8 +1,8 @@
 $(document).ready(function(){
   
-    mostrarApoderados();
+    // mostrarApoderados();
     mostrarMateriales();
-    mostrarEstudiantes();
+    // mostrarEstudiantes();
 
     function mostrarMateriales(){
                 $.ajax({
@@ -30,7 +30,7 @@ $(document).ready(function(){
                                           <td>${element.amount}</td>
                                           <td>
                                           <div class=buttons_table>
-                                          <button class="btn_TblUpdate"><i class="fas fa-eye"></i></button>
+                                          <button class="btn_TblUpdate" id="idMaterial" name="${element.idMaterial}"><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "Materiales" ?
                                             `<button class="btn_TblDelete" id="${element.idMaterial}"><i class="fas fa-trash-alt"></i></button>`

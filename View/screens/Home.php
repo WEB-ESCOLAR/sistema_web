@@ -4,6 +4,14 @@
     session_destroy();
     header("Location:Login");
   }
+  // if(isset(explode("/",$_SERVER["REQUEST_URI"])[3])){
+    echo 'falta validar el id de la url no excitarse ...';
+    $id = explode("/",$_SERVER["REQUEST_URI"])[3];
+  // }
+  
+  // $splitData = explode("?",$_GET["view"])[0];
+  // echo $id;
+
   // "Inicio","Materiales","Alumnos","Apoderados","ControlDeLibros"
   $modulos=[
     ["name"=>"Inicio","icon"=>"fa fa-home"],
@@ -41,20 +49,18 @@
   </nav>
     <div class="container">
           <div class="header-container">
-           <p class="title-header"><?php echo $_GET["view"]; ?></p> 
+           <p class="title-header"><?= explode("/",$_GET["view"])[0]; ?></p> 
           <hr class="line-hr"/>
      </div>
       <div class="body-container">
-          <!-- <button name="logout" id="logoutUser">Logout</button> -->
-          <?php       
-          $dateAndHour = date("Y/m/d H:i:s");
-          
-           ?>
            <?php   
            if($_GET["view"] == "Home"){
               require_once 'Inicio.php';
            }
-           if(isset($_GET["view"])){
+           elseif($_GET["view"] == "DetalleMateriales/".$id){
+              require_once 'DetalleMateriales.php';
+           }
+           elseif(isset($_GET["view"])){
               require_once $_GET["view"].'.php';
           }
          ?>        
