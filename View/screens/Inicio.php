@@ -27,6 +27,21 @@
 
 
 		</div> -->
+		<div class="userControlComponent">
+			  <table class="tblUserControlComponent">
+			  	<thead>
+				    <tr>
+				      <th>Nombre</th>
+				      <th>Email</th>
+				      <th>Rol</th>
+				      <th>Estado</th>
+				      <th>Ultima Fecha y Hora de Acceso</th>
+				    </tr>
+			    </thead>
+			    <tbody id="component_litle_table_users">
+            	</tbody> 
+			  </table>
+			</div>
 
 	<?php }else{ ?>
 		<div style="margin:auto;">
@@ -38,9 +53,35 @@
 				
 			</div>
 		</div>
-			<div style="background: dodgerblue;width:100%;height:250px;margin-top:20px;">
+			<!-- div style="background: dodgerblue;width:100%;height:250px;margin-top:20px;">
 					
-			</div>
+			</div> -->
+		</div>
+ 
+		<div class="ComponentLastPayAPAFA">
+          <h2 class=titleLastPayApafa>Detalle ultimo Pago Apafa Generado:</h2>			      
+          	<div>
+	            <div >
+	            <label>Nombre y Apellido Apoderado:</label>
+	            <p id="CompLastPayAPAFANameA"></p>	 
+	            </div>
+	            <div>
+	              <label>Nombre y Apellido Estudiante:</label>
+	              <p id="CompLastPayAPAFANameE"></p>
+	            </div>
+                <div>
+                  <label>Grado:</label>
+                  <p id="CompLastPayAPAFAGrade"></p>
+                </div>
+                <div>
+                  <label>Sección:</label>
+                  <p id="CompLastPayAPAFASection"></p>
+                <div>
+                  <label>Fecha y Hora:</label>
+                  <p id="CompLastPayAPAFAFecha"></p>
+                </div>
+                </div>
+			    </div>
 		</div>
  
 	<?php } ?>
