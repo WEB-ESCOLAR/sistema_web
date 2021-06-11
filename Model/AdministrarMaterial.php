@@ -37,6 +37,16 @@
 			$response->execute();
 		}
 
+
+		function listDetalleMaterial(){
+			$sql="SELECT * from detallematerial where idMaterial=10";
+			$respuestaConsulta=$this->consulta($sql);
+			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)){
+				$materiales[]=$filas;
+			}
+				return $materiales;
+
+		}
 	}
 
  ?>

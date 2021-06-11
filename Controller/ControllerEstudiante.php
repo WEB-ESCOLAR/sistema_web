@@ -19,6 +19,9 @@
 		case "PagoApafa":
 			updatePagoApafa();
 			break;
+		case "AgregarEstudiante":
+			agregarEstudiante();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -91,5 +94,27 @@
 		$id = $_POST["id"];
 		$output = $pagoapafaModel->PagoApafa($id);
 	}
+	//CREATE ESTUDIANTE
+	function agregarEstudiante(){
+		require_once("../Model/AdministrarEstudiante.php");
+		require_once("../Model/Estudiante.php");
+		require_once("../Model/Apoderado.php");
+		$estudianteModel = new AdministrarEstudiante();
+		$DniEstudiante = $_POST["DniEstudiante"];
+		$nombreEstudiante = $_POST["nombreEstudiante"];
+		$apellidoEstudiante=$_POST["apellidoEstudiante"];
+		$gradoEstudiante = $_POST["gradoEstudiante"];
+		$seccionEstudiante = $_POST["seccionEstudiante"];
+		$DniApoderado = $_POST["DniApoderado"];
+		$nombreApoderado = $_POST["nombreApoderado"];
+		$apellidoApoderado = $_POST["apellidoApoderado"];
+		$telefonoApoderado = $_POST["telefonoApoderado"];
+		$estudiante = new Estudiante(null,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,intval("1"),"10555153");
+		$apoderado=new Apoderado($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado);
+		$output=$estudianteModel->Create($apoderado,$estudiante);
+		echo json_encode($output);
+		//echo json_encode(var_dump($estudiante));
+	}
+	//END CREATE ESTUDIANTE
 
  ?>

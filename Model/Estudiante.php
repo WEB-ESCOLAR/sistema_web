@@ -4,19 +4,25 @@
  */
 class Estudiante
 {
-  var $dni;
-  var $firstName;
-  var $lastName;
-  var $grade;
-  var $section;
+  var $idEstudiante;
+  var $DniEstudiante;
+  var $nombreEstudiante;
+  var $apellidoEstudiante;
+  var $gradoEstudiante;
+  var $seccionEstudiante;
+  var $idUsuario;
+  var $DniApoderado;
 
-  function __construct($dni,$firstName,$lastName,$grade,$section)
+  function __construct($idEstudiante,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,$idUsuario,$DniApoderado)
   {
-    $this->dni=$dni;
-    $this->firstName=$firstName;
-    $this->lastName=$lastName;
-    $this->grade=$grade;
-    $this->section=$section;
+    $this->idEstudiante=$idEstudiante;
+    $this->DniEstudiante=$DniEstudiante;
+    $this->nombreEstudiante=$nombreEstudiante;
+    $this->apellidoEstudiante=$apellidoEstudiante;
+    $this->gradoEstudiante=$gradoEstudiante;
+    $this->seccionEstudiante=$seccionEstudiante;
+    $this->idUsuario=$idUsuario;
+    $this->DniApoderado=$DniApoderado;
   }
 }
 
