@@ -22,7 +22,7 @@
 
                 <div class="form-group">
                     <label class= label_group>Dni:</label>
-                  <input type="text" id="dni"  name="dni" class="input_txt"placeholder="Escriba su dni aquí">
+                  <input type="text" id="dni"  name="dni" class="input_txt" placeholder="Escriba su dni aquí">
                 </div>
 
                   <div class="form-group">
@@ -32,7 +32,7 @@
 
             <div style="display:flex;margin-top:15px;">   
         <button type="button" style="background: var(--danger)" id="button_close_material" class="btn_box">Cancelar</button>
-         <button type="button" style="background: var(--primary)" id="agregar_material" class="btn_box">Actualizar</button>
+         <button type="button" style="background: var(--primary)" id="btn_update_apoderado" class="btn_box">Actualizar</button>
       </div> 
         
 

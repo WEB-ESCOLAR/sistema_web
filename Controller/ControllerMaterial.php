@@ -24,6 +24,10 @@
 			deleteDetalleMaterial();
 			break;
 			default:
+		case "DetalleMaterial":
+			fetchAllDetalleMaterial();
+			break;
+		default:
 			echo 'error de seleccion';
 			break;
 	}
@@ -55,7 +59,7 @@
 		$cantidad = $_POST["cantidad"];
 		$tipoMaterial = $_POST["tipoMaterial"];
 		$nombreMaterial = $_POST["nombreMaterial"];
-		$material = new Material(null,$curso,$tipoMaterial,$grado,$fechaRecepcion,$nombreMaterial,$cantidad);
+		$material = new Material(null,$curso,$tipoMaterial,$grado,null,null,$fechaRecepcion,$nombreMaterial,$cantidad);
 		$materialModel->Create($material);
 	}
 
@@ -90,5 +94,13 @@ function deleteDetalleMaterial(){
 	$materialModel->DeleteDetalle($idDetaMaterial);
 	echo json_encode("Eliminando Detalle");
 }
+	function fetchAllDetalleMaterial(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		//$idMaterial = $_POST["id"];
+		$output=$materialModel->listDetalleMaterial();
+		//$resultado = $materialModel->listDetalleMaterial();
+		echo json_encode($output);
+	}
 
  ?>

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-
+  showDetalleMaterial();
             $("#tipoMaterial").on('change',function(){
                 var dato = $('#tipoMaterial').val();
                 if(dato == "Otros"){
@@ -88,3 +88,40 @@ $(document).ready(function(){
                })
 
      })
+             
+            $(document).on('click',"#checkDisponible",function(e){
+                
+            })
+
+             // btn_TblUpdate
+
+        //     $(document).on('click','#detalleMaterial',function(e){
+	       //    e.preventDefault();
+	       //    console.log("detalle material")
+	       //    window.location="DetalleMateriales";
+	       // })
+
+
+            $(document).on('click','#idMaterial',function(e){
+              e.preventDefault();
+              var id = $(this).attr("name");
+              // const id = $('#btn_TblUpdate').attr("name");
+              // console.log("detalle material is " + id);
+              window.location="DetalleMateriales/" + id;
+           }) 
+
+
+          function showDetalleMaterial(){
+           var url = window.location.href;
+          const idMaterial =url.split("/")[5];
+          $('#mensaje').append(`El id del Material es ` + idMaterial)
+        }
+
+
+          $('#btn_back').click(function(e){
+             window.history.back();
+          });
+   
+
+       
+})

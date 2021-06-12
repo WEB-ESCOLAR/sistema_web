@@ -34,7 +34,7 @@ $(document).ready(function(){
 
           })
 
-
+  
      $(document).on('click','.print_apafa',function(e){
              e.preventDefault();
               var name = $(this).attr("name");
@@ -78,9 +78,11 @@ $(document).ready(function(){
                  $('#telefono').val(response.phone);
                  $('#dni').val(response.DNI);
                  $('#dni').prop("disabled",true);
+                 $('#dni').css("background","rgba(0,0,0,0.10)");
                });
                
             })
+
 
          $(document).on('click','#btn_update_apoderado',function(e){
               e.preventDefault();
@@ -101,6 +103,12 @@ $(document).ready(function(){
                   data:param,
                }).done(function(response){
                   console.log("respone is " + response )
+                  alertSuccess("Datos del Apoderado Actualizado Correctamente","");
+                  $('#formulario_apoderado').hide();
+                  $('.modal').hide();
+                  setTimeout(function(){
+                    location.reload();
+                  },2000)
                })
             })
 
