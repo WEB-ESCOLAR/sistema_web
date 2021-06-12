@@ -31,7 +31,7 @@
   font-family: var(--font-quicksandRegular);
 }
 .input_txt_50{
-  width:95%; 
+  width:95%;
   height: 38px;
   border: 1px solid #000000;
   border-radius: 10px;
@@ -92,6 +92,377 @@
   top: 5%;
 
 }
+
+/*ESTILOS DEL FORMULARIO DE PRESTAMO*/
+
+.form-EL{
+  position: absolute;
+  width: 440px;
+  height: 330px;
+  background: #FFFFFF;
+  border: 1px solid #4064E3;
+  box-sizing: border-box;
+  border-radius: 10px;
+  left: 385px;
+  top: 140px;
+}
+
+.title-EL{
+	color: #4064E3;
+  font-weight: normal;
+	font-size: 25px;
+	line-height: 20px;
+  padding:5px;
+  position:absolute;
+  left:10px;
+		}
+
+.close-EL button{
+  width:30px;
+  height:23px;
+  background: #E92453;
+  border:none;
+  border-radius:3px;
+  color:#FFFFFF;
+  position:absolute;
+  top:1%;
+  left:92%;
+}
+
+.close-EL button:hover{
+  background:#ff003d;
+}
+
+.dni-EL{
+  padding:8px;
+  position:absolute;
+  top:18%;
+}
+
+.dni-EL input{
+  width: 200px;
+  height: 34px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.dni-EL label{
+  padding:3px;
+}
+
+.buscar-EL button{
+  width: 110px;
+  height: 33px;
+  margin-left: 35px;
+  text-align: center;
+  border-radius: 12px;
+  background: #780000;
+  Color: #fff;
+  position:absolute;
+  top:25%;
+  left:60%;
+  border:none;
+}
+
+.buscar-EL button:hover{
+  background:#7d1515;
+}
+
+/*Nombre*/
+.nombre-EL{
+  padding:8px;
+  position:absolute;
+  top:40%;
+}
+
+.nombre-EL input{
+  width: 190px;
+  height: 34px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.nombre-EL label{
+  padding:3px;
+}
+
+/*Apellido*/
+.apellido-EL{
+  padding:8px;
+  position:absolute;
+  top:40%;
+  left:50%;
+}
+
+.apellido-EL input{
+  width: 190px;
+  height: 34px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.apellido-EL label{
+  padding:3px;
+}
+
+/*grado*/
+.grado-EL{
+  padding:8px;
+  position:absolute;
+  top:60%;
+}
+
+.grado-EL input{
+  width: 190px;
+  height: 34px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.grado-EL label{
+  padding:3px;
+}
+
+/*Seccion*/
+.seccion-EL{
+  padding:8px;
+  position:absolute;
+  top:60%;
+  left:50%;
+}
+
+.seccion-EL input{
+  width: 190px;
+  height: 34px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.seccion-EL label{
+  padding:3px;
+}
+
+.atras-EL button{
+ width: 160px;
+  height: 38px;
+  margin-left: 35px;
+  text-align: center;
+  border-radius: 12px;
+  background: #C42C50;
+  Color: #fff;
+  position:absolute;
+  top:85%;
+  left:1%;
+  border:none;
+}
+
+.atras-EL button:hover{
+  background:#c73c5d;
+}
+
+.entregar-EL input[type="submit"]{
+  width: 160px;
+  height: 38px;
+  margin-left: 35px;
+  text-align: center;
+  border-radius: 12px;
+  background: #0b4361;
+  Color: #fff;
+  position:absolute;
+  top:85%;
+  left:45%;
+  outline: none;
+  box-shadow: none;
+  border:none;
+}
+/*
+.entregar-EL input:hover{
+  background:#0b4361;
+}*/
+
+/*ESTILOS DEL FORMULARIO DEVOLUCION*/
+
+.form-Devo{
+  position: absolute;
+  width: 440px;
+  height: 330px;
+  background: #FFFFFF;
+  border: 1px solid #4064E3;
+  box-sizing: border-box;
+  border-radius: 10px;
+  left: 385px;
+  top: 140px;
+}
+
+.title-Devo{
+	color: #4064E3;
+  font-weight: normal;
+	font-size: 25px;
+	line-height: 20px;
+  padding:5px;
+  position:absolute;
+  left:10px;
+		}
+
+.close-Devo button{
+  width:30px;
+  height:23px;
+  background: #E92453;
+  border:none;
+  border-radius:3px;
+  color:#FFFFFF;
+  position:absolute;
+  top:1%;
+  left:92%;
+}
+
+.close-Devo button:hover{
+  background:#ff003d;
+}
+
+.area-Devo{
+  padding:8px;
+  position:absolute;
+  top:18%;
+}
+
+.area-Devo label{
+  padding:19px;
+}
+
+.area-Devo textarea{
+  width:390px;
+  height: 150px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position:absolute;
+  left:13%;
+  margin:10px;
+}
+
+.atras-Devo button{
+ width: 160px;
+  height: 38px;
+  margin-left: 35px;
+  text-align: center;
+  border-radius: 12px;
+  background: #C42C50;
+  Color: #fff;
+  position:absolute;
+  top:83%;
+  left:1%;
+  border:none;
+}
+
+.atras-Devo button:hover{
+  background:#c73c5d;
+}
+
+.entregar-Devo input[type="submit"]{
+  width: 160px;
+  height: 38px;
+  margin-left: 35px;
+  text-align: center;
+  border-radius: 12px;
+  background: #003049;
+  Color: #fff;
+  position:absolute;
+  top:83%;
+  left:45%;
+  outline: none;
+  box-shadow: none;
+  border:none;
+}
+
+.entregar-Devo input:hover{
+  background:#0b4361;
+}
+
+.modalDevolver{
+  background:rgba(0,0,0,0.25);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width:100%;
+  height:100%;
+  display:none;
+}
+
+/*ESTILOS DEL FORMULARIO VER MOTIVO*/
+
+.form-Moti{
+  position: absolute;
+  width: 440px;
+  height: 330px;
+  background: #FFFFFF;
+  border: 1px solid #4064E3;
+  box-sizing: border-box;
+  border-radius: 10px;
+  left: 385px;
+  top: 140px;
+}
+
+.close-Moti button{
+  width:30px;
+  height:23px;
+  background: #E92453;
+  border:none;
+  border-radius:3px;
+  color:#FFFFFF;
+  position:absolute;
+  top:1%;
+  left:92%;
+}
+
+.title-Moti{
+	color: #4064E3;
+  font-weight: normal;
+	font-size: 25px;
+	line-height: 20px;
+  padding:5px;
+  position:absolute;
+  left:10px;
+		}
+
+.close-Moti button:hover{
+  background:#ff003d;
+}
+
+.label-Moti label{
+  position:absolute;
+  top:20%;
+  left:5%;
+}
+
+.area-Moti textarea{
+  width:390px;
+  height: 180px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position:absolute;
+  left:2%;
+  top: 20%;
+  margin:10px;
+}
+
+.modalVerMotivo{
+  background:rgba(0,0,0,0.25);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width:100%;
+  height:100%;
+  display:none;
+}
+
 .saludoMundo{
   background: green;
 }
+

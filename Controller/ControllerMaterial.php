@@ -14,6 +14,21 @@
 		case "Eliminar":
 			deleteMaterial();
 			break;
+			case "DetalleMaterial":
+				fetchAllDetalleMaterial();
+				break;
+			case "buscarAlumno":
+				buscar();
+				break;
+			case "prestarMaterial":
+				prestar();
+				break;
+			case "Devolver":
+				devolucion();
+				break;
+			case "verMotivo":
+				verMotivo();
+				break;
 			case"DetalleMaterial":
 			fetchAllDetalleMaterial();
 			break;
@@ -72,6 +87,61 @@
 	}
 
 	function fetchAllDetalleMaterial(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$resultado = $materialModel->listDetalleMaterial();
+		echo json_encode($resultado);
+	}
+
+	function buscar(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$dniEstudiante = $_GET["DNI"];
+		$resultado = $materialModel->buscarEstudiante($dniEstudiante);
+		echo json_encode($resultado);
+	}
+
+	function prestar(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$idEstudiante = $_POST["idEstu"];
+		$idDetalleMaterial = $_POST["idDetaMate"];
+		$materialModel->prestarMaterial($idEstudiante,$idDetalleMaterial);
+		echo json_encode("Prestando");
+	}
+
+	function devolucion(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$idDetaMate = $_POST["idDetaMate"];
+		$motivo = $_POST["motivo"];
+		$fecha=date('Y-m-d h:i:s', time());
+		$materialModel->devolverMaterial($idDetaMate,$fecha,$motivo);
+		echo json_encode("Devolviendo");
+	}
+
+	function verMotivo(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$idDevo = $_GET["idDevo"];
+		$resultado=$materialModel->verMotivo($idDevo);
+		echo json_encode($resultado);
+	}
+
+function agregarDetalleMaterial(){
+	require_once("../Model/AdministrarMaterial.php");
+	$materialModel = new AdministrarMaterial();
+	$cant = $_POST[""];
+	$materialModel->agregarDetalle($cant);
+}
+
+function deleteDetaMate(){
+	require_once("../Model/AdministrarMaterial.php");
+	$materialModel = new AdministrarMaterial();
+	$idDetaMaterial = $_POST["id"];
+	$materialModel->deleteDetalleMaterial($idDetaMaterial);
+	echo json_encode("Eliminando");
+}
   require_once("../Model/AdministrarMaterial.php");
   $materialModel = new AdministrarMaterial();
   $output=$materialModel->listDetalleMaterial();

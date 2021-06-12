@@ -22,6 +22,7 @@ $(document).ready(function(){
 
 
 
+
     // LOGIN USER 
     // *************************
     $('#formulario_login').on('submit',function(e){
@@ -57,7 +58,7 @@ $(document).ready(function(){
     function hide(){
           $('#formulario_alumno').hide();
     }
-    //BUTTONS MODALS 
+    //BUTTONS MODALS
       $('#button_material').click(function(e){
             e.preventDefault();
             $('.modal').show();
@@ -71,11 +72,24 @@ $(document).ready(function(){
             $('#formulario_alumno').show();
       })
 
+      $(document).on('click','#button_close_prestamo',function(e){
+          e.preventDefault();
+          $('.modal').hide();
+        });
+
       $(document).on('click','#button_close_material',function(e){
           e.preventDefault();
           $('.modal').hide();
         });
 
+      $(document).on('click','#button_close_devolucion',function(e){
+          e.preventDefault();
+          $('.modalDevolver').hide();
+        });
+      $(document).on('click','#button_close_motivo',function(e){
+          e.preventDefault();
+          $('.modalVerMotivo').hide();
+        });
             //fomrulario apoderado
       $('.btn_exit_X').click(function(e){
           e.preventDefault()

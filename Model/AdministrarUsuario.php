@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once "AdministradorModelo.php";
 	class AdministrarUsuario extends AdministrarModelo{
 
@@ -13,15 +13,15 @@
 			return $result;
 		}
 		function updateState($id,$status){ //obtener registros de la db.
-			$dateAndHour = date("Y/m/d H:i:s");
-			$sql="UPDATE usuario set status=:status,updated_at=:updated_at where idUser=:id";
+			//$dateAndHour = date('Y-m-d h:i:s', time());
+			$sql="UPDATE usuario set status=:status where idUser=:id";
 			$respuestaConsulta = $this->getConexion()->prepare($sql);
 			$respuestaConsulta->bindParam(":status",$status);
-			$respuestaConsulta->bindParam(":updated_at",$dateAndHour);
+			//$respuestaConsulta->bindParam(":updated_at",$dateAndHour);
 			$respuestaConsulta->bindParam(":id",$id);
 			$respuestaConsulta->execute();
 		}
-		
+
 	}
 
  ?>
