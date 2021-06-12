@@ -14,6 +14,9 @@
 		case "Eliminar":
 			deleteMaterial();
 			break;
+		case "DetalleMaterial":
+			fetchAllDetalleMaterial();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -59,6 +62,14 @@
 	}
 
 
+	function fetchAllDetalleMaterial(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		//$idMaterial = $_POST["id"];
+		$output=$materialModel->listDetalleMaterial();
+		//$resultado = $materialModel->listDetalleMaterial();
+		echo json_encode($output);
+	}
 
 	
  ?>

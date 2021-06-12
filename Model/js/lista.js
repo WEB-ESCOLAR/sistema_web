@@ -3,6 +3,7 @@ $(document).ready(function(){
     mostrarApoderados();
     mostrarMateriales();
     mostrarEstudiantes();
+    mostrarDetalleMaterial();
 
     function mostrarMateriales(){
                 $.ajax({
@@ -32,6 +33,7 @@ $(document).ready(function(){
                                           <td>${element.cantidad}</td>
                                           <td>
                                           <div class=buttons_table>
+                                          <button class="btn_TblUpdate" id="detalleMaterial"><i class="fas fa-eye"></i></button>
                                           <button class="btn_TblUpdate" id="idMaterial" name="${element.id}"><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "Materiales" ?
@@ -118,6 +120,33 @@ $(document).ready(function(){
                                  })
                 })
             }
+            function mostrarDetalleMaterial(){
+              $.ajax({
+                  url:"Controller/ControllerMaterial.php",
+                  data:{action:"DetalleMaterial",id:10},
 
-
+                  })
+                   .done(function(response){
+                     console.log(response);
+                       const respuestaArray = JSON.parse(response)
+                       console.log("Detallematerial" + respuestaArray);
+                          let count=1;
+                            respuestaArray.forEach((element)=>{
+                                       $('#data_detallematerial_table').append(
+                                           `
+                                          <tr>
+                                          <td>${count++}</td>
+                                          <td>${element.idDetalleMaterial}</td>
+                                          <td>${element.status}</td>
+                                          <td>
+                                          <div class=buttons_table>
+                                          <button class="btn_TblDeleteEs" id="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
+                                               </div>
+                                              </td>
+                                           </tr>
+                                           `
+                                         );
+                                    })
+                              })
+             }
 })

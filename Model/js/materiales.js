@@ -34,6 +34,17 @@ $(document).ready(function(){
 
                 })
             });
+            $(document).on('click','#detalleMaterial',function(e){
+                e.preventDefault();
+               var id = $(this).attr("id");
+               window.location="DetalleMateriales";
+                $("#idDetalleMaterial").append("lorem ipsom")
+               console.log("presionando boton detalle ");
+             
+           })
+            $(document).on('click',"#checkDisponible",function(e){
+                
+            })
 
              // btn_TblUpdate
 
@@ -65,6 +76,5 @@ $(document).ready(function(){
           });
    
 
-        
-
+       
 })

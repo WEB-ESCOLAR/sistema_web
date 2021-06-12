@@ -1,4 +1,4 @@
-@import "./variable.css";
+@import "./variables.css";
 *{
   padding:0px;
   margin: 0px;
@@ -360,6 +360,7 @@ button{
         float: left;
     }
 }
+
 
 
 
