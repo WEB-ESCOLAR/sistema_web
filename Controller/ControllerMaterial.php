@@ -29,6 +29,19 @@
 			case "verMotivo":
 				verMotivo();
 				break;
+			case"DetalleMaterial":
+			fetchAllDetalleMaterial();
+			break;
+			case "AgregarDetalleCantidad":
+		  AddDetalle();
+			break;
+			case "EliminarDetalleMaterial":
+			deleteDetalleMaterial();
+			break;
+			default:
+		case "DetalleMaterial":
+			fetchAllDetalleMaterial();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -61,7 +74,7 @@
 		$cantidad = $_POST["cantidad"];
 		$tipoMaterial = $_POST["tipoMaterial"];
 		$nombreMaterial = $_POST["nombreMaterial"];
-		$material = new Material(null,$curso,$tipoMaterial,$grado,$fechaRecepcion,$nombreMaterial,$cantidad);
+		$material = new Material(null,$curso,$tipoMaterial,$grado,null,null,$fechaRecepcion,$nombreMaterial,$cantidad);
 		$materialModel->Create($material);
 	}
 
@@ -129,5 +142,35 @@ function deleteDetaMate(){
 	$materialModel->deleteDetalleMaterial($idDetaMaterial);
 	echo json_encode("Eliminando");
 }
+  require_once("../Model/AdministrarMaterial.php");
+  $materialModel = new AdministrarMaterial();
+  $output=$materialModel->listDetalleMaterial();
+  echo json_encode($output);
+}
+
+//////AGREGAR DETALLE MATERIAL///
+function AddDetalle(){
+	require_once("../Model/AdministrarMaterial.php");
+	$materialModel=new AdministrarMaterial();
+	$cant=$_POST["cantidad"];
+	$materialModel->AgregarDetalle($cant);
+
+}
+////ELIMIANR DETALLE ELIMINAR/////
+function deleteDetalleMaterial(){
+	require_once("../Model/AdministrarMaterial.php");
+	$materialModel = new AdministrarMaterial();
+	$idDetaMaterial = $_POST["idDta"];
+	$materialModel->DeleteDetalle($idDetaMaterial);
+	echo json_encode("Eliminando Detalle");
+}
+	function fetchAllDetalleMaterial(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		//$idMaterial = $_POST["id"];
+		$output=$materialModel->listDetalleMaterial();
+		//$resultado = $materialModel->listDetalleMaterial();
+		echo json_encode($output);
+	}
 
  ?>

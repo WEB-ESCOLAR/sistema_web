@@ -19,10 +19,22 @@
 		case "PagoApafa":
 			updatePagoApafa();
 			break;
+		case "AgregarEstudiante":
+			agregarEstudiante();
+		case "BuscarGradoAndSection":
+			fetchAllSectionAndGrade();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
 	}
+
+
+  //$fechaActual = date('d-m-Y');
+	//echo $fechaActual
+
+
+
 
 	function fetchAllApoderado(){
 		require_once("../Model/AdministrarEstudiante.php");
@@ -46,9 +58,9 @@
 		$apellido = $_POST["apellido"];
 		$telefono= $_POST["telefono"];
 		$apoderado = new Apoderado($dni,$nombre,$apellido,$telefono);
-	 	$administrarEstudiante->updateApoderados($apoderado);
+	 	$affect = $administrarEstudiante->updateApoderados($apoderado);
 	 	// UUID()
-		// echo json_encode(UUID());
+		// echo json_encode(var_dump($apoderado));
 		// $count=$re->rowCount();
 		// echo json_encode($affect);
 	}
@@ -86,7 +98,39 @@
 		require_once("../Model/AdministrarEstudiante.php");
 		$pagoapafaModel = new AdministrarEstudiante();
 		$id = $_POST["id"];
-		$output = $pagoapafaModel->PagoApafa($id);
+		$fecha = date('Y-m-d', time());
+		$output = $pagoapafaModel->PagoApafa($fecha,$id);
 	}
+	//CREATE ESTUDIANTE
+	function agregarEstudiante(){
+		require_once("../Model/AdministrarEstudiante.php");
+		require_once("../Model/Estudiante.php");
+		require_once("../Model/Apoderado.php");
+		$estudianteModel = new AdministrarEstudiante();
+		$DniEstudiante = $_POST["DniEstudiante"];
+		$nombreEstudiante = $_POST["nombreEstudiante"];
+		$apellidoEstudiante=$_POST["apellidoEstudiante"];
+		$gradoEstudiante = $_POST["gradoEstudiante"];
+		$seccionEstudiante = $_POST["seccionEstudiante"];
+		$DniApoderado = $_POST["DniApoderado"];
+		$nombreApoderado = $_POST["nombreApoderado"];
+		$apellidoApoderado = $_POST["apellidoApoderado"];
+		$telefonoApoderado = $_POST["telefonoApoderado"];
+		$estudiante = new Estudiante(null,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,intval("1"),"10555153");
+		$apoderado=new Apoderado($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado);
+		$output=$estudianteModel->Create($apoderado,$estudiante);
+		echo json_encode($output);
+		//echo json_encode(var_dump($estudiante));
+	}
+	//END CREATE ESTUDIANTE
+
+	function fetchAllSectionAndGrade(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$section = $_POST["section"];
+		$grade = $_POST["grade"];
+		$administrarEstudiante = new AdministrarEstudiante();
+		$estudiantes = $administrarEstudiante->listaEstudiantesForGradeAndSection($grade,$section);
+		echo json_encode($estudiantes); 
+	}	
 
  ?>

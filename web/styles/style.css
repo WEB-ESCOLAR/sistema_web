@@ -1,4 +1,4 @@
-@import "./variable.css";
+@import "./variables.css";
 *{
   padding:0px;
   margin: 0px;
@@ -182,6 +182,8 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
 
 .container{
   padding:50px;
+  margin:auto;
+  width:95%;
 }
 
 /*tabla en general */
@@ -208,14 +210,11 @@ h1{
   color: green;
 }
 
-button{
-  cursor: pointer;
-}
+
 /*tabla diseño aqui*/
 
 .cont_Table {
     width: 100%;
-    /*max-width: 1000px;*/
     padding-top:20px;
     margin: auto;
 }
@@ -248,7 +247,7 @@ button{
     font-family: var(--font-quicksanLight);
 }
 /*********************/
-/************ BUTTONS */
+/************ BUTTONS TABLE  VERIFY CSS ON TABLES*/
 /******************/
 .btn_TblDelete,.btn_TblDeleteEs{
     width:28px;
@@ -283,8 +282,8 @@ button{
     padding:5px;
 }
 /*badges payments*/
-.requirement_payment{
-    background: var(--crimson);
+.requirement_payment,.sucess_payment{
+    /*background: var(--crimson);*/
      border:none;
     border-radius:10px;
     color:white;
@@ -292,30 +291,40 @@ button{
      width:100px;
      margin:auto;
 }
+.requirement_payment{
+  background: var(--crimson)
+}
 .sucess_payment{
    background: var(--success);
-    border:none;
-    border-radius:10px;
-    width:100px;
-    color:white;
-    padding:5px;
-      margin:auto;
 }
-.btn_add_data{
+/*buttons css*/
+/******************/
+.btn_add_data,.button_search{
   width: 170px;
   height: 40px;
   font-size: 15px;
   border-radius: 10px;
   border:none;
-  background: var(--vine);
+  margin-top:10px;
   color:white;
   font-family: var(--font-quicksandRegular)
+}
+.btn_add_data{
+   background: var(--vine);
+}
+.button_search{
+   background: rgba(120, 0, 0, 0.7);
+   margin-top: 20px;
+}
+button{
+  cursor: pointer;
 }
 .fa-lg{
   margin-right:10px;
 }
 
-
+/*end button css*/
+/*************************/
 
 /*RESPONSIVE*/
 @media screen and (max-width: 600px) {
@@ -352,6 +361,24 @@ button{
     }
 }
 
+
+
+
+/*card querys styles*/
+.card_search{
+  width: 60%;
+  padding:10px 10px;
+  height:100px;
+  margin:auto;
+  border:1px solid var(--crimson);
+}
+.total_filter{
+  margin-top: 10px;
+  text-align: center;
+  font-style: 14px;
+  color:var(--blue--bold);
+  font-family: var(--font-quicksandBold);
+}
 
 
 

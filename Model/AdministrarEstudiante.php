@@ -19,8 +19,31 @@
 			}
 			return $alumnos;
 		}
+		function listaEstudiantesForGradeAndSection($grade,$section){ //obtener registros de la db.
+			$sql="SELECT * from estudiante where grado='$grade' and section='$section'";
+			$respuestaConsultaSearch = $this->consulta($sql);
+			$row = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC);
+			if(!$row){
+				return "not found";
+			}else{
+				while($filas = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC)) {
+				$searchAlumnos[]=$filas;
+				}
+				return $searchAlumnos;
+			}
+			
+		}
 
-		function readApoderado($id){ 
+		function totalEstudiantes(){
+			$sql="SELECT count(*) from estudiante";
+			$response = $this->getConexion()->prepare($sql);
+			$response->execute();
+			$result = $response->fetch(PDO::FETCH_ASSOC);
+			return $result;
+		}
+
+
+		function readApoderado($id){
 			$sql="SELECT * from apoderado where DNI=?";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$id);
@@ -30,13 +53,13 @@
 		}
 
 		function updateApoderados(Apoderado $apoderado){
-			$sql="UPDATE apoderado set firstName=?,lastName=?,phone=? where DNI=?";
-			$data = $this->getConexion()->prepare($sql);
-			$data->bindParam(1,"qweqwe",PDO::PARAM_STR);
-			$data->bindParam(2,"qweqwe",PDO::PARAM_STR);
-			$data->bindParam(3,"32234",PDO::PARAM_STR);
-			$data->bindParam(4,"10555153",PDO::PARAM_STR);
-			$data->execute();
+			$sql="UPDATE apoderado set firstName=:firstName,lastName=:lastName,phone=:phone where DNI=:dni";
+			$respuestaConsulta = $this->getConexion()->prepare($sql);
+			$respuestaConsulta->bindParam(":firstName",$apoderado->firstName);
+			$respuestaConsulta->bindParam(":lastName",$apoderado->lastName);
+			$respuestaConsulta->bindParam(":phone",$apoderado->telefono);
+			$respuestaConsulta->bindParam(":dni",$apoderado->dni);
+			$respuestaConsulta->execute();
 		}
 		// DELETE ESTUDIANTE
 		function Delete($id){
@@ -47,30 +70,39 @@
 		}
 		//END DELETE ESTUDIANTE
 		// CREATE ESTUDIANTE
-		function Create(Estudiante $estudiante, Apoderado $apoderado){
-			$sql="INSERT INTO estudiante(firstName,LastName,dni,grado,section,idUsuario,idApoderado) values(?,?,?,?,?,?,?)";
-			$response = $this->getConexion()->prepare($sql);
-			$response->bindParam(1,$estudiante->nommbreEstudiante);
-			$response->bindParam(2,$estudiante->ApellidoEstudiante);
-			$response->bindParam(3,$estudiante->DniEstudiante);
-			$response->bindParam(4,$estudiante->gradoEstudiante);
-			$response->bindParam(5,$estudiante->seccionEstudiante);
-			$response->bindParam(6,$estudiante->idUsuario);
-			$response->bindParam(6,$estudiante->idApoderado);
-			$response->execute();
-			$query="INSERT INTO apoderado(DNI,firstName,lastName,phone) values(?,?,?,?)";
-			$response->bindParam(1,$apoderado->DniApoderado);
-			$response->bindParam(2,$apoderado->nombreApoderado);
-			$response->bindParam(3,$apoderado->apellidoApoderado);
-			$response->bindParam(4,$apoderado->telefonoApoderado);
-			$response->execute();
+		function Create(Apoderado $apoderado,Estudiante $estudiante){
+			// $query="INSERT INTO apoderado(DNI,firstName,lastName,phone) values(?,?,?,?)";
+            // $response = $this->getConexion()->prepare($query);
+			// $response->bindParam(1,$apoderado->DniApoderado);
+			// $response->bindParam(2,$apoderado->nombreApoderado);
+			// $response->bindParam(3,$apoderado->apellidoApoderado);
+			// $response->bindParam(4,$apoderado->telefonoApoderado);
+			// $response->execute();	
+			// if($response){
+				$sql2="INSERT INTO estudiante (dni,firstName,LastName,grado,section,idUsuario,idApoderado) values (?,?,?,?,?,?,?)";
+				$response2 = $this->getConexion()->prepare($sql2);
+				$response2->bindParam(1,$estudiante->DniEstudiante);
+				$response2->bindParam(2,$estudiante->nombreEstudiante);
+				$response2->bindParam(3,$estudiante->apellidoEstudiante);
+				$response2->bindParam(4,$estudiante->gradoEstudiante);
+				$response2->bindParam(5,$estudiante->seccionEstudiante);
+				$response2->bindParam(6,$estudiante->idUsuario);
+				$response2->bindParam(7,$apoderado->DniApoderado);
+				return $response2->execute();
+		// }
 		}
 		//END CREATE ESTUDIANTE
-		 function PagoApafa($id){
-			$sql="UPDATE pagoapafa set state=1 where idApoderado=?";
+		 function PagoApafa($fecha,$id){
+			//$fechaactual=date('d-m-y');
+			$sql="UPDATE pagoapafa set state=1, fechapago=? where idApoderado=?";
 			$data=$this->getConexion()->prepare($sql);
-			$data->bindParam(1,$id);
+      $data->bindParam(1,$fecha);
+			$data->bindParam(2,$id);
+
 			$data->execute();
    		}
 	}
+		
+
+
 ?>

@@ -11,7 +11,7 @@ require("core/initial.php")
       <!--  <script src="https://code.jquery.com/jquery-1.11.3.min.js" crossorigin="anonymous"></script> -->
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
-  	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  	   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
       <script src="https://kit.fontawesome.com/649d61341c.js" crossorigin="anonymous"></script>
 

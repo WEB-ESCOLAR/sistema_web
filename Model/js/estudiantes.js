@@ -38,14 +38,14 @@
           $(document).on('click','#agregar_Estudiante',function(e){
             e.preventDefault();
             var param={
+                DniEstudiante: $('#DniEstudiante').val(),
                 nombreEstudiante: $('#nombreEstudiante').val(),
                 apellidoEstudiante: $('#apellidoEstudiante').val(),
-                DniEstudiante: $('#DniEstudiante').val(),
                 gradoEstudiante: $('#gradoEstudiante').val(),
                 seccionEstudiante: $('#seccionEstudiante').val(),
+                DniApoderado: $('#DniApoderado').val(),
                 nombreApoderado: $('#nombreApoderado').val(),
                 apellidoApoderado: $('#apellidoApoderado').val(),
-                DniApoderado: $('#DniApoderado').val(),
                 telefonoApoderado: $('#telefonoApoderado').val(),
                 action:"AgregarEstudiante"
             }
@@ -56,10 +56,29 @@
                 data:param
             }).done(function(response){
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
-                $('#formulario_alumno').hide();
-                location.reload();
+                //$('#formulario_alumno').hide();
+                //location.reload();
 
             })
         });
+
+        $('#search_student').click(function(e){
+        e.preventDefault();
+        const param={
+          grade: $('#search_grade_student').val(),
+          section: $('#search_section_student').val(),
+          action: 'BuscarGradoAndSection'
+        }
+        $.ajax({
+          url:"Controller/ControllerEstudiante.php",
+          type:"POST",
+          data:param
+        }).done(function(response){
+          console.log("resultado esperado es " + response)
+        })
+        
+      })
+
+
 
   });
