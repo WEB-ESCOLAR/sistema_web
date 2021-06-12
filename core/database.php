@@ -15,6 +15,4 @@
 	    DEFINE("DATABASE","escuela_web");
 	}
   
-
-
 ?>
