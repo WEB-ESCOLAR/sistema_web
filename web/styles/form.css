@@ -1,5 +1,5 @@
 /*efect oscuro*/
-.modal{
+.modal,.modal_agregar_cantidad,.modalOtorgarLibro,.modalAgregarCantid{
   background:rgba(0,0,0,0.25);
   position: absolute;
   top: 0%;
@@ -8,21 +8,29 @@
   height:100%;
   display:none;
 }
+
+/*      FORM INPUT                */
+/*********************************/
+/*        DE: JOSE           */
 .form-group{
   margin-top: 10px;
 }
 .box_form{
     position: absolute;
-    width: 454px;
+    width: 500px;
     left: 385px;
     top: 140px;
     background: #FFFFFF;
     border: 3px solid var(--blue--bold);
     box-sizing: border-box;
     border-radius: 10px;
-    }
-.input_txt{
-  width: 425px;
+}
+.label_group{
+  font-family: var(--font-quicksandMedium);
+ }
+ /*reutilizar en un solo textinput */
+.input_txt,.input_txt_50{ 
+  margin-top: 10px;
   height: 38px;
   border: 1px solid #000000;
   box-sizing: border-box;
@@ -32,24 +40,11 @@
 }
 .input_txt_50{
   width:95%;
-  height: 38px;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  padding-left: 10px;
-  font-family: var(--font-quicksandRegular);
-  box-sizing: border-box;
-
 }
 
-/*.btn_send{
-  width: 130px;
-  height: 35px;
-  background-color: transparent;
-  border: none;
-  font-family: var(--font-quicksandRegular);
-  font-size: 14px;
-  color: #FFFFFF;
-}*/
+.input_txt{
+  width:100%;
+}
 .btn_box{
   width: 150px;
   height: 35.3px;
@@ -62,19 +57,16 @@
   cursor: pointer;
 }
 
-
 .title_form{
-      text-align: left;
-      color: var(--blue--bold);
-      font-weight: normal;
-      font-size: 30px;
-      line-height: 20px;
-      margin-bottom: 20px;
-      font-family:  var(--font-quicksandBold);
-    }
-.label_group{
-  font-family: var(--font-quicksandMedium);
- }
+    text-align: left;
+    color: var(--blue--bold);
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    font-family:  var(--font-quicksandBold);
+}
+
 .btn_close{
   position: absolute;
   width:28px;
@@ -86,14 +78,13 @@
   right: -15px;
   top: -10px;
  }
-.btn_box_close{
-  position: absolute;
-  left: 90%;
-  top: 5%;
 
-}
+/*       CIERRE DE FORM Y INPUTS              */
+/***********************************************/
 
-/*ESTILOS DEL FORMULARIO DE PRESTAMO*/
+
+/*REUTILIZAR ESTILOS Y OPTIMIZAR , PUEDES REUTILIZAR ALGUNOS INPUTS DE LA PARTE DEL COMPONENTE FORM DE ARRIBA */
+/*REVISAR  */
 
 .form-EL{
   position: absolute;

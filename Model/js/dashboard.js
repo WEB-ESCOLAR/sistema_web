@@ -1,7 +1,7 @@
  $(document).ready(function(){
  	
- 	mostrarUltimoPagoAPAFA();
-    mostrarUsuarios();
+ 	// mostrarUltimoPagoAPAFA();
+    // mostrarUsuarios();
  	    function mostrarUltimoPagoAPAFA(){
             console.log("pago apafita");
                 $.ajax({

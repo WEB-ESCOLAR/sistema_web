@@ -58,14 +58,31 @@ $(document).ready(function(){
     function hide(){
           $('#formulario_alumno').hide();
     }
-    //BUTTONS MODALS
+    //BUTTONS MODALS DETALLE MATERIAL
+
+
       $('#button_material').click(function(e){
             e.preventDefault();
-            $('.modal').show();
-            $('#formulario_material').show();
-                // $('#formulario_apoderado').show();
-        })
+            $('.modal_agregar_cantidad').show();
+            $('#formulario_detalleMaterial').show();
+      })
 
+      $(document).on('click','#buttonCloseDetalleMaterial',function(e){
+          e.preventDefault();
+              $('.modal_agregar_cantidad').hide();
+            $('#formulario_detalleMaterial').hide();
+      })
+      // $('#')
+      $(document).on('click','#prestarLibro',function(e){
+         e.preventDefault();
+        console.log("mostrar")
+        $('.modalOtorgarLibro').show();
+        $('#formulario_prestamo').show();
+      })
+
+
+
+       // BUTTONES FORMS MODALS MODULES
       $('#button_alumno').click(function(e){
             e.preventDefault();
             $('.modal').show();

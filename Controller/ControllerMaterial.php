@@ -14,33 +14,26 @@
 		case "Eliminar":
 			deleteMaterial();
 			break;
-			case "DetalleMaterial":
+		case "DetalleMaterial":
 				fetchAllDetalleMaterial();
 				break;
-			case "buscarAlumno":
+		case "buscarAlumno":
 				buscar();
 				break;
-			case "prestarMaterial":
+		case "prestarMaterial":
 				prestar();
 				break;
-			case "Devolver":
+		case "Devolver":
 				devolucion();
 				break;
-			case "verMotivo":
+		case "verMotivo":
 				verMotivo();
 				break;
-			case"DetalleMaterial":
-			fetchAllDetalleMaterial();
+		case "AgregarDetalleCantidad":
+			  AddDetalle();
 			break;
-			case "AgregarDetalleCantidad":
-		  AddDetalle();
-			break;
-			case "EliminarDetalleMaterial":
+		case "EliminarDetalleMaterial":
 			deleteDetalleMaterial();
-			break;
-			default:
-		case "DetalleMaterial":
-			fetchAllDetalleMaterial();
 			break;
 		default:
 			echo 'error de seleccion';
@@ -62,8 +55,8 @@
 		$materialModel = new AdministrarMaterial();
 		$resultado = $materialModel->listAll();
 		echo json_encode($resultado);
-
 	}
+
 	function agregarMaterial(){
 		require_once("../Model/AdministrarMaterial.php");
 		require_once("../Model/Material.php");
@@ -89,7 +82,8 @@
 	function fetchAllDetalleMaterial(){
 		require_once("../Model/AdministrarMaterial.php");
 		$materialModel = new AdministrarMaterial();
-		$resultado = $materialModel->listDetalleMaterial();
+		$idMaterial = $_GET["id"];
+		$resultado = $materialModel->listDetalleMaterial($idMaterial);
 		echo json_encode($resultado);
 	}
 
@@ -142,11 +136,12 @@ function deleteDetaMate(){
 	$materialModel->deleteDetalleMaterial($idDetaMaterial);
 	echo json_encode("Eliminando");
 }
-  require_once("../Model/AdministrarMaterial.php");
-  $materialModel = new AdministrarMaterial();
-  $output=$materialModel->listDetalleMaterial();
-  echo json_encode($output);
-}
+// function listDetalleMaterial(){
+//   require_once("../Model/AdministrarMaterial.php");
+//   $materialModel = new AdministrarMaterial();
+//   $output=$materialModel->listDetalleMaterial();
+//   echo json_encode($output);
+// }
 
 //////AGREGAR DETALLE MATERIAL///
 function AddDetalle(){
@@ -164,13 +159,13 @@ function deleteDetalleMaterial(){
 	$materialModel->DeleteDetalle($idDetaMaterial);
 	echo json_encode("Eliminando Detalle");
 }
-	function fetchAllDetalleMaterial(){
-		require_once("../Model/AdministrarMaterial.php");
-		$materialModel = new AdministrarMaterial();
-		//$idMaterial = $_POST["id"];
-		$output=$materialModel->listDetalleMaterial();
-		//$resultado = $materialModel->listDetalleMaterial();
-		echo json_encode($output);
-	}
+	// function fetchAllDetalleMaterial(){
+	// 	require_once("../Model/AdministrarMaterial.php");
+	// 	$materialModel = new AdministrarMaterial();
+	// 	//$idMaterial = $_POST["id"];
+	// 	$output=$materialModel->listDetalleMaterial();
+	// 	//$resultado = $materialModel->listDetalleMaterial();
+	// 	echo json_encode($output);
+	// }
 
  ?>
