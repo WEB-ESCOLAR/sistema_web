@@ -19,6 +19,29 @@
 			}
 			return $alumnos;
 		}
+		function listaEstudiantesForGradeAndSection($grade,$section){ //obtener registros de la db.
+			$sql="SELECT * from estudiante where grado='$grade' and section='$section'";
+			$respuestaConsultaSearch = $this->consulta($sql);
+			$row = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC);
+			if(!$row){
+				return "not found";
+			}else{
+				while($filas = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC)) {
+				$searchAlumnos[]=$filas;
+				}
+				return $searchAlumnos;
+			}
+			
+		}
+
+		function totalEstudiantes(){
+			$sql="SELECT count(*) from estudiante";
+			$response = $this->getConexion()->prepare($sql);
+			$response->execute();
+			$result = $response->fetch(PDO::FETCH_ASSOC);
+			return $result;
+		}
+
 
 		function readApoderado($id){ 
 			$sql="SELECT * from apoderado where DNI=?";
@@ -30,13 +53,13 @@
 		}
 
 		function updateApoderados(Apoderado $apoderado){
-			$sql="UPDATE apoderado set firstName=?,lastName=?,phone=? where DNI=?";
-			$data = $this->getConexion()->prepare($sql);
-			$data->bindParam(1,"qweqwe",PDO::PARAM_STR);
-			$data->bindParam(2,"qweqwe",PDO::PARAM_STR);
-			$data->bindParam(3,"32234",PDO::PARAM_STR);
-			$data->bindParam(4,"10555153",PDO::PARAM_STR);
-			$data->execute();
+			$sql="UPDATE apoderado set firstName=:firstName,lastName=:lastName,phone=:phone where DNI=:dni";
+			$respuestaConsulta = $this->getConexion()->prepare($sql);
+			$respuestaConsulta->bindParam(":firstName",$apoderado->firstName);
+			$respuestaConsulta->bindParam(":lastName",$apoderado->lastName);
+			$respuestaConsulta->bindParam(":phone",$apoderado->telefono);
+			$respuestaConsulta->bindParam(":dni",$apoderado->dni);
+			$respuestaConsulta->execute();
 		}
 		// DELETE ESTUDIANTE
 		function Delete($id){
@@ -76,4 +99,7 @@
 			$data->execute();
    		}
 	}
+		
+
+
 ?>

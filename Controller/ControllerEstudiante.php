@@ -21,6 +21,8 @@
 			break;
 		case "AgregarEstudiante":
 			agregarEstudiante();
+		case "BuscarGradoAndSection":
+			fetchAllSectionAndGrade();
 			break;
 		default:
 			echo 'error de seleccion';
@@ -52,9 +54,9 @@
 		$apellido = $_POST["apellido"];
 		$telefono= $_POST["telefono"];
 		$apoderado = new Apoderado($dni,$nombre,$apellido,$telefono);
-	 	$administrarEstudiante->updateApoderados($apoderado);
+	 	$affect = $administrarEstudiante->updateApoderados($apoderado);
 	 	// UUID()
-		// echo json_encode(UUID());
+		// echo json_encode(var_dump($apoderado));
 		// $count=$re->rowCount();
 		// echo json_encode($affect);
 	}
@@ -116,5 +118,14 @@
 		//echo json_encode(var_dump($estudiante));
 	}
 	//END CREATE ESTUDIANTE
+
+	function fetchAllSectionAndGrade(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$section = $_POST["section"];
+		$grade = $_POST["grade"];
+		$administrarEstudiante = new AdministrarEstudiante();
+		$estudiantes = $administrarEstudiante->listaEstudiantesForGradeAndSection($grade,$section);
+		echo json_encode($estudiantes); 
+	}	
 
  ?>

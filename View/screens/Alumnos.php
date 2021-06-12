@@ -1,5 +1,36 @@
 
 
+
+  <div class="card_search">
+         <div style="display:flex;width:100%;" class="form-group">
+        <div style="width:50%;">
+              <label class="label_group">Grado </label> 
+                <select  id="search_grade_student" class="input_txt_50">
+                 <option  value="Seleccione el grado">Seleccione el grado</option>
+                <option  value="Primer">Primer</option>
+                <option  value="Segundo">Segundo</option>
+                <option  value="Tercero">Tercero</option>
+                <option  value="Cuarto">Cuarto</option>
+                <option  value="Quinto">Quinto</option>
+                <option  value="Sexto">Sexto</option>
+               </select>
+        </div>
+        
+      <div style="width:50%;">
+         <label class="label_group">Seccion</label> 
+            <select  id="search_section_student" class="input_txt_50">
+                <option value="Seleccione la seccion">Seleccione la seccion</option>
+                  <option value="A">A</option>
+                   <option value="B">B</option>
+           </select>
+      </div>
+      <button class="button_search" id="search_student">Buscar</button>
+      </div>
+      <div class="total_filter">
+        <p>Total de Alumnos Por Aula y Seccion:<span>20</span></p>
+      </div>
+  </div>
+
 <button type="button" class="btn_add_data" id="button_alumno"><i class="fas fa-plus-circle fa-lg"></i>Agregar Alumnos</button>
 
      <div class="modal">
@@ -82,7 +113,11 @@
     </form>
 </div>
 
- <div class="cont_Table">
+
+
+
+
+   <div class="cont_Table">
         <table class="table-general">
             <thead>
                 <tr>

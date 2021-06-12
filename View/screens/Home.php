@@ -4,6 +4,14 @@
     session_destroy();
     header("Location:Login");
   }
+  // if(isset(explode("/",$_SERVER["REQUEST_URI"])[3])){
+    echo 'falta validar el id de la url no excitarse ...';
+    $id = explode("/",$_SERVER["REQUEST_URI"])[3];
+  // }
+  
+  // $splitData = explode("?",$_GET["view"])[0];
+  // echo $id;
+
   // "Inicio","Materiales","Alumnos","Apoderados","ControlDeLibros"
   $modulos=[
     ["name"=>"Inicio","icon"=>"fa fa-home"],
@@ -28,36 +36,35 @@
   ?> 
   </ul>
 </div>
-<div class="contenido open">
+<div class="contenido open" id="content_sidebar">
   <nav class="navar">
-    <div class="bar" style="display:flex;justify-content: space-between;">
+      <div class="bar" >
       <span class="fas fa-bars"></span>
     </div>
     <div class="logout">
-      <li><a style=""href="#">LOGOUT</a></li>
+      <p class="menu_link_logout"><?= strtoupper($_SESSION["rol"]);  ?></p>
+      <p class="menu_link_logout" id="logoutUser" style="cursor: pointer;">Logout</p>
+        <!-- <li><a style=""href="#">LOGOUT</a></li> -->
     </div> 
-
   </nav>
     <div class="container">
-      <div class="header-container">
-           <p class="title-header"><?php echo $_GET["view"]; ?><span>- <?= $_SESSION["nombre"]; ?></span></p> 
+          <div class="header-container">
+           <p class="title-header"><?= explode("/",$_GET["view"])[0]; ?></p> 
           <hr class="line-hr"/>
      </div>
       <div class="body-container">
-          <button name="logout" id="logoutUser">Logout</button>
-          <?php       
-          $dateAndHour = date("Y/m/d H:i:s");
-          
-           ?>
            <?php   
            if($_GET["view"] == "Home"){
               require_once 'Inicio.php';
            }
-           if(isset($_GET["view"])){
+           elseif($_GET["view"] == "DetalleMateriales/".$id){
+              require_once 'DetalleMateriales.php';
+           }
+           elseif(isset($_GET["view"])){
               require_once $_GET["view"].'.php';
           }
          ?>        
       </div>
-    </div>
+        </div>
   </div>
 </body>
