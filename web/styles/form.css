@@ -1,5 +1,5 @@
 /*efect oscuro*/
-.modal,.modal_agregar_cantidad,.modalOtorgarLibro,.modalAgregarCantid{
+.modal,.modal_agregar_cantidad,.modalAgregarCantid{
   background:rgba(0,0,0,0.25);
   position: absolute;
   top: 0%;
@@ -29,7 +29,7 @@
   font-family: var(--font-quicksandMedium);
  }
  /*reutilizar en un solo textinput */
-.input_txt,.input_txt_50{ 
+.input_txt,.input_txt_50{
   margin-top: 10px;
   height: 38px;
   border: 1px solid #000000;
@@ -86,7 +86,7 @@
 /*REUTILIZAR ESTILOS Y OPTIMIZAR , PUEDES REUTILIZAR ALGUNOS INPUTS DE LA PARTE DEL COMPONENTE FORM DE ARRIBA */
 /*REVISAR  */
 
-.form-EL{
+.form-Prestamo{
   position: absolute;
   width: 440px;
   height: 330px;
@@ -98,7 +98,7 @@
   top: 140px;
 }
 
-.title-EL{
+.titleEstudiante{
 	color: #4064E3;
   font-weight: normal;
 	font-size: 25px;
@@ -108,7 +108,7 @@
   left:10px;
 		}
 
-.close-EL button{
+.closeEstudiante button{
   width:30px;
   height:23px;
   background: #E92453;
@@ -120,17 +120,17 @@
   left:92%;
 }
 
-.close-EL button:hover{
+.closeEstudiante button:hover{
   background:#ff003d;
 }
 
-.dni-EL{
+.dniEstudiante{
   padding:8px;
   position:absolute;
   top:18%;
 }
 
-.dni-EL input{
+.dniEstudiante input{
   width: 200px;
   height: 34px;
   border: 1px solid #000000;
@@ -138,11 +138,11 @@
   border-radius: 10px;
 }
 
-.dni-EL label{
+.dniEstudiante label{
   padding:3px;
 }
 
-.buscar-EL button{
+.buscarEstudiante button{
   width: 110px;
   height: 33px;
   margin-left: 35px;
@@ -156,18 +156,18 @@
   border:none;
 }
 
-.buscar-EL button:hover{
+.buscarEstudiante button:hover{
   background:#7d1515;
 }
 
 /*Nombre*/
-.nombre-EL{
+.nombreEstudiante{
   padding:8px;
   position:absolute;
   top:40%;
 }
 
-.nombre-EL input{
+.nombreEstudiante input{
   width: 190px;
   height: 34px;
   border: 1px solid #000000;
@@ -175,19 +175,19 @@
   border-radius: 10px;
 }
 
-.nombre-EL label{
+.nombreEstudiante label{
   padding:3px;
 }
 
 /*Apellido*/
-.apellido-EL{
+.apellidoEstudiante{
   padding:8px;
   position:absolute;
   top:40%;
   left:50%;
 }
 
-.apellido-EL input{
+.apellidoEstudiante input{
   width: 190px;
   height: 34px;
   border: 1px solid #000000;
@@ -195,18 +195,18 @@
   border-radius: 10px;
 }
 
-.apellido-EL label{
+.apellidoEstudiante label{
   padding:3px;
 }
 
 /*grado*/
-.grado-EL{
+.gradoEstudiante{
   padding:8px;
   position:absolute;
   top:60%;
 }
 
-.grado-EL input{
+.gradoEstudiante input{
   width: 190px;
   height: 34px;
   border: 1px solid #000000;
@@ -214,19 +214,19 @@
   border-radius: 10px;
 }
 
-.grado-EL label{
+.gradoEstudiante label{
   padding:3px;
 }
 
 /*Seccion*/
-.seccion-EL{
+.seccionEstudiante{
   padding:8px;
   position:absolute;
   top:60%;
   left:50%;
 }
 
-.seccion-EL input{
+.seccionEstudiante input{
   width: 190px;
   height: 34px;
   border: 1px solid #000000;
@@ -234,11 +234,11 @@
   border-radius: 10px;
 }
 
-.seccion-EL label{
+.seccionEstudiante label{
   padding:3px;
 }
 
-.atras-EL button{
+.atrasFormularioPrestamo button{
  width: 160px;
   height: 38px;
   margin-left: 35px;
@@ -252,11 +252,11 @@
   border:none;
 }
 
-.atras-EL button:hover{
+.atrasFormularioPrestamo button:hover{
   background:#c73c5d;
 }
 
-.entregar-EL input[type="submit"]{
+.entregarFormularioPrestamo input[type="submit"]{
   width: 160px;
   height: 38px;
   margin-left: 35px;
@@ -271,6 +271,17 @@
   box-shadow: none;
   border:none;
 }
+
+.formularioPrestamo{
+  background:rgba(0,0,0,0.25);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width:100%;
+  height:100%;
+  display:none;
+}
+
 /*
 .entregar-EL input:hover{
   background:#0b4361;
@@ -278,7 +289,7 @@
 
 /*ESTILOS DEL FORMULARIO DEVOLUCION*/
 
-.form-Devo{
+.form-Devolucion{
   position: absolute;
   width: 440px;
   height: 330px;
@@ -290,7 +301,7 @@
   top: 140px;
 }
 
-.title-Devo{
+.titleDevolucion{
 	color: #4064E3;
   font-weight: normal;
 	font-size: 25px;
@@ -300,7 +311,7 @@
   left:10px;
 		}
 
-.close-Devo button{
+.closeDevolucion button{
   width:30px;
   height:23px;
   background: #E92453;
@@ -312,21 +323,17 @@
   left:92%;
 }
 
-.close-Devo button:hover{
+.closeDevolucion button:hover{
   background:#ff003d;
 }
 
-.area-Devo{
+.areaDevolucion{
   padding:8px;
   position:absolute;
   top:18%;
 }
 
-.area-Devo label{
-  padding:19px;
-}
-
-.area-Devo textarea{
+.areaDevolucion textarea{
   width:390px;
   height: 150px;
   border: 1px solid #000000;
@@ -337,7 +344,11 @@
   margin:10px;
 }
 
-.atras-Devo button{
+.areaDevolucion label{
+  padding-left:10px;
+}
+
+.atrasDevolucion button{
  width: 160px;
   height: 38px;
   margin-left: 35px;
@@ -351,11 +362,11 @@
   border:none;
 }
 
-.atras-Devo button:hover{
+.atrasDevolucion button:hover{
   background:#c73c5d;
 }
 
-.entregar-Devo input[type="submit"]{
+.realizarDevolucion input[type="submit"]{
   width: 160px;
   height: 38px;
   margin-left: 35px;
@@ -371,11 +382,11 @@
   border:none;
 }
 
-.entregar-Devo input:hover{
+.realizarDevolucion input:hover{
   background:#0b4361;
 }
 
-.modalDevolver{
+.formularioDevolucion{
   background:rgba(0,0,0,0.25);
   position: absolute;
   top: 0%;
@@ -387,7 +398,7 @@
 
 /*ESTILOS DEL FORMULARIO VER MOTIVO*/
 
-.form-Moti{
+.form-Motivo{
   position: absolute;
   width: 440px;
   height: 330px;
@@ -399,7 +410,7 @@
   top: 140px;
 }
 
-.close-Moti button{
+.closeMotivo button{
   width:30px;
   height:23px;
   background: #E92453;
@@ -411,7 +422,7 @@
   left:92%;
 }
 
-.title-Moti{
+.titleMotivo{
 	color: #4064E3;
   font-weight: normal;
 	font-size: 25px;
@@ -421,17 +432,11 @@
   left:10px;
 		}
 
-.close-Moti button:hover{
+.closeMotivo button:hover{
   background:#ff003d;
 }
 
-.label-Moti label{
-  position:absolute;
-  top:20%;
-  left:5%;
-}
-
-.area-Moti textarea{
+.areaMotivo textarea{
   width:390px;
   height: 180px;
   border: 1px solid #000000;
@@ -443,7 +448,7 @@
   margin:10px;
 }
 
-.modalVerMotivo{
+.verMotivo{
   background:rgba(0,0,0,0.25);
   position: absolute;
   top: 0%;
@@ -456,4 +461,3 @@
 .saludoMundo{
   background: green;
 }
-
