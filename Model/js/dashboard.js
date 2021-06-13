@@ -2,6 +2,12 @@
  	
  	// mostrarUltimoPagoAPAFA();
     // mostrarUsuarios();
+     var url = window.location.href;
+    const urlSplit = url.split("/")
+        if(urlSplit[4] == "Inicio"){
+            mostrarUltimoPagoAPAFA();
+            mostrarUsuarios();
+        }
  	    function mostrarUltimoPagoAPAFA(){
             console.log("pago apafita");
                 $.ajax({
@@ -35,7 +41,7 @@
                                         <td>${element.nombre}</td>
                                         <td>${element.email}</td>
                                         <td>${element.rol}</td>
-                                        <td>${element.status  === "off" ? "<div class='requirement_payment'>INACTIVO</div>" : "<div class='sucess_payment'>DISPONIBLE</div>"} </td>
+                                        <td>${element.status  === "off" ? "<div class='inactive'>INACTIVO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
                                         <td>${element.fecha}</td>
                                         </tr>
                                         `

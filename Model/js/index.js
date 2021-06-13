@@ -21,6 +21,17 @@ $(document).ready(function(){
   	})
 
 
+    // $('#materiales').on('click',function(){
+    //   console.log("materiales ")
+    // })
+
+    // $('#materiales').on('click',function(e){
+    //   e.preventDefault();
+    //   console.log("materiales ")
+    //    var url = window.location.href;
+    //    console.log("url is " + url)
+    // })
+
 
 
     // LOGIN USER 

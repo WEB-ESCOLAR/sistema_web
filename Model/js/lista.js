@@ -8,7 +8,10 @@ $(document).ready(function(){
     // }else{
       // console.log(urlSplit[4])
       switch(urlSplit[4]){
-        case "Materiales":
+        case "GestionDeMateriales":
+          mostrarMateriales();
+          break;
+        case "ControlDeMaterial":
           mostrarMateriales();
           break;
         case "Apoderados":
@@ -100,7 +103,7 @@ $(document).ready(function(){
                                           <div style="display:flex;justify-content:space-between;">
                                              <div style="text-align:left;">
                                               <button class="btn-edit" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
-                                             <button class="btn_TblPrint btn-print" name="${element.firstName}"><i class="fas fa-print"></i></button>
+                                             <button class="btn_TblPrint btn-print"  name="${element.firstName}"><i class="fas fa-print"></i></button>
                                              </div>
                                             <button class="btn-apafa" id="${element.DNI}" name="${element.firstName}"
                                             ${element.state === "PAGO" ? 'style=display:none;' : null}
@@ -138,7 +141,7 @@ $(document).ready(function(){
                                           <td>
                                           <div class=buttons_table>
                                             <button class="btn-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-delete" id="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn-delete" id="eliminarEstudiante" name="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
                                            </div>
                                           </td>
                                         </tr>

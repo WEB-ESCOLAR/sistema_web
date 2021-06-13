@@ -1,8 +1,8 @@
  $(document).ready(function(){
 
 
-    $(document).on('click','.btn_TblDeleteEs',function(e){
-              var id = $(this).attr("id");
+    $(document).on('click','#eliminarEstudiante',function(e){
+              var id = $(this).attr("name");
               e.preventDefault();
               const param={
                   "id":id,

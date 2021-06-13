@@ -4,9 +4,16 @@
     session_destroy();
     header("Location:Login");
   }
+ 
   // if(isset(explode("/",$_SERVER["REQUEST_URI"])[3])){
-    echo 'falta validar el id de la url no excitarse ...';
-    $id = explode("/",$_SERVER["REQUEST_URI"])[3];
+    // $idData;
+    // if(isset(explode("/",$_SERVER["REQUEST_URI"])[3])){
+    //   $idData = $id;
+    // }
+    $data =  explode("/",$_SERVER["REQUEST_URI"]);
+    // echo count($data);
+    // $id = explode("/",$_SERVER["REQUEST_URI"])[3];
+    // echo URL;
   // }
   
   // $splitData = explode("?",$_GET["view"])[0];
@@ -15,10 +22,10 @@
   // "Inicio","Materiales","Alumnos","Apoderados","ControlDeLibros"
   $modulos=[
     ["name"=>"Inicio","icon"=>"fa fa-home"],
-    ["name"=>"Materiales","icon"=>"fa fa-book"],
+    ["name"=>"GestionDeMateriales","icon"=>"fa fa-book"],
     ["name"=>"Alumnos","icon"=>"fa fa-user-graduate"],
     ["name"=>"Apoderados","icon"=>"fa fa-user-tie"],
-    ["name"=>"ControlDeLibros","icon"=>"fa fa-book"],
+    ["name"=>"ControlDeMaterial","icon"=>"fa fa-book"],
     ["name"=>"Configuracion","icon"=>"fas fa-cog"]
   ];
   // echo $_SESSION["newsession"];
@@ -31,7 +38,7 @@
   <ul>
  <?php 
     foreach ($modulos as $value) { 
-     echo "<li><a href=".$value["name"]."><i class='{$value["icon"]}' ></i>".$value["name"]."</a></li>";
+     echo "<li><a href=".URL.'/'.$value["name"]." ><i class='{$value["icon"]}' ></i>".$value["name"]."</a></li>";
     }
   ?> 
   </ul>
@@ -57,7 +64,10 @@
            if($_GET["view"] == "Home"){
               require_once 'Inicio.php';
            }
-           elseif($_GET["view"] == "DetalleMateriales/".$id){
+           // elseif($_GET["view"] == "DetalleMateriales/".$idData){
+           //    require_once 'DetalleMateriales.php';
+           // }
+            elseif(count($data) == 4 ){
               require_once 'DetalleMateriales.php';
            }
            elseif(isset($_GET["view"])){

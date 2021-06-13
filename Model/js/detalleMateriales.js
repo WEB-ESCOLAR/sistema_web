@@ -51,7 +51,7 @@
              action:"prestarMaterial"
          }
          $.ajax({
-             url:"Controller/ControllerMaterial.php",
+             url:"../Controller/ControllerMaterial.php",
              type:"POST",
              data:param
          }).done(function(response){
@@ -69,7 +69,7 @@
          }
          console.log(param);
          $.ajax({
-            url:"Controller/ControllerMaterial.php",
+            url:"../Controller/ControllerMaterial.php",
             type:"POST",
             data:param
         }).done(function(response){
@@ -87,7 +87,7 @@
         }
         console.log("idDevo" + idDevo);
          $.ajax({
-            url:"Controller/ControllerMaterial.php",
+            url:"../Controller/ControllerMaterial.php",
             type:"GET",
             data:param,
             dataType: 'json'

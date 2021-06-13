@@ -35,7 +35,7 @@ $(document).ready(function(){
           })
 
   
-     $(document).on('click','.print_apafa',function(e){
+     $(document).on('click','.btn-print',function(e){
              e.preventDefault();
               var name = $(this).attr("name");
               Swal.fire({
