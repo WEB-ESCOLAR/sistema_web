@@ -46,10 +46,11 @@
          $(document).on('click','#entregarLibro',function(e){
          e.preventDefault();
          const param={
-             idDetaMate:$('.btn-close').val(),
+             idDetaMate:$('#button_close_prestamo').val(),
              idEstu:$('.btn-atras').val(),
              action:"prestarMaterial"
          }
+         console.log(param)
          $.ajax({
              url:"../Controller/ControllerMaterial.php",
              type:"POST",
@@ -63,7 +64,7 @@
        $(document).on('click','#devolverLibro',function(e){
          e.preventDefault();
          const param={
-             idDetaMate:$('.btn-close').val(),
+             idDetaMate:$('#button_close_devolucion').val(),
              motivo:$('#motivo').val(),
              action:"Devolver"
          }
@@ -108,7 +109,7 @@
             type:"POST",
         }).done(function(response){
             $('.formularioPrestamo').show();
-            $('.btn_close').val(idDetMat);
+            $('#button_close_prestamo').val(idDetMat);
         })
        })
 
@@ -136,12 +137,13 @@
           const param={
              "idDetMat":idDetMat,
          }
+         console.log(idDetMat)
           $.ajax({
              url:"../Controller/ControllerMaterial.php",
              type:"POST",
          }).done(function(response){
              $('.formularioDevolucion').show();
-             $('.btn_close').val(idDetMat);
+             $('#button_close_devolucion').val(idDetMat);
          })
         })
 

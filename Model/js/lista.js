@@ -17,7 +17,7 @@ $(document).ready(function(){
         case "Apoderados":
           mostrarApoderados();
           break;
-        case "DetalleMateriales":
+        case "AdministrarMateriales":
              mostrarDetalleMaterial();
              break;
         case "Alumnos":
@@ -64,7 +64,7 @@ $(document).ready(function(){
                                           <div class=buttons_table>
                                           <button class="btn_TblUpdate" name="${element.id}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
                                           ${
-                                            nombreModulo == "Materiales" ?
+                                            nombreModulo == "GestionDeMateriales" ?
                                             `<button class="btn_TblDelete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
                                             : ''
                                           }

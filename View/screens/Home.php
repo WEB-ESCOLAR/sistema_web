@@ -68,7 +68,7 @@
            //    require_once 'DetalleMateriales.php';
            // }
             elseif(count($data) == 4 ){
-              require_once 'DetalleMateriales.php';
+              require_once 'AdministrarMateriales.php';
            }
            elseif(isset($_GET["view"])){
               require_once $_GET["view"].'.php';

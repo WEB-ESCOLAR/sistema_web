@@ -40,7 +40,7 @@ $(document).ready(function(){
               e.preventDefault();
               var id = $(this).attr("name");
               console.log("detalle material is " + id);
-              window.location="DetalleMateriales/" + id;
+              window.location="AdministrarMateriales/" + id;
            }) 
 
 
