@@ -46,12 +46,12 @@
          $(document).on('click','#entregarLibro',function(e){
          e.preventDefault();
          const param={
-             idDetaMate:$('.detaLibro').val(),
-             idEstu:$('.estudiante').val(),
+             idDetaMate:$('.btn-close').val(),
+             idEstu:$('.btn-atras').val(),
              action:"prestarMaterial"
          }
          $.ajax({
-             url:"Controller/ControllerMaterial.php",
+             url:"../Controller/ControllerMaterial.php",
              type:"POST",
              data:param
          }).done(function(response){
@@ -63,13 +63,13 @@
        $(document).on('click','#devolverLibro',function(e){
          e.preventDefault();
          const param={
-             idDetaMate:$('.detLibro').val(),
+             idDetaMate:$('.btn-close').val(),
              motivo:$('#motivo').val(),
              action:"Devolver"
          }
          console.log(param);
          $.ajax({
-            url:"Controller/ControllerMaterial.php",
+            url:"../Controller/ControllerMaterial.php",
             type:"POST",
             data:param
         }).done(function(response){
@@ -87,19 +87,33 @@
         }
         console.log("idDevo" + idDevo);
          $.ajax({
-            url:"Controller/ControllerMaterial.php",
+            url:"../Controller/ControllerMaterial.php",
             type:"GET",
             data:param,
             dataType: 'json'
         }).done(function(response){
-            $('.modalVerMotivo').show();
+            $('.verMotivo').show();
             $('#vermotivo').val(' '+response.motivo);
         })
        })
 
+       $(document).on('click','#prestarLibro',function(e){
+         e.preventDefault();
+         var idDetMat = $(this).attr("name");
+         const param={
+            "idDetMat":idDetMat,
+        }
+         $.ajax({
+            url:"../Controller/ControllerMaterial.php",
+            type:"POST",
+        }).done(function(response){
+            $('.formularioPrestamo').show();
+            $('.btn_close').val(idDetMat);
+        })
+       })
 
         //MOSTRANDO EL FRAME DE ENTREGAR LIBRO
-        // $(document).on('click','#mostrar_alumno',function(e){ // mal solo es un evento 
+        // $(document).on('click','#mostrar_alumno',function(e){ // mal solo es un evento
         //   e.preventDefault();
         //   var idDetMat = $(this).attr("name");
         //   const param={
@@ -123,16 +137,16 @@
              "idDetMat":idDetMat,
          }
           $.ajax({
-             url:"Controller/ControllerMaterial.php",
+             url:"../Controller/ControllerMaterial.php",
              type:"POST",
          }).done(function(response){
-             $('.modalDevolver').show();
-             $('.detLibro').val(idDetMat);
+             $('.formularioDevolucion').show();
+             $('.btn_close').val(idDetMat);
          })
         })
 
         //BUSCAR ALUMNO
-        $(document).on('click','#buscar_alumno',function(e){
+        $(document).on('click','#buscarEstudiante',function(e){
            e.preventDefault();
            var dni = $('#DNI').val();
            const param={
@@ -141,19 +155,19 @@
            }
            console.log("DNI"+dni);
            $.ajax({
-             url:"Controller/ControllerMaterial.php",
+             url:"../Controller/ControllerMaterial.php",
              type:"GET",
              data:param,
              dataType: 'json',
            })
            .done(function(response){
              //$('.modal').reload();
-             $('.estudiante').val(response.idEstudiante);
-             $('#nombreEstu').val(' '+response.firstName);
-             $('#apellidoEstu').val(' '+response.LastName);
-             $('#gradoEstu').val(' '+response.grado);
-             $('#seccionEstu').val(' '+response.section);
-             $('#entregarLibro').prop("disabled",false);
+             $('.btn-atras').val(response.idEstudiante);
+             $('#nombreEstudiante').val(' '+response.firstName);
+             $('#apellidoEstudiante').val(' '+response.LastName);
+             $('#gradoEstudiante').val(' '+response.grado);
+             $('#seccionEstudiante').val(' '+response.section);
+             $('.btn-entregarLibro').prop("disabled",false);
            })
        })
 

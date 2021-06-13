@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 
 
-    // LOGIN USER 
+    // LOGIN USER
     // *************************
     $('#formulario_login').on('submit',function(e){
         e.preventDefault();
@@ -91,7 +91,7 @@ $(document).ready(function(){
 
       $(document).on('click','#button_close_prestamo',function(e){
           e.preventDefault();
-          $('.modal').hide();
+          $('.formularioPrestamo').hide();
         });
 
       $(document).on('click','#button_close_material',function(e){
@@ -101,11 +101,11 @@ $(document).ready(function(){
 
       $(document).on('click','#button_close_devolucion',function(e){
           e.preventDefault();
-          $('.modalDevolver').hide();
+          $('.formularioDevolucion').hide();
         });
       $(document).on('click','#button_close_motivo',function(e){
           e.preventDefault();
-          $('.modalVerMotivo').hide();
+          $('.verMotivo').hide();
         });
             //fomrulario apoderado
       $('.btn_exit_X').click(function(e){
@@ -151,7 +151,7 @@ $(document).ready(function(){
                       }
        }
         });
-          } 
-           
+          }
+
             graphics();
 })
