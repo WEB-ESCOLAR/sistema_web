@@ -1,8 +1,8 @@
  $(document).ready(function(){
 
 
-    $(document).on('click','.btn_TblDeleteEs',function(e){
-              var id = $(this).attr("id");
+    $(document).on('click','#eliminarEstudiante',function(e){
+              var id = $(this).attr("name");
               e.preventDefault();
               const param={
                   "id":id,
@@ -38,14 +38,14 @@
           $(document).on('click','#agregar_Estudiante',function(e){
             e.preventDefault();
             var param={
+                DniEstudiante: $('#DniEstudiante').val(),
                 nombreEstudiante: $('#nombreEstudiante').val(),
                 apellidoEstudiante: $('#apellidoEstudiante').val(),
-                DniEstudiante: $('#DniEstudiante').val(),
                 gradoEstudiante: $('#gradoEstudiante').val(),
                 seccionEstudiante: $('#seccionEstudiante').val(),
+                DniApoderado: $('#DniApoderado').val(),
                 nombreApoderado: $('#nombreApoderado').val(),
                 apellidoApoderado: $('#apellidoApoderado').val(),
-                DniApoderado: $('#DniApoderado').val(),
                 telefonoApoderado: $('#telefonoApoderado').val(),
                 action:"AgregarEstudiante"
             }
@@ -56,8 +56,8 @@
                 data:param
             }).done(function(response){
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
-                $('#formulario_alumno').hide();
-                location.reload();
+                //$('#formulario_alumno').hide();
+                //location.reload();
 
             })
         });

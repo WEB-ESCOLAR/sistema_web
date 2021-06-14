@@ -6,8 +6,8 @@ $(document).ready(function(){
       var current=$("#content_sidebar").attr('class');
       console.log("action " + current);
       if(current == "contenido"){
-        $('.container').css("width","80%");
-        $('.header-container').css("width","100%");
+          $('.container').css("width","80%");
+          $('.header-container').css("width","100%");
           $('.body-container').css("width","100%");
           $('.logout').css("right","0");
 
@@ -21,8 +21,20 @@ $(document).ready(function(){
   	})
 
 
+    // $('#materiales').on('click',function(){
+    //   console.log("materiales ")
+    // })
 
-    // LOGIN USER 
+    // $('#materiales').on('click',function(e){
+    //   e.preventDefault();
+    //   console.log("materiales ")
+    //    var url = window.location.href;
+    //    console.log("url is " + url)
+    // })
+
+
+
+    // LOGIN USER
     // *************************
     $('#formulario_login').on('submit',function(e){
         e.preventDefault();
@@ -57,25 +69,55 @@ $(document).ready(function(){
     function hide(){
           $('#formulario_alumno').hide();
     }
-    //BUTTONS MODALS 
+    //BUTTONS MODALS DETALLE MATERIAL
+
+
       $('#button_material').click(function(e){
             e.preventDefault();
-            $('.modal').show();
-            $('#formulario_material').show();
-                // $('#formulario_apoderado').show();
-        })
+            $('.modal_agregar_cantidad').show();
+            $('#formulario_detalleMaterial').show();
+      })
 
+      $(document).on('click','#buttonCloseDetalleMaterial',function(e){
+          e.preventDefault();
+              $('.modal_agregar_cantidad').hide();
+            $('#formulario_detalleMaterial').hide();
+      })
+      // $('#')
+      $(document).on('click','#prestarLibro',function(e){
+         e.preventDefault();
+        console.log("mostrar")
+        $('.modalOtorgarLibro').show();
+        $('#formulario_prestamo').show();
+      })
+
+
+
+       // BUTTONES FORMS MODALS MODULES
       $('#button_alumno').click(function(e){
             e.preventDefault();
             $('.modal').show();
             $('#formulario_alumno').show();
       })
 
+      $(document).on('click','#button_close_prestamo',function(e){
+          e.preventDefault();
+          $('.formularioPrestamo').hide();
+        });
+
       $(document).on('click','#button_close_material',function(e){
           e.preventDefault();
           $('.modal').hide();
         });
 
+      $(document).on('click','#button_close_devolucion',function(e){
+          e.preventDefault();
+          $('.formularioDevolucion').hide();
+        });
+      $(document).on('click','#button_close_motivo',function(e){
+          e.preventDefault();
+          $('.verMotivo').hide();
+        });
             //fomrulario apoderado
       $('.btn_exit_X').click(function(e){
           e.preventDefault()
@@ -120,7 +162,7 @@ $(document).ready(function(){
                       }
        }
         });
-          } 
-           
+          }
+
             graphics();
 })

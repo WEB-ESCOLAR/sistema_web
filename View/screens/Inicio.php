@@ -1,5 +1,5 @@
-	
-	
+
+
 	<?php if($_SESSION["rol"] == "director"){?>
 
 		<div class="pepe" style="margin:auto;">
@@ -47,6 +47,9 @@
 				</div>
 			</div>
 
+			<h3>Director</h3>
+		
+			<?php date_default_timezone_set('America/Lima');?>
 	<?php }else{ ?>
 		<div style="margin:auto;">
 			<div style="display:flex;justify-content: space-between;">
@@ -90,6 +93,5 @@
 		   </div>
 		</div>
 	
-
-
+ 
 	<?php } ?>

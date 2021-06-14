@@ -5,7 +5,21 @@
 	if(!isset($_SESSION["rol"])){
 		require_once("auth/login.php");
 	}else{	
-		require_once 'Screens/Home.php';
+		 if(!isset($_GET["view"])){
+     		 header("Location:Home");
+  		}
+  		else{
+  			 $modules= array("Home","Inicio","GestionDeMateriales","Alumnos","Apoderados","ControlDeMaterial","AdministrarMateriales","Configuracion","DetalleMaterial");
+  			 $url = $_SERVER['REQUEST_URI'];
+			   $searchModule = explode("/",$url)[2];
+  			if(in_array($searchModule,$modules)){
+  				require_once 'Screens/Home.php';
+  			}else{
+  				require_once 'Screens/NotFound.php';
+  			}
+  			
+  		}
+		
 	}
 
 	require_once("layouts/footer.php");
