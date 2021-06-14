@@ -1,5 +1,36 @@
  $(document).ready(function(){
  	
+ 	mostrarUltimoPagoAPAFA();
+    mostrarUsuarios();
+    mostrarTotalDeEstuYApo();
+    mostrarTotalDeMaterial();
+
+        function mostrarTotalDeEstuYApo(){
+                // console.log("total estu y apo");
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarNumeroDeSyP"},
+                    dataType: 'json',
+                })
+                .done(function(response){
+                  // console.log(response[0]);
+                 $('#CompCardDashboardTE').text(response[0].estudiantes);
+                 $('#CompCardDashboardTA').text(response[0].apoderados);
+               })
+        }
+        function mostrarTotalDeMaterial(){
+                // console.log("total mate");
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarNumeroDeMaterial"},
+                    dataType: 'json',
+                })
+                .done(function(response){
+                  // console.log(response[0]);
+                 $('#CompCardDashboardTM').text(response[0].totalDeMateriales);
+               })
+        }
+
  	// mostrarUltimoPagoAPAFA();
     // mostrarUsuarios();
      var url = window.location.href;
@@ -9,7 +40,7 @@
             mostrarUsuarios();
         }
  	    function mostrarUltimoPagoAPAFA(){
-            console.log("pago apafita");
+            // console.log("pago apafita");
                 $.ajax({
                     url:"Controller/ControllerDashboard.php",
                     data:{action:"MostrarUltimoPagoApafa"},
@@ -24,7 +55,7 @@
                  $('#CompLastPayAPAFAFecha').text(response[0].fechaPago);
                })
                                    
-    }
+        }
 
        function mostrarUsuarios(){
                 $.ajax({
@@ -32,7 +63,7 @@
                     data:{action:"MostrarUsuario"},
                 })
                 .done(function(response){
-                    console.log(response);
+                    // console.log(response);
                     const respuestaArray = JSON.parse(response)
                              respuestaArray.forEach((element)=>{
                                     $('#component_litle_table_users').append(
@@ -49,5 +80,4 @@
                                  })
                 })
             }
-
   });
