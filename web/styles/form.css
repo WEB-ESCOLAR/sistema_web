@@ -97,6 +97,8 @@
 }
 
 /*----------------Styles in Inicio---------------------*/
+
+/*----------------Director--------------------*/
 .carddashboard,
 .userControlComponent{
   background: #FFFFFF;
@@ -130,7 +132,7 @@
   border-bottom: 1px solid #000000;
   padding: 10px;
 }
-/*------*/
+/*-----------------secretaria----------------------*/
 .componentLastPayAPAFA{
   background: #ffffff;
   width:96.15%;
