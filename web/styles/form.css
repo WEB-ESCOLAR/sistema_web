@@ -24,9 +24,10 @@
     border: 3px solid var(--blue--bold);
     box-sizing: border-box;
     border-radius: 10px;
+    z-index: 9999;
 }
 .label_group{
-  font-family: var(--font-quicksandMedium);
+  font-family: var(--font-quicksandMedium)
  }
  /*reutilizar en un solo textinput */
 .input_txt,.input_txt_50{
@@ -126,6 +127,7 @@
   border: 1px solid #4064E3;
   box-sizing: border-box;
   border-radius: 10px;
+  z-index: 9999;
   left: 385px;
   top: 140px;
 }

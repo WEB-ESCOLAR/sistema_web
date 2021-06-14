@@ -34,7 +34,7 @@
     // mostrarUsuarios();
      var url = window.location.href;
     const urlSplit = url.split("/")
-        if(urlSplit[4] == "Inicio"){
+        if(urlSplit[4] == "Inicio" || urlSplit[4] == "Home"){
             mostrarUltimoPagoAPAFA();
             mostrarUsuarios();
              mostrarTotalDeEstuYApo();

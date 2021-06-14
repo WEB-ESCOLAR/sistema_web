@@ -88,61 +88,30 @@ $(document).ready(function(){
               e.preventDefault();
               // console.log("press");
                var datastring = $("#formulario_apoderado").serialize();
-               const dni = $('#dni').val();
-               const param={
-                    nombre:   $('#nombre').val(),
-                    apellido :  $('#apellido').val(),
-                     telefono : $('#telefono').val(),
-                    dni : $('#dni').val(),
-                    action :"UpdateApoderado"
-               }
-               // console.log(datastring);
+              //  const dni = $('#dni').val();
+              //  const param={
+              //       nombre:   $('#nombre').val(),
+              //       apellido :  $('#apellido').val(),
+              //        telefono : $('#telefono').val(),
+              //       dni : $('#dni').val(),
+              //       action :"UpdateApoderado"
+              //  }
+               console.log(datastring);
                  $.ajax({
                   url:"Controller/ControllerEstudiante.php",
                   type:"POST",
-                  data:param,
+                  data:datastring+"&action=UpdateApoderado",
                }).done(function(response){
                   console.log("respone is " + response )
                   alertSuccess("Datos del Apoderado Actualizado Correctamente","");
-                  $('#formulario_apoderado').hide();
-                  $('.modal').hide();
-                  setTimeout(function(){
-                    location.reload();
-                  },2000)
+                  // $('#formulario_apoderado').hide();
+                  // $('.modal').hide();
+                  // setTimeout(function(){
+                  //   location.reload();
+                  // },2000)
                })
             })
 
-         $(document).on('click','.btn_TblDelete',function(e){
-                var id = $(this).attr("id");
-                e.preventDefault();
-                const param={
-                    "id":id,
-                    "action":"Eliminar"
-                }
-                Swal.fire({
-                  title: 'Esta seguro de eliminar?',
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    $.ajax({
-                        url:"Controller/ControllerMaterial.php",
-                        type:"POST",
-                        data:param
-                    }).done(function(response){
-
-                         Swal.fire(
-                              'Deleted!',
-                              'Your file has been deleted.',
-                              'success'
-                            )
-                        location.reload();
-                    })
-                  }
-                })
-            })
+         
 
 })

@@ -10,7 +10,7 @@
 
 
  <div style="display: flex; justify-content: space-between;">
- 	<button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Libro</button>
+ 	<button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Registro</button>
 		<div style="display:flex;width: 40%;justify-content: space-around;">
 		<button type="button" class="btn_add_data" id="btn-document" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-file-pdf"></i>Generar Documento</button>
 		 <button type="button" class="btn_add_data" id="btn-chart" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-chart-bar"></i>Generar Grafico</button>
@@ -32,7 +32,7 @@
 
    <div style="width:100%;">
       <label class="label_group">  Cantidad:  </label>
-   <input id="cantidad"  type="text" class="input_txt_50" placeholder="Ingresa cantidad aquí..." required>
+   <input id="cantidad"  type="number" class="input_txt_50" placeholder="Ingresa cantidad aquí..." required>
    </div>
 
    <div style="display:flex;margin-top:15px;">
@@ -165,12 +165,12 @@
 
 
 
-<div class="check-estado" style="padding:10px;">
+<!-- <div class="check-estado" style="padding:10px;">
  <label> <input type="checkbox" id="checkDisponible" class="check_estado">Disponibles</label>
    <label> <input type="checkbox" id="checkPrestado" class="check_estado">Prestado</label>
    <label> <input type="checkbox" id="checkDevolucion" class="check_estado"> Devolucion</label>
 </div>
-
+ -->
 
 	 <!-- <p id="mensaje"></p> -->
 

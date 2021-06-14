@@ -80,8 +80,8 @@ $(document).ready(function(){
 
       $('#button_material').click(function(e){
             e.preventDefault();
-            $('.modal').show();
-            $('#formulario_material').show();
+            $('.modal_agregar_cantidad').show();
+            $('#formulario_detalleMaterial').show();
       })
 
       $(document).on('click','#buttonCloseDetalleMaterial',function(e){
@@ -185,5 +185,5 @@ for (let CheckBox of document.getElementsByClassName('checkBoxFilter')){
     Checked = CheckBox;
   }
 }
-}
+// }
 

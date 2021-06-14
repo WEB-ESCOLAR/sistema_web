@@ -78,15 +78,17 @@
         })
         
       });
-      $(document).on('click','#editar-estudiante',function(e){
+      $(document).on('click','#editar-estudiante',function(e){ // mmodal editar
         e.preventDefault();
         $('#formulario_alumno').show();
         $('#editar_Estudiante').show();
+        $("#titulo_Estudiante").val("Editar Estudiante")
+
          var id = $(this).attr("name");
            const param={
               "id":id,
               "action":"DetalleEstudiante"
-          }
+           }
          $.ajax({
             url:"Controller/ControllerEstudiante.php",
             type:"GET",
@@ -103,8 +105,8 @@
            $('#DniEstudiante').css("background","rgba(0,0,0,0.10)");
            $('#form-apoderado').hide();
            $('#agregar_Estudiante').hide();
-           $('#titulo_Estudiante').hide();
-           $('#titulo_EditarEstudiante').show();
+          //  $('#titulo_Estudiante').hide();
+          //  $('#titulo_EditarEstudiante').show();
            $('#button_close_material').val(id);
          });
          

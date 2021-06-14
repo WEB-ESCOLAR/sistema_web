@@ -59,10 +59,10 @@
 		require_once("../Model/Apoderado.php");
 		require_once("../Model/AdministrarEstudiante.php");
 		$administrarEstudiante = new AdministrarEstudiante();
-		$dni = $_POST["dni"];
-		$nombre = $_POST["nombre"];
-		$apellido = $_POST["apellido"];
-		$telefono= $_POST["telefono"];
+		$dni = $_REQUEST["dni"];
+		$nombre = $_REQUEST["nombre"];
+		$apellido = $_REQUEST["apellido"];
+		$telefono= $_REQUEST["telefono"];
 
 		$apoderado = new Apoderado($dni,$nombre,$apellido,$telefono);
 		// echo json_encode(var_dump($apoderado));

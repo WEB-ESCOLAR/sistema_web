@@ -12,6 +12,7 @@ class Estudiante
   var $seccionEstudiante;
   var $idUsuario;
   var $DniApoderado;
+  
 
   function __construct($idEstudiante,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,$idUsuario,$DniApoderado)
   {

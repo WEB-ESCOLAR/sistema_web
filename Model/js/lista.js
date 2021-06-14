@@ -7,6 +7,7 @@ $(document).ready(function(){
     //       mostrarDetalleMaterial();
     // }else{
       // console.log(urlSplit[4])
+      console.log(urlSplit[4])
       switch(urlSplit[4]){
         case "GestionDeMateriales":
             mostrarMateriales();
@@ -46,7 +47,7 @@ $(document).ready(function(){
                         let count=1;
                              var url = window.location.href;
                              const nombreModulo =url.split("/")[4];
-                             console.log(nombreModulo);
+                             console.log(respuestaArray);
                              respuestaArray.forEach((element)=>{
                                     $('#data_materiales_table').append(
 
@@ -65,8 +66,7 @@ $(document).ready(function(){
                                           <button class="btn-edit" name="${element.id}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "GestionDeMateriales" ?
-                                            `<button class="btn-delete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
-                                            `<button class="btn-delete" id="${element.id}" ><i class="fas fa-trash-alt"></i></button>`
+                                            `<button class="btn-delete"  name="${element.id}" id="deleteMaterial"><i class="fas fa-trash-alt"></i></button>`
                                             : ''
                                           }
                                            </div>
@@ -153,19 +153,23 @@ $(document).ready(function(){
             }
 
             $(document).on('click','#checkDisponible',function(e){
-              console.log("awita");
+              switchCaseCheck("DISPONIBLE");
+              // console.log("awita");
       
              });
              $(document).on('click','#checkPrestado',function(e){
-              console.log("awita2");
+              switchCaseCheck("PRESTADO");
+              // console.log("awita2");
       
              });
              $(document).on('click','#checkDevolucion',function(e){
-              console.log("awita3");
+              switchCaseCheck("DEVOLUCION");
+              // console.log("awita3");
       
              });
 
             function switchCaseCheck(type) {
+              let arrayData;
               switch (type) {
                 case "DISPONIBLE":
                   break;
@@ -177,6 +181,18 @@ $(document).ready(function(){
                   break;
               }
             }
+
+            function detalleCase(){
+              $.ajax({
+                url:"Controller/ControllerEstudiante.php",
+                data:{action:"MostrarEstudiante"},
+               }).done(function(e){
+
+               })
+            }
+
+
+
             function mostrarDetalleMaterial(){
               console.log("listar detalle")
                const idMaterial =url.split("/")[5];

@@ -58,7 +58,38 @@ $(document).ready(function(){
         }
 
 
-     
+        $(document).on('click','#deleteMaterial',function(e){
+            var id = $(this).attr("name");
+            e.preventDefault();
+            const param={
+                "id":id,
+                "action":"Eliminar"
+            }
+            Swal.fire({
+              title: 'Esta seguro de eliminar?',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                $.ajax({
+                    url:"Controller/ControllerMaterial.php",
+                    type:"POST",
+                    data:param
+                }).done(function(response){
+
+                     Swal.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                        )
+                    location.reload();
+                })
+              }
+            })
+        })
 
 
        
