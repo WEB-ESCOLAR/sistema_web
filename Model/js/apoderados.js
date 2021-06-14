@@ -77,7 +77,7 @@ $(document).ready(function(){
                  $('#apellido').val(response.lastName);
                  $('#telefono').val(response.phone);
                  $('#dni').val(response.DNI);
-                 $('#dni').prop("disabled",true);
+                 $('#dni').prop("readonly",true);
                  $('#dni').css("background","rgba(0,0,0,0.10)");
                });
                

@@ -55,10 +55,10 @@
 		function updateApoderados(Apoderado $apoderado){
 			$sql="UPDATE apoderado set firstName=:firstName,lastName=:lastName,phone=:phone where DNI=:dni";
 			$respuestaConsulta = $this->getConexion()->prepare($sql);
-			$respuestaConsulta->bindParam(":firstName",$apoderado->firstName);
-			$respuestaConsulta->bindParam(":lastName",$apoderado->lastName);
-			$respuestaConsulta->bindParam(":phone",$apoderado->telefono);
-			$respuestaConsulta->bindParam(":dni",$apoderado->dni);
+			$respuestaConsulta->bindParam(":firstName",$apoderado->nombreApoderado);
+			$respuestaConsulta->bindParam(":lastName",$apoderado->apellidoApoderado);
+			$respuestaConsulta->bindParam(":phone",$apoderado->telefonoApoderado);
+			$respuestaConsulta->bindParam(":dni",$apoderado->DniApoderado);
 			$respuestaConsulta->execute();
 		}
 		// DELETE ESTUDIANTE

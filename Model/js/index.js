@@ -74,8 +74,8 @@ $(document).ready(function(){
 
       $('#button_material').click(function(e){
             e.preventDefault();
-            $('.modal_agregar_cantidad').show();
-            $('#formulario_detalleMaterial').show();
+            $('.modal').show();
+            $('#formulario_material').show();
       })
 
       $(document).on('click','#buttonCloseDetalleMaterial',function(e){

@@ -46,8 +46,8 @@
          $(document).on('click','#entregarLibro',function(e){
          e.preventDefault();
          const param={
-             idDetaMate:$('#button_close_prestamo').val(),
-             idEstu:$('.btn-atras').val(),
+             idDetaMate:$('#button_close_prestamo').val(), //id detallematerial
+             idEstu:$('.btn-atras').val(), //id
              action:"prestarMaterial"
          }
          console.log(param)
