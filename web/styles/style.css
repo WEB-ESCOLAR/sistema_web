@@ -247,8 +247,7 @@ h1{
     font-family: var(--font-quicksanLight);
 }
 /*********************/
-/************ BUTTONS TABLE  VERIFY CSS ON TABLES , REUTILIZAR POR PARTE DE : JOSE*/
-/*usar nombres que sean entendibles y en ingles*/
+/************ BUTTONS TABLE  CSS TABLES
 /******************/
 .btn-delete,.btn-delete,.btn-apafa{
     width:28px;
@@ -291,7 +290,13 @@ h1{
 .available{
    background: var(--success);
 }
-
+.rowsEmpty{
+  font-size: 25px;
+  color: var(--crimson);
+  font-family: var(--font-quicksandMedium);
+  display: flex;
+  justify-content: center;
+}
 
 
 
@@ -319,6 +324,30 @@ button{
 }
 .fa-lg{
   margin-right:10px;
+}
+.textBack{
+  cursor: pointer;
+  font-family: var(--font-quicksandRegular);
+  font-size: 25px;
+  color: var(--blue--bold);
+}
+.checkFilter{
+  font-size: 20px;
+    font-family: var(--font-quicksandRegular);
+    margin-left: 20px;
+}
+.check-estado p{
+  font-size: 25px;
+  font-family: var(--font-quicksandMedium);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#btn-document,#btn-chart{
+  background: rgba(120, 0, 0, 0.5);
+}
+.checkBoxFilter{
+  width:20px;
+  height: 20px;
 }
 
 /*end button css*/

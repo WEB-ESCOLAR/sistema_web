@@ -45,6 +45,7 @@
 .input_txt{
   width:100%;
 }
+
 .btn_box{
   width: 150px;
   height: 35.3px;
@@ -78,6 +79,37 @@
   right: -15px;
   top: -10px;
  }
+
+/*SEARCH INPUT*/
+.search_inputBox{
+  margin-top: 60px;
+  position: relative;
+  font-size: 25px;
+}
+.search_input{
+ width: 300px;
+ box-sizing: border-box;
+ border-radius: 4px;
+ padding: 10px;
+   outline:none;
+   border: 1px solid var(--crimson);
+   font-size: 17px;
+   font-family: var(--font-quicksandMedium);
+}
+.search_inputBox input[type=text]{
+  padding-left:40px;
+}
+.search_inputBox i{
+  position:absolute;
+  left:0;
+  top:8px;
+  padding:5px;
+  line-height:20px;
+  margin-left: 5px;
+  color:var(--crimson);
+}
+
+
 
 /*       CIERRE DE FORM Y INPUTS              */
 /***********************************************/

@@ -9,14 +9,14 @@ $(document).ready(function(){
       // console.log(urlSplit[4])
       switch(urlSplit[4]){
         case "GestionDeMateriales":
-          mostrarMateriales();
-          break;
+            mostrarMateriales();
+            break;
         case "ControlDeMaterial":
-          mostrarMateriales();
-          break;
+            mostrarMateriales();
+            break;
         case "Apoderados":
-          mostrarApoderados();
-          break;
+            mostrarApoderados();
+            break;
         case "AdministrarMateriales":
              mostrarDetalleMaterial();
              break;
@@ -153,15 +153,21 @@ $(document).ready(function(){
 
 
             function mostrarDetalleMaterial(){
+              console.log("listar detalle")
                const idMaterial =url.split("/")[5];
               $.ajax({
                 url:"../Controller/ControllerMaterial.php",
                 data:{action:"DetalleMaterial",id:idMaterial},
               })
               .done(function(response){
-                  const respuestaArray = JSON.parse(response)
-                      let count=1;
-                           respuestaArray.forEach((element)=>{
+                const responseJSON = JSON.parse(response)
+                console.log(responseJSON)
+                        if(response == 0){
+                          console.log("false")
+                        }else{
+                          $('#rowsEmptyMessage').hide();
+                          let count=1;
+                           responseJSON.forEach((element)=>{
                                   $('#data_detalleMaterial_table').append(
                                       `
                                       <tr>
@@ -181,6 +187,7 @@ $(document).ready(function(){
                                       `
                                       );
                                })
+                        }
               })
             }
 

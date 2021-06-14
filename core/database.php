@@ -10,9 +10,9 @@
 	}else{
 		DEFINE("HOST","localhost");
 	    DEFINE("USER","root");
-	    DEFINE("PASSWORD","1234");
+	    DEFINE("PASSWORD","root");
 	    DEFINE("PORT","3306");
-	    DEFINE("DATABASE","base_escolar");
+	    DEFINE("DATABASE","escuela_web");
 	}
 
 ?>

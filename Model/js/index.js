@@ -6,8 +6,8 @@ $(document).ready(function(){
       var current=$("#content_sidebar").attr('class');
       console.log("action " + current);
       if(current == "contenido"){
-        $('.container').css("width","80%");
-        $('.header-container').css("width","100%");
+          $('.container').css("width","80%");
+          $('.header-container').css("width","100%");
           $('.body-container').css("width","100%");
           $('.logout').css("right","0");
 

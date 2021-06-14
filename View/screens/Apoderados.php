@@ -5,6 +5,8 @@
               
                  <button id="button_close_material" class="btn_close"><i style="font-size: 20px;" class="fas fa-times"></i></button>
              
+               
+
       <header><h2 class="title_form">Actualizados datos del Apoderado</h2></header>
               
             <div  style="display:flex;width:100%;" class="form-group">  
