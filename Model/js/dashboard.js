@@ -1,9 +1,8 @@
  $(document).ready(function(){
  	
- 	mostrarUltimoPagoAPAFA();
-    mostrarUsuarios();
-    mostrarTotalDeEstuYApo();
-    mostrarTotalDeMaterial();
+ 	// mostrarUltimoPagoAPAFA();
+    // mostrarUsuarios();
+   
 
         function mostrarTotalDeEstuYApo(){
                 // console.log("total estu y apo");
@@ -38,6 +37,8 @@
         if(urlSplit[4] == "Inicio"){
             mostrarUltimoPagoAPAFA();
             mostrarUsuarios();
+             mostrarTotalDeEstuYApo();
+             mostrarTotalDeMaterial();
         }
  	    function mostrarUltimoPagoAPAFA(){
             // console.log("pago apafita");
@@ -63,7 +64,7 @@
                     data:{action:"MostrarUsuario"},
                 })
                 .done(function(response){
-                    // console.log(response);
+                    console.log(response);
                     const respuestaArray = JSON.parse(response)
                              respuestaArray.forEach((element)=>{
                                     $('#component_litle_table_users').append(
