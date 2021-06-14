@@ -86,7 +86,7 @@ $(document).ready(function(){
 
          $(document).on('click','#btn_update_apoderado',function(e){
               e.preventDefault();
-              console.log("press");
+              // console.log("press");
                var datastring = $("#formulario_apoderado").serialize();
                const dni = $('#dni').val();
                const param={
@@ -96,7 +96,7 @@ $(document).ready(function(){
                     dni : $('#dni').val(),
                     action :"UpdateApoderado"
                }
-               console.log(datastring);
+               // console.log(datastring);
                  $.ajax({
                   url:"Controller/ControllerEstudiante.php",
                   type:"POST",

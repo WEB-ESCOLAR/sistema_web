@@ -23,9 +23,23 @@
 			return $usuarios;
 		}
 
+		function totalNumberStudentsParents(){
+			$sql="SELECT COUNT(e.idEstudiante) as 'estudiantes', COUNT(a.DNI) as 'apoderados' FROM estudiante e INNER join apoderado a on e.idApoderado = a.DNI";
+			$respuestaConsulta = $this->consulta($sql);
+			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+				$totalnumberSandP[]=$filas;
+			}
+			return $totalnumberSandP;
+		}
 
-
-
+		function totalNumberRegisterMaterial(){
+			$sql="SELECT COUNT(dt.idDetalleMaterial) as 'totalDeMateriales' from detallematerial dt";
+			$respuestaConsulta = $this->consulta($sql);
+			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+				$totalnumberRMaterial[]=$filas;
+			}
+			return $totalnumberRMaterial;
+		}
 
 	}
 

@@ -8,6 +8,12 @@
 		case "MostrarUsuario":
 			fetchAllUsuario();
 			break;
+		case "MostrarNumeroDeSyP":
+			totalNumberSandP();
+			break;
+		case "MostrarNumeroDeMaterial":
+			totalNumberMaterial();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -28,6 +34,18 @@
 		echo json_encode($resultado);
 	}
 
+	function totalNumberSandP(){
+		require_once("../Model/AdministradorDashboard.php");
+		$totalSPModel = new AdministrarDashboard();
+		$resultado = $totalSPModel->totalNumberStudentsParents();
+		echo json_encode($resultado);
+	}
 
+	function totalNumberMaterial(){
+		require_once("../Model/AdministradorDashboard.php");
+		$totalMaterialModel = new AdministrarDashboard();
+		$resultado = $totalMaterialModel->totalNumberRegisterMaterial();
+		echo json_encode($resultado);
+	}
 
 ?>
