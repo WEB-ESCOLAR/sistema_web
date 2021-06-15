@@ -147,9 +147,9 @@
 
 
 <div class="check-estado" style="padding:10px;">
- <label> <input type="checkbox" id="checkDisponible"> Disponibles</label>
-   <label> <input type="checkbox" id="checkPrestado"> Prestado</label>
-   <label> <input type="checkbox" id="checkDevolucion"> Devolucion</label>
+ <label> <input type="checkbox" id="checkDisponible" class="check_estado">Disponibles</label>
+   <label> <input type="checkbox" id="checkPrestado" class="check_estado">Prestado</label>
+   <label> <input type="checkbox" id="checkDevolucion" class="check_estado"> Devolucion</label>
 </div>
 
 	<button id="btn_back" style="margin-bottom: 10px;padding:10px;">Retroceder</button>

@@ -25,5 +25,4 @@ class Estudiante
     $this->DniApoderado=$DniApoderado;
   }
 }
-
  ?>

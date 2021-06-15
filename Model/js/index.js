@@ -97,6 +97,7 @@ $(document).ready(function(){
       $('#button_alumno').click(function(e){
             e.preventDefault();
             $('.modal').show();
+            $('#editar_Estudiante').hide();
             $('#formulario_alumno').show();
       })
 
@@ -166,3 +167,14 @@ $(document).ready(function(){
 
             graphics();
 })
+
+let Checked = null;
+for (let CheckBox of document.getElementsByClassName('check_estado')){
+	CheckBox.onclick = function(){
+  	if(Checked!=null){
+      Checked.checked = false;
+      Checked = CheckBox;
+    }
+    Checked = CheckBox;
+  }
+}
