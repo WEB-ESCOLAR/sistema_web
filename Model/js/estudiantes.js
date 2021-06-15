@@ -15,7 +15,7 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'confirmar'
               }).then((result) => {
                 if (result.isConfirmed) {
                   $.ajax({
@@ -56,8 +56,8 @@
                 data:param
             }).done(function(response){
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
-                //$('#formulario_alumno').hide();
-                //location.reload();
+                $('#formulario_alumno').hide();
+                location.reload();
 
             })
         });
@@ -77,6 +77,64 @@
           console.log("resultado esperado es " + response)
         })
         
+      });
+      $(document).on('click','#editar-estudiante',function(e){
+        e.preventDefault();
+        $('#formulario_alumno').show();
+        $('#editar_Estudiante').show();
+         var id = $(this).attr("name");
+           const param={
+              "id":id,
+              "action":"DetalleEstudiante"
+          }
+         $.ajax({
+            url:"Controller/ControllerEstudiante.php",
+            type:"GET",
+            data:param,
+            dataType: 'json',
+         }).done(function(response){
+           $('.modal').show();
+           $('#nombreEstudiante').val(response.firstName);
+           $('#apellidoEstudiante').val(response.LastName);
+           $('#DniEstudiante').val(response.dni);
+           $('#gradoEstudiante').val(response.grado);
+           $('#seccionEstudiante').val(response.section);
+           $('#DniEstudiante').prop("disabled",true);
+           $('#DniEstudiante').css("background","rgba(0,0,0,0.10)");
+           $('#form-apoderado').hide();
+           $('#agregar_Estudiante').hide();
+           $('#button_close_material').val(id);
+         });
+         
+      });
+
+      $(document).on('click','#editar_Estudiante',function(e){
+        e.preventDefault();
+         var datastring = $("#formulario_alumno").serialize();
+         const dni = $('#DniEstudiante').val();
+         const param={
+              idEstudiante: $('#button_close_material').val(),
+              nombreEstudiante:       $('#nombreEstudiante').val(),
+              apellidoEstudiante :    $('#apellidoEstudiante').val(),
+              gradoEstudiante :       $('#gradoEstudiante').val(),
+              seccionEstudiante :     $('#seccionEstudiante').val(),
+              DniEstudiante :         $('#DniEstudiante').val(),
+              action :"UpdateEstudiante"
+         }
+         console.log(param);
+           $.ajax({
+            url:"Controller/ControllerEstudiante.php",
+            type:"POST",
+            data:param,
+         }).done(function(response){
+            console.log("respone is " + response )
+            alertSuccess("Datos del Estudiante Actualizado Correctamente","");
+            $('#formulario_alumno').hide();
+            $('.modal').hide();
+            setTimeout(function(){
+            // location.reload();
+            })
+         })
       })
 
 

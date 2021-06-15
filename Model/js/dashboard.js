@@ -2,14 +2,46 @@
  	
  	// mostrarUltimoPagoAPAFA();
     // mostrarUsuarios();
+   
+
+        function mostrarTotalDeEstuYApo(){
+                // console.log("total estu y apo");
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarNumeroDeSyP"},
+                    dataType: 'json',
+                })
+                .done(function(response){
+                  // console.log(response[0]);
+                 $('#CompCardDashboardTE').text(response[0].estudiantes);
+                 $('#CompCardDashboardTA').text(response[0].apoderados);
+               })
+        }
+        function mostrarTotalDeMaterial(){
+                // console.log("total mate");
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarNumeroDeMaterial"},
+                    dataType: 'json',
+                })
+                .done(function(response){
+                  // console.log(response[0]);
+                 $('#CompCardDashboardTM').text(response[0].totalDeMateriales);
+               })
+        }
+
+ 	// mostrarUltimoPagoAPAFA();
+    // mostrarUsuarios();
      var url = window.location.href;
     const urlSplit = url.split("/")
         if(urlSplit[4] == "Inicio"){
             mostrarUltimoPagoAPAFA();
             mostrarUsuarios();
+             mostrarTotalDeEstuYApo();
+             mostrarTotalDeMaterial();
         }
  	    function mostrarUltimoPagoAPAFA(){
-            console.log("pago apafita");
+            // console.log("pago apafita");
                 $.ajax({
                     url:"Controller/ControllerDashboard.php",
                     data:{action:"MostrarUltimoPagoApafa"},
@@ -24,7 +56,7 @@
                  $('#CompLastPayAPAFAFecha').text(response[0].fechaPago);
                })
                                    
-    }
+        }
 
        function mostrarUsuarios(){
                 $.ajax({
@@ -49,5 +81,4 @@
                                  })
                 })
             }
-
   });

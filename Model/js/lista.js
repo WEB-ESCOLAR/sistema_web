@@ -140,7 +140,7 @@ $(document).ready(function(){
                                           <td>${element.section}</td>
                                           <td>
                                           <div class=buttons_table>
-                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-edit" id="editar-estudiante" name="${element.idEstudiante}"><i class="fas fa-edit"></i></button>
                                             <button class="btn-delete" id="eliminarEstudiante" name="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
                                            </div>
                                           </td>

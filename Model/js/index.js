@@ -10,12 +10,18 @@ $(document).ready(function(){
           $('.header-container').css("width","100%");
           $('.body-container').css("width","100%");
           $('.logout').css("right","0");
+          $('#formulario_detalleMaterial').css("left","440px");
+          $('#formulario_material').css("left","440px");
+          $('#formulario_alumno').css("left","440px");
 
       }else{
          $('.container').css("width","95%");
          $('.header-container').css("width","80%");
          $('.body-container').css("width","80%");
-           $('.logout').css("right","15%");
+        $('.logout').css("right","15%");
+        $('#formulario_detalleMaterial').css("left","305px");
+        $('#formulario_material').css("left","305px");
+        $('#formulario_alumno').css("left","290px");
       }
 
   	})
@@ -74,8 +80,8 @@ $(document).ready(function(){
 
       $('#button_material').click(function(e){
             e.preventDefault();
-            $('.modal_agregar_cantidad').show();
-            $('#formulario_detalleMaterial').show();
+            $('.modal').show();
+            $('#formulario_material').show();
       })
 
       $(document).on('click','#buttonCloseDetalleMaterial',function(e){
@@ -97,6 +103,7 @@ $(document).ready(function(){
       $('#button_alumno').click(function(e){
             e.preventDefault();
             $('.modal').show();
+            $('#editar_Estudiante').hide();
             $('#formulario_alumno').show();
       })
 
@@ -166,3 +173,14 @@ $(document).ready(function(){
 
             graphics();
 })
+
+let Checked = null;
+for (let CheckBox of document.getElementsByClassName('check_estado')){
+	CheckBox.onclick = function(){
+  	if(Checked!=null){
+      Checked.checked = false;
+      Checked = CheckBox;
+    }
+    Checked = CheckBox;
+  }
+}
