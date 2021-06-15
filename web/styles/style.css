@@ -51,7 +51,7 @@ section .contentBx{
 }
 
 section .contentBx .formBx{
-  width: 65%; 
+  width: 65%;
 }
 
 
@@ -124,7 +124,7 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
     width:100%;
     height:100%;
   }
-  
+
   section .contentBx{
     display:flex;
     justify-content:center;
@@ -133,7 +133,7 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
     height:100%;
     z-index:1;
   }
-  
+
   section .contentBx .formBx{
     width:100%;
     padding:40px;
@@ -150,13 +150,13 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
     width:;
     height:60%;
   }
-  
+
   section .contentBx .formBx .logo img{
     display:block;
     margin:0px 190px;
     width:20%;
 }
-  
+
   section .contentBx{
     display:flex;
     justify-content:center;
@@ -165,7 +165,7 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
     height:100%;
     z-index:1;
   }
-  
+
   section .contentBx .formBx{
     position:absolute;
     width:100%;
@@ -217,46 +217,50 @@ h1{
     width: 100%;
     padding-top:20px;
     margin: auto;
-}
+
+  }
 
 .table-general{
     width: 100%;
+    height: 220px;
     border: 1px solid #ccc;
     border-collapse: collapse;
-    margin: 0;
-    padding: 0;
     table-layout: fixed;
-}
-
-
-.table-general tr {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-}
+    flex-flow:wrap;
+    overflow-y:auto;
+    display:flex;
+  }
 
 .table-general th, .table-general td {
+    width: 250px;
     font-size: 16px;
     padding: 8px;
     text-align: center;
     font-family: var(--font-quicksandMedium);
+  }
+.table-general thead{
+  position:sticky;
+  top:0;
 }
+.table-general thead th{
 
-.table-general thead th{ 
     text-transform: uppercase;
     background-color: #00C7A3;
     font-family: var(--font-quicksanLight);
 }
+
+
 /*********************/
 /************ BUTTONS TABLE  CSS TABLES
 /******************/
-.btn-delete,.btn-delete,.btn-apafa{
+.btn-delete,.btn-apafa{
     width:28px;
     height:26px;
     background: #E92453;
     border:none;
     border-radius:3px;
     color:#ffffff;
-} 
+}
 .btn-edit,.btn-print{
     width:28px;
     height:26px;

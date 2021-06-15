@@ -1,5 +1,5 @@
 /*efect oscuro*/
-.modal,.modal_agregar_cantidad,.modalAgregarCantid{
+.modal,.modal_agregar_cantidad,.modalAgregarCantid,.formularioPrestamo,.formularioDevolucion,.verMotivo{
   background:rgba(0,0,0,0.25);
   position: absolute;
   top: 0%;
@@ -18,7 +18,7 @@
 .box_form{
     position: absolute;
     width: 500px;
-    left: 385px;
+    left: 305px;
     top: 140px;
     background: #FFFFFF;
     border: 3px solid var(--blue--bold);
@@ -118,7 +118,7 @@
 /*REUTILIZAR ESTILOS Y OPTIMIZAR , PUEDES REUTILIZAR ALGUNOS INPUTS DE LA PARTE DEL COMPONENTE FORM DE ARRIBA */
 /*REVISAR  */
 
-.form-Prestamo{
+.form_administrarMat{
   position: absolute;
   width: 440px;
   height: 330px;
@@ -128,50 +128,6 @@
   border-radius: 10px;
   left: 385px;
   top: 140px;
-}
-
-.titleEstudiante{
-	color: #4064E3;
-  font-weight: normal;
-	font-size: 25px;
-	line-height: 20px;
-  padding:5px;
-  position:absolute;
-  left:10px;
-		}
-
-.closeEstudiante button{
-  width:30px;
-  height:23px;
-  background: #E92453;
-  border:none;
-  border-radius:3px;
-  color:#FFFFFF;
-  position:absolute;
-  top:1%;
-  left:92%;
-}
-
-.closeEstudiante button:hover{
-  background:#ff003d;
-}
-
-.dniEstudiante{
-  padding:8px;
-  position:absolute;
-  top:18%;
-}
-
-.dniEstudiante input{
-  width: 200px;
-  height: 34px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-
-.dniEstudiante label{
-  padding:3px;
 }
 
 .buscarEstudiante button{
@@ -192,304 +148,26 @@
   background:#7d1515;
 }
 
-/*Nombre*/
-.nombreEstudiante{
-  padding:8px;
-  position:absolute;
-  top:40%;
-}
-
-.nombreEstudiante input{
-  width: 190px;
-  height: 34px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-
-.nombreEstudiante label{
-  padding:3px;
-}
-
-/*Apellido*/
-.apellidoEstudiante{
-  padding:8px;
-  position:absolute;
-  top:40%;
-  left:50%;
-}
-
-.apellidoEstudiante input{
-  width: 190px;
-  height: 34px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-
-.apellidoEstudiante label{
-  padding:3px;
-}
-
-/*grado*/
-.gradoEstudiante{
-  padding:8px;
-  position:absolute;
-  top:60%;
-}
-
-.gradoEstudiante input{
-  width: 190px;
-  height: 34px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-
-.gradoEstudiante label{
-  padding:3px;
-}
-
-/*Seccion*/
-.seccionEstudiante{
-  padding:8px;
-  position:absolute;
-  top:60%;
-  left:50%;
-}
-
-.seccionEstudiante input{
-  width: 190px;
-  height: 34px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-
-.seccionEstudiante label{
-  padding:3px;
-}
-
-.atrasFormularioPrestamo button{
- width: 160px;
-  height: 38px;
-  margin-left: 35px;
-  text-align: center;
-  border-radius: 12px;
-  background: #C42C50;
-  Color: #fff;
-  position:absolute;
-  top:85%;
-  left:1%;
-  border:none;
-}
-
-.atrasFormularioPrestamo button:hover{
-  background:#c73c5d;
-}
-
-.entregarFormularioPrestamo input[type="submit"]{
-  width: 160px;
-  height: 38px;
-  margin-left: 35px;
-  text-align: center;
-  border-radius: 12px;
-  background: #0b4361;
-  Color: #fff;
-  position:absolute;
-  top:85%;
-  left:45%;
-  outline: none;
-  box-shadow: none;
-  border:none;
-}
-
-.formularioPrestamo{
-  background:rgba(0,0,0,0.25);
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-  height:100%;
-  display:none;
-}
-
-/*
-.entregar-EL input:hover{
-  background:#0b4361;
-}*/
-
 /*ESTILOS DEL FORMULARIO DEVOLUCION*/
-
-.form-Devolucion{
-  position: absolute;
-  width: 440px;
-  height: 330px;
-  background: #FFFFFF;
-  border: 1px solid #4064E3;
-  box-sizing: border-box;
-  border-radius: 10px;
-  left: 385px;
-  top: 140px;
-}
-
-.titleDevolucion{
-	color: #4064E3;
-  font-weight: normal;
-	font-size: 25px;
-	line-height: 20px;
-  padding:5px;
-  position:absolute;
-  left:10px;
-		}
-
-.closeDevolucion button{
-  width:30px;
-  height:23px;
-  background: #E92453;
-  border:none;
-  border-radius:3px;
-  color:#FFFFFF;
-  position:absolute;
-  top:1%;
-  left:92%;
-}
-
-.closeDevolucion button:hover{
-  background:#ff003d;
-}
-
 .areaDevolucion{
   padding:8px;
   position:absolute;
   top:18%;
 }
 
-.areaDevolucion textarea{
+.textarea{
   width:390px;
   height: 150px;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px;
-  position:absolute;
+  /* position:absolute; */
   left:13%;
   margin:10px;
-}
-
-.areaDevolucion label{
-  padding-left:10px;
-}
-
-.atrasDevolucion button{
- width: 160px;
-  height: 38px;
-  margin-left: 35px;
-  text-align: center;
-  border-radius: 12px;
-  background: #C42C50;
-  Color: #fff;
-  position:absolute;
-  top:83%;
-  left:1%;
-  border:none;
-}
-
-.atrasDevolucion button:hover{
-  background:#c73c5d;
-}
-
-.realizarDevolucion input[type="submit"]{
-  width: 160px;
-  height: 38px;
-  margin-left: 35px;
-  text-align: center;
-  border-radius: 12px;
-  background: #003049;
-  Color: #fff;
-  position:absolute;
-  top:83%;
-  left:45%;
-  outline: none;
-  box-shadow: none;
-  border:none;
-}
-
-.realizarDevolucion input:hover{
-  background:#0b4361;
-}
-
-.formularioDevolucion{
-  background:rgba(0,0,0,0.25);
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-  height:100%;
-  display:none;
+  margin-top:50px;
 }
 
 /*ESTILOS DEL FORMULARIO VER MOTIVO*/
-
-.form-Motivo{
-  position: absolute;
-  width: 440px;
-  height: 330px;
-  background: #FFFFFF;
-  border: 1px solid #4064E3;
-  box-sizing: border-box;
-  border-radius: 10px;
-  left: 385px;
-  top: 140px;
-}
-
-.closeMotivo button{
-  width:30px;
-  height:23px;
-  background: #E92453;
-  border:none;
-  border-radius:3px;
-  color:#FFFFFF;
-  position:absolute;
-  top:1%;
-  left:92%;
-}
-
-.titleMotivo{
-	color: #4064E3;
-  font-weight: normal;
-	font-size: 25px;
-	line-height: 20px;
-  padding:5px;
-  position:absolute;
-  left:10px;
-		}
-
-.closeMotivo button:hover{
-  background:#ff003d;
-}
-
-.areaMotivo textarea{
-  width:390px;
-  height: 180px;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 10px;
-  position:absolute;
-  left:2%;
-  top: 20%;
-  margin:10px;
-}
-
-.verMotivo{
-  background:rgba(0,0,0,0.25);
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width:100%;
-  height:100%;
-  display:none;
-}
-
 .saludoMundo{
   background: green;
 }
@@ -510,8 +188,8 @@
   width:45%;
   height:280px;
 }
-.userControlComponent{  
-  width:100%; 
+.userControlComponent{
+  width:100%;
   height:250px;
 }
 .tblUserControlComponent{
@@ -519,7 +197,7 @@
   height:100%;
   font-weight: bold;
   line-height: 20px;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 .tblUserControlComponent td,
 .tblUserControlComponent th{
@@ -567,3 +245,56 @@
   display: flex;
 }
 
+/*ESTILOS DEL NOTFOUND*/
+
+.background-notFound{
+  background: linear-gradient(blue -500%, white 99%);
+  position:absolute;
+  width:100%;
+  height:100vh;
+  top:0;
+  left:0;
+  right:0;
+}
+
+.bush{
+  position:absolute;
+  right:70%;
+  top:3%;
+}
+
+.person{
+  position:absolute;
+  left:65%;
+  top:28%;
+}
+
+.box-notFound{
+  position:absolute;
+  top:160px;
+  left:440px;
+  text-align:center;
+}
+
+.head-notFound{
+  color:#303777;
+  font-size:35px;
+  font-family: var(--font-quicksandMedium);
+}
+
+.body-notFound{
+  color:#FF7A00;
+  font-size:70px;
+  font-family: var(--font-quicksandMedium);
+}
+.btn-volverInicio{
+  width: 230px;
+  height: 20px;
+  border-radius: 12px;
+  background: #2F3676;
+  Color: #fff;
+  outline: none;
+  box-shadow: none;
+  border:none;
+  font-family: var(--font-quicksandMedium);
+}

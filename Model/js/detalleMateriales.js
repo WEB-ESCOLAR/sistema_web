@@ -173,18 +173,8 @@
            })
        })
 
-    //    $(document).on('click','#checkDisponible',function(e){
-    //     console.log("awita");
+    
 
-    //    });
-    //    $(document).on('click','#checkPrestado',function(e){
-    //     console.log("awita2");
-
-    //    });
-    //    $(document).on('click','#checkDevolucion',function(e){
-    //     console.log("awita3");
-
-    //    });
 
 
 

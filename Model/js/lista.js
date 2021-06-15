@@ -27,7 +27,7 @@ $(document).ready(function(){
           break;
       }
     // }
- 
+
      // mostrarMateriales();
      //    mostrarApoderados();
      //    mostrarEstudiantes();
@@ -66,6 +66,7 @@ $(document).ready(function(){
                                           ${
                                             nombreModulo == "GestionDeMateriales" ?
                                             `<button class="btn-delete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
+                                            `<button class="btn-delete" id="${element.id}" ><i class="fas fa-trash-alt"></i></button>`
                                             : ''
                                           }
                                            </div>
@@ -93,7 +94,7 @@ $(document).ready(function(){
                              arrApoderados.forEach((element)=>{
                                     $('#response_table_apoderado').append(
                                         `
-                                        <tr>
+                                        <tr >
                                         <td>${count++}</td>
                                         <td>${element.DNI}</td>
                                          <td>${element.firstName} ${element.lastName}</td>
