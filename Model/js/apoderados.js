@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-	$(document).on('click','.btn_TblPagoApafa',function(e){
+	$(document).on('click','.btn-apafa',function(e){
               e.preventDefault();
               var id = $(this).attr("id");
                  const param={
@@ -104,11 +104,11 @@ $(document).ready(function(){
                }).done(function(response){
                   console.log("respone is " + response )
                   alertSuccess("Datos del Apoderado Actualizado Correctamente","");
-                  // $('#formulario_apoderado').hide();
-                  // $('.modal').hide();
-                  // setTimeout(function(){
-                  //   location.reload();
-                  // },2000)
+                  $('#formulario_apoderado').hide();
+                  $('.modal').hide();
+                  setTimeout(function(){
+                    location.reload();
+                  },2000)
                })
             })
 

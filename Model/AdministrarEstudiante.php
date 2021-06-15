@@ -100,11 +100,10 @@
 		//END CREATE ESTUDIANTE
 		 function PagoApafa($fecha,$id){
 			//$fechaactual=date('d-m-y');
-			$sql="UPDATE pagoapafa set state=1, fechapago=? where idApoderado=?";
+			$sql="UPDATE pagoapafa set state='PAGO',fechapago=? where idApoderado=?";
 			$data=$this->getConexion()->prepare($sql);
       		$data->bindParam(1,$fecha);
 			$data->bindParam(2,$id);
-
 			$data->execute();
    		}
 		//UPDATE ESTUDIANTE

@@ -4,8 +4,8 @@
  */
 class Apoderado
 {
-  var $DniApoderado;
-  var $nombreApoderado;
+  String $DniApoderado;
+  int $nombreApoderado;
   var $apellidoApoderado;
   var $telefonoApoderado;
 

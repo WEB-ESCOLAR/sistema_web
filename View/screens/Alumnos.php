@@ -55,7 +55,8 @@
 
       <div class="form-group">
           <label class="label_group">Dni del Alumno</label>
-          <input  id="DniEstudiante" type="text" class="input_txt" placeholder="Ingrese el dni del alumno aqui..."></p>
+          <input  id="DniEstudiante" type="text" class="input_txt" placeholder="Ingrese el dni del alumno aqui..."
+          maxlength="8"  required></p>
       </div>
 
       
@@ -87,21 +88,21 @@
       <div style="display:flex;width:100%;" class="form-group">
             <div style="width:50%;">
                 <label class="label_group">Nombres del Apoderado</label>
-                <input  id="nombreApoderado" type="text" class="input_txt_50" placeholder="Ingrese el nombre">
+                <input  id="nombreApoderado" type="text" class="input_txt_50" placeholder="Ingrese el nombre" required>
             </div>
             <div style="width: 50%;">
             <label class="label_group" >Apellidos del Apoderado</label>
-            <input  id="apellidoApoderado" type="text" class="input_txt_50" placeholder="Ingrese el apellido">
+            <input  id="apellidoApoderado" type="text" class="input_txt_50" placeholder="Ingrese el apellido" required>
             </div>
       </div>
           <div class="form-group">
               <label class="label_group">Dni del Apoderado</label>
-              <input  id="DniApoderado" type="text" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..."></p>
+              <input  id="DniApoderado" type="text" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..." maxlength="8" ></p>
           </div>
 
              <div class="form-group">
                 <label class="label_group">Telefono del apoderado</label>
-                  <input  id="telefonoApoderado" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..."></p>
+                  <input  id="telefonoApoderado" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="8" ></p>
              </div>
     </div>
 

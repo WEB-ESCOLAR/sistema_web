@@ -10,7 +10,7 @@
 
 
  <div style="display: flex; justify-content: space-between;">
- 	<button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Registro</button>
+ 	<button type="button" class="btn_add_data" id="button_detalleMaterial"><i class="fas fa-plus-circle fa-lg"></i>Agregar</button>
 		<div style="display:flex;width: 40%;justify-content: space-around;">
 		<button type="button" class="btn_add_data" id="btn-document" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-file-pdf"></i>Generar Documento</button>
 		 <button type="button" class="btn_add_data" id="btn-chart" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-chart-bar"></i>Generar Grafico</button>

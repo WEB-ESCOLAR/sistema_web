@@ -104,7 +104,8 @@ $(document).ready(function(){
                                           <div style="display:flex;justify-content:space-between;">
                                              <div style="text-align:left;">
                                               <button class="btn-edit" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
-                                             <button class="btn_TblPrint btn-print"  name="${element.firstName}"><i class="fas fa-print"></i></button>
+                                              ${element.state === "PAGO" ?
+                                              `<button class="btn_TblPrint btn-print"  name="${element.firstName}"><i class="fas fa-print"></i></button>`: ''}
                                              </div>
                                             <button class="btn-apafa" id="${element.DNI}" name="${element.firstName}"
                                             ${element.state === "PAGO" ? 'style=display:none;' : null}
