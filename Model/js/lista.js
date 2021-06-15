@@ -27,7 +27,7 @@ $(document).ready(function(){
           break;
       }
     // }
- 
+
      // mostrarMateriales();
      //    mostrarApoderados();
      //    mostrarEstudiantes();
@@ -62,10 +62,10 @@ $(document).ready(function(){
                                           <td>${element.cantidad}</td>
                                           <td>
                                           <div class=buttons_table>
-                                          <button class="btn_TblUpdate" name="${element.id}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
+                                          <button class="btn-edit" name="${element.id}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "GestionDeMateriales" ?
-                                            `<button class="btn_TblDelete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
+                                            `<button class="btn-delete" id="${element.id}" ><i class="fas fa-trash-alt"></i></button>`
                                             : ''
                                           }
                                            </div>
@@ -93,7 +93,7 @@ $(document).ready(function(){
                              arrApoderados.forEach((element)=>{
                                     $('#response_table_apoderado').append(
                                         `
-                                        <tr>
+                                        <tr >
                                         <td>${count++}</td>
                                         <td>${element.DNI}</td>
                                          <td>${element.firstName} ${element.lastName}</td>

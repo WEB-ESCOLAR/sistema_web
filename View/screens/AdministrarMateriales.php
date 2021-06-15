@@ -47,50 +47,50 @@
 
 
 <div class="formularioPrestamo">
-<form class="form-Prestamo" id="formularioPrestamo">
+<form class="form_administrarMat" id="formularioPrestamo">
 
-		<div>
-	<header><h1 class="titleEstudiante">Entrega de Libro</h1></header>
-      </div>
+		<div style="margin-top:8px;margin-left:10px">
+	    <h2 class="title_form">Entrega Libro</h2>
+    </div>
       <div class="closeEstudiante">
-        <button class="btn-close" id="button_close_prestamo"><i class="fas fa-times fa-lg"></i></button>
+				<button id="button_close_prestamo" class="btn_close"><i style="font-size: 20px;" class="fas fa-times"></i></button>
       </div>
-
+  <div style="margin-top:20px;margin-left:10px">
         <div class="dniEstudiante">
-         <label>  DNI del Alumno:  </label> <br>
-          <input id="DNI" class="DNI" type="text" placeholder="&nbsp;Ingresa Dni aquí..." maxlength="8">
+         <label  class="label_group">  DNI del Alumno:  </label> <br>
+          <input style="width: 200px" id="DNI" class="input_txt" type="text" placeholder="&nbsp;Ingresa Dni aquí..." maxlength="8">
           </div>
 
         <div class="buscarEstudiante">
             <button id="buscarEstudiante"> <i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;Buscar</button>
         </div>
+				<div style="display:flex;width:100%;" class="form-group">
+					<div style="width:50%;">
+						<label class="label_group">Nombre:</label>
+							<input   id="nombreEstudiante" type="text" class="input_txt_50" >
+				</div>
+					<div style="width: 50%;">
+				<label class="label_group" >Apellido:</label>
+						<input  id="apellidoEstudiante" type="text" class="input_txt_50">
+					</div>
+				</div>
 
-      <div class="nombreEstudiante">
-         <label>  Nombre:  </label> <br>
-          <input id="nombreEstudiante" type="text" readonly>
-          </div>
+				<div style="display:flex;width:100%;" class="form-group">
+					<div style="width:50%;">
+						<label class="label_group">Grado:</label>
+							<input   id="gradoEstudiante" type="text" class="input_txt_50" >
+				</div>
+					<div style="width: 50%;">
+				<label class="label_group" >Seccion:</label>
+						<input  id="seccione" type="text" class="input_txt_50">
+					</div>
+				</div>
+</div>
 
-      <div class="apellidoEstudiante">
-         <label>  Apellido:  </label> <br>
-          <input id="apellidoEstudiante" type="text" readonly>
-          </div>
-
-      <div class="gradoEstudiante">
-         <label>  Grado:  </label> <br>
-          <input id="gradoEstudiante" type="text" readonly>
-          </div>
-
-      <div class="seccionEstudiante">
-         <label>  Sección:  </label> <br>
-          <input id="seccionEstudiante" type="text" readonly>
-          </div>
-
-      <div class="atrasFormularioPrestamo">
-      <button class="btn-atras">Atras</button>
-      </button>
-
+    <div style="display:flex;margin-top:12px" class="atrasFormularioPrestamo">
+      <button type="button" style="background: var(--danger)" class="btn_box">Atras</button>
       <div class="entregarFormularioPrestamo">
-      <input type="submit" id="entregarLibro" class="btn-entregarLibro" value="Entregar">
+      <input type="submit" style="background: var(--primary)" id="entregarLibro" class="btn_box" value="Entregar">
       </div>
 
 	</div>
@@ -99,27 +99,27 @@
 
 
 <div class="formularioDevolucion">
-	<form class="form-Devolucion" id="formulario_devolucion">
-		<div>
-			<header><h1 class="titleDevolucion   ">Devolución</h1></header>
+	<form class="form_administrarMat" id="formulario_devolucion">
+		<div style="margin-top:18px;margin-left:10px">
+			<h2 class="title_form">Devolución</h2>
 		      </div>
 
 		        <div class="closeDevolucion">
-		        <button class="btn-close" id="button_close_devolucion" ><i class="fas fa-times fa-lg"></i></button>
+		        <button class="btn_close" id="button_close_devolucion" ><i class="fas fa-times fa-lg"></i></button>
 		          </div>
 
 		        <div class="areaDevolucion">
-		          <label>Motivo</label><br>
-		          <textarea id="motivo"></textarea>
+		          <label class="label_group">Motivo</label><br>
+							</div>
+							<div class="label_group">
+		          <textarea class="textarea"  id="motivo"></textarea>
 		          </div>
 
-		        <div class="atrasDevolucion">
-		      <button class="btn-atras" >Atras</button>
-		          </div>
-
-		      <div class="realizarDevolucion">
-		      <input type="submit" class="btn-devolverLibro" id="devolverLibro" value="Guardar">
+          <div style="display:flex;margin-top:10px">
+		       <button type="button" style="background: var(--danger)" class="btn_box" >Atras</button>
+		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="devolverLibro" value="Guardar">
 		      </div>
+
 	</form>
 
 </div>
@@ -127,16 +127,16 @@
 
 
 <div class="verMotivo">
-	<form class="form-Motivo" id="formulario_ver_motivo">
-	      <div>
-		<header><h1 class="titleMotivo">Motivo</h1></header>
-	      </div>
+	<form style="height:245px" class="form_administrarMat" id="formulario_ver_motivo">
+		<div style="margin-top:25px;margin-left:10px">
+			<h2 class="title_form">Motivo</h2>
+					</div>
 
 	      <div class="closeMotivo">
-	        <button class="btn-close" id="button_close_motivo" ><i class="fas fa-times fa-lg"></i></button>
+	        <button class="btn_close" id="button_close_motivo" ><i class="fas fa-times fa-lg"></i></button>
 	          </div>
-	      <div class="areaMotivo">
-	      <textarea id="vermotivo" readonly></textarea>
+	      <div style="margin-top:-50px" class="label_group">
+	      <textarea class="textarea"  id="vermotivo" readonly></textarea>
 	        </div>
 	    </form>
 </div>
@@ -170,7 +170,7 @@
 
 	 <!-- <p id="mensaje"></p> -->
 
-	
+
 
 <div class="cont_Table">
 
@@ -193,5 +193,3 @@
 <div style="width:100%;margin-top: 20px;" id="rowsEmptyMessage">
 		<span class="rowsEmpty">No hay Registros Aun!!</span>
 	</div>
-
-
