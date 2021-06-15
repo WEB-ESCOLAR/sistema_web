@@ -10,12 +10,18 @@ $(document).ready(function(){
           $('.header-container').css("width","100%");
           $('.body-container').css("width","100%");
           $('.logout').css("right","0");
+          $('#formulario_detalleMaterial').css("left","440px");
+          $('#formulario_material').css("left","440px");
+          $('#formulario_alumno').css("left","440px");
 
       }else{
          $('.container').css("width","95%");
          $('.header-container').css("width","80%");
          $('.body-container').css("width","80%");
-           $('.logout').css("right","15%");
+        $('.logout').css("right","15%");
+        $('#formulario_detalleMaterial').css("left","305px");
+        $('#formulario_material').css("left","305px");
+        $('#formulario_alumno').css("left","290px");
       }
 
   	})

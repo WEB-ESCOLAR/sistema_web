@@ -18,7 +18,7 @@
 .box_form{
     position: absolute;
     width: 500px;
-    left: 385px;
+    left: 305px;
     top: 140px;
     background: #FFFFFF;
     border: 3px solid var(--blue--bold);
@@ -510,8 +510,8 @@
   width:45%;
   height:280px;
 }
-.userControlComponent{  
-  width:100%; 
+.userControlComponent{
+  width:100%;
   height:250px;
 }
 .tblUserControlComponent{
@@ -519,7 +519,7 @@
   height:100%;
   font-weight: bold;
   line-height: 20px;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 .tblUserControlComponent td,
 .tblUserControlComponent th{
@@ -567,3 +567,56 @@
   display: flex;
 }
 
+/*ESTILOS DEL NOTFOUND*/
+
+.background-notFound{
+  background: linear-gradient(blue -500%, white 99%);
+  position:absolute;
+  width:100%;
+  height:100vh;
+  top:0;
+  left:0;
+  right:0;
+}
+
+.bush{
+  position:absolute;
+  right:70%;
+  top:3%;
+}
+
+.person{
+  position:absolute;
+  left:65%;
+  top:28%;
+}
+
+.box-notFound{
+  position:absolute;
+  top:160px;
+  left:440px;
+  text-align:center;
+}
+
+.head-notFound{
+  color:#303777;
+  font-size:35px;
+  font-family: var(--font-quicksandMedium);
+}
+
+.body-notFound{
+  color:#FF7A00;
+  font-size:70px;
+  font-family: var(--font-quicksandMedium);
+}
+.btn-volverInicio{
+  width: 230px;
+  height: 20px;
+  border-radius: 12px;
+  background: #2F3676;
+  Color: #fff;
+  outline: none;
+  box-shadow: none;
+  border:none;
+  font-family: var(--font-quicksandMedium);
+}
