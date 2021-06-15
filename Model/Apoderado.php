@@ -4,11 +4,11 @@
  */
 class Apoderado
 {
-  String $DniApoderado;
-  int $nombreApoderado;
+  var $DniApoderado;
+  var $nombreApoderado;
   var $apellidoApoderado;
   var $telefonoApoderado;
-
+  
   function __construct($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado)
   {
     $this->DniApoderado=$DniApoderado;

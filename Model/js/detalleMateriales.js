@@ -47,7 +47,7 @@
          e.preventDefault();
          const param={
              idDetaMate:$('#button_close_prestamo').val(), //id detallematerial
-             idEstu:$('.btn-atras').val(), //id
+             idEstu:$('#entregarLibro').val(), //id
              action:"prestarMaterial"
          }
          console.log(param)
@@ -57,7 +57,8 @@
              data:param
          }).done(function(response){
              console.log("respone is " + response )
-             location.reload();
+            //  location.reload();
+
          })
        })
 
@@ -164,7 +165,8 @@
            })
            .done(function(response){
              //$('.modal').reload();
-             $('.btn-atras').val(response.idEstudiante);
+             console.log(response)
+             $('#entregarLibro').val(response.idEstudiante);
              $('#nombreEstudiante').val(' '+response.firstName);
              $('#apellidoEstudiante').val(' '+response.LastName);
              $('#gradoEstudiante').val(' '+response.grado);

@@ -2,6 +2,8 @@
 /**
  *
  */
+namespace Model;
+
 class Estudiante
 {
   var $idEstudiante;
@@ -11,10 +13,9 @@ class Estudiante
   var $gradoEstudiante;
   var $seccionEstudiante;
   var $idUsuario;
-  var $DniApoderado;
-  
+  $apodero = new Apoderado;
 
-  function __construct($idEstudiante,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,$idUsuario,$DniApoderado)
+  function __construct($idEstudiante,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,$idUsuario,Apoderado $apoderado)
   {
     $this->idEstudiante=$idEstudiante;
     $this->DniEstudiante=$DniEstudiante;
@@ -23,7 +24,7 @@ class Estudiante
     $this->gradoEstudiante=$gradoEstudiante;
     $this->seccionEstudiante=$seccionEstudiante;
     $this->idUsuario=$idUsuario;
-    $this->DniApoderado=$DniApoderado;
+    $this->apoderado=$apoderado;
   }
 }
  ?>
