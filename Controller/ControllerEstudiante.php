@@ -24,6 +24,12 @@
 		case "BuscarGradoAndSection":
 			fetchAllSectionAndGrade();
 			break;
+		case "DetalleEstudiante":
+			detailEstudiante();
+			break;
+		case "UpdateEstudiante":
+			updateEstudiante();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -103,28 +109,32 @@
 		$fecha = date('Y-m-d', time());
 		$output = $pagoapafaModel->PagoApafa($fecha,$id);
 	}
-	//CREATE ESTUDIANTE
-	function agregarEstudiante(){
-		require_once("../Model/AdministrarEstudiante.php");
-		require_once("../Model/Estudiante.php");
-		require_once("../Model/Apoderado.php");
-		$estudianteModel = new AdministrarEstudiante();
-		$DniEstudiante = $_POST["DniEstudiante"];
-		$nombreEstudiante = $_POST["nombreEstudiante"];
-		$apellidoEstudiante=$_POST["apellidoEstudiante"];
-		$gradoEstudiante = $_POST["gradoEstudiante"];
-		$seccionEstudiante = $_POST["seccionEstudiante"];
-		$DniApoderado = $_POST["DniApoderado"];
-		$nombreApoderado = $_POST["nombreApoderado"];
-		$apellidoApoderado = $_POST["apellidoApoderado"];
-		$telefonoApoderado = $_POST["telefonoApoderado"];
-		$estudiante = new Estudiante(null,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,intval("1"),"10555153");
-		$apoderado=new Apoderado($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado);
-		$output=$estudianteModel->Create($apoderado,$estudiante);
-		echo json_encode($output);
-		//echo json_encode(var_dump($estudiante));
-	}
-	//END CREATE ESTUDIANTE
+		//CREATE ESTUDIANTE
+		function agregarEstudiante(){
+			require_once("../Model/AdministrarEstudiante.php");
+			require_once("../Model/Estudiante.php");
+			require_once("../Model/Apoderado.php");
+			require_once("../Model/pagoApafa.php");
+			session_start();
+			$idUser = $_SESSION["id"];
+			$estudianteModel = new AdministrarEstudiante();
+			$DniEstudiante = $_POST["DniEstudiante"];
+			$nombreEstudiante = $_POST["nombreEstudiante"];
+			$apellidoEstudiante=$_POST["apellidoEstudiante"];
+			$gradoEstudiante = $_POST["gradoEstudiante"];
+			$seccionEstudiante = $_POST["seccionEstudiante"];
+			$DniApoderado = $_POST["DniApoderado"];
+			$nombreApoderado = $_POST["nombreApoderado"];
+			$apellidoApoderado = $_POST["apellidoApoderado"];
+			$telefonoApoderado = $_POST["telefonoApoderado"];
+			$estadoPagoApafa = "NO PAGO";
+			$estudiante = new Estudiante(null,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,intval($idUser),$DniApoderado);
+			$apoderado=new Apoderado($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado);
+			$pagoApafa= new PagoApafa(null,$estadoPagoApafa,null,$DniApoderado);
+			$output=$estudianteModel->Create($apoderado,$estudiante,$pagoApafa);
+			echo json_encode(var_dump($pagoApafa,$apoderado)); 
+		}
+		//END CREATE ESTUDIANTE
 
 	function fetchAllSectionAndGrade(){
 		require_once("../Model/AdministrarEstudiante.php");
@@ -133,6 +143,33 @@
 		$administrarEstudiante = new AdministrarEstudiante();
 		$estudiantes = $administrarEstudiante->listaEstudiantesForGradeAndSection($grade,$section);
 		echo json_encode($estudiantes); 
-	}	
+	}
+	//UPDATE ESTUDIANTE
+	function detailEstudiante(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$estudianteModel= new AdministrarEstudiante();
+		$id = $_GET["id"];
+		$data = $estudianteModel->readEstudiante($id);
+		echo json_encode($data); 
+	}
+
+	function updateEstudiante(){
+		require_once("../Model/Estudiante.php");
+		require_once("../Model/AdministrarEstudiante.php");
+		session_start();
+		$idUser = $_SESSION["id"];
+		$administrarEstudiante = new AdministrarEstudiante();
+		$idEstudiante= $_POST["idEstudiante"];
+		$DniEstudiante = $_POST["DniEstudiante"];
+		$nombreEstudiante = $_POST["nombreEstudiante"];
+		$apellidoEstudiante = $_POST["apellidoEstudiante"];
+		$seccionEstudiante= $_POST["seccionEstudiante"];
+		$gradoEstudiante= $_POST["gradoEstudiante"];
+		$DniApoderado=$_POST["DniApoderado"];
+		$estudiante = new Estudiante($idEstudiante,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,intval($idUser),$DniApoderado);
+	 	$affect = $administrarEstudiante->updateAlumno($estudiante);
+		echo json_decode(var_dump($estudiante));
+	}
+	//END UPDATE ESTUDIANTE	
 
  ?>
