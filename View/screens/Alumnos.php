@@ -25,6 +25,7 @@
            </select>
       </div>
       <button class="button_search" id="search_student">Buscar</button>
+       <button class="button_search" style="margin-left:10px;" id="search_student">Refrescar</button>
       </div>
       <div class="total_filter">
         <p>Total de Alumnos Por Aula y Seccion:<span>20</span></p>
@@ -38,6 +39,7 @@
       <div style="padding:10px 10px;">
       <button id="button_close_material" class="btn_close"><i style="font-size: 20px;" class="fas fa-times"></i></button>
       <h2 class="title_form" id="titulo_Estudiante">Registrar Alumno</h2>
+      <h2 class="title_form" id="titulo_EditarEstudiante">Editar Alumno</h2>
       <div>
       </div>
       <div style="display:flex;width:100%;" class="form-group">

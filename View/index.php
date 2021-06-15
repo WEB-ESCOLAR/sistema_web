@@ -9,7 +9,7 @@
      		 header("Location:Home");
   		}
   		else{
-  			 $modules= array("Home","Inicio","GestionDeMateriales","Alumnos","Apoderados","ControlDeMaterial","AdministrarMateriales","Configuracion");
+  			 $modules= array("Home","Inicio","GestionDeMateriales","Alumnos","Apoderados","ControlDeMaterial","AdministrarMateriales","Configuracion","DetalleMaterial");
   			 $url = $_SERVER['REQUEST_URI'];
 			   $searchModule = explode("/",$url)[2];
   			if(in_array($searchModule,$modules)){

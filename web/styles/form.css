@@ -45,6 +45,7 @@
 .input_txt{
   width:100%;
 }
+
 .btn_box{
   width: 150px;
   height: 35.3px;
@@ -78,6 +79,37 @@
   right: -15px;
   top: -10px;
  }
+
+/*SEARCH INPUT*/
+.search_inputBox{
+  margin-top: 60px;
+  position: relative;
+  font-size: 25px;
+}
+.search_input{
+ width: 300px;
+ box-sizing: border-box;
+ border-radius: 4px;
+ padding: 10px;
+   outline:none;
+   border: 1px solid var(--crimson);
+   font-size: 17px;
+   font-family: var(--font-quicksandMedium);
+}
+.search_inputBox input[type=text]{
+  padding-left:40px;
+}
+.search_inputBox i{
+  position:absolute;
+  left:0;
+  top:8px;
+  padding:5px;
+  line-height:20px;
+  margin-left: 5px;
+  color:var(--crimson);
+}
+
+
 
 /*       CIERRE DE FORM Y INPUTS              */
 /***********************************************/
@@ -461,3 +493,77 @@
 .saludoMundo{
   background: green;
 }
+
+/*----------------Styles in Inicio---------------------*/
+
+/*----------------Director--------------------*/
+.carddashboard,
+.userControlComponent{
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 22px;
+  padding: 20px;
+  margin-top:20px;
+}
+.carddashboard{
+  width:45%;
+  height:280px;
+}
+.userControlComponent{  
+  width:100%; 
+  height:250px;
+}
+.tblUserControlComponent{
+  width:100%;
+  height:100%;
+  font-weight: bold;
+  line-height: 20px;
+  border-collapse: collapse; 
+}
+.tblUserControlComponent td,
+.tblUserControlComponent th{
+  text-align:center;
+}
+
+.tblUserControlComponent thead th{
+  border-bottom: 1px solid #000000;
+  padding: 10px;
+}
+/*-----------------secretaria----------------------*/
+.componentLastPayAPAFA{
+  background: #ffffff;
+  width:96.15%;
+  height:250px;
+  margin-top:20px;
+  padding: 20px;
+}
+.titleLastPayApafa{
+  font-weight: bold;
+  color: #780000;
+  padding: 20px;
+}
+.compLastPayAPAFADivs{
+  padding: 20px;
+  display: flex;
+}
+.compLastPayAPAFADivsSDF{
+  text-align:left;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.contenidoLastayApafa{
+  color: #000000;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+  line-height: 20px;
+}
+.compLastPayAPAFADivsSDF label{
+  width:35%;
+}
+.compLastPayAPAFADivsSDFD{
+  display: flex;
+}
+

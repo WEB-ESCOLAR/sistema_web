@@ -63,7 +63,9 @@
 		$nombre = $_POST["nombre"];
 		$apellido = $_POST["apellido"];
 		$telefono= $_POST["telefono"];
+
 		$apoderado = new Apoderado($dni,$nombre,$apellido,$telefono);
+		// echo json_encode(var_dump($apoderado));
 	 	$affect = $administrarEstudiante->updateApoderados($apoderado);
 	 	// UUID()
 		// echo json_encode(var_dump($apoderado));

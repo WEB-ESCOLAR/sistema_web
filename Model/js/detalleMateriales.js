@@ -46,8 +46,8 @@
          $(document).on('click','#entregarLibro',function(e){
          e.preventDefault();
          const param={
-             idDetaMate:$('#button_close_prestamo').val(),
-             idEstu:$('.btn-atras').val(),
+             idDetaMate:$('#button_close_prestamo').val(), //id detallematerial
+             idEstu:$('.btn-atras').val(), //id
              action:"prestarMaterial"
          }
          console.log(param)
@@ -173,9 +173,18 @@
            })
        })
 
-       $(document).on('click','#checkDisponible',function(e){
-            console.log("clik");
-       })
+    //    $(document).on('click','#checkDisponible',function(e){
+    //     console.log("awita");
+
+    //    });
+    //    $(document).on('click','#checkPrestado',function(e){
+    //     console.log("awita2");
+
+    //    });
+    //    $(document).on('click','#checkDevolucion',function(e){
+    //     console.log("awita3");
+
+    //    });
 
 
 

@@ -67,9 +67,13 @@
            // elseif($_GET["view"] == "DetalleMateriales/".$idData){
            //    require_once 'DetalleMateriales.php';
            // }
-            elseif(count($data) == 4 ){
+             elseif($data[2] == 'AdministrarMateriales'){
               require_once 'AdministrarMateriales.php';
            }
+           elseif($data[2] == 'DetalleMaterial'){
+            require_once 'DetalleMaterial.php';
+           }
+
            elseif(isset($_GET["view"])){
               require_once $_GET["view"].'.php';
           }

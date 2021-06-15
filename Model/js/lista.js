@@ -9,14 +9,14 @@ $(document).ready(function(){
       // console.log(urlSplit[4])
       switch(urlSplit[4]){
         case "GestionDeMateriales":
-          mostrarMateriales();
-          break;
+            mostrarMateriales();
+            break;
         case "ControlDeMaterial":
-          mostrarMateriales();
-          break;
+            mostrarMateriales();
+            break;
         case "Apoderados":
-          mostrarApoderados();
-          break;
+            mostrarApoderados();
+            break;
         case "AdministrarMateriales":
              mostrarDetalleMaterial();
              break;
@@ -62,10 +62,10 @@ $(document).ready(function(){
                                           <td>${element.cantidad}</td>
                                           <td>
                                           <div class=buttons_table>
-                                          <button class="btn_TblUpdate" name="${element.id}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
+                                          <button class="btn-edit" name="${element.id}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "GestionDeMateriales" ?
-                                            `<button class="btn_TblDelete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
+                                            `<button class="btn-delete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
                                             : ''
                                           }
                                            </div>
@@ -151,17 +151,47 @@ $(document).ready(function(){
                 })
             }
 
+            $(document).on('click','#checkDisponible',function(e){
+              console.log("awita");
+      
+             });
+             $(document).on('click','#checkPrestado',function(e){
+              console.log("awita2");
+      
+             });
+             $(document).on('click','#checkDevolucion',function(e){
+              console.log("awita3");
+      
+             });
 
+            function switchCaseCheck(type) {
+              switch (type) {
+                case "DISPONIBLE":
+                  break;
+                case "PRESTADO":
+                  break;
+                case "DEVOLUCION":
+                  break;
+                default:
+                  break;
+              }
+            }
             function mostrarDetalleMaterial(){
+              console.log("listar detalle")
                const idMaterial =url.split("/")[5];
               $.ajax({
                 url:"../Controller/ControllerMaterial.php",
                 data:{action:"DetalleMaterial",id:idMaterial},
               })
               .done(function(response){
-                  const respuestaArray = JSON.parse(response)
-                      let count=1;
-                           respuestaArray.forEach((element)=>{
+                const responseJSON = JSON.parse(response)
+                console.log(responseJSON)
+                        if(response == 0){
+                          console.log("false")
+                        }else{
+                          $('#rowsEmptyMessage').hide();
+                          let count=1;
+                           responseJSON.forEach((element)=>{
                                   $('#data_detalleMaterial_table').append(
                                       `
                                       <tr>
@@ -181,6 +211,7 @@ $(document).ready(function(){
                                       `
                                       );
                                })
+                        }
               })
             }
 

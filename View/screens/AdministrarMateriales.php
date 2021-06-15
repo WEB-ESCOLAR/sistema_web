@@ -1,3 +1,24 @@
+	<i  id="btn_back" style="cursor: pointer;font-size: 21px;" class="fas fa-chevron-left"><span class="textBack" style="margin-left: 10px;">Retroceder</span></i>
+
+
+<div class="check-estado" style="padding:10px;margin-top: 10px;">
+	<p>Filtrar Por:</p>
+ <label class="checkFilter"> <input class="checkBoxFilter" type="checkbox" id="checkDisponible"> Disponibles</label>
+   <label  class="checkFilter"> <input class="checkBoxFilter"  type="checkbox" id="checkPrestado"> Prestado</label>
+   <label  class="checkFilter"> <input  class="checkBoxFilter" type="checkbox" id="checkDevolucion"> Devolucion</label>
+</div>
+
+
+ <div style="display: flex; justify-content: space-between;">
+ 	<button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Libro</button>
+		<div style="display:flex;width: 40%;justify-content: space-around;">
+		<button type="button" class="btn_add_data" id="btn-document" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-file-pdf"></i>Generar Documento</button>
+		 <button type="button" class="btn_add_data" id="btn-chart" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-chart-bar"></i>Generar Grafico</button>
+		</div>
+ </div>
+
+
+
 
 
 <div class="modal_agregar_cantidad">
@@ -37,7 +58,7 @@
 
         <div class="dniEstudiante">
          <label>  DNI del Alumno:  </label> <br>
-          <input id="DNI" class="DNI" type="text" placeholder="&nbsp;Ingresa Dni aquí...">
+          <input id="DNI" class="DNI" type="text" placeholder="&nbsp;Ingresa Dni aquí..." maxlength="8">
           </div>
 
         <div class="buscarEstudiante">
@@ -122,7 +143,6 @@
 
 
 
- <button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Libro</button>
 
 
 
@@ -144,20 +164,14 @@
 </div>
 
 
+	 <!-- <p id="mensaje"></p> -->
 
-
-<div class="check-estado" style="padding:10px;">
- <label> <input type="checkbox" id="checkDisponible" class="check_estado">Disponibles</label>
-   <label> <input type="checkbox" id="checkPrestado" class="check_estado">Prestado</label>
-   <label> <input type="checkbox" id="checkDevolucion" class="check_estado"> Devolucion</label>
-</div>
-
-	<button id="btn_back" style="margin-bottom: 10px;padding:10px;">Retroceder</button>
-
-	 <p id="mensaje"></p>
+	
 
 <div class="cont_Table">
+
 			 <table class="table-general">
+
 					 <thead>
 							 <tr>
 								 <th>N°</th>
@@ -169,14 +183,11 @@
 					 <tbody id="data_detalleMaterial_table">
 					 </tbody>
 			 </table>
+
 	 </div>
 
-
-					 </tbody>
-			 </table>
-	 </div>
-<div>
+<div style="width:100%;margin-top: 20px;" id="rowsEmptyMessage">
+		<span class="rowsEmpty">No hay Registros Aun!!</span>
+	</div>
 
 
-
-</div>
