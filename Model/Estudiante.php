@@ -23,8 +23,6 @@ class Estudiante
     $this->Seccion=$Seccion;
     $this->Usuario=$Usuario;
     $this->apoderado=$apoderado;
-
-
-}
+  }
 }
  ?>

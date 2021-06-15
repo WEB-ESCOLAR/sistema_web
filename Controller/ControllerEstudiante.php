@@ -134,6 +134,8 @@
 			$pagoApafa->actualizarEstadoPagoApafa(2);
 			$output=$estudianteModel->Create($estudiante,$pagoApafa); 
 			// echo json_encode(var_dump($pagoApafa));
+			// echo json_encode(var_dump($estudiante));
+
 		}
 		//END CREATE ESTUDIANTE
 

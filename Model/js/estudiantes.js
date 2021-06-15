@@ -45,6 +45,7 @@
                 data:datastring+"&action=AgregarEstudiante",
             }).done(function(response){
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
+                $('.modal').hide();
                 $('#formulario_alumno').hide();
 
             })
