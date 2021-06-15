@@ -103,6 +103,8 @@
            $('#DniEstudiante').css("background","rgba(0,0,0,0.10)");
            $('#form-apoderado').hide();
            $('#agregar_Estudiante').hide();
+           $('#titulo_Estudiante').hide();
+           $('#titulo_EditarEstudiante').show();
            $('#button_close_material').val(id);
          });
          

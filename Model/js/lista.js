@@ -65,6 +65,7 @@ $(document).ready(function(){
                                           <button class="btn-edit" name="${element.id}" id="detalleMaterial" ><i class="fas fa-eye"></i></button>
                                           ${
                                             nombreModulo == "GestionDeMateriales" ?
+                                            `<button class="btn-delete" id="${element.id}"><i class="fas fa-trash-alt"></i></button>`
                                             `<button class="btn-delete" id="${element.id}" ><i class="fas fa-trash-alt"></i></button>`
                                             : ''
                                           }
@@ -151,7 +152,31 @@ $(document).ready(function(){
                 })
             }
 
+            $(document).on('click','#checkDisponible',function(e){
+              console.log("awita");
+      
+             });
+             $(document).on('click','#checkPrestado',function(e){
+              console.log("awita2");
+      
+             });
+             $(document).on('click','#checkDevolucion',function(e){
+              console.log("awita3");
+      
+             });
 
+            function switchCaseCheck(type) {
+              switch (type) {
+                case "DISPONIBLE":
+                  break;
+                case "PRESTADO":
+                  break;
+                case "DEVOLUCION":
+                  break;
+                default:
+                  break;
+              }
+            }
             function mostrarDetalleMaterial(){
               console.log("listar detalle")
                const idMaterial =url.split("/")[5];

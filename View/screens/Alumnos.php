@@ -38,9 +38,9 @@
     <form  id="formulario_alumno" class="box_form" style="display: none;">
       <div style="padding:10px 10px;">
       <button id="button_close_material" class="btn_close"><i style="font-size: 20px;" class="fas fa-times"></i></button>
-      <h2 class="title_form">Registrar Alumno</h2>
-
       <h2 class="title_form" id="titulo_Estudiante">Registrar Alumno</h2>
+      <h2 class="title_form" id="titulo_EditarEstudiante">Editar Alumno</h2>
+   
       <div>
       </div>
       <div style="display:flex;width:100%;" class="form-group">
@@ -104,7 +104,6 @@
         <label class="label_group">Telefono del apoderado</label>
           <input value="111222333" id="telefonoApoderado" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..."></p>
           </div>
-
           <input  id="telefonoApoderado" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..."></p>
           </div>  
       </div>

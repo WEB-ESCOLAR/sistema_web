@@ -38,17 +38,16 @@ $(document).ready(function(){
             
             $(document).on('click','#detalleMaterial',function(e){
               e.preventDefault();
-                                           var url = window.location.href;
-            const nombreModulo =url.split("/")[4];
-              var id = $(this).attr("name");
-              console.log("detalle material is " + id);
-              if(nombreModulo === "GestionDeMateriales"){
-                  window.location="AdministrarMateriales/" + id;
-              }else{
-                console.log("detalle material")
+                var url = window.location.href;
+                const nombreModulo =url.split("/")[4];
+                var id = $(this).attr("name");
+                console.log("detalle material is " + id);
+                if(nombreModulo === "GestionDeMateriales"){
+                    window.location="AdministrarMateriales/" + id;
+                }else{
+                    console.log("detalle material")
                    window.location="DetalleMaterial/" + id;
-              }
-            
+                } 
            }) 
 
 

@@ -173,9 +173,8 @@
            })
        })
 
-       $(document).on('click','#checkDisponible',function(e){
-            console.log("clik");
-       })
+    
+
 
 
 
