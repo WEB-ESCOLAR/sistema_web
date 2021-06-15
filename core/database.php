@@ -1,5 +1,6 @@
 <?php
 
+
 	$typeDatase="PRO";
 	 if($typeDatase == "PROD"){
  	    DEFINE("HOST","31.170.166.146");
