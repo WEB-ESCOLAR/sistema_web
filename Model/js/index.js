@@ -6,8 +6,8 @@ $(document).ready(function(){
       var current=$("#content_sidebar").attr('class');
       console.log("action " + current);
       if(current == "contenido"){
-        $('.container').css("width","80%");
-        $('.header-container').css("width","100%");
+          $('.container').css("width","80%");
+          $('.header-container').css("width","100%");
           $('.body-container').css("width","100%");
           $('.logout').css("right","0");
 
@@ -74,8 +74,8 @@ $(document).ready(function(){
 
       $('#button_material').click(function(e){
             e.preventDefault();
-            $('.modal_agregar_cantidad').show();
-            $('#formulario_detalleMaterial').show();
+            $('.modal').show();
+            $('#formulario_material').show();
       })
 
       $(document).on('click','#buttonCloseDetalleMaterial',function(e){
