@@ -64,15 +64,15 @@
 		function listDetalleMaterial($idMaterial){ //obtener registros de la db.
 			$sql="SELECT * from detallematerial where idMaterial=$idMaterial";
 			$respuestaConsulta = $this->consulta($sql);
-			$row = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
-			if(!$row){
-				return 0;
-			}else{
+			// $row = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
+			// if(!$row){
+			// 	return 0;
+			// }else{
 				while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
 				$materiales[]=$filas;
 			}
 				return $materiales;
-			}
+			// }
 		}
 
 
@@ -119,9 +119,9 @@
 			return $result;
 		}
 
-		function agregarDetalle($cantidad){
+		function agregarDetalle($cantidad,$idMaterial){
 			$status="DISPONIBLE";
-			for ($i=0; $i < $cantidad ; $i++) {
+			for ($i=0; $i <= $cantidad ; $i++) {
 				$sql="insert into detallematerial(idMaterial, status, codigo) values (?,?,?)";
 				$response = $this->getConexion()->prepare($sql);
 				$response->bindParam(1,$idMaterial);
