@@ -13,7 +13,6 @@ $(document).ready(function(){
 
              $(document).on('click','#agregarMaterial',function(e){
                 e.preventDefault();
-                // console.log("click");
                 var param={
                     curso: $('#curso').val(),
                     grado: $('#grado').val(),
