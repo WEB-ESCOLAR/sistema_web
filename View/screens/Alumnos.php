@@ -111,8 +111,8 @@
 
       <div style="display:flex;margin-top:15px;">
         <button type="button" style="background: var(--danger)" id="button_close_material" class="btn_box">Cancelar</button>
-         <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
-         <button type="button" style="background: var(--primary)" id="editar_Estudiante" class="btn_box">Editar</button>
+       <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
+         <button type="button" style="background: var(--primary)" id="modificar_Estudiante" class="btn_box">Guardar</button>
       </div>
         <!-- <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
        

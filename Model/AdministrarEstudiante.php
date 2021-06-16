@@ -118,13 +118,13 @@
 		}
 
 		function updateAlumno(estudiante $estudiante){
-			$sql="UPDATE estudiante SET firstName=?,LastName=?,grado=?,section=? WHERE dni=?";
+		$sql="UPDATE estudiante SET firstName=:firstName,LastName=:LastName,grado=:grado,section=:section WHERE dni=:dni";
 			$response=$this->getConexion()->prepare($sql);
-			$response->bindParam(1,$estudiante->nombreEstudiante);
-			$response->bindParam(2,$estudiante->apellidoEstudiante);
-			$response->bindParam(3,$estudiante->gradoEstudiante);
-			$response->bindParam(4,$estudiante->seccionEstudiante);
-			$response->bindParam(5,$estudiante->DniEstudiante);
+			$response->bindParam(":firstName",$estudiante->Nombre);
+			$response->bindParam(":LastName",$estudiante->Apellido);
+			$response->bindParam(":grado",$estudiante->Grado);
+			$response->bindParam(":section",$estudiante->Seccion);
+			$response->bindParam(":dni",$estudiante->DNI);
 			$response->execute();
 		}
 		//END UPDATE ESTUDIANTE 
