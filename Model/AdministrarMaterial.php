@@ -35,15 +35,20 @@
 		}
 
 		function Create(Material $material){
-			$sql="INSERT INTO material(curse,grade,ReceptionDate,tipoMaterial,nameMaterial,amount) values(?,?,?,?,?,?)";
+			$sql="INSERT INTO material(idMaterial,curse,grade,ReceptionDate,tipoMaterial,nameMaterial,amount) values(?,?,?,?,?,?,?)";
 			$response = $this->getConexion()->prepare($sql);
-			$response->bindParam(1,$material->nombreCurso);
-			$response->bindParam(2,$material->grado);
-			$response->bindParam(3,$material->fechaRecepcion);
-			$response->bindParam(4,$material->tipoMaterial);
-			$response->bindParam(5,$material->nombreMaterial);
-			$response->bindParam(6,$material->cantidad);
-			$response->execute();
+			$response->bindParam(1,$material->id);
+			$response->bindParam(2,$material->nombreCurso);
+			$response->bindParam(3,$material->grado);
+			$response->bindParam(4,$material->fechaRecepcion);
+			$response->bindParam(5,$material->tipoMaterial);
+			$response->bindParam(6,$material->nombreMaterial);
+			$response->bindParam(7,$material->cantidad);
+			
+			$resultado=$response->execute();
+			if($resultado){
+				$this->agregarDetalle($material->cantidad, $material->id);
+			}
 		}
 
 		// function CreateDetalleMaterial(){
@@ -115,23 +120,35 @@
 		}
 
 		function agregarDetalle($cantidad){
-
+			$status="DISPONIBLE";
 			for ($i=0; $i < $cantidad ; $i++) {
-				$sql="insert into detallematerial(idMaterial, status) values (10, 1)";
+				$sql="insert into detallematerial(idMaterial, status, codigo) values (?,?,?)";
 				$response = $this->getConexion()->prepare($sql);
+				$response->bindParam(1,$idMaterial);
+				$response->bindParam(2,$status);
+				$response->bindParam(3,$this->generarCodigo());
 				$response->execute();
 			}
 		}
 
-		// function deleteDetalleMaterial($id){
-		// 	$sql="DELETE FROM detallematerial where idDetalleEliminar=?";
-		// 	$response = $this->getConexion()->prepare($sql);
-		// 	$response->bindParam(1,$id);
-		// 	$response->execute();
-		// }
+		function generarCodigo()
+		{
+		    $codigo = "";
+		    //longitud del codigo
+		    $longitud=5;
+		    //caracteres a ser utilizados
+		    $caracteres="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		    //el maximo de caracteres a usar
+		    $max=strlen($caracteres)-1;
+		    //creamos un for para generar el codigo aleatorio utilizando parametros min y max
+		    for($i=0;$i < $longitud;$i++)
+		    {
+		        $codigo.=$caracteres[rand(0,$max)];
+		    }
+		    //regresamos codigo como valor
+		    return strtoupper($codigo);
+		}
 
-	
-		/////AGREGAR DETALLE MATERIAL////
 		
 		/////ELIMINAR DETALLE MATERIAL///////
 			function DeleteDetalle($id){
