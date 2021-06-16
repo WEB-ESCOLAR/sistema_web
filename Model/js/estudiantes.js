@@ -37,27 +37,15 @@
 
           $(document).on('click','#agregar_Estudiante',function(e){
             e.preventDefault();
-            var param={
-                DniEstudiante: $('#DniEstudiante').val(),
-                nombreEstudiante: $('#nombreEstudiante').val(),
-                apellidoEstudiante: $('#apellidoEstudiante').val(),
-                gradoEstudiante: $('#gradoEstudiante').val(),
-                seccionEstudiante: $('#seccionEstudiante').val(),
-                DniApoderado: $('#DniApoderado').val(),
-                nombreApoderado: $('#nombreApoderado').val(),
-                apellidoApoderado: $('#apellidoApoderado').val(),
-                telefonoApoderado: $('#telefonoApoderado').val(),
-                action:"AgregarEstudiante"
-            }
-             console.log(param);
+            var datastring = $("#formulario_alumno").serialize();
+             console.log(datastring);
              $.ajax({
                 url:"Controller/ControllerEstudiante.php",
                 type:"POST",
-                data:param
+                data:datastring+"&action=AgregarEstudiante",
             }).done(function(response){
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
                 $('#formulario_alumno').hide();
-                location.reload();
 
             })
         });
