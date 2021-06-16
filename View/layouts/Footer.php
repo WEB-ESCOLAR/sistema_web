@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="<?php echo URL ?>/Model/js/estudiantes.js"></script>
 	<script type="text/javascript" src="<?php echo URL ?>/Model/js/lista.js"></script>
 	<script type="text/javascript" src="<?php echo URL ?>/Model/js/dashboard.js"></script>
+	<script type="text/javascript" src="<?php echo URL ?>/Model/js/detalleMateriales.js"></script>
 	<script type="text/javascript" src="<?php echo URL ?>/Model/js/index.js"></script>
 
 

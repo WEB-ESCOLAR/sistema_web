@@ -35,7 +35,7 @@ $(document).ready(function(){
           })
 
   
-     $(document).on('click','.print_apafa',function(e){
+     $(document).on('click','.btn-print',function(e){
              e.preventDefault();
               var name = $(this).attr("name");
               Swal.fire({
@@ -90,9 +90,9 @@ $(document).ready(function(){
                var datastring = $("#formulario_apoderado").serialize();
                const dni = $('#dni').val();
                const param={
-                    nombre:   $('#nombre').val(),
-                    apellido :  $('#apellido').val(),
-                     telefono : $('#telefono').val(),
+                    nombre:    $('#nombre').val(),
+                    apellido : $('#apellido').val(),
+                    telefono : $('#telefono').val(),
                     dni : $('#dni').val(),
                     action :"UpdateApoderado"
                }

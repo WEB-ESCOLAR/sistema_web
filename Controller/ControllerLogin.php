@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	switch($action){
@@ -13,8 +13,6 @@
 			break;
 	}
 
-	
-	
 	// require_once("../Model/Material.php");
 
 	function updateStateUser($id,$state){
@@ -25,6 +23,7 @@
 
 	function login(){
 		require_once("../Model/AdministrarUsuario.php");
+		//date_default_timezone_set('America/Lima');
 		$outpurResponse = new AdministrarUsuario();
 		$email = $_REQUEST["email"];
 		$password = $_REQUEST["password"];
@@ -43,10 +42,10 @@
 		}else{
 			echo json_encode("*El correo Ingresado no coincide");
 		}
-		
+
 
 	}
-	
+
 	function logoutUser(){
 		 session_start();
 		$idUser = $_SESSION["id"];
