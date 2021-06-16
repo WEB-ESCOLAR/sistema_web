@@ -10,6 +10,12 @@ class Apoderado
   var $celular;
 
    function __construct($dni,$nombre,$apellido,$celular)
+  var $DniApoderado;
+  var $nombreApoderado;
+  var $apellidoApoderado;
+  var $telefonoApoderado;
+  
+  function __construct($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado)
   {
     $this->dni=$dni;
     $this->nombre=$nombre;

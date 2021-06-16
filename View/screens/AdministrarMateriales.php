@@ -178,6 +178,7 @@
 
 <div class="cont_Table">
 
+			 <div id="tableDefault">
 			 <table class="table-general">
 
 					 <thead>
@@ -191,8 +192,13 @@
 					 <tbody id="data_detalleMaterial_table">
 					 </tbody>
 			 </table>
+			 </div>
+			 <div id="tableFilter">
+			 
+			 </div>
 
 	 </div>
+	 
 
 <div style="width:100%;margin-top: 20px;" id="rowsEmptyMessage">
 		<span class="rowsEmpty">No hay Registros Aun!!</span>
