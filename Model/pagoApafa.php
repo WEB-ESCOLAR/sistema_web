@@ -4,18 +4,31 @@
  */
 class PagoApafa
 {
-  var $idPagoApafa;
-  var $estadoPagoApafa;
-  var $fechaPagoApafa;
-  var $DniApoderado;
+  var $codigoApafa;
+  var $apoderado;
+  var $estado;
+  var $fechaPago;
 
-
-  function __construct($idPagoApafa,$estadoPagoApafa,$fechaPagoApafa,$DniApoderado)
+  function __construct($codigoApafa,$apoderado)
   {
-    $this->idPagoApafa=$idPagoApafa;
-    $this->estadoPagoApafa=$estadoPagoApafa;
-    $this->fechaPagoApafa=$fechaPagoApafa;
-    $this->DniApoderado=$DniApoderado;
+    $this->codigoApafa=$codigoApafa;
+    $this->apoderado=$apoderado;
+  }
+  
+  public function setEstado($estado){
+    return $this->estado = $estado;
+    }
+  public function setFechaPago($fechaPago){
+    return $this->fechaPago = $fechaPago;
+     }
+
+  public function actualizarEstadoPagoApafa($estado){
+    if($estado==1){
+      $this->setEstado("PAGO");
+    }else{
+      $this->setEstado("NO PAGO");
+      $this->setFechaPago(date("Y-m-d"),time());
+    }
   }
 }
  ?>

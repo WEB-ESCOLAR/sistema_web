@@ -4,17 +4,17 @@
  */
 class Apoderado
 {
-  String $DniApoderado;
-  int $nombreApoderado;
-  var $apellidoApoderado;
-  var $telefonoApoderado;
+  var $dni;
+  var $nombre;
+  var $apellido;
+  var $celular;
 
-  function __construct($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado)
+   function __construct($dni,$nombre,$apellido,$celular)
   {
-    $this->DniApoderado=$DniApoderado;
-    $this->nombreApoderado=$nombreApoderado;
-    $this->apellidoApoderado=$apellidoApoderado;
-    $this->telefonoApoderado=$telefonoApoderado;
+    $this->dni=$dni;
+    $this->nombre=$nombre;
+    $this->apellido=$apellido;
+    $this->celular=$celular;
   }
 }
 

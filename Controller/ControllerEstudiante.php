@@ -21,6 +21,7 @@
 			break;
 		case "AgregarEstudiante":
 			agregarEstudiante();
+			break;
 		case "BuscarGradoAndSection":
 			fetchAllSectionAndGrade();
 			break;
@@ -116,23 +117,23 @@
 			require_once("../Model/Apoderado.php");
 			require_once("../Model/pagoApafa.php");
 			session_start();
-			$idUser = $_SESSION["id"];
+			$Usuario = $_SESSION["id"];
 			$estudianteModel = new AdministrarEstudiante();
-			$DniEstudiante = $_POST["DniEstudiante"];
-			$nombreEstudiante = $_POST["nombreEstudiante"];
-			$apellidoEstudiante=$_POST["apellidoEstudiante"];
-			$gradoEstudiante = $_POST["gradoEstudiante"];
-			$seccionEstudiante = $_POST["seccionEstudiante"];
-			$DniApoderado = $_POST["DniApoderado"];
-			$nombreApoderado = $_POST["nombreApoderado"];
-			$apellidoApoderado = $_POST["apellidoApoderado"];
-			$telefonoApoderado = $_POST["telefonoApoderado"];
-			$estadoPagoApafa = "NO PAGO";
-			$estudiante = new Estudiante(null,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,intval($idUser),$DniApoderado);
-			$apoderado=new Apoderado($DniApoderado,$nombreApoderado,$apellidoApoderado,$telefonoApoderado);
-			$pagoApafa= new PagoApafa(null,$estadoPagoApafa,null,$DniApoderado);
-			$output=$estudianteModel->Create($apoderado,$estudiante,$pagoApafa);
-			echo json_encode(var_dump($pagoApafa,$apoderado)); 
+			$DNI = $_POST["DNI"];
+			$Nombre = $_POST["Nombre"];
+			$Apellido=$_POST["Apellido"];
+			$Grado = $_POST["Grado"];
+			$Seccion = $_POST["Seccion"];
+			$dni = $_POST["dni"];
+			$nombre = $_POST["nombre"];
+			$apellido = $_POST["apellido"];
+			$celular = $_POST["celular"];
+			$apoderado=new Apoderado($dni,$nombre,$apellido,$celular);
+			$estudiante = new Estudiante(null,$DNI,$Nombre,$Apellido,$Grado,$Seccion,intval($Usuario),$apoderado);
+			$pagoApafa= new PagoApafa(null,$apoderado);
+			$pagoApafa->actualizarEstadoPagoApafa(2);
+			$output=$estudianteModel->Create($estudiante,$pagoApafa); 
+			// echo json_encode(var_dump($pagoApafa));
 		}
 		//END CREATE ESTUDIANTE
 
