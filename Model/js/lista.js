@@ -160,28 +160,61 @@ $(document).ready(function(){
 
             //
             $(document).on('click','#checkDisponible',async function(e){
+                let val = $(this).val();
+                  if( $( this ).is( ':checked' ) ){
               const listData = await detalleMaterialFilter(parametroDetalleMaterial.DISPONIBLE);
-                console.log("DISPONIBLE " + listData)
+                // console.log("DISPONIBLE " + listData)
                 $('#tableDefault').hide();
-
                 $('#tableFilter').show();
+                $('#btn-document').prop("disabled",true);
+                $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");
                 mostrarDetalleMaterialHeader(parametroDetalleMaterial.DISPONIBLE)
                 mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.DISPONIBLE)
+            }
+                else{
+                  $('#tableDefault').show();
+                  $('#tableFilter').hide();
+                  $('#btn-document').prop("disabled",true);
+                  // $('#tableFilter').reload();
+                }
              });
              $(document).on('click','#checkPrestado',async function(e){
+              let val = $(this).val();
+              if( $( this ).is( ':checked' ) ){
               const listData =  await detalleMaterialFilter(parametroDetalleMaterial.PRESTADO);
                 console.log("prestado " + listData)
                 $('#tableDefault').hide();
                 $('#tableFilter').show();
+                $('#btn-document').prop("disabled",false);
+                $('#btn-document').css("background","#C1121F");
                 mostrarDetalleMaterialHeader(parametroDetalleMaterial.PRESTADO)
-                mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.PRESTADO)
+                mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.PRESTADO)}
+                else{
+                  $('#tableDefault').show();
+                  $('#tableFilter').hide();
+                  $('#btn-document').prop("disabled",true);
+                  $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");
+                }
              });
 
 
              $(document).on('click','#checkDevolucion', async function(e){
+              let val = $(this).val();
+              if( $( this ).is( ':checked' ) ){
               const listData =await detalleMaterialFilter(parametroDetalleMaterial.DEVUELTO);
               console.log("devolucion " + listData)
-              mostrarDetalleMaterialHeader(listData,parametroDetalleMaterial.DEVUELTO)
+              $('#tableDefault').hide();
+              $('#tableFilter').show();
+              $('#btn-document').prop("disabled",false);
+              $('#btn-document').css("background","#C1121F");
+              mostrarDetalleMaterialHeader(parametroDetalleMaterial.DEVUELTO)
+              mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.DEVUELTO)
+              }else{
+                $('#tableDefault').show();
+                $('#tableFilter').hide(); 
+                $('#btn-document').prop("disabled",true);  
+                $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");            
+              }
              });
 
            async function detalleMaterialFilter(type){
@@ -197,39 +230,61 @@ $(document).ready(function(){
             //default : eliminar
             //checkbox disponible : accion eliminar,otorgar libro : codigoDetalle,estado
             //checkbox prestado : no hay acciones :  codigoDetalle , nombre y apellido ,grado y seccion
-            //checkbox devolucion : codigoDetalle,estado
+            //checkbox devolucion : idDevolucion,nombre y apellido,grado,seccion,codigoDetalle,fechahora de material devuelto y accion ver motivo
 
             //funcion de filtro
-            function mostrarDetalleMaterialHeader(type){
-                $('#tableFilter').append(
-                          `
-                          <table class="table-general">
-                          <thead>
-                              <tr>
-                              ${
-                                type == parametroDetalleMaterial.PRESTADO ?
-                                `<th>ID</th>
-                                 <th>Nombre y Apellido</th>
-                                 <th>Grado</th>
-                                 <th>Seccion</th>
-                                 <th>Estado</th>
-                                 <th>Acciones</th>
-                                  `
-                                 :
-                                 `<th>ID</th>
-                                 <th>Codigo Detalle</th>
-                                 <th>Estado</th> 
-                                  <th>Acciones</th>
-                                 `
-                                }
-                              </tr>
-                          </thead>
-                          <tbody id="mostrarDataFilter">
-                          </tbody>
-                        </table>
-                          `       
-                  )
+            function headerShow(type){
+              let header
+              switch(type){
+                case parametroDetalleMaterial.DISPONIBLE:
+                  header=`
+                  <th>ID</th>
+                  <th>Codigo Detalle</th>
+                  <th>Estado</th> 
+                  <th>Acciones</th>
+                  `
+                  break;
+                case parametroDetalleMaterial.PRESTADO:
+                  header=`
+                  <th>ID</th>
+                  <th>Nombre y Apellido</th>
+                  <th>Grado</th>
+                  <th>Seccion</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                  `
+                  break;
+                case parametroDetalleMaterial.DEVUELTO:
+                 header= `
+                  <th>ID</th>
+                <th>Nombre y Apellido</th>
+               <th>Grado</th>
+               <th>Seccion</th>
+               <th>Fecha Hora de Devolucion</th>
+                <th>Acciones</th>
+               `
+               break;
+               default:
+               break;
+                 
+              }   
+              console.log("header"+header);
+              return header;
+
             }
+            function mostrarDetalleMaterialHeader(type){
+              $('#tableFilter').html(
+                        `
+                        <table class="table-general">
+                        <thead id="">
+                            ${headerShow(type)}
+                        </thead>
+                        <tbody id="mostrarDataFilter">
+                        </tbody>
+                      </table>
+                        `       
+                )
+          }
 
 
           
@@ -243,32 +298,57 @@ $(document).ready(function(){
                           `
                           <tr>
                           <td>${count++}</td>
-                          ${type === parametroDetalleMaterial.PRESTADO ?
-                            `
-                            <td>${element.firstName} ${element.LastName}</td>
-                            <td>${element.grado}</td>
-                            <td>${element.section}</td>
-                            `
-                          :
-                          `<td>${element.idDetalleMaterial}</td>`
-                          }
-                            <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
-                            <td>
-                            <div class=buttons_table>
-                              ${type == parametroDetalleMaterial.DISPONIBLE ? 
-                                `<button class="btn_VerMotivo" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="">Eliminar</i></button>`
-                              : `${type == parametroDetalleMaterial.DEVUELTO}`  ?
-                              `<button class="btn_VerMotivo" id="mostrar_motivo" name="${element.idDevolucion}"><i class="">Ver Motivo</i></button>`
-                              : ''
-                              }
-                            </div>
-                            </td>
+                          ${bodyShow(element,type)}
                           </tr>
                           `
                           );
              })
             }
+              function bodyShow(element,type){
+                let body
+                switch(type){
+                  case parametroDetalleMaterial.DISPONIBLE:
+                    body=`
+                    <td>${element.codigo}</td>
+                    <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
+                   <td><div class=buttons_table>
+                    <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn_OtorgarLibro" id="prestarLibro" name="${element.idDetalleMaterial}"style="background: var(--teal-light)"><i class="">Otorgar Libro</i></button>
+                    </div>  </td>   
+                                            
+                    `
+                    break;
+                  case parametroDetalleMaterial.PRESTADO:
+                    body=`
+                    <td>${element.firstName} ${element.LastName}</td>
+                    <td>${element.grado}</td>
+                    <td>${element.section}</td>
+                    <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
+                   <td>
+                    <button class="btn_Devolucion" id="mostrar_devolucion" value="${element.idEstudiante}" name="${element.idDetalleMaterial}"style="background: var(--crimson);"><i class="">Devolver</i></button>
+                  </td>
 
+                    `
+                    break;
+                  case parametroDetalleMaterial.DEVUELTO:
+                   body= `
+                 <td>${element.firstName} ${element.LastName}</td>
+                 <td>${element.grado}</td>
+                 <td>${element.section}</td>
+                 <td>${element.fechaHoraDevolucion}</td>
+                 <td>
+                 <button class="btn_OtorgarLibro" id="mostrar_motivo" name="${element.idDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>                              
+                 </td>
+
+                 `
+                 break;
+                 default:
+                 break;
+                   
+                }   
+                 return body;
+                
+              }
 
 
             //detalle materiales defalt - revision reutilizacion codigo
@@ -292,12 +372,12 @@ $(document).ready(function(){
                                       `
                                       <tr>
                                       <td>${count++}</td>
-                                      <td>${element.idDetalleMaterial}</td>
+                                      <td>${element.codigo}</td>
                                          <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
                                         <td>
                                         <div class=buttons_table>
                                
-                                        <button class="btn_VerMotivo" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="">Eliminar</i></button>
+                                        <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
 
                                          </div>
                                         </td>
