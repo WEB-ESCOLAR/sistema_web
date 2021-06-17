@@ -163,15 +163,15 @@
 		$idUser = $_SESSION["id"];
 		$administrarEstudiante = new AdministrarEstudiante();
 		$idEstudiante= $_POST["idEstudiante"];
-		$DniEstudiante = $_POST["DniEstudiante"];
-		$nombreEstudiante = $_POST["nombreEstudiante"];
-		$apellidoEstudiante = $_POST["apellidoEstudiante"];
-		$seccionEstudiante= $_POST["seccionEstudiante"];
-		$gradoEstudiante= $_POST["gradoEstudiante"];
-		$DniApoderado=$_POST["DniApoderado"];
-		$estudiante = new Estudiante($idEstudiante,$DniEstudiante,$nombreEstudiante,$apellidoEstudiante,$gradoEstudiante,$seccionEstudiante,intval($idUser),$DniApoderado);
+		$DNI = $_POST["DNI"];
+		$Nombre = $_POST["Nombre"];
+		$Apellido=$_POST["Apellido"];
+		$Grado = $_POST["Grado"];
+		$Seccion = $_POST["Seccion"];
+		$apoderado=$_POST["apoderado"];
+		$estudiante = new Estudiante($idEstudiante,$DNI,$Nombre,$Apellido,$Grado,$Seccion,intval($Usuario),$apoderado);
 	 	$affect = $administrarEstudiante->updateAlumno($estudiante);
-		echo json_decode(var_dump($estudiante));
+		// echo json_decode(var_dump($estudiante));
 	}
 	//END UPDATE ESTUDIANTE	
 
