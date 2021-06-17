@@ -29,7 +29,7 @@ $(document).ready(function(){
              mostrarDetalleMaterial();
              break;
         case "Alumnos":
-            mostrarEstudiantes();
+            mostrarEstudiantes(null,null);
             break;
         default:
           break;
@@ -127,12 +127,61 @@ $(document).ready(function(){
                                   })
           }
 
-           function mostrarEstudiantes(){
+          function mostrarTotalEstudiantes(grado,seccion){
+            console.log("mostrar")
+          const parametro ={
+            grade:grado,
+            section:seccion,
+            action:"MostrarTotalEstudiantesPorGradoYSeccion"
+          }
+          console.log("Parametro es"+JSON.stringify(parametro));
+          $.ajax({
+            url:"Controller/ControllerEstudiante.php",
+            dataType: 'json', 
+            data: parametro
+          }).done(function(response){
+              console.log("TOTAL DE ESTUDIANTES"+ response);
+              $('#totalStudentsforGradeandSection').text(response);
+          })
+        }
+
+          $('#search_student').click(function(e){
+            e.preventDefault();
+            // const param={
+              const grade = $('#search_grade_student').val();
+               const  section = $('#search_section_student').val();
+            if(grade != "null" && section != "null"){
+              $('#response_table_alumnos').empty()
+              mostrarEstudiantes(grade,section)
+              mostrarTotalEstudiantes(grade,section)
+            }else{
+                console.log("seleccionar grado  yseccion") //aqui alerta jair
+            }
+          });
+
+          $('#refresh_student').click(function(e){
+            e.preventDefault();
+            $('#response_table_alumnos').empty()
+            mostrarEstudiantes(null,null)
+            $('#totalStudentsforGradeandSection').empty();
+            $("#search_section_student").val("null")
+            $('#search_grade_student').val("null")
+          });
+          // refresh_student
+
+           function mostrarEstudiantes(grado,seccion){
+             const parametro ={
+               grade:grado,
+               section:seccion,
+               action:"MostrarEstudiante"
+             }
+             console.log(parametro)
                 $.ajax({
                     url:"Controller/ControllerEstudiante.php",
-                    data:{action:"MostrarEstudiante"},
+                    data:parametro
                 })
                 .done(function(response){
+                  console.log(response)
                     const respuestaArray = JSON.parse(response)
                         let count=1;
                              respuestaArray.forEach((element)=>{

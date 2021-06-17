@@ -6,7 +6,7 @@
         <div style="width:50%;">
               <label class="label_group">Grado </label>
                 <select  id="search_grade_student" class="input_txt_50">
-                 <option  value="Seleccione el grado" >Seleccione el grado</option>
+                 <option  value="null" >Seleccione el grado</option>
                 <option  value="Primer">Primer</option>
                 <option  value="Segundo">Segundo</option>
                 <option  value="Tercero">Tercero</option>
@@ -19,17 +19,17 @@
       <div style="width:50%;">
          <label class="label_group">Seccion</label>
             <select  id="search_section_student" class="input_txt_50">
-                <option value="Seleccione la seccion">Seleccione la seccion</option>
+                <option value="null">Seleccione la seccion</option>
                   <option value="A">A</option>
                    <option value="B">B</option>
            </select>
       </div>
       <button class="button_search" id="search_student">Buscar</button>
-       <button class="button_search" style="margin-left:10px;" id="search_student">Refrescar</button>
+       <button class="button_search" style="margin-left:10px;" id="refresh_student">Refrescar</button>
       </div>
-      <div class="total_filter" style="display:flex;">
-          <label>Total de Alumnos Por Aula y Seccion:</label> 
-            <p id="totalStudentsforGradeandSection">&nbsp :'v</p>
+      <div class="total_filter">
+          <p>Total de Alumnos Por Aula y Seccion: <span id="totalStudentsforGradeandSection">0</span></p> 
+           
       </div>
   </div>
 

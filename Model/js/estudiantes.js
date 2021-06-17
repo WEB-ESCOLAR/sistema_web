@@ -54,37 +54,40 @@
 
 
 // raaaaaaaaaa
-        $('#search_student').click(function(e){
-        e.preventDefault();
-        const param={
-          grade: $('#search_grade_student').val(),
-          section: $('#search_section_student').val(),
-          action: 'BuscarGradoAndSection'
-        }
-        $.ajax({
-          url:"Controller/ControllerEstudiante.php",
-          type:"POST",
-          data:param
-        }).done(function(response){
-          console.log("resultado esperado es " + response)
-        })
-      });
+      //   $('#search_student').click(function(e){
+      //   e.preventDefault();
+      //   const param={
+      //     grade: $('#search_grade_student').val(),
+      //     section: $('#search_section_student').val(),
+      //     action: 'BuscarGradoAndSection'
+      //   }
+      //   $.ajax({
+      //     url:"Controller/ControllerEstudiante.php",
+      //     type:"POST",
+      //     data:param
+      //   }).done(function(response){
+      //     console.log("resultado esperado es " + response)
+      //   })
+      // });
       //buscar alumno grado y seccion , action : BuscarGradoAndSection
       //mostrar total estudiantes , action : MostrarTotalEstudiantesPorGradoYSeccion
 
-          function mostrarTotalEstudiantes(param){
-          const action = {action:"MostrarTotalEstudiantesPorGradoYSeccion"}
-          Object.assign(param,action)
-          console.log("Parametro es"+JSON.stringify(param));
+          function mostrarTotalEstudiantes(grado,seccion){
+            console.log("mostrar")
+          const parametro ={
+            grade:grado,
+            section:seccion,
+            action:"MostrarTotalEstudiantesPorGradoYSeccion"
+          }
+          console.log("Parametro es"+JSON.stringify(parametro));
           $.ajax({
             url:"Controller/ControllerEstudiante.php",
             dataType: 'json', 
-            data: param
+            data: parametro
           }).done(function(response){
               console.log("TOTAL DE ESTUDIANTES"+ response);
               $('#totalStudentsforGradeandSection').text(response);
           })
-                                   
         }
 
 

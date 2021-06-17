@@ -10,6 +10,9 @@
 		case "DetalleApoderado":
 			detailApoderado();
 			break;
+		case "MostrarTotalEstudiantesPorGradoYSeccion":
+			totalForSectionAndGrade();
+			break;
 		case "UpdateApoderado":
 			updateApoderado();
 			break;
@@ -84,9 +87,15 @@
 	function fetchAllEstudiante(){
 		require_once("../Model/AdministrarEstudiante.php");
 		$estudianteModel = new AdministrarEstudiante();
-		$resultado = $estudianteModel->listaEstudiantes();
+		$grade = $_GET["grade"];
+		$section = $_GET["section"];
+		if(empty($grade) && empty($section)){
+			// echo json_encode(1);
+			$resultado = $estudianteModel->listaEstudiantes(null,null);
+		}else{
+			$resultado = $estudianteModel->listaEstudiantes($grade,$section);
+		}
 		echo json_encode($resultado);
-
 	}
 	function totalForSectionAndGrade(){
 		require_once("../Model/AdministrarEstudiante.php");
