@@ -164,16 +164,16 @@
            })
            .done(function(response){
              //$('.modal').reload();
-             $('.btn-atras').val(response.idEstudiante);
-             $('#nombreEstudiante').val(' '+response.firstName);
-             $('#apellidoEstudiante').val(' '+response.LastName);
-             $('#gradoEstudiante').val(' '+response.grado);
-             $('#seccionEstudiante').val(' '+response.section);
-             $('.btn-entregarLibro').prop("disabled",false);
+               $('.btn-atras').val(response.idEstudiante);
+               $('#nombreEstudiante').val(' '+response.firstName);
+               $('#apellidoEstudiante').val(' '+response.LastName);
+               $('#gradoEstudiante').val(' '+response.grado);
+               $('#seccionEstudiante').val(' '+response.section);
+               $('.btn-entregarLibro').prop("disabled",false);
            })
        })
 
-    
+
 
 
 

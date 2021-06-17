@@ -1,11 +1,9 @@
 <?php
-/**
- *
- */
+
 class Apoderado
 {
-  String $DniApoderado;
-  int $nombreApoderado;
+  var $DniApoderado;
+  var $nombreApoderado;
   var $apellidoApoderado;
   var $telefonoApoderado;
 

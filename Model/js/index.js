@@ -107,9 +107,17 @@ $(document).ready(function(){
       $('#button_alumno').click(function(e){
             e.preventDefault();
             $('.modal').show();
-            $('#editar_Estudiante').hide();
-            $('#titulo_EditarEstudiante').hide();
+            $('#modificar_Estudiante').hide();
+            $('#agregar_Estudiante').show();
+            $("#titulo_Estudiante").show();
+            $("#titulo_EditarEstudiante").hide();
             $('#formulario_alumno').show();
+            $('#form-apoderado').show();
+            $('#nombreEstudiante').val(null);
+            $('#apellidoEstudiante').val(null);
+            $('#DniEstudiante').val(null);
+            $('#gradoEstudiante').val("Seleccione el grado");
+            $('#seccionEstudiante').val("Seleccione la seccion");
       })
 
       $(document).on('click','#button_close_prestamo',function(e){
@@ -190,4 +198,3 @@ for (let CheckBox of document.getElementsByClassName('checkBoxFilter')){
   }
 }
 // }
-

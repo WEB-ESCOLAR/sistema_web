@@ -34,7 +34,7 @@ $(document).ready(function(){
 
           })
 
-  
+
      $(document).on('click','.btn-print',function(e){
              e.preventDefault();
               var name = $(this).attr("name");
@@ -80,7 +80,7 @@ $(document).ready(function(){
                  $('#dni').prop("readonly",true);
                  $('#dni').css("background","rgba(0,0,0,0.10)");
                });
-               
+
             })
 
 
@@ -96,7 +96,7 @@ $(document).ready(function(){
               //       dni : $('#dni').val(),
               //       action :"UpdateApoderado"
               //  }
-               console.log(datastring);
+               console.log("datastring: "+datastring);
                  $.ajax({
                   url:"Controller/ControllerEstudiante.php",
                   type:"POST",
@@ -107,11 +107,11 @@ $(document).ready(function(){
                   $('#formulario_apoderado').hide();
                   $('.modal').hide();
                   setTimeout(function(){
-                    location.reload();
+                    //location.reload();
                   },2000)
                })
             })
 
-         
+
 
 })

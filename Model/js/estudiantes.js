@@ -37,28 +37,17 @@
 
           $(document).on('click','#agregar_Estudiante',function(e){
             e.preventDefault();
-            var param={
-                DniEstudiante: $('#DniEstudiante').val(),
-                nombreEstudiante: $('#nombreEstudiante').val(),
-                apellidoEstudiante: $('#apellidoEstudiante').val(),
-                gradoEstudiante: $('#gradoEstudiante').val(),
-                seccionEstudiante: $('#seccionEstudiante').val(),
-                DniApoderado: $('#DniApoderado').val(),
-                nombreApoderado: $('#nombreApoderado').val(),
-                apellidoApoderado: $('#apellidoApoderado').val(),
-                telefonoApoderado: $('#telefonoApoderado').val(),
-                action:"AgregarEstudiante"
-            }
-             console.log(param);
+            var datastring = $("#formulario_alumno").serialize();
+             console.log(datastring);
              $.ajax({
                 url:"Controller/ControllerEstudiante.php",
                 type:"POST",
-                data:param
+                data:datastring+"&action=AgregarEstudiante",
             }).done(function(response){
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
+                $('.modal').hide();
                 $('#formulario_alumno').hide();
-                location.reload();
-
+                //location.reload();
             })
         });
 
@@ -76,14 +65,15 @@
         }).done(function(response){
           console.log("resultado esperado es " + response)
         })
-        
+
       });
       $(document).on('click','#editar-estudiante',function(e){ // mmodal editar
         e.preventDefault();
         $('#formulario_alumno').show();
-        $('#editar_Estudiante').show();
-        $("#titulo_Estudiante").val("Editar Estudiante")
-
+        $('#form-apoderado').hide();
+        $('#modificar_Estudiante').show();
+        $("#titulo_Estudiante").hide();
+        $("#titulo_EditarEstudiante").show();
          var id = $(this).attr("name");
            const param={
               "id":id,
@@ -101,43 +91,32 @@
            $('#DniEstudiante').val(response.dni);
            $('#gradoEstudiante').val(response.grado);
            $('#seccionEstudiante').val(response.section);
-           $('#DniEstudiante').prop("disabled",true);
+           //$('#DniEstudiante').prop("disabled",true);
+           $('#DniEstudiante').prop("readonly",true);
            $('#DniEstudiante').css("background","rgba(0,0,0,0.10)");
            $('#form-apoderado').hide();
            $('#agregar_Estudiante').hide();
-          //  $('#titulo_Estudiante').hide();
-          //  $('#titulo_EditarEstudiante').show();
            $('#button_close_material').val(id);
          });
-         
+
       });
 
-      $(document).on('click','#editar_Estudiante',function(e){
+      $(document).on('click','#modificar_Estudiante',function(e){
         e.preventDefault();
-         var datastring = $("#formulario_alumno").serialize();
-         const dni = $('#DniEstudiante').val();
-         const param={
-              idEstudiante: $('#button_close_material').val(),
-              nombreEstudiante:       $('#nombreEstudiante').val(),
-              apellidoEstudiante :    $('#apellidoEstudiante').val(),
-              gradoEstudiante :       $('#gradoEstudiante').val(),
-              seccionEstudiante :     $('#seccionEstudiante').val(),
-              DniEstudiante :         $('#DniEstudiante').val(),
-              action :"UpdateEstudiante"
-         }
-         console.log(param);
+        var datastring = $("#formulario_alumno").serialize();
+         console.log(datastring);
            $.ajax({
             url:"Controller/ControllerEstudiante.php",
             type:"POST",
-            data:param,
+            data:datastring+"&action=UpdateEstudiante",
          }).done(function(response){
-            console.log("respone is " + response )
+            console.log("response is " + response )
             alertSuccess("Datos del Estudiante Actualizado Correctamente","");
-            $('#formulario_alumno').hide();
+            $('#form_estudiante').hide();
             $('.modal').hide();
             setTimeout(function(){
-            // location.reload();
-            })
+            location.reload();
+            },2000)
          })
       })
 

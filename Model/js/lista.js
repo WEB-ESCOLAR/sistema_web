@@ -156,17 +156,17 @@ $(document).ready(function(){
             $(document).on('click','#checkDisponible',function(e){
               switchCaseCheck("DISPONIBLE");
               // console.log("awita");
-      
+
              });
              $(document).on('click','#checkPrestado',function(e){
               switchCaseCheck("PRESTADO");
               // console.log("awita2");
-      
+
              });
              $(document).on('click','#checkDevolucion',function(e){
               switchCaseCheck("DEVOLUCION");
               // console.log("awita3");
-      
+
              });
 
             function switchCaseCheck(type) {
