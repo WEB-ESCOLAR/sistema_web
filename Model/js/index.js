@@ -116,6 +116,8 @@ $(document).ready(function(){
             $('#nombreEstudiante').val(null);
             $('#apellidoEstudiante').val(null);
             $('#DniEstudiante').val(null);
+            $('#DniEstudiante').prop("readonly",false);
+            $('#DniEstudiante').css("background","#0000");
             $('#gradoEstudiante').val("Seleccione el grado");
             $('#seccionEstudiante').val("Seleccione la seccion");
       })
