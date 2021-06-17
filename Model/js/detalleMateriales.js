@@ -57,7 +57,7 @@
              data:param
          }).done(function(response){
              console.log("respone is " + response )
-            //  location.reload();
+             location.reload();
 
          })
        })
@@ -67,6 +67,7 @@
          const param={
              idDetaMate:$('#button_close_devolucion').val(),
              motivo:$('#motivo').val(),
+             idEstudiante:$("#mostrar_devolucion").val(),
              action:"Devolver"
          }
          console.log(param);
@@ -175,7 +176,9 @@
            })
        })
 
-    
+    $(document).on('click','#btn-document',function(e){
+        console.log("generar pdf");
+    })
 
 
 

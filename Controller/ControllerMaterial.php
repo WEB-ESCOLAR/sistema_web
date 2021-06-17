@@ -111,7 +111,8 @@
 		$idDetaMate = $_POST["idDetaMate"];
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
-		$materialModel->devolverMaterial($idDetaMate,$fecha,$motivo);
+		$idEstudiante=$_POST["idEstudiante"];
+		$materialModel->devolverMaterial($fecha,$motivo,$idEstudiante,$idDetaMate);
 		echo json_encode("Devolviendo");
 	}
 

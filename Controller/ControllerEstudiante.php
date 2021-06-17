@@ -88,7 +88,14 @@
 		echo json_encode($resultado);
 
 	}
-
+	function totalForSectionAndGrade(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$section = $_GET["section"];
+		$grade = $_GET["grade"];
+		$totalEstudiante = new AdministrarEstudiante();
+		$students = $totalEstudiante->totalStudentsForGradeAndSection($grade,$section);
+		echo json_encode($students); 
+	}
 
 	// require_once("../Model/Material.php");
 

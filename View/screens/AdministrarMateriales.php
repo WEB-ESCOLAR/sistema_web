@@ -116,7 +116,7 @@
 		          </div>
 
           <div style="display:flex;margin-top:10px">
-		       <button type="button" style="background: var(--danger)" class="btn_box" >Atras</button>
+		       <button type="button" style="background: var(--danger)" class="btn_box" id="idEstuAtras">Atras</button>
 		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="devolverLibro" value="Guardar">
 		      </div>
 

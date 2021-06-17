@@ -50,6 +50,9 @@
 
             })
         });
+
+
+
 // raaaaaaaaaa
         $('#search_student').click(function(e){
         e.preventDefault();
@@ -65,8 +68,26 @@
         }).done(function(response){
           console.log("resultado esperado es " + response)
         })
-        
       });
+      //buscar alumno grado y seccion , action : BuscarGradoAndSection
+      //mostrar total estudiantes , action : MostrarTotalEstudiantesPorGradoYSeccion
+
+          function mostrarTotalEstudiantes(param){
+          const action = {action:"MostrarTotalEstudiantesPorGradoYSeccion"}
+          Object.assign(param,action)
+          console.log("Parametro es"+JSON.stringify(param));
+          $.ajax({
+            url:"Controller/ControllerEstudiante.php",
+            dataType: 'json', 
+            data: param
+          }).done(function(response){
+              console.log("TOTAL DE ESTUDIANTES"+ response);
+              $('#totalStudentsforGradeandSection').text(response);
+          })
+                                   
+        }
+
+
       $(document).on('click','#editar-estudiante',function(e){ // mmodal editar
          e.preventDefault();
         $('#formulario_alumno').show();
