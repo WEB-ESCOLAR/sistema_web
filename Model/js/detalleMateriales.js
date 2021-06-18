@@ -58,6 +58,8 @@
          }).done(function(response){
              console.log("respone is " + response )
              location.reload();
+             // $('#entregarLibro').prop("readonoly",true);
+             // $('#entregarLibro').css("background","rgba(0,0,0,0.10)");
          })
        })
 
@@ -100,6 +102,14 @@
 
        $(document).on('click','#prestarLibro',function(e){
          e.preventDefault();
+         $('#entregarLibro').prop("disabled",true);
+         $('#entregarLibro').css("background","#5E80A6");
+         $('#DNI').val('');
+         $('#nombreEstudiante').val(' ');
+         $('#apellidoEstudiante').val(' ');
+         $('#gradoEstudiante').val(' ');
+         $('#seccionEstudiante').val(' ');
+
          var idDetMat = $(this).attr("name");
          const param={
             "idDetMat":idDetMat,
@@ -110,7 +120,7 @@
         }).done(function(response){
             $('.formularioPrestamo').show();
             $('#button_close_prestamo').val(idDetMat);
-        })
+                })
        })
 
         //MOSTRANDO EL FRAME DE ENTREGAR LIBRO
@@ -149,6 +159,7 @@
 
         //BUSCAR ALUMNO
         $(document).on('click','#buscarEstudiante',function(e){
+
            e.preventDefault();
            var dni = $('#DNI').val();
            const param={
@@ -163,17 +174,34 @@
              dataType: 'json',
            })
            .done(function(response){
-             //$('.modal').reload();
-             $('.btn-atras').val(response.idEstudiante);
-             $('#nombreEstudiante').val(' '+response.firstName);
-             $('#apellidoEstudiante').val(' '+response.LastName);
-             $('#gradoEstudiante').val(' '+response.grado);
-             $('#seccionEstudiante').val(' '+response.section);
-             $('.btn-entregarLibro').prop("disabled",false);
-           })
+              console.log(response);
+              if (!response){
+               Swal.fire({
+                 title: 'No existe DNI ingresado',
+                 icon: 'warning',
+                 showCancelButton: false,
+                 confirmButtonColor: '#3085d6',
+                 cancelButtonColor: '#d33',
+                 confirmButtonText: 'confirmar'
+               })
+             } else {
+               $('#entregarLibro').prop("disabled",false);
+               $('#entregarLibro').css("background","var(--primary)");
+               $('.btn-atras').val(response.idEstudiante);
+               $('#nombreEstudiante').val(' '+response.firstName);
+               $('#apellidoEstudiante').val(' '+response.LastName);
+               $('#gradoEstudiante').val(' '+response.grado);
+               $('#seccionEstudiante').val(' '+response.section);
+                }
+             })
+
        })
 
-    
+       // $(document).on('click','#atras_Libro',function(e){
+       //    e.preventDefault();
+       //    $('#DNI').val(' ');
+       //    $('.modal').hide();
+       // })
 
 
 
