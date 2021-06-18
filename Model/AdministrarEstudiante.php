@@ -97,12 +97,12 @@
 		}
 		}
 		//END CREATE ESTUDIANTE
-		 function PagoApafa($fecha,$id){
+		function PagoApafa(PagoApafa $pagoApafa){
 			//$fechaactual=date('d-m-y');
 			$sql="UPDATE pagoapafa set state='PAGO',fechapago=? where idApoderado=?";
 			$data=$this->getConexion()->prepare($sql);
-      		$data->bindParam(1,$fecha);
-			$data->bindParam(2,$id);
+      		$data->bindParam(1,$pagoApafa->fechaPago);
+			$data->bindParam(2,$pagoApafa->codigoApafa);
 			$data->execute();
    		}
 		//UPDATE ESTUDIANTE

@@ -25,9 +25,10 @@ class PagoApafa
   public function actualizarEstadoPagoApafa($estado){
     if($estado==1){
       $this->setEstado("PAGO");
+      $this->setFechaPago(date("Y-m-d"),time());
     }else{
       $this->setEstado("NO PAGO");
-      $this->setFechaPago(date("Y-m-d"),time());
+     
     }
   }
 }
