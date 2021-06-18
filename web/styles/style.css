@@ -251,6 +251,16 @@ h1{
 /*********************/
 /************ BUTTONS TABLE  CSS TABLES
 /******************/
+.btn_VerMotivo,.btn_OtorgarLibro,.btn_Devolucion{
+  width: 110px;
+  height:26px;
+  margin-left: 50px;
+  text-align: center;
+  border-radius: 12px;
+  color:white;
+  border: none;
+  cursor: pointer;
+}
 .btn-delete,.btn-apafa{
     width:28px;
     height:26px;
@@ -397,7 +407,7 @@ button{
 .card_search{
   width: 60%;
   padding:10px 10px;
-  height:100px;
+  height:120px;
   margin:auto;
   border:1px solid var(--crimson);
 }

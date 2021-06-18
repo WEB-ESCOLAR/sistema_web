@@ -124,6 +124,7 @@ $(document).ready(function(){
 
       $(document).on('click','#button_close_prestamo',function(e){
           e.preventDefault();
+          // $('#DNI').empty(' ');
           $('.formularioPrestamo').hide();
         });
 
@@ -131,6 +132,15 @@ $(document).ready(function(){
           e.preventDefault();
           $('.modal').hide();
         });
+        $(document).on('click','#atras_Libro ',function(e){
+            e.preventDefault();
+            $('#DNI').val('');
+            $('#nombreEstudiante').val(' ');
+            $('#apellidoEstudiante').val(' ');
+            $('#gradoEstudiante').val(' ');
+            $('#seccionEstudiante').val(' ');
+            $('.formularioPrestamo').hide();
+          });
 
       $(document).on('click','#button_close_devolucion',function(e){
           e.preventDefault();

@@ -47,28 +47,35 @@
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
                 $('.modal').hide();
                 $('#formulario_alumno').hide();
-                //location.reload();
             })
         });
 
-        $('#search_student').click(function(e){
-        e.preventDefault();
-        const param={
-          grade: $('#search_grade_student').val(),
-          section: $('#search_section_student').val(),
-          action: 'BuscarGradoAndSection'
-        }
-        $.ajax({
-          url:"Controller/ControllerEstudiante.php",
-          type:"POST",
-          data:param
-        }).done(function(response){
-          console.log("resultado esperado es " + response)
-        })
 
-      });
+
+// raaaaaaaaaa
+      //   $('#search_student').click(function(e){
+      //   e.preventDefault();
+      //   const param={
+      //     grade: $('#search_grade_student').val(),
+      //     section: $('#search_section_student').val(),
+      //     action: 'BuscarGradoAndSection'
+      //   }
+      //   $.ajax({
+      //     url:"Controller/ControllerEstudiante.php",
+      //     type:"POST",
+      //     data:param
+      //   }).done(function(response){
+      //     console.log("resultado esperado es " + response)
+      //   })
+      // });
+      //buscar alumno grado y seccion , action : BuscarGradoAndSection
+      //mostrar total estudiantes , action : MostrarTotalEstudiantesPorGradoYSeccion
+
+        
+
+
       $(document).on('click','#editar-estudiante',function(e){ // mmodal editar
-        e.preventDefault();
+         e.preventDefault();
         $('#formulario_alumno').show();
         $('#form-apoderado').hide();
         $('#modificar_Estudiante').show();

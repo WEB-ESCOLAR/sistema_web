@@ -40,6 +40,10 @@
 			}
 			return $totalnumberRMaterial;
 		}
+		//optimization function 
+		// function showDataFetch(){
+			
+		// }
 
 	}
 

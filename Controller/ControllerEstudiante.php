@@ -10,6 +10,9 @@
 		case "DetalleApoderado":
 			detailApoderado();
 			break;
+		case "MostrarTotalEstudiantesPorGradoYSeccion":
+			totalForSectionAndGrade();
+			break;
 		case "UpdateApoderado":
 			updateApoderado();
 			break;
@@ -21,6 +24,7 @@
 			break;
 		case "AgregarEstudiante":
 			agregarEstudiante();
+			break;
 		case "BuscarGradoAndSection":
 			fetchAllSectionAndGrade();
 			break;
@@ -83,11 +87,24 @@
 	function fetchAllEstudiante(){
 		require_once("../Model/AdministrarEstudiante.php");
 		$estudianteModel = new AdministrarEstudiante();
-		$resultado = $estudianteModel->listaEstudiantes();
+		$grade = $_GET["grade"];
+		$section = $_GET["section"];
+		if(empty($grade) && empty($section)){
+			// echo json_encode(1);
+			$resultado = $estudianteModel->listaEstudiantes(null,null);
+		}else{
+			$resultado = $estudianteModel->listaEstudiantes($grade,$section);
+		}
 		echo json_encode($resultado);
-
 	}
-
+	function totalForSectionAndGrade(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$section = $_GET["section"];
+		$grade = $_GET["grade"];
+		$totalEstudiante = new AdministrarEstudiante();
+		$students = $totalEstudiante->totalStudentsForGradeAndSection($grade,$section);
+		echo json_encode($students); 
+	}
 
 	// require_once("../Model/Material.php");
 
@@ -170,7 +187,7 @@
 		$apoderado=$_POST["apoderado"];
 		$estudiante = new Estudiante($idEstudiante,$DNI,$Nombre,$Apellido,$Grado,$Seccion,intval($Usuario),$apoderado);
 	 	$affect = $administrarEstudiante->updateAlumno($estudiante);
-		echo json_decode(var_dump($estudiante));
+		// echo json_decode(var_dump($estudiante));
 	}
 	//END UPDATE ESTUDIANTE
 

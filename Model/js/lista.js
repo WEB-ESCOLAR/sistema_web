@@ -1,8 +1,15 @@
 $(document).ready(function(){
 
+
     console.log("list js");
     var url = window.location.href;
     const urlSplit = url.split("/")
+    const parametroDetalleMaterial={
+       PRESTADO:"PRESTADO",
+     DISPONIBLE:'DISPONIBLE',
+     DEVUELTO:"DEVUELTO"
+    }
+    $('#tableFilter').hide();
     // if(urlSplit[4] == "DetalleMateriales"){
     //       mostrarDetalleMaterial();
     // }else{
@@ -22,7 +29,7 @@ $(document).ready(function(){
              mostrarDetalleMaterial();
              break;
         case "Alumnos":
-            mostrarEstudiantes();
+            mostrarEstudiantes(null,null);
             break;
         default:
           break;
@@ -120,14 +127,61 @@ $(document).ready(function(){
                                   })
           }
 
+          function mostrarTotalEstudiantes(grado,seccion){
+            console.log("mostrar")
+          const parametro ={
+            grade:grado,
+            section:seccion,
+            action:"MostrarTotalEstudiantesPorGradoYSeccion"
+          }
+          console.log("Parametro es"+JSON.stringify(parametro));
+          $.ajax({
+            url:"Controller/ControllerEstudiante.php",
+            dataType: 'json', 
+            data: parametro
+          }).done(function(response){
+              console.log("TOTAL DE ESTUDIANTES"+ response);
+              $('#totalStudentsforGradeandSection').text(response);
+          })
+        }
 
+          $('#search_student').click(function(e){
+            e.preventDefault();
+            // const param={
+              const grade = $('#search_grade_student').val();
+               const  section = $('#search_section_student').val();
+            if(grade != "null" && section != "null"){
+              $('#response_table_alumnos').empty()
+              mostrarEstudiantes(grade,section)
+              mostrarTotalEstudiantes(grade,section)
+            }else{
+                console.log("seleccionar grado  yseccion") //aqui alerta jair
+            }
+          });
 
-           function mostrarEstudiantes(){
+          $('#refresh_student').click(function(e){
+            e.preventDefault();
+            $('#response_table_alumnos').empty()
+            mostrarEstudiantes(null,null)
+            $('#totalStudentsforGradeandSection').empty();
+            $("#search_section_student").val("null")
+            $('#search_grade_student').val("null")
+          });
+          // refresh_student
+
+           function mostrarEstudiantes(grado,seccion){
+             const parametro ={
+               grade:grado,
+               section:seccion,
+               action:"MostrarEstudiante"
+             }
+             console.log(parametro)
                 $.ajax({
                     url:"Controller/ControllerEstudiante.php",
-                    data:{action:"MostrarEstudiante"},
+                    data:parametro
                 })
                 .done(function(response){
+                  console.log(response)
                     const respuestaArray = JSON.parse(response)
                         let count=1;
                              respuestaArray.forEach((element)=>{
@@ -153,47 +207,199 @@ $(document).ready(function(){
                 })
             }
 
-            $(document).on('click','#checkDisponible',function(e){
-              switchCaseCheck("DISPONIBLE");
-              // console.log("awita");
-
+            $(document).on('click','#checkDisponible',async function(e){
+                let val = $(this).val();
+                  if( $( this ).is( ':checked' ) ){
+              const listData = await detalleMaterialFilter(parametroDetalleMaterial.DISPONIBLE);
+                // console.log("DISPONIBLE " + listData)
+                $('#tableDefault').hide();
+                $('#tableFilter').show();
+                $('#btn-document').prop("disabled",true);
+                $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");
+                mostrarDetalleMaterialHeader(parametroDetalleMaterial.DISPONIBLE)
+                mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.DISPONIBLE)
+            }
+                else{
+                  $('#tableDefault').show();
+                  $('#tableFilter').hide();
+                  $('#btn-document').prop("disabled",true);
+                  // $('#tableFilter').reload();
+                }
              });
-             $(document).on('click','#checkPrestado',function(e){
-              switchCaseCheck("PRESTADO");
-              // console.log("awita2");
-
+             $(document).on('click','#checkPrestado',async function(e){
+              let val = $(this).val();
+              if( $( this ).is( ':checked' ) ){
+              const listData =  await detalleMaterialFilter(parametroDetalleMaterial.PRESTADO);
+                console.log("prestado " + listData)
+                $('#tableDefault').hide();
+                $('#tableFilter').show();
+                $('#btn-document').prop("disabled",false);
+                $('#btn-document').css("background","#C1121F");
+                mostrarDetalleMaterialHeader(parametroDetalleMaterial.PRESTADO)
+                mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.PRESTADO)}
+                else{
+                  $('#tableDefault').show();
+                  $('#tableFilter').hide();
+                  $('#btn-document').prop("disabled",true);
+                  $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");
+                }
              });
-             $(document).on('click','#checkDevolucion',function(e){
-              switchCaseCheck("DEVOLUCION");
-              // console.log("awita3");
 
-             });
 
-            function switchCaseCheck(type) {
-              let arrayData;
-              switch (type) {
-                case "DISPONIBLE":
-                  break;
-                case "PRESTADO":
-                  break;
-                case "DEVOLUCION":
-                  break;
-                default:
-                  break;
+             $(document).on('click','#checkDevolucion', async function(e){
+              let val = $(this).val();
+              if( $( this ).is( ':checked' ) ){
+              const listData =await detalleMaterialFilter(parametroDetalleMaterial.DEVUELTO);
+              console.log("devolucion " + listData)
+              $('#tableDefault').hide();
+              $('#tableFilter').show();
+              $('#btn-document').prop("disabled",false);
+              $('#btn-document').css("background","#C1121F");
+              mostrarDetalleMaterialHeader(parametroDetalleMaterial.DEVUELTO)
+              mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.DEVUELTO)
+              }else{
+                $('#tableDefault').show();
+                $('#tableFilter').hide(); 
+                $('#btn-document').prop("disabled",true);  
+                $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");            
               }
-            }
+             });
 
-            function detalleCase(){
-              $.ajax({
-                url:"Controller/ControllerEstudiante.php",
-                data:{action:"MostrarEstudiante"},
-               }).done(function(e){
-
+           async function detalleMaterialFilter(type){
+              const data = await $.ajax({
+                url:"../Controller/ControllerDetalleMaterial.php",
+                data:{action:"filtrarDetalleMaterial",type:type},
                })
+               return data
             }
+            //problema 1 : mostrar data test => disponible y prestamo diferentes encabezados ()
+            //problema 2 : 
+
+            //default : eliminar
+            //checkbox disponible : accion eliminar,otorgar libro : codigoDetalle,estado
+            //checkbox prestado : no hay acciones :  codigoDetalle , nombre y apellido ,grado y seccion
+            //checkbox devolucion : idDevolucion,nombre y apellido,grado,seccion,codigoDetalle,fechahora de material devuelto y accion ver motivo
+
+            //funcion de filtro
+            function headerShow(type){
+              let header
+              switch(type){
+                case parametroDetalleMaterial.DISPONIBLE:
+                  header=`
+                  <th>ID</th>
+                  <th>Codigo Detalle</th>
+                  <th>Estado</th> 
+                  <th>Acciones</th>
+                  `
+                  break;
+                case parametroDetalleMaterial.PRESTADO:
+                  header=`
+                  <th>ID</th>
+                  <th>Nombre y Apellido</th>
+                  <th>Grado</th>
+                  <th>Seccion</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                  `
+                  break;
+                case parametroDetalleMaterial.DEVUELTO:
+                 header= `
+                  <th>ID</th>
+                <th>Nombre y Apellido</th>
+               <th>Grado</th>
+               <th>Seccion</th>
+               <th>Fecha Hora de Devolucion</th>
+                <th>Acciones</th>
+               `
+               break;
+               default:
+               break;
+                 
+              }   
+              console.log("header"+header);
+              return header;
+
+            }
+            function mostrarDetalleMaterialHeader(type){
+              $('#tableFilter').html(
+                        `
+                        <table class="table-general">
+                        <thead id="">
+                            ${headerShow(type)}
+                        </thead>
+                        <tbody id="mostrarDataFilter">
+                        </tbody>
+                      </table>
+                        `       
+                )
+          }
 
 
+          
+            function mostrarDetalleMaterialBody(listData,type){
+              const response = JSON.parse(listData)
+              console.log(response)
+              console.log("type is " + type)
+              let count=1;
+              response.forEach((element)=>{
+                      $('#mostrarDataFilter').append(
+                          `
+                          <tr>
+                          <td>${count++}</td>
+                          ${bodyShow(element,type)}
+                          </tr>
+                          `
+                          );
+             })
+            }
+              function bodyShow(element,type){
+                let body
+                switch(type){
+                  case parametroDetalleMaterial.DISPONIBLE:
+                    body=`
+                    <td>${element.codigo}</td>
+                    <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
+                   <td><div class=buttons_table>
+                    <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn_OtorgarLibro" id="prestarLibro" name="${element.idDetalleMaterial}"style="background: var(--teal-light)"><i class="">Otorgar Libro</i></button>
+                    </div>  </td>   
+                                            
+                    `
+                    break;
+                  case parametroDetalleMaterial.PRESTADO:
+                    body=`
+                    <td>${element.firstName} ${element.LastName}</td>
+                    <td>${element.grado}</td>
+                    <td>${element.section}</td>
+                    <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
+                   <td>
+                    <button class="btn_Devolucion" id="mostrar_devolucion" value="${element.idEstudiante}" name="${element.idDetalleMaterial}"style="background: var(--crimson);"><i class="">Devolver</i></button>
+                  </td>
 
+                    `
+                    break;
+                  case parametroDetalleMaterial.DEVUELTO:
+                   body= `
+                 <td>${element.firstName} ${element.LastName}</td>
+                 <td>${element.grado}</td>
+                 <td>${element.section}</td>
+                 <td>${element.fechaHoraDevolucion}</td>
+                 <td>
+                 <button class="btn_OtorgarLibro" id="mostrar_motivo" name="${element.idDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>                              
+                 </td>
+
+                 `
+                 break;
+                 default:
+                 break;
+                   
+                }   
+                 return body;
+                
+              }
+
+
+            //detalle materiales defalt - revision reutilizacion codigo
             function mostrarDetalleMaterial(){
               console.log("listar detalle")
                const idMaterial =url.split("/")[5];
@@ -214,14 +420,12 @@ $(document).ready(function(){
                                       `
                                       <tr>
                                       <td>${count++}</td>
-                                      <td>${element.idDetalleMaterial}</td>
+                                      <td>${element.codigo}</td>
                                          <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
                                         <td>
                                         <div class=buttons_table>
-                                        <button class="btn_Prestar" id="prestarLibro" name="${element.idDetalleMaterial}"><i class="">Otorgar Libro</i></button>
-                                        <button class="btn_Devolver" id="mostrar_devolucion" name="${element.idDetalleMaterial}"><i class="">Devolver</i></button>
-                                        <button class="btn_VerMotivo" id="mostrar_motivo" name="${element.idDevolucion}"><i class="">Ver Motivo</i></button>
-                                        <button class="btn_VerMotivo" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="">Eliminar</i></button>
+                               
+                                        <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
 
                                          </div>
                                         </td>

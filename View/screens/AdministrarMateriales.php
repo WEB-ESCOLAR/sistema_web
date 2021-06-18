@@ -67,30 +67,30 @@
 				<div style="display:flex;width:100%;" class="form-group">
 					<div style="width:50%;">
 						<label class="label_group">Nombre:</label>
-							<input   id="nombreEstudiante" type="text" class="input_txt_50" >
+							<input style="background: rgba(0, 0, 0, 0.1)"   id="nombreEstudiante" type="text" class="input_txt_50" disabled>
 				</div>
 					<div style="width: 50%;">
 				<label class="label_group" >Apellido:</label>
-						<input  id="apellidoEstudiante" type="text" class="input_txt_50">
+						<input style="background: rgba(0, 0, 0, 0.1)" id="apellidoEstudiante" type="text" class="input_txt_50" disabled>
 					</div>
 				</div>
 
 				<div style="display:flex;width:100%;" class="form-group">
 					<div style="width:50%;">
 						<label class="label_group">Grado:</label>
-							<input   id="gradoEstudiante" type="text" class="input_txt_50" >
+							<input style="background: rgba(0, 0, 0, 0.1)" id="gradoEstudiante" type="text" class="input_txt_50" disabled >
 				</div>
 					<div style="width: 50%;">
 				<label class="label_group" >Seccion:</label>
-						<input  id="seccione" type="text" class="input_txt_50">
+						<input style="background: rgba(0, 0, 0, 0.1)"; id="seccionEstudiante" type="text" class="input_txt_50" disabled>
 					</div>
 				</div>
 </div>
 
     <div style="display:flex;margin-top:12px" class="atrasFormularioPrestamo">
-      <button type="button" style="background: var(--danger)" class="btn_box">Atras</button>
+      <button type="button" style="background: var(--danger)" id=atras_Libro class="btn_box">Atras</button>
       <div class="entregarFormularioPrestamo">
-      <input type="submit" style="background: var(--primary)" id="entregarLibro" class="btn_box" value="Entregar">
+      <input type="submit" style="background:var(--primary);" id="entregarLibro" class="btn_box" value="Entregar">
       </div>
 
 	</div>
@@ -116,7 +116,7 @@
 		          </div>
 
           <div style="display:flex;margin-top:10px">
-		       <button type="button" style="background: var(--danger)" class="btn_box" >Atras</button>
+		       <button type="button" style="background: var(--danger)" class="btn_box" id="idEstuAtras">Atras</button>
 		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="devolverLibro" value="Guardar">
 		      </div>
 
@@ -178,6 +178,7 @@
 
 <div class="cont_Table">
 
+			 <div id="tableDefault">
 			 <table class="table-general">
 
 					 <thead>
@@ -191,8 +192,13 @@
 					 <tbody id="data_detalleMaterial_table">
 					 </tbody>
 			 </table>
+			 </div>
+			 <div id="tableFilter">
+			 
+			 </div>
 
 	 </div>
+	 
 
 <div style="width:100%;margin-top: 20px;" id="rowsEmptyMessage">
 		<span class="rowsEmpty">No hay Registros Aun!!</span>
