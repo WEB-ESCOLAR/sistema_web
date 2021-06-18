@@ -64,15 +64,15 @@
 		function listDetalleMaterial($idMaterial){ //obtener registros de la db.
 			$sql="SELECT * from detallematerial where idMaterial=$idMaterial";
 			$respuestaConsulta = $this->consulta($sql);
-			$row = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
-			if(!$row){
-				return 0;
-			}else{
+			// $row = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
+			// if(!$row){
+			// 	return 0;
+			// }else{
 				while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
 				$materiales[]=$filas;
 			}
 				return $materiales;
-			}
+			// }
 		}
 
 
@@ -93,18 +93,19 @@
 			$response->execute();
 		}
 
-		function devolverMaterial($idDetMate, $fecha,$motivo){
+		function devolverMaterial($fecha,$motivo,$idEstudiante,$idDetMate){
 			$eliminarPrestamo="delete from prestamo where idDetalleMaterial= ?";
 			$actualizarEstado="update detallematerial set status = 1 where idDetalleMaterial= ?";
-			$registrarDevolucion="insert into detallematerialdevuelto(idDetalle, Datetime, motivo) values(?,?,?)";
+			$registrarDevolucion="insert into detallematerialdevuelto(fechaHoraDevolucion,motivo,idEstudiante,idDetalleMaterial) values(?,?,?,?)";
 			$responseEliminar = $this->getConexion()->prepare($eliminarPrestamo);
 			$responseActualizar = $this->getConexion()->prepare($actualizarEstado);
 			$responseRegistrar = $this->getConexion()->prepare($registrarDevolucion);
 			$responseEliminar->bindParam(1,$idDetMate);
 			$responseActualizar->bindParam(1,$idDetMate);
-			$responseRegistrar->bindParam(1,$idDetMate);
-			$responseRegistrar->bindParam(2,$fecha);
-			$responseRegistrar->bindParam(3,$motivo);
+			$responseRegistrar->bindParam(1,$fecha);
+			$responseRegistrar->bindParam(2,$motivo);
+			$responseRegistrar->bindParam(3,$idEstudiante);
+			$responseRegistrar->bindParam(4,$idDetMate);
 			$responseEliminar->execute();
 			$responseActualizar->execute();
 			$responseRegistrar->execute();
@@ -119,9 +120,9 @@
 			return $result;
 		}
 
-		function agregarDetalle($cantidad){
+		function agregarDetalle($cantidad,$idMaterial){
 			$status="DISPONIBLE";
-			for ($i=0; $i < $cantidad ; $i++) {
+			for ($i=0; $i <= $cantidad ; $i++) {
 				$sql="insert into detallematerial(idMaterial, status, codigo) values (?,?,?)";
 				$response = $this->getConexion()->prepare($sql);
 				$response->bindParam(1,$idMaterial);

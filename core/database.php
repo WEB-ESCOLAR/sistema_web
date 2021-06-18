@@ -1,7 +1,7 @@
 <?php
 
 
-	$typeDatase="PROD";
+	$typeDatase="DEV";
 	if($typeDatase == "PROD"){
  	    DEFINE("HOST","31.170.166.146");
 	     DEFINE("USER","u994122482_dash");
