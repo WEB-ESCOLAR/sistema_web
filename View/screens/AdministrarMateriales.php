@@ -10,7 +10,7 @@
 
 
  <div style="display: flex; justify-content: space-between;">
- 	<button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Registro</button>
+ 	<button type="button" class="btn_add_data" id="button_detalleMaterial"><i class="fas fa-plus-circle fa-lg"></i>Agregar</button>
 		<div style="display:flex;width: 40%;justify-content: space-around;">
 		<button type="button" class="btn_add_data" id="btn-document" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-file-pdf"></i>Generar Documento</button>
 		 <button type="button" class="btn_add_data" id="btn-chart" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-chart-bar"></i>Generar Grafico</button>
@@ -116,7 +116,7 @@
 		          </div>
 
           <div style="display:flex;margin-top:10px">
-		       <button type="button" style="background: var(--danger)" class="btn_box" >Atras</button>
+		       <button type="button" style="background: var(--danger)" class="btn_box" id="idEstuAtras">Atras</button>
 		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="devolverLibro" value="Guardar">
 		      </div>
 
@@ -178,6 +178,7 @@
 
 <div class="cont_Table">
 
+			 <div id="tableDefault">
 			 <table class="table-general">
 
 					 <thead>
@@ -191,8 +192,13 @@
 					 <tbody id="data_detalleMaterial_table">
 					 </tbody>
 			 </table>
+			 </div>
+			 <div id="tableFilter">
+			 
+			 </div>
 
 	 </div>
+	 
 
 <div style="width:100%;margin-top: 20px;" id="rowsEmptyMessage">
 		<span class="rowsEmpty">No hay Registros Aun!!</span>

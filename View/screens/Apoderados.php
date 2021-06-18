@@ -12,24 +12,24 @@
             <div  style="display:flex;width:100%;" class="form-group">
                 <div style="width:50%;">
                   <label class= label_group>Nombres:</label>
-                  <input type="text" id="nombre" name="nombre" class="input_txt_50" placeholder="Escriba su nombres aquí">
+                  <input type="text" id="nombre" name="nombre" class="input_txt_50" placeholder="Escriba su nombres aquí" required>
                 </div>
 
                 <div style="width:50%;">
                   <label class= label_group> Apellidos:</label>
-                  <input type="text" id="apellido"  name="apellido" class="input_txt_50" placeholder="Escriba su apellidos aquí">
+                  <input type="text" id="apellido"  name="apellido" class="input_txt_50" placeholder="Escriba su apellidos aquí" required>
                 </div>
 
                  </div>
 
                 <div class="form-group">
                     <label class= label_group>Dni:</label>
-                  <input type="text" id="dni"  name="dni" class="input_txt" placeholder="Escriba su dni aquí">
+                  <input type="text" id="dni"  name="dni" class="input_txt" placeholder="Escriba su dni aquí" required maxlength="8">
                 </div>
 
                   <div class="form-group">
                     <label class="label_group">Teléfono:</label>
-                  <input type="number" id="telefono"  name="telefono" class="input_txt" placeholder="Escriba su celular aquí">
+                  <input type="number" id="telefono"  name="telefono" class="input_txt" placeholder="Escriba su celular aquí"  maxlength="8" required>
                   </div>
 
             <div style="display:flex;margin-top:15px;">

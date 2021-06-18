@@ -47,7 +47,7 @@
          e.preventDefault();
          const param={
              idDetaMate:$('#button_close_prestamo').val(), //id detallematerial
-             idEstu:$('.btn-atras').val(), //id
+             idEstu:$('#entregarLibro').val(), //id
              action:"prestarMaterial"
          }
          console.log(param)
@@ -58,8 +58,6 @@
          }).done(function(response){
              console.log("respone is " + response )
              location.reload();
-             // $('#entregarLibro').prop("readonoly",true);
-             // $('#entregarLibro').css("background","rgba(0,0,0,0.10)");
          })
        })
 
@@ -68,6 +66,7 @@
          const param={
              idDetaMate:$('#button_close_devolucion').val(),
              motivo:$('#motivo').val(),
+             idEstudiante:$("#mostrar_devolucion").val(),
              action:"Devolver"
          }
          console.log(param);
@@ -202,6 +201,13 @@
        //    $('#DNI').val(' ');
        //    $('.modal').hide();
        // })
+             //$('.modal').reload();
+      
+
+    $(document).on('click','#btn-document',function(e){
+        console.log("generar pdf");
+    })
+
 
 
 

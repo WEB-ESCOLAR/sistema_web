@@ -80,10 +80,14 @@ $(document).ready(function(){
 
       $('#button_material').click(function(e){
             e.preventDefault();
-            $('.modal_agregar_cantidad').show();
-            $('#formulario_detalleMaterial').show();
+            $('.modal').show();
+            $('#formulario_material').show();
       })
-
+      $('#button_detalleMaterial').click(function(e){
+        e.preventDefault();
+          $('.modal_agregar_cantidad').show();
+          $('#formulario_detalleMaterial').show();
+      })
       $(document).on('click','#buttonCloseDetalleMaterial',function(e){
           e.preventDefault();
               $('.modal_agregar_cantidad').hide();

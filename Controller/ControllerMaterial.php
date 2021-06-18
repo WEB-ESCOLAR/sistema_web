@@ -61,13 +61,14 @@
 		require_once("../Model/AdministrarMaterial.php");
 		require_once("../Model/Material.php");
 		$materialModel = new AdministrarMaterial();
+		$id = mt_rand(100000, 999999);
 		$curso = $_POST["curso"];
 		$grado=$_POST["grado"];
 		$fechaRecepcion = $_POST["fechaRecepcion"];
 		$cantidad = $_POST["cantidad"];
 		$tipoMaterial = $_POST["tipoMaterial"];
 		$nombreMaterial = $_POST["nombreMaterial"];
-		$material = new Material(null,$curso,$tipoMaterial,$grado,null,null,$fechaRecepcion,$nombreMaterial,$cantidad);
+		$material = new Material($id,$curso,$tipoMaterial,$grado,null,null,$fechaRecepcion,$nombreMaterial,$cantidad);
 		$materialModel->Create($material);
 	}
 
@@ -120,7 +121,8 @@
 		$idDetaMate = $_POST["idDetaMate"];
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
-		$materialModel->devolverMaterial($idDetaMate,$fecha,$motivo);
+		$idEstudiante=$_POST["idEstudiante"];
+		$materialModel->devolverMaterial($fecha,$motivo,$idEstudiante,$idDetaMate);
 		echo json_encode("Devolviendo");
 	}
 

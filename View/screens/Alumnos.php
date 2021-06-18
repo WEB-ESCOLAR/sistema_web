@@ -6,7 +6,7 @@
         <div style="width:50%;">
               <label class="label_group">Grado </label>
                 <select  id="search_grade_student" class="input_txt_50">
-                 <option  value="Seleccione el grado" >Seleccione el grado</option>
+                 <option  value="null" >Seleccione el grado</option>
                 <option  value="Primer">Primer</option>
                 <option  value="Segundo">Segundo</option>
                 <option  value="Tercero">Tercero</option>
@@ -19,16 +19,17 @@
       <div style="width:50%;">
          <label class="label_group">Seccion</label>
             <select  id="search_section_student" class="input_txt_50">
-                <option value="Seleccione la seccion">Seleccione la seccion</option>
+                <option value="null">Seleccione la seccion</option>
                   <option value="A">A</option>
                    <option value="B">B</option>
            </select>
       </div>
       <button class="button_search" id="search_student">Buscar</button>
-       <button class="button_search" style="margin-left:10px;" id="search_student">Refrescar</button>
+       <button class="button_search" style="margin-left:10px;" id="refresh_student">Refrescar</button>
       </div>
       <div class="total_filter">
-        <p>Total de Alumnos Por Aula y Seccion:<span>20</span></p>
+          <p>Total de Alumnos Por Aula y Seccion: <span id="totalStudentsforGradeandSection">0</span></p> 
+           
       </div>
   </div>
 
@@ -44,29 +45,30 @@
 
       <div style="display:flex;width:100%;" class="form-group">
             <div style="width:50%;">
-            <label class="label_group">Nombres del estudiante</label>
-            <input id="nombreEstudiante" type="text" class="input_txt_50" placeholder="Ingrese el nombre">
+            <label class="label_group" value="juan">Nombres del estudiante</label>
+            <input id="nombreEstudiante" value="juan" name="Nombre" type="text" class="input_txt_50" placeholder="Ingrese el nombre">
             </div>
             <div style="width: 50%;">
-            <label class="label_group" >Apellidos del estudiante</label>
-            <input id="apellidoEstudiante" type="text" class="input_txt_50" placeholder="Ingrese el apellido">
+            <label class="label_group" value="a">Apellidos del estudiante</label>
+            <input id="apellidoEstudiante"  value="juan"name="Apellido" type="text" class="input_txt_50" placeholder="Ingrese el apellido">
             </div>
       </div>
 
       <div class="form-group">
-          <label class="label_group">Dni del Alumno</label>
-          <input  id="DniEstudiante" type="text" class="input_txt" placeholder="Ingrese el dni del alumno aqui..."></p>
+          <label class="label_group" value="12345677">Dni del Alumno</label>
+          <input  id="DniEstudiante" value="12345677" name="DNI"type="text" class="input_txt" placeholder="Ingrese el dni del alumno aqui..."
+          maxlength="8"  required></p>
       </div>
 
       
       <div style="display:flex;width:100%;" class="form-group">
         <div style="width:50%;">
               <label class="label_group">Grado </label>
-                <select  value="Primer" id="gradoEstudiante" class="input_txt_50">
+                <select  value="Primer" id="gradoEstudiante" name="Grado" class="input_txt_50">
                  <option  value="Seleccione el grado">Seleccione el grado</option>
                 <option  value="Primer">Primer</option>
                 <option  value="Segundo">Segundo</option>
-                <option  value="Tercero">Tercero</option>
+                <option  value="Tercero" selected>Tercero</option>
                 <option  value="Cuarto">Cuarto</option>
                 <option  value="Quinto">Quinto</option>
                 <option  value="Sexto">Sexto</option>
@@ -75,9 +77,9 @@
 
             <div style="width:50%;">
               <label class="label_group">Seccion</label>
-                  <select  value="A" id="seccionEstudiante" class="input_txt_50">
+                  <select  value="A" id="seccionEstudiante" name="Seccion" class="input_txt_50">
                       <option  value="Seleccione la seccion">Seleccione la seccion</option>
-                        <option value="A">A</option>
+                        <option value="A" selected>A</option>
                         <option value="B">B</option>
                 </select>
             </div>
@@ -86,22 +88,22 @@
       <div id="form-apoderado">
       <div style="display:flex;width:100%;" class="form-group">
             <div style="width:50%;">
-                <label class="label_group">Nombres del Apoderado</label>
-                <input  id="nombreApoderado" type="text" class="input_txt_50" placeholder="Ingrese el nombre">
+                <label class="label_group" value="juan">Nombres del Apoderado</label>
+                <input  id="nombreApoderado" value="juan" name="nombre" type="text" class="input_txt_50" placeholder="Ingrese el nombre" required>
             </div>
             <div style="width: 50%;">
-            <label class="label_group" >Apellidos del Apoderado</label>
-            <input  id="apellidoApoderado" type="text" class="input_txt_50" placeholder="Ingrese el apellido">
+            <label class="label_group" value="juan">Apellidos del Apoderado</label>
+            <input  id="apellidoApoderado" value="juan" name="apellido" type="text" class="input_txt_50" placeholder="Ingrese el apellido" required>
             </div>
       </div>
           <div class="form-group">
-              <label class="label_group">Dni del Apoderado</label>
-              <input  id="DniApoderado" type="text" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..."></p>
+              <label class="label_group"value="77654321">Dni del Apoderado</label>
+              <input  id="DniApoderado"  value="77654321"name="dni" type="text" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..." maxlength="8" ></p>
           </div>
 
              <div class="form-group">
-                <label class="label_group">Telefono del apoderado</label>
-                  <input  id="telefonoApoderado" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..."></p>
+                <label class="label_group" value="333222111">Telefono del apoderado</label>
+                  <input  id="telefonoApoderado" value="77654321" name="celular" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="8" ></p>
              </div>
     </div>
 
@@ -110,8 +112,8 @@
 
       <div style="display:flex;margin-top:15px;">
         <button type="button" style="background: var(--danger)" id="button_close_material" class="btn_box">Cancelar</button>
-         <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
-         <button type="button" style="background: var(--primary)" id="editar_Estudiante" class="btn_box">Editar</button>
+       <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
+         <button type="button" style="background: var(--primary)" id="modificar_Estudiante" class="btn_box">Guardar</button>
       </div>
         <!-- <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
        

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-	$(document).on('click','.btn_TblPagoApafa',function(e){
+	$(document).on('click','.btn-apafa',function(e){
               e.preventDefault();
               var id = $(this).attr("id");
                  const param={
