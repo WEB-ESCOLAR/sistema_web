@@ -2,6 +2,7 @@
 /**
  *
  */
+require_once("../Model/Apoderado.php");
 class Estudiante
 {
   var $idEstudiante;

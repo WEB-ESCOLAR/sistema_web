@@ -191,6 +191,9 @@
                $('#apellidoEstudiante').val(' '+response.LastName);
                $('#gradoEstudiante').val(' '+response.grado);
                $('#seccionEstudiante').val(' '+response.section);
+               $('.btn-entregarLibro').prop("disabled",false);
+           })
+       })
                 }
              })
 
@@ -207,6 +210,7 @@
     $(document).on('click','#btn-document',function(e){
         console.log("generar pdf");
     })
+
 
 
 

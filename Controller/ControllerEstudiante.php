@@ -148,7 +148,7 @@
 			$estudiante = new Estudiante(null,$DNI,$Nombre,$Apellido,$Grado,$Seccion,intval($Usuario),$apoderado);
 			$pagoApafa= new PagoApafa(null,$apoderado);
 			$pagoApafa->actualizarEstadoPagoApafa(2);
-			$output=$estudianteModel->Create($estudiante,$pagoApafa); 
+			$output=$estudianteModel->Create($estudiante,$pagoApafa);
 			// echo json_encode(var_dump($pagoApafa));
 			// echo json_encode(var_dump($estudiante));
 
@@ -161,7 +161,7 @@
 		$grade = $_POST["grade"];
 		$administrarEstudiante = new AdministrarEstudiante();
 		$estudiantes = $administrarEstudiante->listaEstudiantesForGradeAndSection($grade,$section);
-		echo json_encode($estudiantes); 
+		echo json_encode($estudiantes);
 	}
 	//UPDATE ESTUDIANTE
 	function detailEstudiante(){
@@ -169,14 +169,14 @@
 		$estudianteModel= new AdministrarEstudiante();
 		$id = $_GET["id"];
 		$data = $estudianteModel->readEstudiante($id);
-		echo json_encode($data); 
+		echo json_encode($data);
 	}
 
 	function updateEstudiante(){
 		require_once("../Model/Estudiante.php");
 		require_once("../Model/AdministrarEstudiante.php");
 		session_start();
-		$idUser = $_SESSION["id"];
+		$Usuario = $_SESSION["id"];
 		$administrarEstudiante = new AdministrarEstudiante();
 		$idEstudiante= $_POST["idEstudiante"];
 		$DNI = $_POST["DNI"];
@@ -189,6 +189,6 @@
 	 	$affect = $administrarEstudiante->updateAlumno($estudiante);
 		// echo json_decode(var_dump($estudiante));
 	}
-	//END UPDATE ESTUDIANTE	
+	//END UPDATE ESTUDIANTE
 
  ?>
