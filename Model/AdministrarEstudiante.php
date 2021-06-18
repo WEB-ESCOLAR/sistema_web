@@ -12,27 +12,39 @@
 			return $apoderado;
 		}
 		function listaEstudiantes(){ //obtener registros de la db.
-			$sql="SELECT * from estudiante";
+			if ($grade=null && $section=null){
+				$sql="SELECT * from estudiante";
+			}else{
+				$sql="SELECT * from estudiante where grado= '$grade' and section= '$section'";
+			}
+			
 			$respuestaConsulta = $this->consulta($sql);
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
 				$alumnos[]=$filas;
 			}
 			return $alumnos;
 		}
-		function listaEstudiantesForGradeAndSection($grade,$section){ //obtener registros de la db.
-			$sql="SELECT * from estudiante where grado='$grade' and section='$section'";
+		// function listaEstudiantesForGradeAndSection($grade,$section){ //obtener registros de la db.
+		// 	$sql="SELECT * from estudiante where grado='$grade' and section='$section'";
+		// 	$respuestaConsultaSearch = $this->consulta($sql);
+		// 	$row = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC);
+		// 	if(!$row){
+		// 		return "not found";
+		// 	}else{
+		// 		while($filas = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC)) {
+		// 		$searchAlumnos[]=$filas;
+		// 		}
+		// 		return $searchAlumnos;
+		// 	}
+		// }
+
+		function totalStudentsForGradeAndSection($grade,$section){ 
+			$sql="SELECT COUNT(idEstudiante) as 'totalForGradeandSection' from estudiante where grado='$grade' and section='$section'";
 			$respuestaConsultaSearch = $this->consulta($sql);
-			$row = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC);
-			if(!$row){
-				return "not found";
-			}else{
-				while($filas = $respuestaConsultaSearch->fetch(PDO::FETCH_ASSOC)) {
-				$searchAlumnos[]=$filas;
-				}
-				return $searchAlumnos;
-			}
-			
+			$respuestaConsultaSearch->execute();
+			return $respuestaConsultaSearch->fetchColumn();
 		}
+
 
 		function totalEstudiantes(){
 			$sql="SELECT count(*) from estudiante";

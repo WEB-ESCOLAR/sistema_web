@@ -27,8 +27,9 @@
       <button class="button_search" id="search_student">Buscar</button>
        <button class="button_search" style="margin-left:10px;" id="search_student">Refrescar</button>
       </div>
-      <div class="total_filter">
-        <p>Total de Alumnos Por Aula y Seccion:<span>20</span></p>
+      <div class="total_filter" style="display:flex;">
+          <label>Total de Alumnos Por Aula y Seccion:</label> 
+            <p id="totalStudentsforGradeandSection">&nbsp :'v</p>
       </div>
   </div>
 
