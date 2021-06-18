@@ -4,7 +4,7 @@
 	class AdministrarMaterial extends AdministrarModelo{
 
 		// private $table="material";
-		function materialState($id,$state){ 
+		function materialState($id,$state){
 			$sql="SELECT count(idDetalleMaterial) from detallematerial where status=? and idMaterial=?";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$state);
@@ -23,7 +23,7 @@
 			$filas["curse"],
 			$filas["tipoMaterial"],
 			$filas["grade"],
-			$this->materialState($filas["idMaterial"],"DISPONIBLE"), 
+			$this->materialState($filas["idMaterial"],"DISPONIBLE"),
 			$this->materialState($filas["idMaterial"],"OCUPADO"),
 			$filas["ReceptionDate"],
 			$filas["nameMaterial"],
@@ -83,6 +83,12 @@
 			$response->execute();
 			$result = $response->fetch(PDO::FETCH_ASSOC);
 			return $result;
+			// if($result===null){
+			// 	return '';
+			// }else  {
+			//    return $result;
+			// }
+
 		}
 
 		function prestarMaterial($idEstu, $idMate){
@@ -150,7 +156,11 @@
 		    return strtoupper($codigo);
 		}
 
-		
+
+
+		/////AGREGAR DETALLE MATERIAL////
+
+
 		/////ELIMINAR DETALLE MATERIAL///////
 			function DeleteDetalle($id){
 				$sql="DELETE FROM detallematerial where idDetalleMaterial=?";

@@ -1,6 +1,7 @@
 <?php
 
 
+
 	$typeDatase="DEV";
 	if($typeDatase == "PROD"){
  	    DEFINE("HOST","31.170.166.146");
@@ -16,7 +17,6 @@
 	    DEFINE("DATABASE","escuela_web");
 	}
 
-  
 
 
 ?>

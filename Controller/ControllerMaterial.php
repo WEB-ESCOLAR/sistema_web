@@ -94,6 +94,16 @@
 		$dniEstudiante = $_GET["DNI"];
 		$resultado = $materialModel->buscarEstudiante($dniEstudiante);
 		echo json_encode($resultado);
+		// if($resultado){
+		// 	$_GET["nombreEstudiante"]=$resultado["nombreEstudiante"];
+		// 	$_GET["apellidoEstudiante"]=$resultado["apellidoEstudiante"];
+		// 	$_GET["gradoEstudiante"]=$resultado["gradoEstudiante"];
+		// 	$_GET["seccionEstudiante"]=$resultado["seccionEstudiante"];
+		//
+		// }else{
+		// 	echo json_encode("");
+		// }
+
 	}
 
 	function prestar(){
