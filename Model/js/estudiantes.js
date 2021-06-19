@@ -47,6 +47,7 @@
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
                 $('.modal').hide();
                 $('#formulario_alumno').hide();
+                location.reload();
             })
         });
 
