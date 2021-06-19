@@ -121,9 +121,9 @@
 		$idDetaMate = $_POST["idDetaMate"];
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
-		$idEstudiante=$_POST["idEstudiante"];
-		$materialModel->devolverMaterial($fecha,$motivo,$idEstudiante,$idDetaMate);
-		echo json_encode("Devolviendo");
+		$idPrestamoDevolucion = $_POST["idPrestamoDevolucion"];
+		$materialModel->devolverMaterial($fecha,$motivo,$idDetaMate,$idPrestamoDevolucion);
+		echo json_encode($materialModel);
 	}
 
 	function verMotivo(){
@@ -138,7 +138,8 @@ function agregarDetalleMaterial(){
 	require_once("../Model/AdministrarMaterial.php");
 	$materialModel = new AdministrarMaterial();
 	$cant = $_POST[""];
-	$materialModel->agregarDetalle($cant);
+	$idDetaMaterial= $_POST["idDetaMaterial"];
+	$materialModel->agregarDetalle($cant,$idDetaMaterial);
 }
 
 function deleteDetaMate(){

@@ -107,9 +107,9 @@ $(document).ready(function(){
       $('#button_alumno').click(function(e){
             e.preventDefault();
             $('.modal').show();
-            $('#editar_Estudiante').hide();
             $('#titulo_EditarEstudiante').hide();
             $('#formulario_alumno').show();
+            $('#modificar_Estudiante').hide(); 
       })
 
       $(document).on('click','#button_close_prestamo',function(e){

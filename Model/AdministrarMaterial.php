@@ -99,26 +99,21 @@
 			$response->execute();
 		}
 
-		function devolverMaterial($fecha,$motivo,$idEstudiante,$idDetMate){
-			$eliminarPrestamo="delete from prestamo where idDetalleMaterial= ?";
+		function devolverMaterial($fecha,$motivo,$idDetMate,$idPrestamoDevolucion){
 			$actualizarEstado="update detallematerial set status = 1 where idDetalleMaterial= ?";
-			$registrarDevolucion="insert into detallematerialdevuelto(fechaHoraDevolucion,motivo,idEstudiante,idDetalleMaterial) values(?,?,?,?)";
-			$responseEliminar = $this->getConexion()->prepare($eliminarPrestamo);
+			$registrarDevolucion="update prestamodevolucion set fechaHoraDevolucion=?,motivo=? where idPrestamoDevolucion=?";
 			$responseActualizar = $this->getConexion()->prepare($actualizarEstado);
 			$responseRegistrar = $this->getConexion()->prepare($registrarDevolucion);
-			$responseEliminar->bindParam(1,$idDetMate);
 			$responseActualizar->bindParam(1,$idDetMate);
 			$responseRegistrar->bindParam(1,$fecha);
 			$responseRegistrar->bindParam(2,$motivo);
-			$responseRegistrar->bindParam(3,$idEstudiante);
-			$responseRegistrar->bindParam(4,$idDetMate);
-			$responseEliminar->execute();
+			$responseRegistrar->bindParam(3,$idPrestamoDevolucion);
 			$responseActualizar->execute();
-			$responseRegistrar->execute();
+			return $responseRegistrar->execute();
 		}
 
 		function verMotivo($idDevolucion){
-			$sql="select motivo from detallematerialdevuelto where idDevolucion=?";
+			$sql="select motivo from prestamodevolucion where idPrestamoDevolucion=?";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$idDevolucion);
 			$response->execute();

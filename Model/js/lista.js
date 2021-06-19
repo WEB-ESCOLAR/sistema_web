@@ -14,7 +14,7 @@ $(document).ready(function(){
     //       mostrarDetalleMaterial();
     // }else{
       // console.log(urlSplit[4])
-      console.log(urlSplit[4])
+      console.log(urlSplit)
       switch(urlSplit[4]){
         case "GestionDeMateriales":
             mostrarMateriales();
@@ -48,7 +48,7 @@ $(document).ready(function(){
                   data:{action:"Mostrar"},
                 })
                 .done(function(response){
-                  // console.log(response)
+                  console.log(response)
                     const respuestaArray = JSON.parse(response)
                     console.log("RESPONSE PHP IS " + response)
                         let count=1;
@@ -212,7 +212,7 @@ $(document).ready(function(){
                 let val = $(this).val();
                   if( $( this ).is( ':checked' ) ){
               const listData = await detalleMaterialFilter(parametroDetalleMaterial.DISPONIBLE);
-                // console.log("DISPONIBLE " + listData)
+                console.log("DISPONIBLE " + listData)
                 $('#tableDefault').hide();
                 $('#tableFilter').show();
                 $('#btn-document').prop("disabled",true);
@@ -267,9 +267,10 @@ $(document).ready(function(){
              });
 
            async function detalleMaterialFilter(type){
+              const idMaterial = url.split("/")[5];
               const data = await $.ajax({
                 url:"../Controller/ControllerDetalleMaterial.php",
-                data:{action:"filtrarDetalleMaterial",type:type},
+                data:{action:"filtrarDetalleMaterial",type:type, idMaterial:idMaterial},
                })
                return data
             }
@@ -295,7 +296,8 @@ $(document).ready(function(){
                   break;
                 case parametroDetalleMaterial.PRESTADO:
                   header=`
-                  <th>ID</th>
+                  <th>N°</th>
+                  <th>Codigo Pecosa</th>
                   <th>Nombre y Apellido</th>
                   <th>Grado</th>
                   <th>Seccion</th>
@@ -369,12 +371,13 @@ $(document).ready(function(){
                     break;
                   case parametroDetalleMaterial.PRESTADO:
                     body=`
+                    <td>${element.codePecosa}</td>
                     <td>${element.firstName} ${element.LastName}</td>
                     <td>${element.grado}</td>
                     <td>${element.section}</td>
                     <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
                    <td>
-                    <button class="btn_Devolucion" id="mostrar_devolucion" value="${element.idEstudiante}" name="${element.idDetalleMaterial}"style="background: var(--crimson);"><i class="">Devolver</i></button>
+                    <button class="btn_Devolucion" id="mostrar_devolucion" value="${element.idPrestamoDevolucion}" name="${element.idDetalleMaterial}"style="background: var(--crimson);"><i class="">Devolver</i></button>
                   </td>
 
                     `
@@ -386,7 +389,7 @@ $(document).ready(function(){
                  <td>${element.section}</td>
                  <td>${element.fechaHoraDevolucion}</td>
                  <td>
-                 <button class="btn_OtorgarLibro" id="mostrar_motivo" name="${element.idDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>                              
+                 <button class="btn_OtorgarLibro" id="mostrar_motivo" name="${element.idPrestamoDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>                              
                  </td>
 
                  `
