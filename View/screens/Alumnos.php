@@ -51,11 +51,15 @@
             <input id="apellidoEstudiante"  name="Apellido" type="text" class="input_txt_50" placeholder="Ingrese el apellido">
 
          
+
             </div>
       </div>
       <div class="form-group">
-          <label class="label_group" >Dni del Alumno</label>
-          <input id="DniEstudiante"  name="DNI" type="text" class="input_txt" placeholder="Ingrese el DNI">
+
+          <label class="label_group">Dni del Alumno</label>
+          <input  id="DniEstudiante" name="DNI"type="text" class="input_txt" placeholder="Ingrese el dni del alumno aqui..."
+          maxlength="8"  required></p>
+
       </div>
 
 
@@ -67,7 +71,7 @@
                  <option value="Seleccione el grado">Seleccione el grado</option>
                 <option  value="Primer">Primer</option>
                 <option  value="Segundo">Segundo</option>
-                <option  value="Tercero" selected>Tercero</option>
+                <option  value="Tercero">Tercero</option>
                 <option  value="Cuarto">Cuarto</option>
                 <option  value="Quinto">Quinto</option>
                 <option  value="Sexto">Sexto</option>
@@ -78,7 +82,7 @@
               <label class="label_group">Seccion</label>
                   <select  value="A" id="seccionEstudiante" name="Seccion" class="input_txt_50">
                       <option  value="Seleccione la seccion">Seleccione la seccion</option>
-                        <option value="A" selected>A</option>
+                        <option value="A">A</option>
                         <option value="B">B</option>
                 </select>
             </div>
@@ -88,27 +92,27 @@
       <div style="display:flex;width:100%;" class="form-group">
             <div style="width:50%;">
 
-                <label class="label_group" >Nombres del Apoderado</label>
-                <input  id="nombreApoderado"  type="text" name="nombre" class="input_txt_50" placeholder="Ingrese el nombre" required>
+                <label class="label_group">Nombres del Apoderado</label>
+                <input  id="nombreApoderado" name="nombre" type="text" class="input_txt_50" placeholder="Ingrese el nombre" required>
             </div>
             <div style="width: 50%;">
-            <label class="label_group" >Apellidos del Apoderado</label>
-            <input  id="apellidoApoderado" type="text" name="apellido" class="input_txt_50" placeholder="Ingrese el apellido" required>
+            <label class="label_group">Apellidos del Apoderado</label>
+            <input  id="apellidoApoderado" name="apellido" type="text" class="input_txt_50" placeholder="Ingrese el apellido" required>
             </div>
+        
       </div>
           <div class="form-group">
               <label class="label_group">Dni del Apoderado</label>
-              <input  id="DniApoderado"  type="text" name="dni" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..." maxlength="8" ></p>
+
+              <input  id="DniApoderado" name="dni" type="text" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..." maxlength="8" ></p>
           </div>
 
              <div class="form-group">
-                <label class="label_group" >Telefono del apoderado</label>
-                  <input  id="telefonoApoderado" type="text" name="celular" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="8" ></p>
+                <label class="label_group">Telefono del apoderado</label>
+                  <input  id="telefonoApoderado" name="celular" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="8" ></p>
+             </div>
+          </div>
 
-                <label class="label_group" value="juan">Nombres del Apoderado</label>
-                <input  id="nombreApoderado" value="juan" name="nombre" type="text" class="input_txt_50" placeholder="Ingrese el nombre" required>
-            </div>
-           
     </div>
 
 

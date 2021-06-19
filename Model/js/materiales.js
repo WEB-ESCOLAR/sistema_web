@@ -29,8 +29,8 @@ $(document).ready(function(){
                     data:param
                 }).done(function(response){
                     console.log("RESULTADO ESPERADO AGREGAR " + response);
-                    // $('#formulario_material').hide();
-                    // location.reload();
+                    $('#formulario_material').hide();
+                    location.reload();
 
                 })
             });
