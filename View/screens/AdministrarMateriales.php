@@ -17,6 +17,10 @@
 		</div>
  </div>
 
+ <div class="search_inputBox">
+	 	<input type="text" placeholder="Buscar Alumno" class="search_input">
+	 	<i class="fas fa-search"></i>
+	 </div>
 
 
 

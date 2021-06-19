@@ -25,7 +25,6 @@
     ["name"=>"GestionDeMateriales","icon"=>"fa fa-book"],
     ["name"=>"Alumnos","icon"=>"fa fa-user-graduate"],
     ["name"=>"Apoderados","icon"=>"fa fa-user-tie"],
-    ["name"=>"ControlDeMaterial","icon"=>"fa fa-book"],
     ["name"=>"Configuracion","icon"=>"fas fa-cog"]
   ];
   // echo $_SESSION["newsession"];
@@ -70,10 +69,6 @@
              elseif($data[2] == 'AdministrarMateriales'){
               require_once 'AdministrarMateriales.php';
            }
-           elseif($data[2] == 'DetalleMaterial'){
-            require_once 'DetalleMaterial.php';
-           }
-
            elseif(isset($_GET["view"])){
               require_once $_GET["view"].'.php';
           }
