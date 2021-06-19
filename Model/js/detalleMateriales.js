@@ -76,7 +76,7 @@
             data:param
         }).done(function(response){
             console.log("respone is " + response )
-            // location.reload();
+            location.reload();
         })
        })
 
@@ -195,9 +195,7 @@
                $('#gradoEstudiante').val(' '+response.grado);
                $('#seccionEstudiante').val(' '+response.section);
                $('.btn-entregarLibro').prop("disabled",false);
-           })
-       })
-                }
+         }
              })
 
        })

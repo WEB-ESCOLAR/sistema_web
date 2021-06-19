@@ -121,13 +121,13 @@
 	function updatePagoApafa(){
 		//require_once("../Model/PagoApafa.php");
 			require_once("../Model/AdministrarEstudiante.php");
-			require_once("../Model/pagoApafa");
+			require_once("../Model/pagoApafa.php");
 			$pagoapafaModel = new AdministrarEstudiante();
 			$id = $_POST["id"];
 			$pagoApafa = new PagoApafa($id,null);
 			$pagoApafa->actualizarEstadoPagoApafa(1);
 			$output = $pagoapafaModel->PagoApafa($pagoApafa);
-			echo json_encode("raa");
+			echo json_encode($output);
 		}
 	
 	
