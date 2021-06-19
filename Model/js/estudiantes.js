@@ -47,7 +47,6 @@
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
                 $('.modal').hide();
                 $('#formulario_alumno').hide();
-
             })
         });
 
@@ -72,23 +71,7 @@
       //buscar alumno grado y seccion , action : BuscarGradoAndSection
       //mostrar total estudiantes , action : MostrarTotalEstudiantesPorGradoYSeccion
 
-          function mostrarTotalEstudiantes(grado,seccion){
-            console.log("mostrar")
-          const parametro ={
-            grade:grado,
-            section:seccion,
-            action:"MostrarTotalEstudiantesPorGradoYSeccion"
-          }
-          console.log("Parametro es"+JSON.stringify(parametro));
-          $.ajax({
-            url:"Controller/ControllerEstudiante.php",
-            dataType: 'json', 
-            data: parametro
-          }).done(function(response){
-              console.log("TOTAL DE ESTUDIANTES"+ response);
-              $('#totalStudentsforGradeandSection').text(response);
-          })
-        }
+        
 
 
       $(document).on('click','#editar-estudiante',function(e){ // mmodal editar
@@ -122,11 +105,11 @@
            $('#agregar_Estudiante').hide();
            $('#button_close_material').val(id);
          });
-         
+
       });
 
       $(document).on('click','#modificar_Estudiante',function(e){
-         e.preventDefault();
+        e.preventDefault();
         var datastring = $("#formulario_alumno").serialize();
          console.log(datastring);
            $.ajax({

@@ -1,13 +1,13 @@
 <?php
-/**
- *
- */
+
 class Apoderado
 {
+
   var $dni;
   var $nombre;
   var $apellido;
   var $celular;
+
 
 
   function __construct($dni,$nombre,$apellido,$celular)
