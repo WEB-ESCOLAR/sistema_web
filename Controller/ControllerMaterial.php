@@ -122,7 +122,7 @@
 		require_once("../Model/AdministrarMaterial.php");
 		require_once("../Model/DetalleMaterial");
 		$materialModel = new AdministrarMaterial();
-		$idDetaMate = $_POST["idDetaMate"];
+		$idDetalleMaterial = $_POST["idDetaMate"];
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
 		$idEstudiante=$_POST["idEstudiante"];
@@ -144,7 +144,8 @@ function agregarDetalleMaterial(){
 	require_once("../Model/AdministrarMaterial.php");
 	$materialModel = new AdministrarMaterial();
 	$cant = $_POST[""];
-	$materialModel->agregarDetalle($cant);
+	$idDetaMaterial= $_POST["idDetaMaterial"];
+	$materialModel->agregarDetalle($cant,$idDetaMaterial);
 }
 
 function deleteDetaMate(){

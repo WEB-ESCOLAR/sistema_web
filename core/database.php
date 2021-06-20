@@ -15,6 +15,7 @@
 	    DEFINE("PASSWORD","1234");
 	    DEFINE("PORT","3306");
 	    DEFINE("DATABASE","base_escolar");
+
 	}
 
 ?>

@@ -41,7 +41,8 @@
 		require_once("../Model/AdministrarDetalleMaterial.php");
 		$materialModel = new AdministrarDetalleMaterial();
 		$type = $_GET["type"];
-		$resultado = $materialModel->showListDetalleMaterial($type);
+		$idDeMaterial = $_REQUEST["idMaterial"];
+		$resultado = $materialModel->showListDetalleMaterial($type,$idDeMaterial);
 		echo json_encode($resultado);
 	}
 
