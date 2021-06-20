@@ -4,7 +4,7 @@
 
 		// private $table="material";
 
-		function loginUser($email,$password){ //obtener registros de la db.
+		function loginUser($email){ //obtener registros de la db.
 			$sql="SELECT * FROM usuario where email=:email";
 			$respuestaConsulta = $this->getConexion()->prepare($sql);
 			$respuestaConsulta->bindParam(":email",$email);

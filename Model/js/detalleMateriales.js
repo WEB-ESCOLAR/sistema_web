@@ -192,20 +192,11 @@
                $('#gradoEstudiante').val(' '+response.grado);
                $('#seccionEstudiante').val(' '+response.section);
                $('.btn-entregarLibro').prop("disabled",false);
-           })
-       })
+
                 }
              })
 
        })
-
-       // $(document).on('click','#atras_Libro',function(e){
-       //    e.preventDefault();
-       //    $('#DNI').val(' ');
-       //    $('.modal').hide();
-       // })
-             //$('.modal').reload();
-      
 
     $(document).on('click','#btn-document',function(e){
         console.log("generar pdf");

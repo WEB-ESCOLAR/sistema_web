@@ -45,6 +45,7 @@ $(document).ready(function(){
     $('#formulario_login').on('submit',function(e){
         e.preventDefault();
         var param = $(this).serialize()
+        console.log(param);
         $.ajax({
           url:"Controller/ControllerLogin.php",
           data:param+"&action=Login",
@@ -63,7 +64,7 @@ $(document).ready(function(){
                 url:"Controller/ControllerLogin.php",
                 data:{action:"Logout"},
          }).done(function(response){
-                  window.location="Login";
+                  //window.location="Login";
         })
     })
     // **************************
@@ -163,7 +164,7 @@ $(document).ready(function(){
             var myChart = new Chart(ctx, {
                   type: 'bar',
                   data: {
-                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                      labels: ['Enero', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                       datasets: [{
                           label: '# of Votes',
                           data: [12, 19, 3, 5, 2, 3],
