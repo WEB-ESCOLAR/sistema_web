@@ -4,6 +4,9 @@
 		case "MostrarApoderado":
 			fetchAllApoderado();
 			break;
+		case "SearchDniApoderado":
+				searchDniApoderado();
+				break;
 		case "MostrarEstudiante":
 			fetchAllEstudiante();
 			break;
@@ -59,6 +62,15 @@
 		$data = $administrarEstudiante->readApoderado($id);
 		echo json_encode($data);
 	}
+	function searchDniApoderado(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$administrarEstudiante = new AdministrarEstudiante();
+		$dni = $_GET["dni"];
+		$data = $administrarEstudiante->searchDniApoderado($dni);
+		echo json_encode($data);
+	}
+
+
 	function updateApoderado(){
 		require_once("../Model/Apoderado.php");
 		require_once("../Model/AdministrarEstudiante.php");
@@ -67,14 +79,8 @@
 		$nombre = $_REQUEST["nombre"];
 		$apellido = $_REQUEST["apellido"];
 		$telefono= $_REQUEST["telefono"];
-
 		$apoderado = new Apoderado($dni,$nombre,$apellido,$telefono);
-		// echo json_encode(var_dump($apoderado));
 	 	$affect = $administrarEstudiante->updateApoderados($apoderado);
-	 	// UUID()
-		// echo json_encode(var_dump($apoderado));
-		// $count=$re->rowCount();
-		// echo json_encode($affect);
 	}
 
 
@@ -149,13 +155,12 @@
 			$nombre = $_POST["nombre"];
 			$apellido = $_POST["apellido"];
 			$celular = $_POST["celular"];
+			$apoderadoExist = $_POST["apoderadoExist"];
 			$apoderado=new Apoderado($dni,$nombre,$apellido,$celular);
 			$estudiante = new Estudiante(null,$DNI,$Nombre,$Apellido,$Grado,$Seccion,intval($Usuario),$apoderado);
 			$pagoApafa= new PagoApafa(null,$apoderado);
 			$pagoApafa->actualizarEstadoPagoApafa(2);
-			$output=$estudianteModel->Create($estudiante,$pagoApafa);
-			// echo json_encode(var_dump($pagoApafa));
-			// echo json_encode(var_dump($estudiante));
+			$output=$estudianteModel->Create($estudiante,$pagoApafa,$apoderadoExist);
 
 		}
 		//END CREATE ESTUDIANTE

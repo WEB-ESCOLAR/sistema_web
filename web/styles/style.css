@@ -147,7 +147,6 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
    position:absolute;
     top:0;
     left:0;
-    width:;
     height:60%;
   }
 
@@ -428,6 +427,17 @@ h1{
   margin-top:10px;
   color:white;
   font-family: var(--font-quicksandRegular)
+}
+.btn-search{
+  height: 30px;
+  width:150px;
+  margin-top: 5px;
+  margin-left: 20px;
+  border-radius: 10px;
+  border: none;
+  color:white;
+  font-family: var(--font-quicksandBold);
+  background-color: var(--vine);
 }
 .btn_add_data{
    background: var(--vine);

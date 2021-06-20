@@ -23,6 +23,15 @@
 			}
 			return $alumnos;
 		}
+		function searchDniApoderado($dni){
+			$sql="SELECT * from apoderado where DNI=?";
+			$response = $this->getConexion()->prepare($sql);
+			$response->bindParam(1,$dni);
+			$response->execute();
+			$result = $response->fetch(PDO::FETCH_ASSOC);
+			return $result;
+		}
+
 
 		function totalStudentsForGradeAndSection($grade,$section){ 
 			$sql="SELECT COUNT(idEstudiante) as 'totalForGradeandSection' from estudiante where grado='$grade' and section='$section'";
@@ -68,15 +77,19 @@
 		}
 		//END DELETE ESTUDIANTE
 		// CREATE ESTUDIANTE
-		function Create(Estudiante $estudiante,pagoApafa $pagoApafa){
-			$query="INSERT INTO apoderado(DNI,firstName,lastName,phone) values(?,?,?,?)";
-			$response = $this->getConexion()->prepare($query);
-			$response->bindParam(1,$estudiante->apoderado->dni);
-			$response->bindParam(2,$estudiante->apoderado->nombre);
-			$response->bindParam(3,$estudiante->apoderado->apellido);
-			$response->bindParam(4,$estudiante->apoderado->celular);
-			$response->execute();	
-			if($response){
+		function Create(Estudiante $estudiante,pagoApafa $pagoApafa,$apoderadoExist){
+			if($apoderadoExist == 1){
+				$this->createAlumno($estudiante);
+			}else{
+				if($this->createApoderado($estudiante)){
+					if($this->createAlumno($estudiante)){
+						$this->createPagoApafa($estudiante,$pagoApafa);
+					}
+				}
+			}
+		}
+
+		function createAlumno(Estudiante $estudiante){
 				$sql2="INSERT INTO estudiante (dni,firstName,LastName,grado,section,idUsuario,idApoderado) values (?,?,?,?,?,?,?)";
 				$response2 = $this->getConexion()->prepare($sql2);
 				$response2->bindParam(1,$estudiante->DNI);
@@ -86,15 +99,23 @@
 				$response2->bindParam(5,$estudiante->Seccion);
 				$response2->bindParam(6,$estudiante->Usuario);
 				$response2->bindParam(7,$estudiante->apoderado->dni);
-				$response2->execute();
-				if($response2){
-				$sql3="INSERT INTO pagoapafa (state,idApoderado) values (?,?)";
-				$response3= $this->getConexion()->prepare($sql3);
-				$response3->bindParam(1,$pagoApafa->estado);
-				$response3->bindParam(2,$estudiante->apoderado->dni);
-				return $response3->execute();
-				}
+				return $response2->execute();
 		}
+		function createApoderado(Estudiante $estudiante){
+			$query="INSERT INTO apoderado(DNI,firstName,lastName,phone) values(?,?,?,?)";
+			$response = $this->getConexion()->prepare($query);
+			$response->bindParam(1,$estudiante->apoderado->dni);
+			$response->bindParam(2,$estudiante->apoderado->nombre);
+			$response->bindParam(3,$estudiante->apoderado->apellido);
+			$response->bindParam(4,$estudiante->apoderado->celular);
+			return $response->execute();
+		}
+		function createPagoApafa(Estudiante $estudiante,pagoApafa $pagoApafa){
+			$sql3="INSERT INTO pagoapafa (state,idApoderado) values (?,?)";
+			$response3= $this->getConexion()->prepare($sql3);
+			$response3->bindParam(1,$pagoApafa->estado);
+			$response3->bindParam(2,$estudiante->apoderado->dni);
+			return $response3->execute();
 		}
 		//END CREATE ESTUDIANTE
 		function PagoApafa(PagoApafa $pagoApafa){

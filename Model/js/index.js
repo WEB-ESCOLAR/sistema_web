@@ -64,7 +64,7 @@ $(document).ready(function(){
                 url:"Controller/ControllerLogin.php",
                 data:{action:"Logout"},
          }).done(function(response){
-                  //window.location="Login";
+                  window.location="Login";
         })
     })
     // **************************

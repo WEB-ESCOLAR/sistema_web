@@ -77,6 +77,21 @@
           </div>
       </form>
       <div id="form-apoderado">
+
+      <div style="display:flex;" class="form-group">
+      <div class="form-group">
+            <label class="label_group">Dni del Apoderado</label>
+            <input  id="DniApoderado" name="dni" type="text" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..." maxlength="8" ></p>
+        </div>
+
+        <div style="align-self:center;margin-top:30px;display:flex;">
+             
+            <button class="btn-search" id="search_dni">
+            <i class="fas fa-search"></i>
+            Buscar DNI</button>        
+        </div>
+      </div>
+
         <div style="display:flex;width:100%;" class="form-group">
           <div style="width:50%;">
                 <label class="label_group">Nombres del Apoderado</label>
@@ -87,10 +102,7 @@
             <input  id="apellidoApoderado" name="apellido" type="text" class="input_txt_50" placeholder="Ingrese el apellido" required>
           </div> 
         </div>
-        <div class="form-group">
-            <label class="label_group">Dni del Apoderado</label>
-            <input  id="DniApoderado" name="dni" type="text" class="input_txt" placeholder="Ingrese el dni del apoderado aqui..." maxlength="8" ></p>
-        </div>
+    
         <div class="form-group">
               <label class="label_group">Telefono del apoderado</label>
               <input  id="telefonoApoderado" name="celular" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="8" ></p>
