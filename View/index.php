@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 	session_start();
 	require_once("layouts/Navbar.php");
 	if(!isset($_SESSION["rol"])){
 		require_once("auth/login.php");
-	}else{	
+	}else{
 		 if(!isset($_GET["view"])){
      		 header("Location:Home");
   		}
@@ -17,12 +17,10 @@
   			}else{
   				require_once 'Screens/NotFound.php';
   			}
-  			
+
   		}
-		
+
 	}
 
 	require_once("layouts/footer.php");
  ?>
-
-

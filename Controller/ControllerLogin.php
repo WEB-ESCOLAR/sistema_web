@@ -17,26 +17,27 @@
 
 	// require_once("../Model/Material.php");
 
-	function updateStateUser($id,$state){
+	function updateStateUser(Usuario $usuario){
 		require_once("../Model/AdministrarUsuario.php");
 		$outputManagment = new AdministrarUsuario();
-		$outputManagment->updateState($id,$state);
+		$outputManagment->updateState($usuario->idUser,$usuario->estado);
 	}
 
 	function login(){
 		require_once("../Model/AdministrarUsuario.php");
+		require_once("../Model/Usuario.php");
 		//date_default_timezone_set('America/Lima');
 		$outpurResponse = new AdministrarUsuario();
 		$email = $_REQUEST["email"];
 		$password = $_REQUEST["password"];
-		$data = $outpurResponse->loginUser($email,$password);
+		$data = $outpurResponse->loginUser($email);
+		$usuario = new Usuario($data["idUser"],$data["firstName"],$data["lastName"],$data["email"],$data["password"],$data["rol"]);
 		if($data){
-			if(password_verify($password, $data["password"])){
-				 session_start();
-			     $_SESSION["rol"]=$data["rol"];
-			     $_SESSION["id"]=$data["idUser"];
-			     $_SESSION["nombre"]=$data["firstName"];
-			     updateStateUser($data["idUser"],1);
+			if($usuario->desencriptarContraseña($password)){
+
+					 $usuario->actualizarEstadoDeSesion(1);
+			     updateStateUser($usuario);
+				 almacenarSesion($usuario);
 			     echo json_encode(1);
 			}else{
 				echo json_encode("*La contraseña ingresada es erronea");
@@ -49,13 +50,20 @@
 	}
 
 	function logoutUser(){
-		 session_start();
+		session_start();
 		$idUser = $_SESSION["id"];
-		updateStateUser($idUser,2);
+		$usuario = new Usuario($idUser,$_SESSION["nombre"],null,null,null,null,null,null);
+		$usuario->actualizarEstadoDeSesion(2);
+		updateStateUser($usuario);
 		session_destroy();
 	}
 
-
+function almacenarSesion(Usuario $usuario){
+	session_start();
+	$_SESSION["rol"]=$usuario->rol;
+	$_SESSION["id"]=$usuario->idUser;
+	$_SESSION["nombre"]=$usuario->firstName;
+}
 
 
  ?>

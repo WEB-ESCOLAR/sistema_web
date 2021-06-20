@@ -108,22 +108,28 @@
 
 	function prestar(){
 		require_once("../Model/AdministrarMaterial.php");
+		require_once("../Model/DetalleMaterial");
 		$materialModel = new AdministrarMaterial();
 		$idEstudiante = $_POST["idEstu"];
 		$idDetalleMaterial = $_POST["idDetaMate"];
+		$detalleMaterial = new DetalleMaterial($idDetalleMaterial,null);
+		$detalleMaterial->actualizarEstadoMaterial(2);
 		$materialModel->prestarMaterial($idEstudiante,$idDetalleMaterial);
 		echo json_encode("Prestando");
 	}
 
 	function devolucion(){
 		require_once("../Model/AdministrarMaterial.php");
+		require_once("../Model/DetalleMaterial");
 		$materialModel = new AdministrarMaterial();
-		$idDetaMate = $_POST["idDetaMate"];
+		$idDetalleMaterial = $_POST["idDetaMate"];
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
-		$idPrestamoDevolucion = $_POST["idPrestamoDevolucion"];
-		$materialModel->devolverMaterial($fecha,$motivo,$idDetaMate,$idPrestamoDevolucion);
-		echo json_encode($materialModel);
+		$idEstudiante=$_POST["idEstudiante"];
+		$detalleMaterial = new DetalleMaterial($idDetalleMaterial,null);
+		$detalleMaterial->actualizarEstadoMaterial(1);
+		$materialModel->devolverMaterial($fecha,$motivo,$idEstudiante,$idDetaMate);
+		echo json_encode("Devolviendo");
 	}
 
 	function verMotivo(){
