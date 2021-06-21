@@ -123,7 +123,7 @@
 
 		function agregarDetalle($cantidad,$idMaterial){
 			$status="DISPONIBLE";
-			for ($i=0; $i <= $cantidad ; $i++) {
+			for ($i=1; $i <= $cantidad ; $i++) {
 				$sql="insert into detallematerial(idMaterial, status, codigo) values (?,?,?)";
 				$response = $this->getConexion()->prepare($sql);
 				$response->bindParam(1,$idMaterial);

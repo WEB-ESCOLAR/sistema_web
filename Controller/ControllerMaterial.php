@@ -94,21 +94,11 @@
 		$dniEstudiante = $_GET["DNI"];
 		$resultado = $materialModel->buscarEstudiante($dniEstudiante);
 		echo json_encode($resultado);
-		// if($resultado){
-		// 	$_GET["nombreEstudiante"]=$resultado["nombreEstudiante"];
-		// 	$_GET["apellidoEstudiante"]=$resultado["apellidoEstudiante"];
-		// 	$_GET["gradoEstudiante"]=$resultado["gradoEstudiante"];
-		// 	$_GET["seccionEstudiante"]=$resultado["seccionEstudiante"];
-		//
-		// }else{
-		// 	echo json_encode("");
-		// }
-
 	}
 
 	function prestar(){
 		require_once("../Model/AdministrarMaterial.php");
-		require_once("../Model/DetalleMaterial");
+		require_once("../Model/DetalleMaterial.php");
 		$materialModel = new AdministrarMaterial();
 		$idEstudiante = $_POST["idEstu"];
 		$idDetalleMaterial = $_POST["idDetaMate"];
@@ -120,15 +110,15 @@
 
 	function devolucion(){
 		require_once("../Model/AdministrarMaterial.php");
-		require_once("../Model/DetalleMaterial");
+		require_once("../Model/DetalleMaterial.php");
 		$materialModel = new AdministrarMaterial();
 		$idDetalleMaterial = $_POST["idDetaMate"];
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
-		$idEstudiante=$_POST["idEstudiante"];
-		$detalleMaterial = new DetalleMaterial($idDetaMate,null);
+		$idPrestamoDevolucion=$_POST["idPrestamoDevolucion"];
+		$detalleMaterial = new DetalleMaterial($idDetalleMaterial,null);
 		$detalleMaterial->actualizarEstadoMaterial(1);
-		$materialModel->devolverMaterial($fecha,$motivo,$idEstudiante,$idDetaMate);
+		$materialModel->devolverMaterial($fecha,$motivo,$idDetalleMaterial,$idPrestamoDevolucion);
 		echo json_encode("Devolviendo");
 	}
 
@@ -155,12 +145,7 @@ function deleteDetaMate(){
 	$materialModel->deleteDetalleMaterial($idDetaMaterial);
 	echo json_encode("Eliminando");
 }
-// function listDetalleMaterial(){
-//   require_once("../Model/AdministrarMaterial.php");
-//   $materialModel = new AdministrarMaterial();
-//   $output=$materialModel->listDetalleMaterial();
-//   echo json_encode($output);
-// }
+
 
 //////AGREGAR DETALLE MATERIAL///
 function AddDetalle(){
@@ -178,13 +163,6 @@ function deleteDetalleMaterial(){
 	$materialModel->DeleteDetalle($idDetaMaterial);
 	echo json_encode("Eliminando Detalle");
 }
-	// function fetchAllDetalleMaterial(){
-	// 	require_once("../Model/AdministrarMaterial.php");
-	// 	$materialModel = new AdministrarMaterial();
-	// 	//$idMaterial = $_POST["id"];
-	// 	$output=$materialModel->listDetalleMaterial();
-	// 	//$resultado = $materialModel->listDetalleMaterial();
-	// 	echo json_encode($output);
-	// }
+
 
  ?>

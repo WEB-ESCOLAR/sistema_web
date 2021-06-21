@@ -10,11 +10,6 @@ $(document).ready(function(){
      DEVUELTO:"DEVUELTO"
     }
     $('#tableFilter').hide();
-    // if(urlSplit[4] == "DetalleMateriales"){
-    //       mostrarDetalleMaterial();
-    // }else{
-      // console.log(urlSplit[4])
-      console.log(urlSplit)
       switch(urlSplit[4]){
         case "GestionDeMateriales":
             mostrarMateriales();
@@ -34,12 +29,6 @@ $(document).ready(function(){
         default:
           break;
       }
-    // }
-
-     // mostrarMateriales();
-     //    mostrarApoderados();
-     //    mostrarEstudiantes();
-
 
     function mostrarMateriales(){
       console.log("mostrar materiales")
@@ -50,7 +39,6 @@ $(document).ready(function(){
                 .done(function(response){
                   console.log(response)
                     const respuestaArray = JSON.parse(response)
-                    console.log("RESPONSE PHP IS " + response)
                         let count=1;
                              var url = window.location.href;
                              const nombreModulo =url.split("/")[4];
@@ -128,13 +116,11 @@ $(document).ready(function(){
           }
 
           function mostrarTotalEstudiantes(grado,seccion){
-            console.log("mostrar")
           const parametro ={
             grade:grado,
             section:seccion,
             action:"MostrarTotalEstudiantesPorGradoYSeccion"
           }
-          console.log("Parametro es"+JSON.stringify(parametro));
           $.ajax({
             url:"Controller/ControllerEstudiante.php",
             dataType: 'json', 
@@ -175,7 +161,6 @@ $(document).ready(function(){
                section:seccion,
                action:"MostrarEstudiante"
              }
-             console.log(parametro)
                 $.ajax({
                     url:"Controller/ControllerEstudiante.php",
                     data:parametro
@@ -211,7 +196,6 @@ $(document).ready(function(){
                 let val = $(this).val();
                   if( $( this ).is( ':checked' ) ){
               const listData = await detalleMaterialFilter(parametroDetalleMaterial.DISPONIBLE);
-                console.log("DISPONIBLE " + listData)
                 $('#tableDefault').hide();
                 $('#tableFilter').show();
                 $('#btn-document').prop("disabled",true);
@@ -223,14 +207,12 @@ $(document).ready(function(){
                   $('#tableDefault').show();
                   $('#tableFilter').hide();
                   $('#btn-document').prop("disabled",true);
-                  // $('#tableFilter').reload();
                 }
              });
              $(document).on('click','#checkPrestado',async function(e){
               let val = $(this).val();
               if( $( this ).is( ':checked' ) ){
               const listData =  await detalleMaterialFilter(parametroDetalleMaterial.PRESTADO);
-                console.log("prestado " + listData)
                 $('#tableDefault').hide();
                 $('#tableFilter').show();
                 $('#btn-document').prop("disabled",false);
@@ -250,7 +232,6 @@ $(document).ready(function(){
               let val = $(this).val();
               if( $( this ).is( ':checked' ) ){
               const listData =await detalleMaterialFilter(parametroDetalleMaterial.DEVUELTO);
-              console.log("devolucion " + listData)
               $('#tableDefault').hide();
               $('#tableFilter').show();
               $('#btn-document').prop("disabled",false);
@@ -318,7 +299,6 @@ $(document).ready(function(){
                break;
                  
               }   
-              console.log("header"+header);
               return header;
 
             }
@@ -340,8 +320,6 @@ $(document).ready(function(){
           
             function mostrarDetalleMaterialBody(listData,type){
               const response = JSON.parse(listData)
-              console.log(response)
-              console.log("type is " + type)
               let count=1;
               response.forEach((element)=>{
                       $('#mostrarDataFilter').append(
@@ -412,7 +390,6 @@ $(document).ready(function(){
               })
               .done(function(response){
                 const responseJSON = JSON.parse(response)
-                console.log(responseJSON)
                         if(response == 0){
                           console.log("false")
                         }else{

@@ -17,10 +17,10 @@
 		</div>
  </div>
 
- <div class="search_inputBox">
+ <!-- <div class="search_inputBox">
 	 	<input type="text" placeholder="Buscar Alumno" class="search_input">
 	 	<i class="fas fa-search"></i>
-	 </div>
+	 </div> -->
 
 
 
@@ -57,7 +57,8 @@
 	    <h2 class="title_form">Entrega Libro</h2>
     </div>
       <div class="closeEstudiante">
-				<button id="button_close_prestamo" class="btn_close"><i style="font-size: 20px;" class="fas fa-times"></i></button>
+				<button id="button_close_prestamo" class="btn_close">
+				<i style="font-size: 20px;" class="fas fa-times"></i></button>
       </div>
   <div style="margin-top:20px;margin-left:10px">
         <div class="dniEstudiante">
@@ -109,7 +110,8 @@
 		      </div>
 
 		        <div class="closeDevolucion">
-		        <button class="btn_close" id="button_close_devolucion" ><i class="fas fa-times fa-lg"></i></button>
+		        <button class="btn_close" id="button_close_devolucion" >
+				<i style="font-size:25px;margin-left:5px;" class="fas fa-times fa-lg"></i></button>
 		          </div>
 
 		        <div class="areaDevolucion">

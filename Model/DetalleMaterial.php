@@ -10,7 +10,7 @@ var $material;
 var $estado;
 var $codigoMaterial;
 
-function __construct(argument)
+function __construct($idDetalleMaterial,$material)
 {
     $this->idDetalleMaterial=$idDetalleMaterial;
     $this->material=$material;

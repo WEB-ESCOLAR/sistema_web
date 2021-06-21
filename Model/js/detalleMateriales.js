@@ -50,7 +50,6 @@
              idEstu:$('.buscarEstudiante').val(), //id
              action:"prestarMaterial"
          }
-         console.log(param)
          $.ajax({
              url:"../Controller/ControllerMaterial.php",
              type:"POST",
@@ -75,7 +74,6 @@
             type:"POST",
             data:param
         }).done(function(response){
-            console.log("respone is " + response )
             location.reload();
         })
        })
@@ -120,27 +118,10 @@
         }).done(function(response){
             $('.formularioPrestamo').show();
             $('#button_close_prestamo').val(idDetMat);
-            console.log(response);
-                })
+         })
        })
 
-        //MOSTRANDO EL FRAME DE ENTREGAR LIBRO
-        // $(document).on('click','#mostrar_alumno',function(e){ // mal solo es un evento
-        //   e.preventDefault();
-        //   var idDetMat = $(this).attr("name");
-        //   const param={
-        //      "idDetMat":idDetMat,
-        //  }
-        //  //console.log("idDetMat"+idDetMat);
-        //   $.ajax({
-        //      url:"Controller/ControllerMaterial.php",
-        //      type:"POST"
-        //  }).done(function(response){
-        //      $('.modal').show();
-        //      $('.detaLibro').val(idDetMat);
-        //      $('#entregarLibro').prop("disabled",true);
-        //  })
-        // })
+       
 
         $(document).on('click','#mostrar_devolucion',function(e){
           e.preventDefault();

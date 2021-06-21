@@ -86,16 +86,7 @@ $(document).ready(function(){
 
          $(document).on('click','#btn_update_apoderado',function(e){
               e.preventDefault();
-              // console.log("press");
                var datastring = $("#formulario_apoderado").serialize();
-              //  const dni = $('#dni').val();
-              //  const param={
-              //       nombre:   $('#nombre').val(),
-              //       apellido :  $('#apellido').val(),
-              //        telefono : $('#telefono').val(),
-              //       dni : $('#dni').val(),
-              //       action :"UpdateApoderado"
-              //  }
                console.log("datastring: "+datastring);
                  $.ajax({
                   url:"Controller/ControllerEstudiante.php",
@@ -107,15 +98,10 @@ $(document).ready(function(){
 
                   $('#formulario_apoderado').hide();
                   $('.modal').hide();
-                  //setTimeout(function(){
-                    //location.reload();
-                  //},2000)
-
-                  // $('#formulario_apoderado').hide();
-                  // $('.modal').hide();
-                  // setTimeout(function(){
-                  //   location.reload();
-                  // },2000)
+                  $('.modal').hide();
+                  setTimeout(function(){
+                    location.reload();
+                  },2000)
 
                })
             })
