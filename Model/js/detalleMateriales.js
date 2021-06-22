@@ -59,7 +59,7 @@
              location.reload();
          })
        })
-
+       //npo
        $(document).on('click','#devolverLibro',function(e){
          e.preventDefault();
          const param={

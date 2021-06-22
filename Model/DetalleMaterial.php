@@ -9,7 +9,7 @@ var $idDetalleMaterial;
 var $material;
 var $estado;
 var $codigoMaterial;
-
+//nobvo
 function __construct($idDetalleMaterial,$material)
 {
     $this->idDetalleMaterial=$idDetalleMaterial;

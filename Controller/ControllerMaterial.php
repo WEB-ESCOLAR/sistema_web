@@ -95,7 +95,7 @@
 		$resultado = $materialModel->buscarEstudiante($dniEstudiante);
 		echo json_encode($resultado);
 	}
-
+	//prueba
 	function prestar(){
 		require_once("../Model/AdministrarMaterial.php");
 		require_once("../Model/DetalleMaterial.php");

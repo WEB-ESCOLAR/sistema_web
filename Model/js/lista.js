@@ -191,7 +191,7 @@ $(document).ready(function(){
                                  })
                 })
             }
-
+             // prueba 
             $(document).on('click','#checkDisponible',async function(e){
                 let val = $(this).val();
                   if( $( this ).is( ':checked' ) ){

@@ -34,7 +34,7 @@
                 }
               })
           })
-
+          //raa
           $(document).on('click','#agregar_Estudiante',function(e){
             e.preventDefault();
             var datastring = $("#formulario_alumno").serialize();

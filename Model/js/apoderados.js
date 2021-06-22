@@ -34,7 +34,7 @@ $(document).ready(function(){
 
           })
 
-
+          //r
      $(document).on('click','.btn-print',function(e){
              e.preventDefault();
               var name = $(this).attr("name");

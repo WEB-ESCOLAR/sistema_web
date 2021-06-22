@@ -10,7 +10,7 @@
 			break;
 	}
 
-	
+	//asda
 	function listFiltroDetalleMaterial(){
 		require_once("../Model/AdministrarDetalleMaterial.php");
 		$materialModel = new AdministrarDetalleMaterial();
