@@ -126,7 +126,7 @@
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
 		$idEstudiante=$_POST["idEstudiante"];
-		$detalleMaterial = new DetalleMaterial($idDetalleMaterial,null);
+		$detalleMaterial = new DetalleMaterial($idDetaMate,null);
 		$detalleMaterial->actualizarEstadoMaterial(1);
 		$materialModel->devolverMaterial($fecha,$motivo,$idEstudiante,$idDetaMate);
 		echo json_encode("Devolviendo");

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	require_once "AdministradorModelo.php";
 	class AdministrarDashboard extends AdministrarModelo{
@@ -13,7 +13,7 @@
 			return $pagosapafa;
 		}
 
-		
+
 		function showUsers(){
 			$sql="SELECT concat(u.firstname,' ',u.lastName)as nombre, u.email, u.rol, u.status, u.created_at as fecha FROM usuario u";
 			$respuestaConsulta = $this->consulta($sql);
@@ -40,10 +40,19 @@
 			}
 			return $totalnumberRMaterial;
 		}
-		//optimization function 
-		// function showDataFetch(){
-			
-		// }
+
+		function cantidadPrestadosDevueltos(){
+			$sql="select MONTHNAME(pd.fechaHora) as 'mes', COUNT(pd.codePecosa) as 'PRESTADOS', d.devueltos
+			from prestamodevolucion pd left join devoluciones d
+			on d.meses = MONTHNAME(pd.fechaHora)
+			GROUP BY MONTHNAME(fechaHora)";
+			$respuestaPrestadosDevueltos = $this->consulta($sql);
+			while ($filas = $respuestaPrestadosDevueltos->fetch(PDO::FETCH_ASSOC)) {
+				$prestadosDevueltos[]=$filas;
+			}
+			return $prestadosDevueltos;
+		}
+
 
 	}
 

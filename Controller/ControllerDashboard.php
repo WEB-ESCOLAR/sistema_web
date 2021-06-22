@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	switch($action){
@@ -14,6 +14,9 @@
 		case "MostrarNumeroDeMaterial":
 			totalNumberMaterial();
 			break;
+		case "MostrarTotalPrestadosDevueltos":
+			totalPrestadosDevueltosPorMeses();
+		break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -26,7 +29,7 @@
 		$resultado = $lastpayModel->showLastpay();
 		echo json_encode($resultado);
 	}
-	
+
 	function fetchAllUsuario(){
 		require_once("../Model/AdministradorDashboard.php");
 		$usuarioModel = new AdministrarDashboard();
@@ -47,5 +50,13 @@
 		$resultado = $totalMaterialModel->totalNumberRegisterMaterial();
 		echo json_encode($resultado);
 	}
+
+	function totalPrestadosDevueltosPorMeses(){
+		require_once("../Model/AdministradorDashboard.php");
+		$totalPrestadosDevueltosPorMeses = new AdministrarDashboard();
+		$resultado = $totalPrestadosDevueltosPorMeses->cantidadPrestadosDevueltos();
+		echo json_encode($resultado);
+	}
+
 
 ?>
