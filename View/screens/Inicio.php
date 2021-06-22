@@ -9,16 +9,17 @@
 					<canvas id="myChart" width="300" height="150"></canvas>
 				</div>
 
-				<div id="ComponentCardDashboard"; class="carddashboard";>
-				    <div>
+				<div id="ComponentCardDashboard" class="carddashboard">	
+				    <div class="box_card_total">
+
 					   	<label >Total de estudiantes:</label>
 					   	<p id="CompCardDashboardTE"></p>
 					</div>
-					<div>
+				    <div class="box_card_total">
 					   	<label>Total de apoderados:</label>
 					   	<p id ="CompCardDashboardTA"></p>
 					</div>
-					<div>
+				    <div class="box_card_total">
 						<label>Total de materiales registrados:</label>
 					   	<p id="CompCardDashboardTM"></p>
 					</div>
@@ -53,10 +54,27 @@
 	<?php }else{ ?>
 		<div style="margin:auto;">
 			<div style="display:flex;justify-content: space-between;">
-				<div style="background: yellow;width:45%;height:280px;">
+
+        <div style="background: yellow;width:45%;height:280px;">
 
 				</div>
-				<div style="background: green;width:45%;height:280px;">
+		
+				<!-- <div style="background: green;width:45%;height:280px;">
+					
+				</div> -->
+				<div id="ComponentCardDashboard" class="carddashboard">	
+				    <div class="box_card_total">
+					   	<label >Total de estudiantes:</label>
+					   	<p id="CompCardDashboardTE"></p>
+					</div>
+				    <div class="box_card_total">
+					   	<label>Total de apoderados:</label>
+					   	<p id ="CompCardDashboardTA"></p>
+					</div>
+				    <div class="box_card_total">
+						<label>Total de materiales registrados:</label>
+					   	<p id="CompCardDashboardTM"></p>
+					</div>	   
 
 				</div>
 			</div>

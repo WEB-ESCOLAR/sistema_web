@@ -33,7 +33,7 @@
 		}
 
 		function totalNumberRegisterMaterial(){
-			$sql="SELECT COUNT(dt.idDetalleMaterial) as 'totalDeMateriales' from detallematerial dt";
+			$sql="SELECT COUNT(dt.idMaterial) as 'totalDeMateriales' from material dt";
 			$respuestaConsulta = $this->consulta($sql);
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
 				$totalnumberRMaterial[]=$filas;

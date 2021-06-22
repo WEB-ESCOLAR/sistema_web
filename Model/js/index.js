@@ -64,7 +64,7 @@ $(document).ready(function(){
                 url:"Controller/ControllerLogin.php",
                 data:{action:"Logout"},
          }).done(function(response){
-                  //window.location="Login";
+                  window.location="Login";
         })
     })
     // **************************
@@ -108,6 +108,8 @@ $(document).ready(function(){
       $('#button_alumno').click(function(e){
             e.preventDefault();
             $('.modal').show();
+            $('#titulo_EditarEstudiante').hide();
+            $('#formulario_alumno').show();
             $('#modificar_Estudiante').hide();
             $('#agregar_Estudiante').show();
             $("#titulo_Estudiante").show();

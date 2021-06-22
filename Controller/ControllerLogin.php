@@ -35,7 +35,7 @@
 		if($data){
 			if($usuario->desencriptarContraseña($password)){
 
-					 $usuario->actualizarEstadoDeSesion(1);
+				 $usuario->actualizarEstadoDeSesion(1);
 			     updateStateUser($usuario);
 				 almacenarSesion($usuario);
 			     echo json_encode(1);
@@ -50,6 +50,7 @@
 	}
 
 	function logoutUser(){
+		require_once("../Model/Usuario.php");
 		session_start();
 		$id = $_SESSION["id"];
 		$nombre = $_SESSION["nombre"];

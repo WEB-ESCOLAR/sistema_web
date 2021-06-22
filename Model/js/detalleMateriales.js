@@ -47,7 +47,7 @@
          e.preventDefault();
          const param={
              idDetaMate:$('#button_close_prestamo').val(), //id detallematerial
-             idEstu:$('#entregarLibro').val(), //id
+             idEstu:$('.buscarEstudiante').val(), //id
              action:"prestarMaterial"
          }
          console.log(param)
@@ -66,7 +66,7 @@
          const param={
              idDetaMate:$('#button_close_devolucion').val(),
              motivo:$('#motivo').val(),
-             idEstudiante:$("#mostrar_devolucion").val(),
+             idPrestamoDevolucion:$("#mostrar_devolucion").val(),
              action:"Devolver"
          }
          console.log(param);
@@ -94,6 +94,7 @@
             data:param,
             dataType: 'json'
         }).done(function(response){
+          console.log(response);
             $('.verMotivo').show();
             $('#vermotivo').val(' '+response.motivo);
         })
@@ -119,6 +120,7 @@
         }).done(function(response){
             $('.formularioPrestamo').show();
             $('#button_close_prestamo').val(idDetMat);
+            console.log(response);
                 })
        })
 
@@ -145,8 +147,9 @@
           var idDetMat = $(this).attr("name");
           const param={
              "idDetMat":idDetMat,
+             "idPrestamoDevolucion":$("#mostrar_devolucion").val()
          }
-         console.log(idDetMat)
+         console.log(param)
           $.ajax({
              url:"../Controller/ControllerMaterial.php",
              type:"POST",
@@ -186,14 +189,17 @@
              } else {
                $('#entregarLibro').prop("disabled",false);
                $('#entregarLibro').css("background","var(--primary)");
-               $('.btn-atras').val(response.idEstudiante);
+               $('.buscarEstudiante').val(response.idEstudiante);
                $('#nombreEstudiante').val(' '+response.firstName);
                $('#apellidoEstudiante').val(' '+response.LastName);
                $('#gradoEstudiante').val(' '+response.grado);
                $('#seccionEstudiante').val(' '+response.section);
                $('.btn-entregarLibro').prop("disabled",false);
 
+
                 }
+
+
              })
 
        })

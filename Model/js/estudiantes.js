@@ -1,6 +1,6 @@
  $(document).ready(function(){
 
-
+  let dataExist=0;
     $(document).on('click','#eliminarEstudiante',function(e){
               var id = $(this).attr("name");
               e.preventDefault();
@@ -39,14 +39,16 @@
             e.preventDefault();
             var datastring = $("#formulario_alumno").serialize();
              console.log(datastring);
+             console.log(dataExist)
              $.ajax({
                 url:"Controller/ControllerEstudiante.php",
                 type:"POST",
-                data:datastring+"&action=AgregarEstudiante",
+                data:datastring+`&apoderadoExist=${dataExist}&action=AgregarEstudiante`,
             }).done(function(response){
                 console.log("RESULTADO ESPERADO AGREGAR " + response);
                 $('.modal').hide();
                 $('#formulario_alumno').hide();
+                location.reload();
             })
         });
 
@@ -70,8 +72,44 @@
       // });
       //buscar alumno grado y seccion , action : BuscarGradoAndSection
       //mostrar total estudiantes , action : MostrarTotalEstudiantesPorGradoYSeccion
+      
+     
+      $(document).on('click','#search_dni',function(e){
+          e.preventDefault();
+          const param={
+            dni:$('#DniApoderado').val(),
+            action:"SearchDniApoderado"
+          }
+          $.ajax({
+            url:"Controller/ControllerEstudiante.php",
+            type:"GET",
+            data:param,
+            dataType:"JSON"
+          }).done(function(response){
+            if(!response){
+              Swal.fire({
+                title: 'No existe DNI ingresado',
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'confirmar'
+              })
+              $('#nombreApoderado').val("");
+              $('#apellidoApoderado').val("");
+              $('#telefonoApoderado').val("");
+              dataExist=0
+            }else{
+              $('#nombreApoderado').val(response.firstName);
+              $('#apellidoApoderado').val(response.lastName);
+              $('#telefonoApoderado').val(response.phone);
+              dataExist=1
+              console.log(response)
+            }
+          })
 
-        
+      })
+      // search_dni
 
 
       $(document).on('click','#editar-estudiante',function(e){ // mmodal editar
