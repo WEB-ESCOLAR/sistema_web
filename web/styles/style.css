@@ -469,7 +469,7 @@ button{
   margin-top: 10px;
   margin-bottom: 10px;
 }
-#btn-document,#btn-chart{
+#btn-document{
   background: rgba(120, 0, 0, 0.5);
 }
 .checkBoxFilter{

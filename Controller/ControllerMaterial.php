@@ -130,13 +130,6 @@
 		echo json_encode($resultado);
 	}
 
-function agregarDetalleMaterial(){
-	require_once("../Model/AdministrarMaterial.php");
-	$materialModel = new AdministrarMaterial();
-	$cant = $_POST[""];
-	$idDetaMaterial= $_POST["idDetaMaterial"];
-	$materialModel->agregarDetalle($cant,$idDetaMaterial);
-}
 
 function deleteDetaMate(){
 	require_once("../Model/AdministrarMaterial.php");
@@ -151,8 +144,9 @@ function deleteDetaMate(){
 function AddDetalle(){
 	require_once("../Model/AdministrarMaterial.php");
 	$materialModel=new AdministrarMaterial();
+	$idDetalleMaterial = $_POST["idDetalleMaterial"];
 	$cant=$_POST["cantidad"];
-	$materialModel->AgregarDetalle($cant);
+	$materialModel->agregarDetalle($cant,$idDetalleMaterial);
 
 }
 ////ELIMIANR DETALLE ELIMINAR/////

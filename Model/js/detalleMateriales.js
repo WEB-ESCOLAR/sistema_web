@@ -1,5 +1,6 @@
  $(document).ready(function(){
-
+     var url = window.location.href;
+        const urlSplit = url.split("/")[5]
 
           $('#btn_back').click(function(e){
              window.history.back();
@@ -10,15 +11,16 @@
                e.preventDefault();
                var param={
                  cantidad:$('#cantidad').val(),
+                 idDetalleMaterial: urlSplit,
                  action:"AgregarDetalleCantidad"
                }
-                console.log(param);
                 $.ajax({
                    url:"../Controller/ControllerMaterial.php",
                    type:"POST",
                    data:param
                }).done(function(response){
                	    alertSuccess("Se registro correctamente","");
+                    console.log(response)
                   setTimeout(function(){
                     location.reload();
                   },2000)
@@ -33,13 +35,26 @@
                        idDta:idDta,
                        action:"EliminarDetalleMaterial"
                    }
-                       $.ajax({
+
+                        Swal.fire({
+                        title: 'Esta seguro de eliminar?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si , deseo eliminar!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          $.ajax({
                            url:"../Controller/ControllerMaterial.php",
                            type:"POST",
                            data:param
-                       }).done(function(response){
-                      	 location.reload();
-                       })
+                           }).done(function(response){
+                             location.reload();
+                           })
+
+                        }
+                    })
 
                })
         //----------------------------
@@ -55,7 +70,6 @@
              type:"POST",
              data:param
          }).done(function(response){
-             console.log("respone is " + response )
              location.reload();
          })
        })

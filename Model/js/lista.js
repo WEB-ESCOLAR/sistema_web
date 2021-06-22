@@ -31,18 +31,15 @@ $(document).ready(function(){
       }
 
     function mostrarMateriales(){
-      console.log("mostrar materiales")
                 $.ajax({
                   url:"Controller/ControllerMaterial.php",
                   data:{action:"Mostrar"},
                 })
                 .done(function(response){
-                  console.log(response)
                     const respuestaArray = JSON.parse(response)
                         let count=1;
                              var url = window.location.href;
                              const nombreModulo =url.split("/")[4];
-                             console.log(respuestaArray);
                              respuestaArray.forEach((element)=>{
                                     $('#data_materiales_table').append(
 
@@ -82,9 +79,7 @@ $(document).ready(function(){
                     data:{action:"MostrarApoderado"},
                 })
                 .done(function(responseApoderado){
-                  console.log(responseApoderado);
                     const arrApoderados = JSON.parse(responseApoderado)
-                    console.log("apoderados " + arrApoderados)
                         let count=1;
                              arrApoderados.forEach((element)=>{
                                     $('#response_table_apoderado').append(
@@ -126,7 +121,6 @@ $(document).ready(function(){
             dataType: 'json', 
             data: parametro
           }).done(function(response){
-              console.log("TOTAL DE ESTUDIANTES"+ response);
               $('#totalStudentsforGradeandSection').text(response);
           })
         }
@@ -141,7 +135,15 @@ $(document).ready(function(){
               mostrarEstudiantes(grade,section)
               mostrarTotalEstudiantes(grade,section)
             }else{
-                console.log("seleccionar grado  yseccion") //aqui alerta jair
+              Swal.fire({
+                title: 'Seleccionar Grado y Seccion',
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'confirmar'
+              })
+                // console.log("seleccionar grado  y seccion") //aqui alerta jair
             }
           });
 
@@ -166,7 +168,6 @@ $(document).ready(function(){
                     data:parametro
                 })
                 .done(function(response){
-                  console.log(response)
                     const respuestaArray = JSON.parse(response)
                         let count=1;
                              respuestaArray.forEach((element)=>{
@@ -382,7 +383,6 @@ $(document).ready(function(){
 
             //detalle materiales defalt - revision reutilizacion codigo
             function mostrarDetalleMaterial(){
-              console.log("listar detalle")
                const idMaterial =url.split("/")[5];
               $.ajax({
                 url:"../Controller/ControllerMaterial.php",
