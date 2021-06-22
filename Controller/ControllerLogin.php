@@ -51,8 +51,10 @@
 
 	function logoutUser(){
 		session_start();
-		$idUser = $_SESSION["id"];
-		$usuario = new Usuario($idUser,$_SESSION["nombre"],null,null,null,null,null,null);
+		$id = $_SESSION["id"];
+		$nombre = $_SESSION["nombre"];
+		$rol = $_SESSION["rol"];
+		$usuario = new Usuario($id,$nombre,null,null,null,null,$rol);
 		$usuario->actualizarEstadoDeSesion(2);
 		updateStateUser($usuario);
 		session_destroy();
