@@ -199,9 +199,7 @@
 
        })
 
-    $(document).on('click','#btn-document',function(e){
-        console.log("generar pdf");
-    })
+   
 
 
 

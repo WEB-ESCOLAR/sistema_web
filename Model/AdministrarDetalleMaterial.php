@@ -26,6 +26,22 @@
                 return $devueltomaterial;
         }
 
+        function showGenerarReporte($type,$idMaterial){
+            if($type == "PRESTADOS"){
+                //sentencia 
+            }else if($type == "DEVUELTOS"){
+                // sentencia aca 
+            }else{
+                //sentencia aca 
+            }
+            //utilizar variable de sql
+            $respuestaConsulta = $this->consulta($sql);
+            while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+            $dataBody[]=$filas;
+        }
+            return $dataBody;
+        }
+
 
     }
  ?>

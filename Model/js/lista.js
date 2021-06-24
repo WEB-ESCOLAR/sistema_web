@@ -4,6 +4,7 @@ $(document).ready(function(){
     console.log("list js");
     var url = window.location.href;
     const urlSplit = url.split("/")
+    let stateCheckBox;
     const parametroDetalleMaterial={
        PRESTADO:"PRESTADO",
      DISPONIBLE:'DISPONIBLE',
@@ -67,6 +68,7 @@ $(document).ready(function(){
                   data:parametro
                 })
                 .done(function(response){
+                  console.log(response)
                     const respuestaArray = JSON.parse(response)
                         let count=1;
                              var url = window.location.href;
@@ -226,7 +228,7 @@ $(document).ready(function(){
             $(document).on('click','#checkDisponible',async function(e){
                 let val = $(this).val();
                   if( $( this ).is( ':checked' ) ){
-              const listData = await detalleMaterialFilter(parametroDetalleMaterial.DISPONIBLE);
+              const listData = await detalleMaterialFilter("filtrarDetalleMaterial",parametroDetalleMaterial.DISPONIBLE);
                 $('#tableDefault').hide();
                 $('#tableFilter').show();
                 $('#btn-document').prop("disabled",true);
@@ -243,8 +245,10 @@ $(document).ready(function(){
 
              $(document).on('click','#checkPrestado',async function(e){
               let val = $(this).val();
+              stateCheckBox=parametroDetalleMaterial.PRESTADO
               if( $( this ).is( ':checked' ) ){
-              const listData =  await detalleMaterialFilter(parametroDetalleMaterial.PRESTADO);
+              const listData =  await detalleMaterialFilter("filtrarDetalleMaterial",parametroDetalleMaterial.PRESTADO);
+             
                 $('#tableDefault').hide();
                 $('#tableFilter').show();
                 $('#btn-document').prop("disabled",false);
@@ -262,8 +266,10 @@ $(document).ready(function(){
 
              $(document).on('click','#checkDevolucion', async function(e){
               let val = $(this).val();
+              stateCheckBox=parametroDetalleMaterial.DEVUELTO
               if( $( this ).is( ':checked' ) ){
-              const listData =await detalleMaterialFilter(parametroDetalleMaterial.DEVUELTO);
+              const listData =await detalleMaterialFilter("filtrarDetalleMaterial",parametroDetalleMaterial.DEVUELTO);
+           
               $('#tableDefault').hide();
               $('#tableFilter').show();
               $('#btn-document').prop("disabled",false);
@@ -278,11 +284,19 @@ $(document).ready(function(){
               }
              });
 
-           async function detalleMaterialFilter(type){
+
+             $(document).on('click','#btn-document',async function(e){
+              console.log("generar pdf" + stateCheckBox);
+              const response = await detalleMaterialFilter("reporteView",stateCheckBox)
+              console.log(response)
+            })
+
+
+           async function detalleMaterialFilter(action,type){
               const idMaterial = url.split("/")[5];
               const data = await $.ajax({
                 url:"../Controller/ControllerDetalleMaterial.php",
-                data:{action:"filtrarDetalleMaterial",type:type, idMaterial:idMaterial},
+                data:{action:action,type:type, idMaterial:idMaterial},
                })
                return data
             }
