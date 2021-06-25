@@ -72,8 +72,8 @@
       // });
       //buscar alumno grado y seccion , action : BuscarGradoAndSection
       //mostrar total estudiantes , action : MostrarTotalEstudiantesPorGradoYSeccion
-      
-     
+
+
       $(document).on('click','#search_dni',function(e){
           e.preventDefault();
           const param={
@@ -119,6 +119,8 @@
         $('#modificar_Estudiante').show();
         $("#titulo_Estudiante").hide();
         $("#titulo_EditarEstudiante").show();
+        $("#titulo_MostrarApoderado").hide();
+        $('#formVerApoderado').hide();
          var id = $(this).attr("name");
            const param={
               "id":id,
@@ -165,6 +167,30 @@
          })
       })
 
+      $(document).on('click','#mostrarApoderado',function(e){
+           e.preventDefault();
+           $('#formVerApoderado').show();
+           $("#titulo_MostrarApoderado").show();
+           $("#formulario_alumno").hide();
+            var id = $(this).attr("name");
+              const param={
+                 "id":id,
+                 "action":"DetalleApoderado"
+             }
+            $.ajax({
+               url:"Controller/ControllerEstudiante.php",
+               type:"GET",
+               data:param,
+               dataType: 'json',
+            }).done(function(response){
+              $('.modal').show();
+              $('#VernombreApoderado').text(response.firstName);
+              $('#verapellidoApoderado').text(response.lastName);
+              $('#vertelefonoApoderado').text(response.phone);
+              $('#verDniApoderado').text(response.DNI);
 
+            });
+
+         })
 
   });

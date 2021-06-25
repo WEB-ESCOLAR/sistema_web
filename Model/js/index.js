@@ -84,6 +84,7 @@ $(document).ready(function(){
             $('.modal').show();
             $('#formulario_material').show();
       })
+
       $('#button_detalleMaterial').click(function(e){
         e.preventDefault();
           $('.modal_agregar_cantidad').show();
@@ -113,6 +114,7 @@ $(document).ready(function(){
             $('#modificar_Estudiante').hide();
             $('#agregar_Estudiante').show();
             $("#titulo_Estudiante").show();
+            $('#formVerApoderado').hide();
             $("#titulo_EditarEstudiante").hide();
             $('#formulario_alumno').show();
             $('#form-apoderado').show();
@@ -130,6 +132,11 @@ $(document).ready(function(){
           // $('#DNI').empty(' ');
           $('.formularioPrestamo').hide();
         });
+
+        $(document).on('click','#button_close_apoderado',function(e){
+            e.preventDefault();
+            $('.modal').hide();
+          });
 
       $(document).on('click','#button_close_material',function(e){
           e.preventDefault();
