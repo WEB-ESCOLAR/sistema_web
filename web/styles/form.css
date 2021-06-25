@@ -1,5 +1,5 @@
 /*efect oscuro*/
-.modal,.modal_agregar_cantidad,.modalAgregarCantid,.formularioPrestamo,.formularioDevolucion,.verMotivo{
+.modal,.modal_agregar_cantidad,.modalAgregarCantid,.formularioPrestamo,.formularioDevolucion,.verMotivo,.modal_verform-apoderado{
   background:rgba(0,0,0,0.25);
   position: absolute;
   top: 0%;
@@ -15,7 +15,7 @@
 .form-group{
   margin-top: 10px;
 }
-.box_form{
+.box_form,.verform-apoderado{
     position: absolute;
     width: 500px;
     left: 305px;
@@ -69,7 +69,7 @@
     font-family:  var(--font-quicksandBold);
 }
 
-.btn_close{
+.btn_close,.btn_closeApoderado{
   position: absolute;
   width:28px;
   height:26px;
@@ -119,7 +119,7 @@
 /*REUTILIZAR ESTILOS Y OPTIMIZAR , PUEDES REUTILIZAR ALGUNOS INPUTS DE LA PARTE DEL COMPONENTE FORM DE ARRIBA */
 /*REVISAR  */
 
-.form_administrarMat{
+.form_administrarMat,.verform-apoderado{
   position: absolute;
   width: 440px;
   height: 330px;

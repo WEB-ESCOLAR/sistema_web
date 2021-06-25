@@ -13,6 +13,7 @@
 			return $response->fetchColumn();
 		}
 
+
 		function listAll($curse){ //obtener registros de la db.
 			if ($curse==null){
 				$sql="SELECT * from material";
@@ -24,7 +25,7 @@
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
 			 $material = new Material(
 			$filas["idMaterial"],
-			$filas["curse"],
+			$filas["descripcion"],
 			$filas["tipoMaterial"],
 			$filas["grade"],
 			$this->materialState($filas["idMaterial"],"DISPONIBLE"),
@@ -39,7 +40,7 @@
 		}
 
 		function Create(Material $material){
-			$sql="INSERT INTO material(idMaterial,curse,grade,ReceptionDate,tipoMaterial,nameMaterial,amount) values(?,?,?,?,?,?,?)";
+			$sql="INSERT INTO material(idMaterial,idCurso,grade,ReceptionDate,tipoMaterial,nameMaterial,amount) values(?,?,?,?,?,?,?)";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$material->id);
 			$response->bindParam(2,$material->nombreCurso);
@@ -48,7 +49,7 @@
 			$response->bindParam(5,$material->tipoMaterial);
 			$response->bindParam(6,$material->nombreMaterial);
 			$response->bindParam(7,$material->cantidad);
-			
+
 			$resultado=$response->execute();
 			if($resultado){
 				$this->agregarDetalle($material->cantidad, $material->id);
@@ -63,6 +64,15 @@
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$id);
 			$response->execute();
+		}
+
+		function cargarCurso(){
+			$sql = "SELECT * FROM curso";
+			$respuestaConsulta = $this->consulta($sql);
+				while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+				$curso[]=$filas;
+			}
+				return $curso;
 		}
 
 		function listDetalleMaterial($idMaterial){ //obtener registros de la db.

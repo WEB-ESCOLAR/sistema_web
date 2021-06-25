@@ -1,6 +1,7 @@
 <?php
 
 	require_once "AdministradorModelo.php";
+	require_once "Apoderado.php";
 	class AdministrarEstudiante extends AdministrarModelo{
 
 		function listAllApoderados(){ //obtener registros de la db.
@@ -33,7 +34,7 @@
 		}
 
 
-		function totalStudentsForGradeAndSection($grade,$section){ 
+		function totalStudentsForGradeAndSection($grade,$section){
 			$sql="SELECT COUNT(idEstudiante) as 'totalForGradeandSection' from estudiante where grado='$grade' and section='$section'";
 			$respuestaConsultaSearch = $this->consulta($sql);
 			$respuestaConsultaSearch->execute();

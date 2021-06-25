@@ -325,7 +325,7 @@ h1{
 .carddashboard{
   width:45%;
 }
-.carddashboard label{
+.carddashboard,.form-groupApoderado label{
   font-family: var(--font-quicksandMedium);
   font-size:22px;
 }
@@ -334,7 +334,7 @@ h1{
   justify-content: space-between;
   margin-top: 20px;
 }
-.box_card_total p{
+.box_card_total,.form-groupApoderado p{
   font-size: 25px;
   font-family: var(--font-quicksandBold);
   color: var(--vine);

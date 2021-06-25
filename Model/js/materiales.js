@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+mostrarCurso();
+
       showDetalleMaterial();
             $("#tipoMaterial").on('change',function(){
                 var dato = $('#tipoMaterial').val();
@@ -35,7 +37,7 @@ $(document).ready(function(){
                 })
             });
 
-            
+
             $(document).on('click','#detalleMaterial',function(e){
               e.preventDefault();
                 var url = window.location.href;
@@ -47,8 +49,8 @@ $(document).ready(function(){
                 }else{
                     console.log("detalle material")
                    window.location="DetalleMaterial/" + id;
-                } 
-           }) 
+                }
+           })
 
 
           function showDetalleMaterial(){
@@ -57,6 +59,24 @@ $(document).ready(function(){
           $('#mensaje').append(`El id del Material es ` + idMaterial)
         }
 
+        function mostrarCurso(){
+          $.ajax({
+            url:"Controller/ControllerMaterial.php",
+            data:{action:"loadCurse"},
+          })
+          .done(function(response){
+              const respuestaArray = JSON.parse(response)
+             respuestaArray.forEach((element)=>{
+               $('#curso').append(
+                  `
+          <option value="${element.idCurso}">${element.descripcion}</option>
+                  `
+            );
+           })
+          }).fail(function(er){
+            console.log("error" + er)
+          })
+        }
 
         $(document).on('click','#deleteMaterial',function(e){
             var id = $(this).attr("name");
@@ -92,20 +112,20 @@ $(document).ready(function(){
         })
 
 
-       
+
 
        //PRESTAR LIBRO
-      
 
 
-         
+
+
 
 
 
      // })
-             
+
             // $(document).on('click',"#checkDisponible",function(e){
-                
+
             // })
 
              // btn_TblUpdate
@@ -117,7 +137,7 @@ $(document).ready(function(){
 	       // })
 
 
-   
 
-       
+
+
 })
