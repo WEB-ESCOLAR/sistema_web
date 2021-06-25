@@ -13,8 +13,13 @@
 			return $response->fetchColumn();
 		}
 
-		function listAll(){ //obtener registros de la db.
-			$sql="select m.idMaterial, c.descripcion, m.grade, m.ReceptionDate, m.tipoMaterial, m.nameMaterial, m.amount, m.created_At from material m inner join curso c on m.idCurso = c.idCurso";
+
+		function listAll($curse){ //obtener registros de la db.
+			if ($curse==null){
+				$sql="SELECT * from material";
+			}else{
+				$sql="SELECT * FROM material WHERE curse='$curse'";
+			}
 			$respuestaConsulta = $this->consulta($sql);
 			$materiales=[];
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
@@ -92,12 +97,6 @@
 			$response->execute();
 			$result = $response->fetch(PDO::FETCH_ASSOC);
 			return $result;
-			// if($result===null){
-			// 	return '';
-			// }else  {
-			//    return $result;
-			// }
-
 		}
 
 		function prestarMaterial($idEstu, $idMate){

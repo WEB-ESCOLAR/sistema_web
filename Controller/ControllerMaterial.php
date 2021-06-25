@@ -56,7 +56,13 @@
 	function fetchAll(){
 		require_once("../Model/AdministrarMaterial.php");
 		$materialModel = new AdministrarMaterial();
-		$resultado = $materialModel->listAll();
+		$curse = $_GET["curse"];
+		if(empty($curse)){
+			// echo json_encode(1);
+			$resultado = $materialModel->listAll(null);
+		}else{
+			$resultado = $materialModel->listAll($curse);
+		}
 		echo json_encode($resultado);
 	}
 
@@ -167,6 +173,5 @@ function deleteDetalleMaterial(){
 	$materialModel->DeleteDetalle($idDetaMaterial);
 	echo json_encode("Eliminando Detalle");
 }
-
 
  ?>
