@@ -1,3 +1,20 @@
+   <div class="card_search">
+      <div style="display:flex;width:100%;" class="form-group">
+        <div style="width:50%;">
+              <label class="label_group">Curso</label>
+                <select  id="search_name_curse" class="input_txt_50">
+                  <option  value="null" >Seleccione el nombre del curso</option>
+                  <option  value="Logico Matematico">Logico Matematico</option>
+                  <option  value="Comunicacion Integral">Comunicacion Integral</option>
+                  <option  value="Personal Social">Personal Social</option>
+                  <option  value="Ciencia y Ambiente">Ciencia y Ambiente</option>
+               </select>
+        </div>
+        <button class="button_search" id="search_Curse">Buscar</button>
+        <button class="button_search" style="margin-left:10px;" id="refresh_Curse">Refrescar</button>
+      </div>
+  </div>
+
 
     <!-- <div> -->
    		 <button type="button" class="btn_add_data" id="button_material"><i class="fas fa-plus-circle fa-lg"></i>Agregar Material</button>

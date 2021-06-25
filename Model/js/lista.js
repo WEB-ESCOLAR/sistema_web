@@ -12,11 +12,11 @@ $(document).ready(function(){
     $('#tableFilter').hide();
       switch(urlSplit[4]){
         case "GestionDeMateriales":
-            mostrarMateriales();
+            mostrarMateriales(null);
             break;
-        case "ControlDeMaterial":
-            mostrarMateriales();
-            break;
+        // case "ControlDeMaterial":
+        //     mostrarMateriales(null);
+        //     break;
         case "Apoderados":
             mostrarApoderados();
             break;
@@ -30,10 +30,41 @@ $(document).ready(function(){
           break;
       }
 
-    function mostrarMateriales(){
+    $('#search_Curse').click(function(e){
+            e.preventDefault();
+              const curse = $('#search_name_curse').val();
+            if(curse != "null"){
+              $('#data_materiales_table').empty()
+              mostrarMateriales(curse)
+            }else{
+              Swal.fire({
+                title: 'Seleccionar Curso',
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'atras'
+              })
+            }
+          });  
+
+    $('#refresh_Curse').click(function(e){
+            e.preventDefault();
+            $('#data_materiales_table').empty()
+            mostrarMateriales(null)
+            $("#search_name_curse").val("null")
+    });
+
+    function mostrarMateriales(curse){
+      console.log("ListMateriales"+curse)
+                const parametro ={
+                curse:curse,
+                action:"Mostrar"
+
+                }
                 $.ajax({
                   url:"Controller/ControllerMaterial.php",
-                  data:{action:"Mostrar"},
+                  data:parametro
                 })
                 .done(function(response){
                     const respuestaArray = JSON.parse(response)
@@ -71,7 +102,6 @@ $(document).ready(function(){
                   console.log("error" + er)
                 })
             }
-
 
               function mostrarApoderados(){
                   $.ajax({
@@ -155,7 +185,6 @@ $(document).ready(function(){
             $("#search_section_student").val("null")
             $('#search_grade_student').val("null")
           });
-          // refresh_student
 
            function mostrarEstudiantes(grado,seccion){
              const parametro ={
@@ -210,6 +239,7 @@ $(document).ready(function(){
                   $('#btn-document').prop("disabled",true);
                 }
              });
+
              $(document).on('click','#checkPrestado',async function(e){
               let val = $(this).val();
               if( $( this ).is( ':checked' ) ){
