@@ -35,6 +35,9 @@
 		case "EliminarDetalleMaterial":
 			deleteDetalleMaterial();
 			break;
+			case "loadCurse":
+				loadCurse();
+				break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -78,6 +81,13 @@
 		$idMaterial = $_POST["id"];
 		$materialModel->Delete($idMaterial);
 		echo json_encode("Eliminando");
+	}
+
+	function loadCurse(){
+		require_once("../Model/AdministrarMaterial.php");
+		$materialModel = new AdministrarMaterial();
+		$resultado = $materialModel->cargarCurso();
+		echo json_encode($resultado);
 	}
 
 	function fetchAllDetalleMaterial(){

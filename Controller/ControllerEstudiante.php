@@ -109,7 +109,7 @@
 		$grade = $_GET["grade"];
 		$totalEstudiante = new AdministrarEstudiante();
 		$students = $totalEstudiante->totalStudentsForGradeAndSection($grade,$section);
-		echo json_encode($students); 
+		echo json_encode($students);
 	}
 
 	// require_once("../Model/Material.php");
@@ -135,8 +135,8 @@
 			$output = $pagoapafaModel->PagoApafa($pagoApafa);
 			echo json_encode($output);
 		}
-	
-	
+
+
 		//CREATE ESTUDIANTE
 		function agregarEstudiante(){
 			require_once("../Model/AdministrarEstudiante.php");

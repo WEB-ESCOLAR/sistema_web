@@ -25,8 +25,8 @@
        <button class="button_search" style="margin-left:10px;" id="refresh_student">Refrescar</button>
       </div>
       <div class="total_filter">
-          <p>Total de Alumnos Por Aula y Seccion: <span id="totalStudentsforGradeandSection">0</span></p> 
-           
+          <p>Total de Alumnos Por Aula y Seccion: <span id="totalStudentsforGradeandSection">0</span></p>
+
       </div>
   </div>
 
@@ -85,10 +85,10 @@
         </div>
 
         <div style="align-self:center;margin-top:30px;display:flex;">
-             
+
             <button class="btn-search" id="search_dni">
             <i class="fas fa-search"></i>
-            Buscar DNI</button>        
+            Buscar DNI</button>
         </div>
       </div>
 
@@ -100,29 +100,45 @@
           <div style="width: 50%;">
             <label class="label_group">Apellidos del Apoderado</label>
             <input  id="apellidoApoderado" name="apellido" type="text" class="input_txt_50" placeholder="Ingrese el apellido" required>
-          </div> 
+          </div>
         </div>
-    
+
         <div class="form-group">
               <label class="label_group">Telefono del apoderado</label>
               <input  id="telefonoApoderado" name="celular" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="8" ></p>
         </div>
       </div>
-    
+
       <div style="display:flex;margin-top:15px;">
         <button type="button" style="background: var(--danger)" id="button_close_material" class="btn_box">Cancelar</button>
         <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
         <button type="button" style="background: var(--primary)" id="modificar_Estudiante" class="btn_box">Guardar</button>
       </div>
-        <!-- <button type="button" style="background: var(--primary)" id="agregar_Estudiante" class="btn_box">Registrar</button>
-
-      </div>  -->
     </div>
+
+      <form id="formVerApoderado" class="verform-apoderado" style="display:flex; justify-content: space-between;">
+        <h2 class="title_form" id="titulo_MostrarApoderado" style="position:relative;top:20px;left:50px;">Datos de su Apoderado</h2>
+        <button id="button_close_apoderado" class="btn_closeApoderado"><i style="font-size: 20px;" class="fas fa-times"></i></button>
+
+        <div class="form-groupApoderado" style="position:absolute;top:70px;left:15px;">
+          <label>Nombre:</label>
+          <p id="VernombreApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+        </div>
+        <div class="form-groupApoderado" style="position:absolute;top:120px;left:15px;">
+          <label>Apellido:</label>
+          <p id="verapellidoApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+        </div>
+        <div class="form-groupApoderado" style="position:absolute;top:170px;left:15px;">
+          <label>N° DNI:</label>
+          <p id="verDniApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+        </div>
+        <div class="form-groupApoderado" style="position:absolute;top:220px;left:15px;">
+          <label>Telefono:</label>
+          <p id="vertelefonoApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+        </div>
+      </form>
+
 </div>
-
-
-
-
 
    <div class="cont_Table">
         <table class="table-general">

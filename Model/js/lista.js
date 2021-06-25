@@ -118,7 +118,7 @@ $(document).ready(function(){
           }
           $.ajax({
             url:"Controller/ControllerEstudiante.php",
-            dataType: 'json', 
+            dataType: 'json',
             data: parametro
           }).done(function(response){
               $('#totalStudentsforGradeandSection').text(response);
@@ -184,6 +184,7 @@ $(document).ready(function(){
                                           <div class=buttons_table>
                                             <button class="btn-edit" id="editar-estudiante" name="${element.idEstudiante}"><i class="fas fa-edit"></i></button>
                                             <button class="btn-delete" id="eliminarEstudiante" name="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn-edit" id="mostrarApoderado" name="${element.idApoderado}"><i class="fas fa-eye"></i></button>
                                            </div>
                                           </td>
                                         </tr>
@@ -192,7 +193,7 @@ $(document).ready(function(){
                                  })
                 })
             }
-             // prueba 
+             // prueba
             $(document).on('click','#checkDisponible',async function(e){
                 let val = $(this).val();
                   if( $( this ).is( ':checked' ) ){
@@ -241,9 +242,9 @@ $(document).ready(function(){
               mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.DEVUELTO)
               }else{
                 $('#tableDefault').show();
-                $('#tableFilter').hide(); 
-                $('#btn-document').prop("disabled",true);  
-                $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");            
+                $('#tableFilter').hide();
+                $('#btn-document').prop("disabled",true);
+                $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");
               }
              });
 
@@ -256,7 +257,7 @@ $(document).ready(function(){
                return data
             }
             //problema 1 : mostrar data test => disponible y prestamo diferentes encabezados ()
-            //problema 2 : 
+            //problema 2 :
 
             //default : eliminar
             //checkbox disponible : accion eliminar,otorgar libro : codigoDetalle,estado
@@ -271,7 +272,7 @@ $(document).ready(function(){
                   header=`
                   <th>ID</th>
                   <th>Codigo Detalle</th>
-                  <th>Estado</th> 
+                  <th>Estado</th>
                   <th>Acciones</th>
                   `
                   break;
@@ -298,8 +299,8 @@ $(document).ready(function(){
                break;
                default:
                break;
-                 
-              }   
+
+              }
               return header;
 
             }
@@ -313,12 +314,12 @@ $(document).ready(function(){
                         <tbody id="mostrarDataFilter">
                         </tbody>
                       </table>
-                        `       
+                        `
                 )
           }
 
 
-          
+
             function mostrarDetalleMaterialBody(listData,type){
               const response = JSON.parse(listData)
               let count=1;
@@ -343,8 +344,8 @@ $(document).ready(function(){
                    <td><div class=buttons_table>
                     <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
                     <button class="btn_OtorgarLibro" id="prestarLibro" name="${element.idDetalleMaterial}"style="background: var(--teal-light)"><i class="">Otorgar Libro</i></button>
-                    </div>  </td>   
-                                            
+                    </div>  </td>
+
                     `
                     break;
                   case parametroDetalleMaterial.PRESTADO:
@@ -367,17 +368,17 @@ $(document).ready(function(){
                  <td>${element.section}</td>
                  <td>${element.fechaHoraDevolucion}</td>
                  <td>
-                 <button class="btn_OtorgarLibro" id="mostrar_motivo" name="${element.idPrestamoDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>                              
+                 <button class="btn_OtorgarLibro" id="mostrar_motivo" name="${element.idPrestamoDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>
                  </td>
 
                  `
                  break;
                  default:
                  break;
-                   
-                }   
+
+                }
                  return body;
-                
+
               }
 
 
@@ -404,7 +405,7 @@ $(document).ready(function(){
                                          <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
                                         <td>
                                         <div class=buttons_table>
-                               
+
                                         <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
 
                                          </div>
