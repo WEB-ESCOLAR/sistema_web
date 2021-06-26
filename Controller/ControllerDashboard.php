@@ -14,6 +14,12 @@
 		case "MostrarNumeroDeMaterial":
 			totalNumberMaterial();
 			break;
+		case "MostrarTotalRegistrosPorNombreyTipo":
+			totalRegisterforNameAndType();
+			break;
+		case "MostrarTotalPagosApafaPorMes";
+			totalpayApafaformonth();
+			break;
 		case "MostrarTotalPrestadosDevueltos":
 			totalPrestadosDevueltosPorMeses();
 		break;
@@ -48,6 +54,20 @@
 		require_once("../Model/AdministradorDashboard.php");
 		$totalMaterialModel = new AdministrarDashboard();
 		$resultado = $totalMaterialModel->totalNumberRegisterMaterial();
+		echo json_encode($resultado);
+	}
+
+	function totalRegisterforNameAndType(){
+		require_once("../Model/AdministradorDashboard.php");
+		$totalRegisterModel = new AdministrarDashboard();
+		$resultado = $totalRegisterModel->totalMaterialRegisterforNameAndType();
+		echo json_encode($resultado);
+	}
+
+	function totalpayApafaformonth(){
+		require_once("../Model/AdministradorDashboard.php");
+		$totalMaterialModelforMonth = new AdministrarDashboard();
+		$resultado = $totalMaterialModelforMonth->payApafaformonth();
 		echo json_encode($resultado);
 	}
 

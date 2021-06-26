@@ -42,13 +42,33 @@
 				  	</table>
 			</div>
 			<div style="display:flex;justify-content: space-between;margin-top:20px;">
-				<div style="background: yellow;width:45%;height:280px;">
+				<div class="content-card">
+					<table class="tblDualCard">
+					  <thead>
+						  <tr>
+						    <th><strong>MES</strong></th>
+						    <th><strong>Total de recibo APAFA generado</strong></th>
+						  </tr>
+					  </thead>
+					  <tbody id="component_dualcard_table_two">
+					  </tbody>
+					</table>
 				</div>
-				<div style="background: green;width:45%;height:280px;">
+				<div class="content-card">
+						<table class="tblDualCard">
+						  <thead>
+							  <tr>
+							    <th><strong>Curso</strong></th>
+							    <th><strong>Material</strong></th>
+							    <th><strong>Cantidad Registrada</strong></th>
+							  </tr>
+						  </thead>
+						  <tbody id="component_dualcard_table_one">
+						  </tbody>
+						</table>
 				</div>
 			</div>
-
-			<h3>Director</h3>
+		</div>
 
 			<?php date_default_timezone_set('America/Lima');?>
 	<?php }else{ ?>
