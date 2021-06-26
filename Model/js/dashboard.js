@@ -166,5 +166,26 @@
             })
         }
 
+        
+        $(document).on('click','#button_Configuracion',function(e){
+          e.preventDefault();
+          if($('#contraseña1').val() == $('#contraseña2').val()){
+              var dataString=$('#configuracionUsuario').serialize();
+              console.log(dataString);
+              $.ajax({
+                  url:"Controller/ControllerUsuario.php",
+                  type:"POST",
+                  data:dataString+"&action=UpdateUsuario",
+              }).done(function(response){
+                  console.log(response);
+                  setTimeout(function(){
+                      // location.reload();
+                      },2000)
+              })
+          }else{
+              console.log('la contraseña no coincide ;V');
+          }
+      })
+
 
   });

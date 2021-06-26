@@ -21,6 +21,18 @@
 			$respuestaConsulta->bindParam(":id",$id);
 			$respuestaConsulta->execute();
 		}
+		
+		function UpdateUsuario(Usuario $usuario){
+			$sql="UPDATE usuario SET firstName=?,lastName=?,email=?,password=? WHERE idUser=?";
+			$respuesta = $this->getConexion()->prepare($sql);
+			$respuesta->bindParam(1,$usuario->firstName);
+			$respuesta->bindParam(2,$usuario->lastName);
+			$respuesta->bindParam(3,$usuario->email);
+			$respuesta->bindParam(4,$usuario->password);
+			$respuesta->bindParam(5,$usuario->idUser);
+			$respuesta->execute();
+		}
+
 
 	}
 
