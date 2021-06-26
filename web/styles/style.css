@@ -556,3 +556,39 @@ width: 100px;
 display: inline-block;
 text-align: center;
 }*/
+
+
+
+.box_items{
+    position: absolute;
+		width: 500px;
+   	left: 385px;
+		top: 170px;
+  
+}
+.input_txt_config{
+  width:300px;
+  height: 38px;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  background: transparent;
+  border-bottom: 2px solid #C1121F;
+  margin-top: 15px;
+  
+}
+
+.btn_send{
+  width: 130px;
+  margin:30px;
+	height: 35px;
+	background-color: transparent;
+	border: none;
+	font-family: Roboto;
+	font-size: 18px;
+	color: #FFFFFF;
+  background:  #003049;
+  text-align: center;
+  margin-left: 140px;
+  border-radius: 12px;
+}
