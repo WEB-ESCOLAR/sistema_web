@@ -54,6 +54,8 @@
              mostrarTotalDeEstuYApo();
              mostrarTotalDeMaterial();
              mostrarTotalPrestadosDevueltos();
+             mostrarRegistrosPorNombreyTipo();
+             mostrarPagosApafaPorMes();
              graphics();
         }
  	    function mostrarUltimoPagoAPAFA(){
@@ -80,7 +82,7 @@
                     data:{action:"MostrarUsuario"},
                 })
                 .done(function(response){
-                    console.log(response);
+                    // console.log(response);
                     const respuestaArray = JSON.parse(response)
                              respuestaArray.forEach((element)=>{
                                     $('#component_litle_table_users').append(
@@ -97,6 +99,49 @@
                                  })
                 })
             }
+
+       function mostrarRegistrosPorNombreyTipo(){
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarTotalRegistrosPorNombreyTipo"},
+                })
+                .done(function(response){
+                    console.log("Regitros por Nombre y Tipo"+response)
+                    const respuestaArray = JSON.parse(response)
+                             respuestaArray.forEach((element)=>{
+                                    $('#component_dualcard_table_one').append(
+                                        `
+                                        <tr>
+                                        <td>${element.descripcion}</td>
+                                        <td>${element.tipoMaterial}</td>
+                                        <td>${element.cantidad}</td>
+                                        </tr>
+                                        `
+                                        );
+                                 })
+                })
+       }
+
+       function mostrarPagosApafaPorMes(){
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarTotalPagosApafaPorMes"},
+                })
+                .done(function(response){
+                    console.log("Pagos por mes"+response)
+                    const respuestaArray = JSON.parse(response)
+                             respuestaArray.forEach((element)=>{
+                                    $('#component_dualcard_table_two').append(
+                                        `
+                                        <tr>
+                                        <td>${element.MES}</td>
+                                        <td>${element.TOTAL}</td>
+                                        </tr>
+                                        `
+                                        );
+                                 })
+                })
+       }
 
 
             function graphics(){

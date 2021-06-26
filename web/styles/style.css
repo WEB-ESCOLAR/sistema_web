@@ -314,7 +314,8 @@ h1{
 
 /*----------------Director--------------------*/
 .carddashboard,
-.userControlComponent{
+.userControlComponent,
+.content-card{
   background: #FFFFFF;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
@@ -322,7 +323,8 @@ h1{
   padding: 20px;
   box-shadow:0 1px 1px rgba(0,0,0,0.08),0 2px 2px rgba(0,0,0,0.12),0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.2);  margin-top:20px;
 }
-.carddashboard{
+.carddashboard,
+.content-card{
   width:45%;
 }
 .carddashboard,.form-groupApoderado label{
@@ -343,7 +345,9 @@ h1{
   width:100%;
   height:250px;
 }
-.tblUserControlComponent{
+.tblUserControlComponent,
+.tbl,
+.tblDualCard{
   width:100%;
   height:100%;
   font-weight: bold;
@@ -351,17 +355,22 @@ h1{
   border-collapse: collapse;
 }
 .tblUserControlComponent td,
-.tblUserControlComponent th{
+.tblUserControlComponent th,
+.tblDualCard th,
+.tblDualCard td{
   text-align:center;
 }
 
-.tblUserControlComponent thead th{
+.tblUserControlComponent thead th,
+.tblDualCard thead th{
   border-bottom: 1px solid rgba(0,0,0,0.16);
   padding: 10px;
   font-size: 18px;
   font-family: var(--font-quicksandRegular);
 }
-.tblUserControlComponent td{
+
+.tblUserControlComponent td,
+.tblDualCard td{
   font-size: 17px;
   font-family: var(--font-quicksanLight);
 }
