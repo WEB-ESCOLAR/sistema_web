@@ -54,8 +54,10 @@
 		session_start();
 		$id = $_SESSION["id"];
 		$nombre = $_SESSION["nombre"];
+		$apellido = $_SESSION["apellido"];
+		$email = $_SESSION["email"];
 		$rol = $_SESSION["rol"];
-		$usuario = new Usuario($id,$nombre,null,null,null,null,$rol);
+		$usuario = new Usuario($id,$nombre,$apellido,$email,null,null,$rol);
 		$usuario->actualizarEstadoDeSesion(2);
 		updateStateUser($usuario);
 		session_destroy();
@@ -66,6 +68,8 @@ function almacenarSesion(Usuario $usuario){
 	$_SESSION["rol"]=$usuario->rol;
 	$_SESSION["id"]=$usuario->idUser;
 	$_SESSION["nombre"]=$usuario->firstName;
+	$_SESSION["apellido"]=$usuario->lastName;
+	$_SESSION["email"]=$usuario->email;
 }
 
 
