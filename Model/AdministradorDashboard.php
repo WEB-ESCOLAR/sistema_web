@@ -63,10 +63,10 @@
 		}
 
 		function cantidadPrestadosDevueltos(){
-			$sql="select MONTHNAME(pd.fechaHora) as 'mes', COUNT(pd.codePecosa) as 'PRESTADOS', d.devueltos
+			$sql="select MONTH(pd.fechaHora) as 'mes', COUNT(pd.codePecosa) as 'PRESTADOS', d.devueltos
 			from prestamodevolucion pd left join devoluciones d
-			on d.meses = MONTHNAME(pd.fechaHora)
-			GROUP BY MONTHNAME(fechaHora)";
+			on d.meses = MONTH(pd.fechaHora)
+			GROUP BY MONTH(fechaHora)";
 			$respuestaPrestadosDevueltos = $this->consulta($sql);
 			while ($filas = $respuestaPrestadosDevueltos->fetch(PDO::FETCH_ASSOC)) {
 				$prestadosDevueltos[]=$filas;

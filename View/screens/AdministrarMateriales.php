@@ -206,6 +206,6 @@
 	 </div>
 
 
-<div style="width:100%;margin-top: 20px;" id="rowsEmptyMessage">
+<!-- <div style="width:100%;margin-top: 20px;" id="rowsEmptyMessage">
 		<span class="rowsEmpty">No hay Registros Aun!!</span>
-	</div>
+	</div> -->

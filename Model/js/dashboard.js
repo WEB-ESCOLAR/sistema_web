@@ -1,8 +1,6 @@
- $(document).ready(function(){
+$(document).ready(function(){
 	// mostrarUltimoPagoAPAFA();
     // mostrarUsuarios();
-
-
         function mostrarTotalDeEstuYApo(){
                 // console.log("total estu y apo");
                 $.ajax({
@@ -128,13 +126,13 @@
                     data:{action:"MostrarTotalPagosApafaPorMes"},
                 })
                 .done(function(response){
-                    console.log("Pagos por mes"+response)
+                    // console.log("Pagos por mes"+response)
                     const respuestaArray = JSON.parse(response)
                              respuestaArray.forEach((element)=>{
                                     $('#component_dualcard_table_two').append(
                                         `
                                         <tr>
-                                        <td>${element.MES}</td>
+                                        <td>${conversionName(element.MES)}</td>
                                         <td>${element.TOTAL}</td>
                                         </tr>
                                         `
@@ -153,13 +151,14 @@
                 const arrayPrestadosDevueltos = JSON.parse(responseGrafico)
               let arrayMeses=[]
               arrayPrestadosDevueltos.forEach((element) => {
-                let data = element.mes
+                let data = conversionName(element.mes)  
                 arrayMeses.push(data)
               })
               console.log(arrayMeses);
 
               let arrayPrestados=[]
               arrayPrestadosDevueltos.forEach((element) => {
+
                 let data = parseInt(element.PRESTADOS)
                 arrayPrestados.push(data)
               })
