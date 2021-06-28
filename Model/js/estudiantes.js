@@ -35,26 +35,43 @@
               })
           })
 
-          $(document).on('click','#agregar_Estudiante',function(e){
+          $(document).on('click','#agregar_Estudiante',async function(e){
             e.preventDefault();
             var datastring = $("#formulario_alumno").serialize();
-             console.log(datastring);
-             console.log(dataExist)
-             $.ajax({
-                url:"Controller/ControllerEstudiante.php",
-                type:"POST",
-                data:datastring+`&apoderadoExist=${dataExist}&action=AgregarEstudiante`,
-            }).done(function(response){
-                console.log("RESULTADO ESPERADO AGREGAR " + response);
-                $('.modal').hide();
-                $('#formulario_alumno').hide();
-                location.reload();
+            const dniAlumno = $('#DniEstudiante').val();
+            const dniApoderado = $('#DniApoderado').val()
+            const responseAlumno = await ValidarDni("ALUMNO",dniAlumno)
+            const responseApoderado = await ValidarDni("APODERADO",dniApoderado)
+            console.log("alumno " + dniAlumno  + " apoderado " + dniApoderado)
+            console.log("apoderado => " + responseApoderado )
+            console.log("alumno => " + responseAlumno )
+
+            if(responseAlumno == 1){
+              console.log("existe dni alumno")
+            }
+             if(responseAlumno == 0){
+              console.log("registrar alumn y apoderado")
+               $.ajax({
+                  url:"Controller/ControllerEstudiante.php",
+                  type:"POST",
+                  data:datastring+`&apoderadoExist=${dataExist}&action=AgregarEstudiante`,
+              }).done(function(response){
+                  location.reload();
+              })
+            }
+          });
+
+
+        async function ValidarDni(type,dni){
+             const data = await $.ajax({
+             url:"Controller/ControllerEstudiante.php",
+             dataType:"json",
+             data:{action:"ValidarDni", type:type ,dni:dni}
             })
-        });
+            return data
+         }
 
-
-
-// raaaaaaaaaa
+// raaaaaaaaaa gabsta
       //   $('#search_student').click(function(e){
       //   e.preventDefault();
       //   const param={
@@ -72,8 +89,8 @@
       // });
       //buscar alumno grado y seccion , action : BuscarGradoAndSection
       //mostrar total estudiantes , action : MostrarTotalEstudiantesPorGradoYSeccion
-      
-     
+
+
       $(document).on('click','#search_dni',function(e){
           e.preventDefault();
           const param={

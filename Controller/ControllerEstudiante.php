@@ -37,6 +37,9 @@
 		case "UpdateEstudiante":
 			updateEstudiante();
 			break;
+		case "ValidarDni":
+				ValidarDni();
+		break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -109,7 +112,7 @@
 		$grade = $_GET["grade"];
 		$totalEstudiante = new AdministrarEstudiante();
 		$students = $totalEstudiante->totalStudentsForGradeAndSection($grade,$section);
-		echo json_encode($students); 
+		echo json_encode($students);
 	}
 
 	// require_once("../Model/Material.php");
@@ -124,6 +127,17 @@
 		echo json_encode("Eliminando");
 	}
 	//END DELETE ESTUDIANTE
+
+
+		function ValidarDni(){
+		require_once("../Model/AdministrarEstudiante.php");
+		$exitDniEst = new AdministrarEstudiante();
+		$type=$_GET["type"];
+		$dni=$_GET["dni"];
+		$resultado=$exitDniEst->validarDni($type,$dni);
+		echo json_encode($resultado);
+	}
+
 	function updatePagoApafa(){
 		//require_once("../Model/PagoApafa.php");
 			require_once("../Model/AdministrarEstudiante.php");
@@ -135,8 +149,8 @@
 			$output = $pagoapafaModel->PagoApafa($pagoApafa);
 			echo json_encode($output);
 		}
-	
-	
+
+
 		//CREATE ESTUDIANTE
 		function agregarEstudiante(){
 			require_once("../Model/AdministrarEstudiante.php");

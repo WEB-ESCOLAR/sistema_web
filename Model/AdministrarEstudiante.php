@@ -31,9 +31,18 @@
 			$result = $response->fetch(PDO::FETCH_ASSOC);
 			return $result;
 		}
+			function validarDni($type,$dni){
+				 if($type == "ALUMNO"){
+					 $sql="SELECT COUNT(dni) from estudiante where dni='$dni'";
+				 }else{
+					  $sql="SELECT COUNT(DNI) from apoderado where DNI='$dni'";
+				 }
+					$respuestaConsulta = $this->consulta($sql);
+					$respuestaConsulta->execute();
+					return $respuestaConsulta->fetchColumn();
+				}
 
-
-		function totalStudentsForGradeAndSection($grade,$section){ 
+		function totalStudentsForGradeAndSection($grade,$section){
 			$sql="SELECT COUNT(idEstudiante) as 'totalForGradeandSection' from estudiante where grado='$grade' and section='$section'";
 			$respuestaConsultaSearch = $this->consulta($sql);
 			$respuestaConsultaSearch->execute();
