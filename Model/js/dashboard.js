@@ -109,11 +109,12 @@
                     console.log("Regitros por Nombre y Tipo"+response)
                     const respuestaArray = JSON.parse(response)
                              respuestaArray.forEach((element)=>{
-                                    $('#component_dualcard_table_one').append(
+                                    $('#component_dualcard_table_Two').append(
                                         `
                                         <tr>
-                                        <td>${element.descripcion}</td>
-                                        <td>${element.tipoMaterial}</td>
+                                        <td>${element.grado}</td>
+                                        <td>${element.nombre}</td>
+                                        <td>${element.tipo}</td>
                                         <td>${element.cantidad}</td>
                                         </tr>
                                         `
@@ -131,7 +132,7 @@
                     console.log("Pagos por mes"+response)
                     const respuestaArray = JSON.parse(response)
                              respuestaArray.forEach((element)=>{
-                                    $('#component_dualcard_table_two').append(
+                                    $('#component_dualcard_table_One').append(
                                         `
                                         <tr>
                                         <td>${element.MES}</td>

@@ -43,27 +43,28 @@
 			</div>
 			<div style="display:flex;justify-content: space-between;margin-top:20px;">
 				<div class="content-card">
-					<table class="tblDualCard">
+					<table class="tblDualCardOne">
 					  <thead>
 						  <tr>
 						    <th><strong>MES</strong></th>
 						    <th><strong>Total de recibo APAFA generado</strong></th>
 						  </tr>
 					  </thead>
-					  <tbody id="component_dualcard_table_two">
+					  <tbody id="component_dualcard_table_One">
 					  </tbody>
 					</table>
 				</div>
 				<div class="content-card">
-						<table class="tblDualCard">
+						<table class="tblDualCardTwo">
 						  <thead>
 							  <tr>
+							  	<th class="tblDualCardGrado"><strong>Grado</strong></th>
 							    <th><strong>Curso</strong></th>
 							    <th><strong>Material</strong></th>
 							    <th><strong>Cantidad Registrada</strong></th>
 							  </tr>
 						  </thead>
-						  <tbody id="component_dualcard_table_one">
+						  <tbody id="component_dualcard_table_Two">
 						  </tbody>
 						</table>
 				</div>

@@ -313,6 +313,26 @@ h1{
 /*----------------Styles in Inicio---------------------*/
 
 /*----------------Director--------------------*/
+.carddashboard{
+  width:45%;
+}
+.content-card{
+  width:49%;
+  height:220px;
+  overflow-y: scroll;
+}
+
+.content-card::-webkit-scrollbar{
+  width:6px;
+  background: #ffffff;
+  border-radius: 4px;
+}
+.content-card::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background: #003049;
+
+}
+
 .carddashboard,
 .userControlComponent,
 .content-card{
@@ -323,10 +343,7 @@ h1{
   padding: 20px;
   box-shadow:0 1px 1px rgba(0,0,0,0.08),0 2px 2px rgba(0,0,0,0.12),0 4px 4px rgba(0,0,0,0.16),0 8px 8px rgba(0,0,0,0.2);  margin-top:20px;
 }
-.carddashboard,
-.content-card{
-  width:45%;
-}
+
 .carddashboard,.form-groupApoderado label{
   font-family: var(--font-quicksandMedium);
   font-size:22px;
@@ -341,39 +358,58 @@ h1{
   font-family: var(--font-quicksandBold);
   color: var(--vine);
 }
+
 .userControlComponent{
   width:100%;
   height:250px;
 }
+
+.tblDualCardOne,
+.tblDualCardTwo{
+    width:100%;
+    height:50%;
+}
+.tblDualCardTwo th,
+.tblDualCardTwo td{
+  border-bottom: 1px solid rgba(0,0,0,0.16);
+  padding: 10px;
+}
+.tblDualCardOne td,
+.tblDualCardOne th{
+  padding-left: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .tblUserControlComponent,
-.tbl,
-.tblDualCard{
+.tbl{
   width:100%;
   height:100%;
   font-weight: bold;
   line-height: 20px;
   border-collapse: collapse;
 }
-.tblUserControlComponent td,
-.tblUserControlComponent th,
-.tblDualCard th,
-.tblDualCard td{
-  text-align:center;
-}
+
 
 .tblUserControlComponent thead th,
-.tblDualCard thead th{
+.tblDualCardOne thead th,
+.tblDualCardTwo thead th{
   border-bottom: 1px solid rgba(0,0,0,0.16);
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align:center;
   font-size: 18px;
   font-family: var(--font-quicksandRegular);
 }
 
 .tblUserControlComponent td,
-.tblDualCard td{
+.tblDualCardOne td,
+.tblDualCardTwo td{
+  text-align:center;
   font-size: 17px;
   font-family: var(--font-quicksanLight);
 }
+
 /*-----------------secretaria----------------------*/
 .componentLastPayAPAFA{
   background: #ffffff;

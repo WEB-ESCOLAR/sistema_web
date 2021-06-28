@@ -25,7 +25,7 @@
 
 
 		function totalMaterialRegisterforNameAndType(){
-			$sql="SELECT c.descripcion,m.tipoMaterial, sum(m.amount) as cantidad FROM material m INNER JOIN curso c ON m.idCurso=c.idCurso ORDER by c.idCurso";
+			$sql="SELECT * FROM materialespornombretipocantidad";
 			$respuestaConsulta = $this->consulta($sql);
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
 				$materiales[]=$filas;
