@@ -7,13 +7,10 @@ $(document).ready(function(){
     let stateCheckBox;
     const headerTitleDisponibles=["N°","Codigo Detalle","Estado","Acciones"];
     const headerTitlePrestados=["N°","Codigo Pecosa","Nombre y Apellido","Grado","Seccion","Estado","Acciones"]
-
-     
     console.log(refactorize.showDataForModule())
 
     var url = window.location.href;
     const urlSplit = url.split("/")
-    let stateCheckBox;
     const parametroDetalleMaterial={
        PRESTADO:"PRESTADO",
      DISPONIBLE:'DISPONIBLE',
@@ -52,6 +49,7 @@ $(document).ready(function(){
             e.preventDefault();
             if($('#search_name_curse').val() != "null"){
               $('#data_materiales_table').empty()
+              const curse = $('#search_name_curse').val()
                mostrarMateriales(curse)
             }else{
                alertWarning('Seleccionar Curso');
@@ -119,41 +117,7 @@ $(document).ready(function(){
               })
             }
 
-              function mostrarApoderados(){
-                  $.ajax({
-                    url:"Controller/ControllerEstudiante.php",
-                    data:{action:"MostrarApoderado"},
-                })
-                .done(function(responseApoderado){
-                    const arrApoderados = JSON.parse(responseApoderado)
-                        let count=1;
-                             arrApoderados.forEach((element)=>{
-                                    $('#response_table_apoderado').append(
-                                        `
-                                        <tr >
-                                        <td>${count++}</td>
-                                        <td>${element.DNI}</td>
-                                         <td>${element.firstName} ${element.lastName}</td>
-                                         <th>${element.state  === "NO PAGO" ? "<div class='inactive'>No Pago</div>" : "<div class='available'>Pago</div>"} </th>
-                                          <td>${element.phone}</td>
-                                          <td>
-                                          <div style="display:flex;justify-content:space-between;">
-                                             <div style="text-align:left;">
-                                              <button class="btn-edit" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
-                                              ${element.state === "PAGO" ?
-                                              `<button class="btn_TblPrint btn-print" id="${element.DNI}" name="${element.firstName}"><i class="fas fa-print"></i></button>`: ''}
-                                             </div>
-                                            <button class="btn-apafa" id="${element.DNI}" name="${element.firstName}"
-                                            ${element.state === "PAGO" ? 'style=display:none;' : null}
-                                            >Pago Apafa</button>
-
-                                           </div>
-                                          </td>
-                                        </tr>
-                                        `
-                                        );
-                                      })
-                                  })
+          
 
                     
           async function mostrarApoderados(){
@@ -173,7 +137,7 @@ $(document).ready(function(){
                                      <div style="text-align:left;">
                                       <button class="btn-edit" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
                                       ${element.state === "PAGO" ?
-                                      `<button class="btn_TblPrint btn-print"  name="${element.firstName}"><i class="fas fa-print"></i></button>`: ''}
+                                      `<button class="btn_TblPrint btn-print" id="${element.DNI}"  name="${element.firstName}"><i class="fas fa-print"></i></button>`: ''}
                                      </div>
                                     <button class="btn-apafa" id="${element.DNI}" name="${element.firstName}"
                                     ${element.state === "PAGO" ? 'style=display:none;' : null}
@@ -424,7 +388,7 @@ $(document).ready(function(){
                     <td>${element.section}</td>
                     <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
                    <td>
-                    <button class="btn_Devolucion" id="mostrar_devolucion" value="${element.idPrestamoDevolucion}" name="${element.idDetalleMaterial}"style="background: var(--crimson);"><i class="">Devolver</i></button>
+                    <button class="btn_Devolucion" id="modal_devolucion" value="${element.idPrestamoDevolucion}" name="${element.idDetalleMaterial}"style="background: var(--crimson);"><i class="">Devolver</i></button>
                   </td>
 
                     `
@@ -436,7 +400,7 @@ $(document).ready(function(){
                  <td>${element.section}</td>
                  <td>${element.fechaHoraDevolucion}</td>
                  <td>
-                 <button class="btn_OtorgarLibro" id="mostrar_motivo" name="${element.idPrestamoDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>
+                 <button class="btn_OtorgarLibro" id="modal_motivo" name="${element.idPrestamoDevolucion}"style="background: var(--crimson);"><i class="">Ver Motivo</i></button>
                  </td>
 
                  `
@@ -485,6 +449,5 @@ $(document).ready(function(){
              })
 
             }
-
 
 })

@@ -121,7 +121,7 @@
 		$detalleMaterial = new DetalleMaterial($idDetalleMaterial,null);
 		$detalleMaterial->actualizarEstadoMaterial(2);
 		$materialModel->prestarMaterial($idEstudiante,$idDetalleMaterial);
-		echo json_encode("Prestando");
+		echo json_encode(1);
 	}
 
 	function devolucion(){

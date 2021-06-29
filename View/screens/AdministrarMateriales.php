@@ -95,7 +95,7 @@
     <div style="display:flex;margin-top:12px" class="atrasFormularioPrestamo">
       <button type="button" style="background: var(--danger)" id=atras_Libro class="btn_box">Atras</button>
       <div class="entregarFormularioPrestamo">
-      <input type="submit" style="background:var(--primary);" id="entregarLibro" class="btn_box" value="Entregar">
+      <input type="submit" style="background:var(--primary);" id="btn_entregarLibro" class="btn_box" value="Entregar">
       </div>
 
 	</div>
@@ -123,7 +123,7 @@
 
           <div style="display:flex;margin-top:10px">
 		       <button type="button" style="background: var(--danger)" class="btn_box" id="idEstuAtras">Atras</button>
-		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="devolverLibro" value="Guardar">
+		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="btn_devolverLibro" value="Guarda">
 		      </div>
 
 	</form>

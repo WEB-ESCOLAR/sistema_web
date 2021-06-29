@@ -6,6 +6,14 @@ class Refactorize{
             GET:"GET"
         }
     }
+
+    typeICON(){
+        return{
+            SUCCESS:"success",
+            ERROR:"error",
+            WARNING:"warning"
+        }
+    }
     // url:"../Controller/ControllerDetalleMaterial.php",
 
     consumeUrl(){
@@ -16,6 +24,7 @@ class Refactorize{
             estudianteURL: controllerDir + "ControllerEstudiante.php",
             apoderadoURL: controllerDir + "ControllerApoderado.php",
             materialesURL: controllerDir + "ControllerMaterial.php",
+            dashboardURL:controllerDir + "ControllerDashboard.php",
             detalleMaterialURL: "../"+controllerDir + "ControllerDetalleMaterial.php",
             materialURL2: "../"+controllerDir +  "ControllerMaterial.php",
         }

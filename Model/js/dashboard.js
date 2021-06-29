@@ -1,49 +1,24 @@
 $(document).ready(function(){
-	// mostrarUltimoPagoAPAFA();
-    // mostrarUsuarios();
-        function mostrarTotalDeEstuYApo(){
-                // console.log("total estu y apo");
-                $.ajax({
-                    url:"Controller/ControllerDashboard.php",
-                    data:{action:"MostrarNumeroDeSyP"},
-                    dataType: 'json',
-                })
-                .done(function(response){
-                  // console.log(response[0]);
-                 $('#CompCardDashboardTE').text(response[0].estudiantes);
-                 $('#CompCardDashboardTA').text(response[0].apoderados);
-               })
+    const refactorize = new Refactorize();
+    const {GET,POST} = refactorize.methodHTTP();
+    const {estudianteURL,dashboardURL} = refactorize.consumeUrl();
+    const {SUCCESS,WARNING,ERROR} = refactorize.typeICON();
+
+      //revision here
+       async  function mostrarTotalDeEstuYApo(){
+                const param = { action:"MostrarNumeroDeSyP" }
+                const response  = await refactorize.getDataController(dashboardURL,GET,param);
+                  $('#CompCardDashboardTE').text(response.estudiantes);
+                 $('#CompCardDashboardTA').text(response.apoderados);
         }
-        function mostrarTotalDeMaterial(){
-                // console.log("total mate");
-                $.ajax({
-                    url:"Controller/ControllerDashboard.php",
-                    data:{action:"MostrarNumeroDeMaterial"},
-                    dataType: 'json',
-                })
-                .done(function(response){
-                  // console.log(response[0]);
-                 $('#CompCardDashboardTM').text(response[0].totalDeMateriales);
-               })
-        }
-        function mostrarTotalPrestadosDevueltos(){
-                // console.log("total mate");
-                $.ajax({
-                    url:"Controller/ControllerDashboard.php",
-                    data:{action:"MostrarTotalPrestadosDevueltos"},
-                    dataType: 'json',
-                })
-                .done(function(responsePrestados){
-                  console.log(responsePrestados);
-                  //const arrPrestados = JSON.parse(responsePrestados);
-                  //console.log("cantidadPrestadosDevueltos" + arrPrestados);
-                  })
+       async function mostrarTotalDeMaterial(){
+                const param = { action:"MostrarNumeroDeMaterial" }
+                const response  = await refactorize.getDataController(dashboardURL,GET,param);
+                   $('#CompCardDashboardTM').text(response.totalDeMateriales);
         }
 
 
-
- 	// mostrarUltimoPagoAPAFA();
-    // mostrarUsuarios();
+        //verificar aca
      var url = window.location.href;
     const urlSplit = url.split("/")
         if(urlSplit[4] == "Inicio" || urlSplit[4] == "Home"){
@@ -51,38 +26,25 @@ $(document).ready(function(){
             mostrarUsuarios();
              mostrarTotalDeEstuYApo();
              mostrarTotalDeMaterial();
-             mostrarTotalPrestadosDevueltos();
              mostrarRegistrosPorNombreyTipo();
              mostrarPagosApafaPorMes();
              graphics();
         }
- 	    function mostrarUltimoPagoAPAFA(){
-            // console.log("pago apafita");
-                $.ajax({
-                    url:"Controller/ControllerDashboard.php",
-                    data:{action:"MostrarUltimoPagoApafa"},
-                    dataType: 'json',
-                })
-                .done(function(response){
-                  // console.log(response[0]);
-                 $('#CompLastPayAPAFANameA').text(response[0].apoderado);
-                 $('#CompLastPayAPAFANameE').text(response[0].estudiante);
-                 $('#CompLastPayAPAFAGrade').text(response[0].grado);
-                 $('#CompLastPayAPAFASection').text(response[0].section);
-                 $('#CompLastPayAPAFAFecha').text(response[0].fechaPago);
-               })
-
+ 	    async function mostrarUltimoPagoAPAFA(){
+            const param = { action:"MostrarUltimoPagoApafa" }
+            const response  = await refactorize.getDataController(dashboardURL,GET,param);
+                   $('#CompLastPayAPAFANameA').text(response.apoderado);
+                 $('#CompLastPayAPAFANameE').text(response.estudiante);
+                 $('#CompLastPayAPAFAGrade').text(response.grado);
+                 $('#CompLastPayAPAFASection').text(response.section);
+                 $('#CompLastPayAPAFAFecha').text(response.fechaPago);
         }
 
-       function mostrarUsuarios(){
-                $.ajax({
-                    url:"Controller/ControllerDashboard.php",
-                    data:{action:"MostrarUsuario"},
-                })
-                .done(function(response){
-                    // console.log(response);
-                    const respuestaArray = JSON.parse(response)
-                             respuestaArray.forEach((element)=>{
+
+       async function mostrarUsuarios(){
+        const param = { action:"MostrarUsuario" }
+        const response  = await refactorize.getDataController(dashboardURL,GET,param);
+        response.forEach((element)=>{
                                     $('#component_litle_table_users').append(
                                         `
                                         <tr>
@@ -94,19 +56,15 @@ $(document).ready(function(){
                                         </tr>
                                         `
                                         );
-                                 })
-                })
+                                 })  
+        
             }
 
-       function mostrarRegistrosPorNombreyTipo(){
-                $.ajax({
-                    url:"Controller/ControllerDashboard.php",
-                    data:{action:"MostrarTotalRegistrosPorNombreyTipo"},
-                })
-                .done(function(response){
-                    console.log("Regitros por Nombre y Tipo"+response)
-                    const respuestaArray = JSON.parse(response)
-                             respuestaArray.forEach((element)=>{
+
+      async function mostrarRegistrosPorNombreyTipo(){
+        const param = { action:"MostrarTotalRegistrosPorNombreyTipo" }
+        const response  = await refactorize.getDataController(dashboardURL,GET,param);
+                             response.forEach((element)=>{
                                     $('#component_dualcard_table_one').append(
                                         `
                                         <tr>
@@ -117,61 +75,42 @@ $(document).ready(function(){
                                         `
                                         );
                                  })
-                })
        }
 
-       function mostrarPagosApafaPorMes(){
-                $.ajax({
-                    url:"Controller/ControllerDashboard.php",
-                    data:{action:"MostrarTotalPagosApafaPorMes"},
-                })
-                .done(function(response){
-                    // console.log("Pagos por mes"+response)
-                    const respuestaArray = JSON.parse(response)
-                             respuestaArray.forEach((element)=>{
-                                    $('#component_dualcard_table_two').append(
-                                        `
-                                        <tr>
-                                        <td>${conversionName(element.MES)}</td>
-                                        <td>${element.TOTAL}</td>
-                                        </tr>
-                                        `
-                                        );
-                                 })
-                })
+       async function mostrarPagosApafaPorMes(){
+        const param = { action:"MostrarTotalPagosApafaPorMes" }
+        const response  = await refactorize.getDataController(dashboardURL,GET,param);
+        response.forEach((element)=>{
+          $('#component_dualcard_table_two').append(
+              `
+              <tr>
+              <td>${conversionName(element.MES)}</td>
+              <td>${element.TOTAL}</td>
+              </tr>
+              `
+              );
+       })
        }
 
-
-            function graphics(){
-              $.ajax({
-                  url:"Controller/ControllerDashboard.php",
-                  data:{action:"MostrarTotalPrestadosDevueltos"},
+          function getData(array,type){
+              let arrayData=[]
+              array.forEach((element)=>{
+                let data = type == "PRESTADOS" ?  parseInt(element.PRESTADOS) : parseInt(element.devueltos)
+                arrayData.push(data)
               })
-              .done(function(responseGrafico){
-                const arrayPrestadosDevueltos = JSON.parse(responseGrafico)
-              let arrayMeses=[]
-              arrayPrestadosDevueltos.forEach((element) => {
-                let data = conversionName(element.mes)  
-                arrayMeses.push(data)
-              })
-              console.log(arrayMeses);
+              return arrayData;
+          }
 
-              let arrayPrestados=[]
-              arrayPrestadosDevueltos.forEach((element) => {
-
-                let data = parseInt(element.PRESTADOS)
-                arrayPrestados.push(data)
-              })
-              console.log(arrayPrestados);
-
-              let arrayDevueltos=[]
-              arrayPrestadosDevueltos.forEach((element) => {
-                let data = parseInt(element.devueltos)
-                arrayDevueltos.push(data)
-              })
-              console.log(arrayDevueltos);
-
-              //GRAFICO DE BARRAS
+          async function graphics(){
+            const param = { action:"MostrarTotalPrestadosDevueltos" }
+            const response  = await refactorize.getDataController(dashboardURL,GET,param);
+            let arrayMeses=[]
+            let arrayPrestados = getData(response,"PRESTADOS")
+            let arrayDevueltos =  getData(response,"DEVUELTOS")
+            response.forEach((element) => {
+              let data = conversionName(element.mes)  
+              arrayMeses.push(data)
+            })
               var ctx = document.getElementById('myChart').getContext('2d');
               var myChart = new Chart(ctx, {
                 type: 'bar',
@@ -207,27 +146,18 @@ $(document).ready(function(){
                     }
                       }
               })
-            })
         }
 
         
-        $(document).on('click','#button_Configuracion',function(e){
+        $(document).on('click','#button_Configuracion',async function(e){
           e.preventDefault();
           if($('#contraseña1').val() == $('#contraseña2').val()){
               var dataString=$('#configuracionUsuario').serialize();
-              console.log(dataString);
-              $.ajax({
-                  url:"Controller/ControllerUsuario.php",
-                  type:"POST",
-                  data:dataString+"&action=UpdateUsuario",
-              }).done(function(response){
-                  console.log(response);
-                  setTimeout(function(){
-                      // location.reload();
-                      },2000)
-              })
+              const param = dataString+"&action=UpdateUsuario"
+               await refactorize.getDataController(dashboardURL,POST,param);
+              location.reload()
           }else{
-              console.log('la contraseña no coincide ;V');
+            alertModal("La contraseña no coinciden","Verificar",WARNING);
           }
       })
 

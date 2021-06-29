@@ -81,6 +81,7 @@
 		$telefono= $_REQUEST["telefono"];
 		$apoderado = new Apoderado($dni,$nombre,$apellido,$telefono);
 	 	$affect = $administrarEstudiante->updateApoderados($apoderado);
+		 echo json_encode($affect);
 	}
 
 

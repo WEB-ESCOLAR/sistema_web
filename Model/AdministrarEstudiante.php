@@ -67,7 +67,7 @@
 			$respuestaConsulta->bindParam(":lastName",$apoderado->apellido);
 			$respuestaConsulta->bindParam(":phone",$apoderado->celular);
 			$respuestaConsulta->bindParam(":dni",$apoderado->dni);
-			$respuestaConsulta->execute();
+			return $respuestaConsulta->execute();
 		}
 		// DELETE ESTUDIANTE
 		function Delete($id){

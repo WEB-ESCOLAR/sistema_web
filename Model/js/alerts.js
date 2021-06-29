@@ -1,10 +1,11 @@
-function alertSuccess(headerMessage,bodyMessage){
+function alertModal(headerMessage,bodyMessage,type){
 			Swal.fire(
 			  headerMessage,
 			  bodyMessage,
-			  'success'
+			  type
 			)
 		}
+
 
 
 function alertWarning(title){
@@ -17,3 +18,7 @@ function alertWarning(title){
 		confirmButtonText: 'atras'
 	  })
 }
+
+
+
+ 

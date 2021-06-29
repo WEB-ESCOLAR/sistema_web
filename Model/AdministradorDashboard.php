@@ -7,10 +7,9 @@
    		function showLastpay(){
 			$sql="SELECT concat(a.firstName,' ',a.lastName) as apoderado, concat(e.firstName,' ',e.LastName) as estudiante, e.grado, e.section, pa.fechaPago from pagoapafa pa INNER JOIN apoderado a on pa.idApoderado = a.DNI INNER JOIN estudiante e ON pa.idApoderado = e.idApoderado WHERE pa.state='PAGO' and pa.fechapago= (SELECT MAX(fechapago) from pagoapafa)";
 			$respuestaConsulta = $this->consulta($sql);
-			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
-				$pagosapafa[]=$filas;
-			}
-			return $pagosapafa;
+			$respuestaConsulta->execute();
+			$result = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
+			return $result;
 		}
 
 
@@ -47,8 +46,9 @@
 		function totalNumberStudentsParents(){
 			$sql="SELECT COUNT(e.idEstudiante) as 'estudiantes', COUNT(a.DNI) as 'apoderados' FROM estudiante e INNER join apoderado a on e.idApoderado = a.DNI";
 			$respuestaConsulta = $this->consulta($sql);
+			$totalnumberSandP=[];
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
-				$totalnumberSandP[]=$filas;
+				$totalnumberSandP=$filas;
 			}
 			return $totalnumberSandP;
 		}
@@ -56,8 +56,9 @@
 		function totalNumberRegisterMaterial(){
 			$sql="SELECT COUNT(dt.idMaterial) as 'totalDeMateriales' from material dt";
 			$respuestaConsulta = $this->consulta($sql);
+			$totalnumberRMaterial=[];
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
-				$totalnumberRMaterial[]=$filas;
+				$totalnumberRMaterial=$filas;
 			}
 			return $totalnumberRMaterial;
 		}

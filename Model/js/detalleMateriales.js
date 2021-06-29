@@ -1,41 +1,49 @@
  $(document).ready(function(){
-     var url = window.location.href;
-        const urlSplit = url.split("/")[5]
+     
+  const refactorize = new Refactorize();
+  const {GET,POST} = refactorize.methodHTTP();
+  const {estudianteURL,materialURL2,detalleMaterialURL} = refactorize.consumeUrl();
+  const {SUCCESS} = refactorize.typeICON();
 
+      var url = window.location.href;
+        const urlSplit = url.split("/")[5]
           $('#btn_back').click(function(e){
              window.history.back();
           });
 
- 	////////////////EVENTO PARA AGREAGR UN DETALLE MATERIAL (CANTIDAD)///////7
-            $(document).on('click','#agregar_detallematerial',function(e){
+          function setDataOrEdit(response,boolean,background){
+            let data = response === null ? ' ' : response
+                 $('#entregarLibro').prop("disabled",boolean);
+                  $('#entregarLibro').css("background",background);
+                  $('.buscarEstudiante').val(data.idEstudiante);
+                  $('#nombreEstudiante').val(data.firstName);
+                  $('#apellidoEstudiante').val(data.LastName);
+                  $('#gradoEstudiante').val(data.grado);
+                  $('#seccionEstudiante').val(data.section);
+          }
+
+            // AGREGAR DETALLE MATERIAL
+            $(document).on('click','#agregar_detallematerial',async function(e){
                e.preventDefault();
                var param={
                  cantidad:$('#cantidad').val(),
                  idDetalleMaterial: urlSplit,
                  action:"AgregarDetalleCantidad"
                }
-                $.ajax({
-                   url:"../Controller/ControllerMaterial.php",
-                   type:"POST",
-                   data:param
-               }).done(function(response){
-               	    alertSuccess("Se registro correctamente","");
-                    console.log(response)
-                  setTimeout(function(){
+                await refactorize.getDataController(detalleMaterialURL,POST,param);
+               alertSuccess("Se registro correctamente","",SUCCESS);
+                      setTimeout(function(){
                     location.reload();
                   },2000)
-               })
             });
-
-////////////////EVENTO PARA ELIMINAR UN DETALLE MATERIAL (CANTIDAD)///////7
-            $(document).on('click','#eliminarDetalleMaterial',function(e){
+            // ELIMINAR DETALLE MATERIAL
+            $(document).on('click','#eliminarDetalleMaterial',async function(e){
                    var idDta = $(this).attr("name");
                    e.preventDefault();
                    const param={
                        idDta:idDta,
                        action:"EliminarDetalleMaterial"
                    }
-
                         Swal.fire({
                         title: 'Esta seguro de eliminar?',
                         icon: 'warning',
@@ -43,161 +51,96 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Si , deseo eliminar!'
-                      }).then((result) => {
+                      }).then( async (result) => {
                         if (result.isConfirmed) {
-                          $.ajax({
-                           url:"../Controller/ControllerMaterial.php",
-                           type:"POST",
-                           data:param
-                           }).done(function(response){
-                             location.reload();
-                           })
-
+                        await refactorize.getDataController(materialURL2,POST,param);
+                        location.reload() 
                         }
                     })
 
                })
-        //----------------------------
-         $(document).on('click','#entregarLibro',function(e){
+        // OTORGAR LIBREO
+        $(document).on('click','.btn_OtorgarLibro',function(e){
+          e.preventDefault();
+          const idDetalle = $(this).attr("name")
+         $('.formularioPrestamo').show();
+         $('#button_close_prestamo').val(idDetalle)
+       })
+
+        //BUSCAR ALUMNO
+        $(document).on('click','#buscarEstudiante',async function(e){
+          e.preventDefault();
+          var dni = $('#DNI').val();
+          const param={
+              "DNI":dni,
+              "action":"buscarAlumno"
+          }
+          const response = await refactorize.getDataController(materialURL2,GET,param);
+          if(!response){
+           alertWarning("No existe el dni ingresado")
+          }else{
+           $('.buscarEstudiante').val(response.idEstudiante);
+           $('.btn-entregarLibro').prop("disabled",false);
+           setDataOrEdit(response,false,"var(--primary)")
+            $('#entregarLibro').prop("disabled",false);
+          }
+      })
+
+         $(document).on('click','#btn_entregarLibro',async function(e){
          e.preventDefault();
          const param={
              idDetaMate:$('#button_close_prestamo').val(), //id detallematerial
              idEstu:$('.buscarEstudiante').val(), //id
              action:"prestarMaterial"
          }
-         $.ajax({
-             url:"../Controller/ControllerMaterial.php",
-             type:"POST",
-             data:param
-         }).done(function(response){
-             location.reload();
-         })
+         await refactorize.getDataController(materialURL2,POST,param);
+         location.reload();
        })
-       //npo
-       $(document).on('click','#devolverLibro',function(e){
+
+       //DEVOLUCION DE MATERIAL
+      //  ------------------------------------
+       $(document).on('click','#modal_devolucion', async function(e){
+        e.preventDefault();
+        var idDetMat = $(this).attr("name");
+        var idPrestamoDevolucion = $(this).attr("value");
+      $('#formulario_devolucion').val(idPrestamoDevolucion)
+       console.log(idPrestamoDevolucion)
+       $('.formularioDevolucion').show();
+       $('#button_close_devolucion').val(idDetMat);
+      })
+
+       $(document).on('click','#btn_devolverLibro', async function(e){
          e.preventDefault();
+         console.log("devovler libro")
          const param={
              idDetaMate:$('#button_close_devolucion').val(),
              motivo:$('#motivo').val(),
-             idPrestamoDevolucion:$("#mostrar_devolucion").val(),
+             idPrestamoDevolucion:$("#formulario_devolucion").val(),
              action:"Devolver"
          }
-         console.log(param);
-         $.ajax({
-            url:"../Controller/ControllerMaterial.php",
-            type:"POST",
-            data:param
-        }).done(function(response){
-            location.reload();
-        })
+         console.log(param)
+         await refactorize.getDataController(materialURL2,POST,param);
+         location.reload();
        })
+       // -----------------------------------------------------------
 
-       $(document).on('click','#mostrar_motivo',function(e){
+       //MOSTRAR MOTIVO DE DEVOLUCION POR MODAL
+       $(document).on('click','#modal_motivo',async function(e){
          e.preventDefault();
-         var idDevo = $(this).attr("name");
+         const idDevo = $(this).attr("name")
          const param={
             "idDevo":idDevo,
             "action":"verMotivo"
         }
-        console.log("idDevo" + idDevo);
-         $.ajax({
-            url:"../Controller/ControllerMaterial.php",
-            type:"GET",
-            data:param,
-            dataType: 'json'
-        }).done(function(response){
-          console.log(response);
+        const response = await refactorize.getDataController(materialURL2,GET,param);
+        if(response != null){
             $('.verMotivo').show();
             $('#vermotivo').val(' '+response.motivo);
-        })
-       })
-
-       $(document).on('click','#prestarLibro',function(e){
-         e.preventDefault();
-         $('#entregarLibro').prop("disabled",true);
-         $('#entregarLibro').css("background","#5E80A6");
-         $('#DNI').val('');
-         $('#nombreEstudiante').val(' ');
-         $('#apellidoEstudiante').val(' ');
-         $('#gradoEstudiante').val(' ');
-         $('#seccionEstudiante').val(' ');
-
-         var idDetMat = $(this).attr("name");
-         const param={
-            "idDetMat":idDetMat,
         }
-         $.ajax({
-            url:"../Controller/ControllerMaterial.php",
-            type:"POST",
-        }).done(function(response){
-            $('.formularioPrestamo').show();
-            $('#button_close_prestamo').val(idDetMat);
-         })
        })
 
-       
 
-        $(document).on('click','#mostrar_devolucion',function(e){
-          e.preventDefault();
-          var idDetMat = $(this).attr("name");
-          const param={
-             "idDetMat":idDetMat,
-             "idPrestamoDevolucion":$("#mostrar_devolucion").val()
-         }
-         console.log(param)
-          $.ajax({
-             url:"../Controller/ControllerMaterial.php",
-             type:"POST",
-         }).done(function(response){
-             $('.formularioDevolucion').show();
-             $('#button_close_devolucion').val(idDetMat);
-         })
-        })
-
-        //BUSCAR ALUMNO
-        $(document).on('click','#buscarEstudiante',function(e){
-
-           e.preventDefault();
-           var dni = $('#DNI').val();
-           const param={
-               "DNI":dni,
-               "action":"buscarAlumno"
-           }
-           console.log("DNI"+dni);
-           $.ajax({
-             url:"../Controller/ControllerMaterial.php",
-             type:"GET",
-             data:param,
-             dataType: 'json',
-           })
-           .done(function(response){
-              console.log(response);
-              if (!response){
-               Swal.fire({
-                 title: 'No existe DNI ingresado',
-                 icon: 'warning',
-                 showCancelButton: false,
-                 confirmButtonColor: '#3085d6',
-                 cancelButtonColor: '#d33',
-                 confirmButtonText: 'confirmar'
-               })
-             } else {
-               $('#entregarLibro').prop("disabled",false);
-               $('#entregarLibro').css("background","var(--primary)");
-               $('.buscarEstudiante').val(response.idEstudiante);
-               $('#nombreEstudiante').val(' '+response.firstName);
-               $('#apellidoEstudiante').val(' '+response.LastName);
-               $('#gradoEstudiante').val(' '+response.grado);
-               $('#seccionEstudiante').val(' '+response.section);
-               $('.btn-entregarLibro').prop("disabled",false);
-
-
-                }
-
-
-             })
-
-       })
+      
 
    
 

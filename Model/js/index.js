@@ -96,12 +96,12 @@ $(document).ready(function(){
             $('#formulario_detalleMaterial').hide();
       })
       // $('#')
-      $(document).on('click','#prestarLibro',function(e){
-         e.preventDefault();
-        console.log("mostrar")
-        $('.modalOtorgarLibro').show();
-        $('#formulario_prestamo').show();
-      })
+      // $(document).on('click','#prestarLibro',function(e){
+      //    e.preventDefault();
+      //   console.log("mostrar")
+      //   $('.modalOtorgarLibro').show();
+      //   $('#formulario_prestamo').show();
+      // })
 
 
 
