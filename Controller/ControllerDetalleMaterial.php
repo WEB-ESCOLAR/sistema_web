@@ -23,16 +23,5 @@
 		echo json_encode($resultado);
 	}
 
-	function generarReporte(){
-		require_once("../Model/AdministrarDetalleMaterial.php");
-		// require_once("../util/reporteDañados.php");
-		$materialModel = new AdministrarDetalleMaterial();
-		$type = $_GET["type"];
-		$idDeMaterial = $_REQUEST["idMaterial"];
-		$resultado = $materialModel->showGenerarReporte($type,$idDeMaterial);
-		echo json_encode($resultado);
-	}
-
-
-
+	
 ?>

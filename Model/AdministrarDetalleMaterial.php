@@ -31,17 +31,17 @@
         function showGenerarReporte($type,$idMaterial){
             if($type == "PRESTADOS"){
                 //sentencia 
-            }else if($type == "DEVUELTOS"){
-                // sentencia aca 
+            }else if($type == "DEVUELTO"){
+                $sql="SELECT CONCAT(e.firstName,' ',e.LastName) AS 'nombre',e.section AS 'seccion', pd.fechaHoraDevolucion AS 'fechaDevolucion', pd.motivo AS 'motivo' FROM prestamodevolucion pd INNER JOIN estudiante e ON pd.idEstudiante = e.idEstudiante INNER JOIN detallematerial dm ON dm.idDetalleMaterial = pd.idDetalleMaterial WHERE dm.idMaterial=$idMaterial and pd.fechaHoraDevolucion is not null";
             }else{
                 //sentencia aca 
             }
             //utilizar variable de sql
             $respuestaConsulta = $this->consulta($sql);
-            while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
-            $dataBody[]=$filas;
-        }
-            return $dataBody;
+        //     while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+        //     $dataBody[]=$filas;
+        // }
+            return $respuestaConsulta;
         }
 
 

@@ -227,6 +227,7 @@ $(document).ready(function(){
                   useCheckBoxList(true,false,"rgba(120, 0, 0, 0.5)")
                 }
              });
+
              $(document).on('click','#checkDevolucion', async function(e){
               if( $( this ).is( ':checked' ) ){
               const listData =await refactorize.getDataController(detalleMaterialURL,GET,pressCheckBox(parametroDetalleMaterial.DEVUELTO));
@@ -241,9 +242,18 @@ $(document).ready(function(){
 
              $(document).on('click','#btn-document',async function(e){
               console.log("generar pdf" + stateCheckBox);
-             const idMaterial = url.split("/")[5];
-              window.location="file.php?IDMATERIAL=".idMaterial
-              const response = await detalleMaterialFilter("reporteView",stateCheckBox)
+              var url = window.location.href;
+              const idMaterial = url.split("/")[5];
+              console.log(idMaterial);
+              if (stateCheckBox == 'PRESTADO') {
+                window.location="../util/reportePrestados.php?idMaterial="+idMaterial;
+
+              }else if(stateCheckBox == 'DEVUELTO') {
+                window.location="../util/reportDevueltos.php?idMaterial="+idMaterial;
+
+              }else if(stateCheckBox == 'DANADO') {
+                window.location="../util/reporteDañados.php?idMaterial="+idMaterial;
+              }
             })
 
             function mostrarDetalleMaterialHeader(type){
