@@ -287,7 +287,7 @@ h1{
     width:80px;
 }
 /*badges payments*/
-.available,.inactive{
+.available,.inactive,.damage{
     border:none;
     border-radius:10px;
     color:white;
@@ -300,6 +300,9 @@ h1{
 }
 .available{
    background: var(--success);
+}
+.damage{
+   background: #FFC300;
 }
 .rowsEmpty{
   font-size: 25px;

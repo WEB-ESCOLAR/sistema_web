@@ -38,6 +38,7 @@ $(document).ready(function(){
      $(document).on('click','.btn-print',function(e){
              e.preventDefault();
               var name = $(this).attr("name");
+							var id = $(this).attr("id");
               Swal.fire({
                 title: 'Esta Seguro de Generar una boleta de Pago Apafa para ' + name,
                 text: "",
@@ -53,9 +54,9 @@ $(document).ready(function(){
                     '',
                     'success'
                   )
+									window.location="./util/boletaApafa.php?id=" + id;
                 }
               })
-
      });
      // ******************************************************
         //------- CRUD

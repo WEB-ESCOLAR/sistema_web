@@ -149,6 +149,16 @@
 			$response->execute();
 		}
 		//END UPDATE ESTUDIANTE
+
+		function generarBoleta($dni){
+			$sql="SELECT * FROM apoderado where DNI = ?";
+			$response = $this->getConexion()->prepare($sql);
+			$response->bindParam(1,$dni);
+			$result=$response->execute();
+			$result = $response->fetch(PDO::FETCH_ASSOC);
+			return $result;
+		}
+
 	}
 
 
