@@ -15,6 +15,7 @@ $(document).ready(function(){
       switch(urlSplit[4]){
         case "GestionDeMateriales":
             mostrarMateriales(null);
+            mostrarCurso();
             break;
         // case "ControlDeMaterial":
         //     mostrarMateriales(null);
@@ -105,6 +106,24 @@ $(document).ready(function(){
                   console.log("error" + er)
                 })
             }
+            function mostrarCurso(){
+              $.ajax({
+                url:"Controller/ControllerMaterial.php",
+                data:{action:"loadCurse"},
+              })
+              .done(function(response){
+                  const respuestaArray = JSON.parse(response)
+                 respuestaArray.forEach((element)=>{
+                   $('#search_name_curse').append(
+                      `
+              <option value="${element.idCurso}">${element.descripcion}</option>
+                      `
+                );
+               })
+              }).fail(function(er){
+                console.log("error" + er)
+              })
+            }
 
               function mostrarApoderados(){
                   $.ajax({
@@ -128,7 +147,7 @@ $(document).ready(function(){
                                              <div style="text-align:left;">
                                               <button class="btn-edit" id="editar_apoderado" name="${element.DNI}"><i class="fas fa-edit"></i></button>
                                               ${element.state === "PAGO" ?
-                                              `<button class="btn_TblPrint btn-print"  name="${element.firstName}"><i class="fas fa-print"></i></button>`: ''}
+                                              `<button class="btn_TblPrint btn-print" id="${element.DNI}" name="${element.firstName}"><i class="fas fa-print"></i></button>`: ''}
                                              </div>
                                             <button class="btn-apafa" id="${element.DNI}" name="${element.firstName}"
                                             ${element.state === "PAGO" ? 'style=display:none;' : null}
@@ -310,8 +329,9 @@ $(document).ready(function(){
               console.log("generar pdf" + stateCheckBox);
               var url = window.location.href;
               const idMaterial = url.split("/")[5];
+              console.log(idMaterial);
               if (stateCheckBox == 'DANADO') {
-                window.location="../util/reporteDañados.php";
+                window.location="../util/reporteDañados.php?idMaterial="+idMaterial;
               }
             })
 

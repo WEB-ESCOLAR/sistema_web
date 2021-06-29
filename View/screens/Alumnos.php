@@ -105,7 +105,7 @@
 
         <div class="form-group">
               <label class="label_group">Telefono del apoderado</label>
-              <input  id="telefonoApoderado" name="celular" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="8" ></p>
+              <input  id="telefonoApoderado" name="celular" type="text" class="input_txt" placeholder="Ingrese el telefono del apoderado aqui..." maxlength="9" ></p>
         </div>
       </div>
 

@@ -2,8 +2,8 @@
 require('fpdf.php');
 require_once("../Model/AdministrarDetalleMaterial.php");
 
-// $idMaterial = $_REQUEST["idMaterial"];
-$idMaterial = 436662;
+$idMaterial = $_REQUEST["idMaterial"];
+// $idMaterial = 436662;
 $count = 1;
 class PDF extends FPDF
 {
@@ -50,11 +50,11 @@ $pdf->Cell(60,10,"CODIGO DE LIBRO",0,0,'C');
 $pdf->Cell(60,10,"MOTIVO",0,1,'C');
 $pdf->SetFont('Quicksand','',10);
 while ($data =$resultado->fetch(PDO::FETCH_OBJ)) {
-  $pdf->cell(60,8,$count++,0,0,'C');
-  $pdf->cell(60,8,$data->codigo,0,0,'C');
-  $pdf->Multicell(60,8,$data->motivo,'B','C',false);
+  $pdf->cell(60,8,$count++,'T',0,'C');
+  $pdf->cell(60,8,$data->codigo,'T',0,'C');
+  $pdf->Multicell(60,8,$data->motivo,'T','C',false);
   // $pdf->Line(20,45,210-20,45);
 }
 
-$pdf->Output('I','reporteDa.pdf');
+$pdf->Output('D',utf8_decode("reporteMaterialesDañados.pdf"));
 ?>

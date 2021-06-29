@@ -154,7 +154,7 @@
 			$sql="SELECT * FROM apoderado where DNI = ?";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$dni);
-			$response->execute();
+			$result=$response->execute();
 			$result = $response->fetch(PDO::FETCH_ASSOC);
 			return $result;
 		}
