@@ -179,3 +179,45 @@ for (let CheckBox of document.getElementsByClassName('checkBoxFilter')){
   }
 }
 // }
+$(document).ready(function(){
+  const icon_show="fas fa-eye";
+   const icon_hide="fas fa-eye-slash";
+   
+   $('#show-hide1').on('click',function(e){
+     e.preventDefault();
+     var current=$(this).attr('action');
+     if(current == 'hide'){
+       $(this).prev().attr('type','text');
+       $(this).removeClass(icon_show).addClass(icon_hide).attr('action','show');
+     }
+     if(current == 'show'){
+         $(this).prev().attr('type','password');
+       $(this).removeClass(icon_hide).addClass(icon_show).attr('action','hide');
+     }
+   })
+   
+     $('#show-hide2').on('click',function(e){
+     e.preventDefault();
+     var current=$(this).attr('action');
+     if(current == 'hide'){
+       $(this).prev().attr('type','text');
+       $(this).removeClass(icon_show).addClass(icon_hide).attr('action','show');
+     }
+     if(current == 'show'){
+         $(this).prev().attr('type','password');
+       $(this).removeClass(icon_hide).addClass(icon_show).attr('action','hide');
+     }
+   })
+   
+   $('#form_recovery_password').submit(function(e){
+     e.preventDefault();
+     const param ={
+       "password":$('#password').val(),
+       "repeatpassword":$('#repeatpassword').val()
+     }
+     console.log(param);
+     $('#form_recovery_password')[0].reset();
+    
+   })
+   
+ });

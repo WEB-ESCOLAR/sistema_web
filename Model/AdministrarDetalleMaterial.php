@@ -18,16 +18,19 @@
         pv.fechaHoraDevolucion FROM  prestamodevolucion pv
                 inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial
                 inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and pv.asunto is null and dt.idMaterial=$idDeMaterial";
-        		}else{
-							$sql="SELECT pd.idDetalleMaterial, dm.codigo, pd.motivo from detallematerial dm inner join prestamodevolucion pd
-							on dm.idDetalleMaterial = pd.idDetalleMaterial
-							where dm.status = 3 and idMaterial = $idDeMaterial";
-						}
+            }else{
+                $sql="SELECT pv.idPrestamoDevolucion,e.firstName,e.LastName,e.grado,e.section,pv.fechaHoraDevolucion FROM  prestamodevolucion pv 
+                inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial 
+                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and dt.idMaterial=$idDeMaterial";    
+        }
             $respuestaConsulta = $this->consulta($sql);
                 while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
                 $devueltomaterial[]=$filas;
             }
-                return $devueltomaterial;
+            if(empty($devueltomaterial)){
+                $devueltomaterial=[];
+            }
+            return $devueltomaterial;
         }
 
         function showGenerarReporte($type,$idMaterial){

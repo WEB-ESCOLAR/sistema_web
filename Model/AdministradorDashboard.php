@@ -23,6 +23,27 @@
 			return $usuarios;
 		}
 
+
+		function totalMaterialRegisterforNameAndType(){
+			$sql="SELECT c.descripcion,m.tipoMaterial, sum(m.amount) as cantidad FROM material m INNER JOIN curso c ON m.idCurso=c.idCurso ORDER by c.idCurso";
+			$respuestaConsulta = $this->consulta($sql);
+			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+				$materiales[]=$filas;
+			}
+			return $materiales;
+
+		}
+
+		function payApafaformonth(){
+			$sql="SELECT MONTH(fechaPago) AS 'MES', (COUNT(state)) AS 'TOTAL'  FROM pagoapafa WHERE fechaPago IS NOT NULL";
+			$respuestaConsulta = $this->consulta($sql);
+			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+				$payapafa[]=$filas;
+			}
+			return $payapafa;
+
+		}
+
 		function totalNumberStudentsParents(){
 			$sql="SELECT COUNT(e.idEstudiante) as 'estudiantes', COUNT(a.DNI) as 'apoderados' FROM estudiante e INNER join apoderado a on e.idApoderado = a.DNI";
 			$respuestaConsulta = $this->consulta($sql);
@@ -42,10 +63,10 @@
 		}
 
 		function cantidadPrestadosDevueltos(){
-			$sql="select MONTHNAME(pd.fechaHora) as 'mes', COUNT(pd.codePecosa) as 'PRESTADOS', d.devueltos
+			$sql="select MONTH(pd.fechaHora) as 'mes', COUNT(pd.codePecosa) as 'PRESTADOS', d.devueltos
 			from prestamodevolucion pd left join devoluciones d
-			on d.meses = MONTHNAME(pd.fechaHora)
-			GROUP BY MONTHNAME(fechaHora)";
+			on d.meses = MONTH(pd.fechaHora)
+			GROUP BY MONTH(fechaHora)";
 			$respuestaPrestadosDevueltos = $this->consulta($sql);
 			while ($filas = $respuestaPrestadosDevueltos->fetch(PDO::FETCH_ASSOC)) {
 				$prestadosDevueltos[]=$filas;

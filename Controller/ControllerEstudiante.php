@@ -13,7 +13,7 @@
 		case "DetalleApoderado":
 			detailApoderado();
 			break;
-		case "MostrarTotalEstudiantesPorGradoYSeccion":
+		case "totalGradeAndSection":
 			totalForSectionAndGrade();
 			break;
 		case "UpdateApoderado":

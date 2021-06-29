@@ -1,6 +1,7 @@
 <html>
 <body>
-
+<script type="text/javascript" src="<?php echo URL ?>/Model/js/Refactorize.js"></script>
+	<script type="text/javascript" src="<?php echo URL ?>/Model/js/Conversion.js"></script>
 	<script type="text/javascript" src="<?php echo URL ?>/Model/js/alerts.js"></script>
 	<script type="text/javascript" src="<?php echo URL ?>/Model/js/materiales.js"></script>
 	<script type="text/javascript" src="<?php echo URL ?>/Model/js/apoderados.js"></script>

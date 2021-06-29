@@ -1,8 +1,6 @@
- $(document).ready(function(){
+$(document).ready(function(){
 	// mostrarUltimoPagoAPAFA();
     // mostrarUsuarios();
-
-
         function mostrarTotalDeEstuYApo(){
                 // console.log("total estu y apo");
                 $.ajax({
@@ -54,6 +52,8 @@
              mostrarTotalDeEstuYApo();
              mostrarTotalDeMaterial();
              mostrarTotalPrestadosDevueltos();
+             mostrarRegistrosPorNombreyTipo();
+             mostrarPagosApafaPorMes();
              graphics();
         }
  	    function mostrarUltimoPagoAPAFA(){
@@ -80,7 +80,7 @@
                     data:{action:"MostrarUsuario"},
                 })
                 .done(function(response){
-                    console.log(response);
+                    // console.log(response);
                     const respuestaArray = JSON.parse(response)
                              respuestaArray.forEach((element)=>{
                                     $('#component_litle_table_users').append(
@@ -98,6 +98,49 @@
                 })
             }
 
+       function mostrarRegistrosPorNombreyTipo(){
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarTotalRegistrosPorNombreyTipo"},
+                })
+                .done(function(response){
+                    console.log("Regitros por Nombre y Tipo"+response)
+                    const respuestaArray = JSON.parse(response)
+                             respuestaArray.forEach((element)=>{
+                                    $('#component_dualcard_table_one').append(
+                                        `
+                                        <tr>
+                                        <td>${element.descripcion}</td>
+                                        <td>${element.tipoMaterial}</td>
+                                        <td>${element.cantidad}</td>
+                                        </tr>
+                                        `
+                                        );
+                                 })
+                })
+       }
+
+       function mostrarPagosApafaPorMes(){
+                $.ajax({
+                    url:"Controller/ControllerDashboard.php",
+                    data:{action:"MostrarTotalPagosApafaPorMes"},
+                })
+                .done(function(response){
+                    // console.log("Pagos por mes"+response)
+                    const respuestaArray = JSON.parse(response)
+                             respuestaArray.forEach((element)=>{
+                                    $('#component_dualcard_table_two').append(
+                                        `
+                                        <tr>
+                                        <td>${conversionName(element.MES)}</td>
+                                        <td>${element.TOTAL}</td>
+                                        </tr>
+                                        `
+                                        );
+                                 })
+                })
+       }
+
 
             function graphics(){
               $.ajax({
@@ -108,13 +151,14 @@
                 const arrayPrestadosDevueltos = JSON.parse(responseGrafico)
               let arrayMeses=[]
               arrayPrestadosDevueltos.forEach((element) => {
-                let data = element.mes
+                let data = conversionName(element.mes)  
                 arrayMeses.push(data)
               })
               console.log(arrayMeses);
 
               let arrayPrestados=[]
               arrayPrestadosDevueltos.forEach((element) => {
+
                 let data = parseInt(element.PRESTADOS)
                 arrayPrestados.push(data)
               })
@@ -165,6 +209,27 @@
               })
             })
         }
+
+        
+        $(document).on('click','#button_Configuracion',function(e){
+          e.preventDefault();
+          if($('#contraseña1').val() == $('#contraseña2').val()){
+              var dataString=$('#configuracionUsuario').serialize();
+              console.log(dataString);
+              $.ajax({
+                  url:"Controller/ControllerUsuario.php",
+                  type:"POST",
+                  data:dataString+"&action=UpdateUsuario",
+              }).done(function(response){
+                  console.log(response);
+                  setTimeout(function(){
+                      // location.reload();
+                      },2000)
+              })
+          }else{
+              console.log('la contraseña no coincide ;V');
+          }
+      })
 
 
   });
