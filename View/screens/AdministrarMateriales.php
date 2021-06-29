@@ -6,6 +6,7 @@
  <label class="checkFilter"> <input class="checkBoxFilter" type="checkbox" id="checkDisponible"> Disponibles</label>
    <label  class="checkFilter"> <input class="checkBoxFilter"  type="checkbox" id="checkPrestado"> Prestado</label>
    <label  class="checkFilter"> <input  class="checkBoxFilter" type="checkbox" id="checkDevolucion"> Devolucion</label>
+	 <label  class="checkFilter"> <input  class="checkBoxFilter" type="checkbox" id="checkDanados"> Dañados</label>
 </div>
 
 
@@ -13,7 +14,6 @@
  	<button type="button" class="btn_add_data" id="button_detalleMaterial"><i class="fas fa-plus-circle fa-lg"></i>Agregar</button>
 		<div style="display:flex;width: 40%;justify-content: space-around;position:relative;left:110px;">
 		<button type="button" class="btn_add_data" id="btn-document" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-file-pdf"></i>Generar Documento</button>
-	 <!-- <button type="button" class="btn_add_data" id="btn-chart"><i style="margin-left:8px;margin-right: 5px;" class="fas fa-chart-bar"></i>Generar Grafico</button> -->
 		</div>
  </div>
 

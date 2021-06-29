@@ -8,7 +8,8 @@ $(document).ready(function(){
     const parametroDetalleMaterial={
        PRESTADO:"PRESTADO",
      DISPONIBLE:'DISPONIBLE',
-     DEVUELTO:"DEVUELTO"
+     DEVUELTO:"DEVUELTO",
+     DANADO:"DANADO"
     }
     $('#tableFilter').hide();
       switch(urlSplit[4]){
@@ -47,7 +48,7 @@ $(document).ready(function(){
                 confirmButtonText: 'atras'
               })
             }
-          });  
+          });
 
     $('#refresh_Curse').click(function(e){
             e.preventDefault();
@@ -248,7 +249,7 @@ $(document).ready(function(){
               stateCheckBox=parametroDetalleMaterial.PRESTADO
               if( $( this ).is( ':checked' ) ){
               const listData =  await detalleMaterialFilter("filtrarDetalleMaterial",parametroDetalleMaterial.PRESTADO);
-             
+
                 $('#tableDefault').hide();
                 $('#tableFilter').show();
                 $('#btn-document').prop("disabled",false);
@@ -269,7 +270,7 @@ $(document).ready(function(){
               stateCheckBox=parametroDetalleMaterial.DEVUELTO
               if( $( this ).is( ':checked' ) ){
               const listData =await detalleMaterialFilter("filtrarDetalleMaterial",parametroDetalleMaterial.DEVUELTO);
-           
+
               $('#tableDefault').hide();
               $('#tableFilter').show();
               $('#btn-document').prop("disabled",false);
@@ -284,11 +285,34 @@ $(document).ready(function(){
               }
              });
 
+             $(document).on('click','#checkDanados', async function(e){
+              let val = $(this).val();
+              stateCheckBox=parametroDetalleMaterial.DANADO
+              if( $( this ).is( ':checked' ) ){
+              const listData =await detalleMaterialFilter("filtrarDetalleMaterial",parametroDetalleMaterial.DANADO);
+
+              $('#tableDefault').hide();
+              $('#tableFilter').show();
+              $('#btn-document').prop("disabled",false);
+              $('#btn-document').css("background","#C1121F");
+              mostrarDetalleMaterialHeader(parametroDetalleMaterial.DANADO)
+              mostrarDetalleMaterialBody(listData,parametroDetalleMaterial.DANADO)
+              }else{
+                $('#tableDefault').show();
+                $('#tableFilter').hide();
+                $('#btn-document').prop("disabled",true);
+                $('#btn-document').css("background","rgba(120, 0, 0, 0.5)");
+              }
+             });
+
 
              $(document).on('click','#btn-document',async function(e){
               console.log("generar pdf" + stateCheckBox);
-              const response = await detalleMaterialFilter("reporteView",stateCheckBox)
-              console.log(response)
+              var url = window.location.href;
+              const idMaterial = url.split("/")[5];
+              if (stateCheckBox == 'DANADO') {
+                window.location="../util/reporteDañados.php";
+              }
             })
 
 
@@ -341,6 +365,14 @@ $(document).ready(function(){
                 <th>Acciones</th>
                `
                break;
+               case parametroDetalleMaterial.DANADO:
+                header= `
+                 <th>N°</th>
+               <th>Codigo de Libro</th>
+              <th>Descripción</th>
+               <th>Accion</th>
+              `
+              break;
                default:
                break;
 
@@ -384,7 +416,8 @@ $(document).ready(function(){
                   case parametroDetalleMaterial.DISPONIBLE:
                     body=`
                     <td>${element.codigo}</td>
-                    <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
+                    <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" :
+                    (element.status  === "DISPONIBLE" ? "<div class='available'>DISPONIBLE</div>" : "<div class='damage'>INACTIVO</div>")} </td>
                    <td><div class=buttons_table>
                     <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
                     <button class="btn_OtorgarLibro" id="prestarLibro" name="${element.idDetalleMaterial}"style="background: var(--teal-light)"><i class="">Otorgar Libro</i></button>
@@ -417,6 +450,16 @@ $(document).ready(function(){
 
                  `
                  break;
+                 case parametroDetalleMaterial.DANADO:
+                  body= `
+                <td>${element.codigo}</td>
+                <td>${element.motivo}</td>
+                <td>
+                <button class="btn-delete" id="eliminarDetalleMaterial" name="${element.idDetalleMaterial}"><i class="fas fa-trash-alt"></i></button>
+                </td>
+
+                `
+                break;
                  default:
                  break;
 
@@ -446,7 +489,8 @@ $(document).ready(function(){
                                       <tr>
                                       <td>${count++}</td>
                                       <td>${element.codigo}</td>
-                                         <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
+                                      <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" :
+                                      (element.status  === "DISPONIBLE" ? "<div class='available'>DISPONIBLE</div>" : "<div class='damage'>INACTIVO</div>")} </td>
                                         <td>
                                         <div class=buttons_table>
 
