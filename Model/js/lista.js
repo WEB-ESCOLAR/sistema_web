@@ -2,8 +2,8 @@ $(document).ready(function(){
     let countRow=1;
 
     const refactorize = new Refactorize()
-    const {GET} = refactorize.methodHTTP();
-    const {estudianteURL,materialesURL,detalleMaterialURL,materialURL2} = refactorize.consumeUrl();
+    const {GET,POST} = refactorize.methodHTTP();
+    const {estudianteURL,materialesURL,detalleMaterialURL,materialURL2,apoderadoURL} = refactorize.consumeUrl();
     let stateCheckBox;
     const headerTitleDisponibles=["N°","Codigo Detalle","Estado","Acciones"];
     const headerTitlePrestados=["N°","Codigo Pecosa","Nombre y Apellido","Grado","Seccion","Estado","Acciones"]
@@ -68,12 +68,11 @@ $(document).ready(function(){
 
 
     //REVISION DE CODIGO
-    async function mostrarMateriales(curse){
+             async function mostrarMateriales(curse){
                 const parametro ={
                   curse,action:"Mostrar"
                 }
                 const response = await refactorize.getDataController(materialesURL,GET,parametro)
-                console.log(response)
                 response.forEach((element)=>{
                             $('#data_materiales_table').append(
                                 `
@@ -167,7 +166,8 @@ $(document).ready(function(){
               const grade = $('#search_grade_student').val();
                const  section = $('#search_section_student').val();
             if(grade != "null" && section != "null"){
-              $('#response_table_alumnos').empty()
+              // $('#response_table_alumnos').empty()
+              $('#response_table_alumnos').DataTable().destroy();
               mostrarEstudiantes(grade,section)
               mostrarTotalEstudiantes(grade,section)
             }else{
@@ -178,42 +178,50 @@ $(document).ready(function(){
 
           $('#refresh_student').click(function(e){
             e.preventDefault();
-            $('#response_table_alumnos').empty()
+            // $('#response_table_alumnos').empty()
+            $('#response_table_alumnos').DataTable().destroy();
             mostrarEstudiantes(null,null)
+            // $('#response_table_alumnos').DataTable().ajax.reload();
+            // mostrarEstudiantes(null,null)
             $('#totalStudentsforGradeandSection').empty();
             $("#search_section_student").val("null")
             $('#search_grade_student').val("null")
+
+
           });
 
 
-           async function mostrarEstudiantes(grade,section){
-             const parametro ={
-               grade,section,action:"MostrarEstudiante"
-             }
-             const response = await refactorize.getDataController(estudianteURL,GET,parametro)
-             response.forEach((element)=>{
-              $('#response_table_alumnos').append(
-                  `
-                  <tr>
-                  <td>${countRow++}</td>
-                  <td>${element.dni}</td>
-                   <td>${element.firstName}</td>
-                  <td>${element.LastName}</td>
-                    <td>${element.grado}</td>
-                    <td>${element.section}</td>
-                    <td>
-                    <div class=buttons_table>
-                      <button class="btn-edit" id="editar-estudiante" name="${element.idEstudiante}"><i class="fas fa-edit"></i></button>
-                      <button class="btn-delete" id="eliminarEstudiante" name="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
-                      <button class="btn-edit" id="mostrarApoderado" name="${element.idApoderado}"><i class="fas fa-eye"></i></button>
-                     </div>
-                    </td>
-                  </tr>
-                  `
-                  );
-           })
-               
+         async function mostrarEstudiantes(grado,seccion){
+            const parametro ={
+              grade:grado,
+              section:seccion,
+              action:"MostrarEstudiante"
             }
+              const alumnos = await refactorize.getDataController(estudianteURL,GET,parametro);
+                       tableEstudiante =  $('#response_table_alumnos').DataTable({
+                               processing: true,
+                               lengthMenu: [7, 10, 20, 50, 100, 200, 500],
+                              data:alumnos,
+                               columns:[
+                                 { data: "dni" },
+                                 { data: "firstName" },
+                                 { data: "LastName" },
+                                 { data: "grado" },
+                                 { data: "section" },
+                                 { 
+                                   "render":function(data,type,full,meta){
+                                     var idEstudiante=full.idEstudiante
+                                     var idApoderado=full.idApoderado
+                                    return '<button class="btn-edit" id="editar-estudiante" name="'+idEstudiante+'"><i class="fas fa-edit"></i></button>'+" "+
+                                    '<button class="btn-delete" id="eliminarEstudiante" name="'+idEstudiante+'"><i class="fas fa-trash-alt"></i></button>'+" "+
+                                    '<button class="btn-edit" id="mostrarApoderado" name="'+idApoderado+'"><i class="fas fa-eye"></i></button>' 
+                                     }
+                               },
+                               ],
+                       })
+           }
+
+
             function useCheckBoxList(defaultTableHide,tableFilterHide,color){
               defaultTableHide ? $('#tableDefault').show() : $('#tableDefault').hide();
               tableFilterHide ?  $('#tableFilter').show() : $('#tableFilter').hide();

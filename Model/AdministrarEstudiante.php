@@ -22,6 +22,9 @@
 			while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
 				$alumnos[]=$filas;
 			}
+			if(empty($alumnos)){
+				$alumnos=[];
+			}
 			return $alumnos;
 		}
 		function searchDniApoderado($dni){

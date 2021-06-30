@@ -224,7 +224,7 @@ h1{
     height: 350px;
     border: 1px solid #ccc;
     border-collapse: collapse;
-    overflow-y:scroll;
+    overflow-y:auto;
     display:inline-block;
   }
 

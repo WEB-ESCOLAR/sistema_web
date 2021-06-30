@@ -139,21 +139,39 @@
       </form>
 
 </div>
-
    <div class="cont_Table">
-        <table class="table-general">
+        <table class="table-general" id="response_table_alumnos">
             <thead>
                 <tr>
-                   <th>N°</th>
                     <th>DNI</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>Grado</th>
+                      <th>Grado</th>
                     <th>Seccion</th>
-                    <th>ACCIONES</th>
-                </tr>
+                    <th>ACCIONE</th>
+
+                </tr> 
             </thead>
-            <tbody id="response_table_alumnos">
+            <tbody>
             </tbody>
         </table>
     </div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script> -->
+<script >
+$(document).ready(function() {
+    // $('#response_table_alumnos').DataTable({
+    //   responsive:true,
+    //   autoWidth:false,
+    // });
+  });
+
+</script>
+<!-- <th>Grado</th>
+                    <th>Seccion</th>
+                    <th>ACCIONE</th> -->
+
