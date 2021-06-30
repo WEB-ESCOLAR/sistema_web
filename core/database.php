@@ -4,6 +4,7 @@
 
 
 
+
 	$typeDatase="PRODAN";
 	if($typeDatase == "PROD"){
  	    DEFINE("HOST","31.170.166.146");
@@ -16,7 +17,7 @@
 	    DEFINE("USER","root");
 	    DEFINE("PASSWORD","");
 	    DEFINE("PORT","3306");
-	    DEFINE("DATABASE","u994122482_web_escolar");
+	    DEFINE("DATABASE","escuela_web");
 	}
 
 ?>

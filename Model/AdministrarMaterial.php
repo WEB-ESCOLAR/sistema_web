@@ -16,11 +16,11 @@
 
 		function listAll($curse){ //obtener registros de la db.
 			if ($curse==null){
-				$sql="select m.idMaterial, c.descripcion, m.grade, m.ReceptionDate, m.tipoMaterial, m.nameMaterial, m.amount, m.created_At 
+				$sql="select m.idMaterial, c.descripcion, m.grade, m.ReceptionDate, m.tipoMaterial, m.nameMaterial, m.amount, m.created_At
 				from material m inner join curso c on m.idCurso = c.idCurso";
 			}else{
-				$sql="select m.idMaterial, c.descripcion, m.grade, m.ReceptionDate, m.tipoMaterial, m.nameMaterial, m.amount, m.created_At from material m 
-				inner join curso c on m.idCurso = c.idCurso where c.descripcion='$curse'";
+				$sql="select m.idMaterial, c.descripcion, m.grade, m.ReceptionDate, m.tipoMaterial, m.nameMaterial, m.amount, m.created_At from material m
+				inner join curso c on m.idCurso = c.idCurso where c.idCurso='$curse'";
 			}
 			$respuestaConsulta = $this->consulta($sql);
 			$materiales=[];

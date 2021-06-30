@@ -6,6 +6,7 @@
  <label class="checkFilter"> <input class="checkBoxFilter" type="checkbox" id="checkDisponible"> Disponibles</label>
    <label  class="checkFilter"> <input class="checkBoxFilter"  type="checkbox" id="checkPrestado"> Prestado</label>
    <label  class="checkFilter"> <input  class="checkBoxFilter" type="checkbox" id="checkDevolucion"> Devolucion</label>
+	 <label  class="checkFilter"> <input  class="checkBoxFilter" type="checkbox" id="checkDanados"> Dañados</label>
 </div>
 
 
@@ -13,7 +14,6 @@
  	<button type="button" class="btn_add_data" id="button_detalleMaterial"><i class="fas fa-plus-circle fa-lg"></i>Agregar</button>
 		<div style="display:flex;width: 40%;justify-content: space-around;position:relative;left:110px;">
 		<button type="button" class="btn_add_data" id="btn-document" disabled><i style="margin-left:8px;margin-right: 5px;" class="fas fa-file-pdf"></i>Generar Documento</button>
-	 <!-- <button type="button" class="btn_add_data" id="btn-chart"><i style="margin-left:8px;margin-right: 5px;" class="fas fa-chart-bar"></i>Generar Grafico</button> -->
 		</div>
  </div>
 
@@ -95,7 +95,7 @@
     <div style="display:flex;margin-top:12px" class="atrasFormularioPrestamo">
       <button type="button" style="background: var(--danger)" id=atras_Libro class="btn_box">Atras</button>
       <div class="entregarFormularioPrestamo">
-      <input type="submit" style="background:var(--primary);" id="entregarLibro" class="btn_box" value="Entregar">
+      <input type="submit" style="background:var(--primary);" id="btn_entregarLibro" class="btn_box" value="Entregar">
       </div>
 
 	</div>
@@ -123,7 +123,7 @@
 
           <div style="display:flex;margin-top:10px">
 		       <button type="button" style="background: var(--danger)" class="btn_box" id="idEstuAtras">Atras</button>
-		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="devolverLibro" value="Guardar">
+		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="btn_devolverLibro" value="Guarda">
 		      </div>
 
 	</form>
