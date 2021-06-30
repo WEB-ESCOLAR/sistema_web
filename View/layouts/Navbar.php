@@ -16,6 +16,13 @@ require("core/initial.php")
       <script src="https://kit.fontawesome.com/649d61341c.js" crossorigin="anonymous"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <!-- call css datatables -->
+      <!-- <link rel="stylesheet" type="text/css" href="<?= URL; ?>/web/datatables/bootstrap.css"> -->
+      <!-- <link rel="stylesheet" type="text/css" href="<?= URL; ?>/web/datatables/datatables.css"> -->
+      <!-- <link rel="stylesheet" type="text/css" href="<?= URL; ?>/web/datatables/responsive.css"> -->
+      <link rel="stylesheet" type="text/css" href="<?= URL; ?>/web/datatables/datatablemin.css">
+
+
 </head>
 </html>
 

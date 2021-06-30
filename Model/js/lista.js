@@ -5,6 +5,7 @@ $(document).ready(function(){
     var url = window.location.href;
     const urlSplit = url.split("/")
     let stateCheckBox;
+    let tableEstudiante;
     const parametroDetalleMaterial={
        PRESTADO:"PRESTADO",
      DISPONIBLE:'DISPONIBLE',
@@ -181,8 +182,10 @@ $(document).ready(function(){
 
           $('#refresh_student').click(function(e){
             e.preventDefault();
-            $('#response_table_alumnos').empty()
-            mostrarEstudiantes(null,null)
+            // $('#response_table_alumnos').empty()
+            // mostrarEstudiantes(null,null)
+            // tableEstudiante.data.reload();
+            $('#response_table_alumnos').Datatable().ajax.reload();
             $('#totalStudentsforGradeandSection').empty();
             $("#search_section_student").val("null")
             $('#search_grade_student').val("null")
@@ -194,35 +197,40 @@ $(document).ready(function(){
                section:seccion,
                action:"MostrarEstudiante"
              }
-                $.ajax({
-                    url:"Controller/ControllerEstudiante.php",
-                    data:parametro
-                })
-                .done(function(response){
-                    const respuestaArray = JSON.parse(response)
-                        let count=1;
-                             respuestaArray.forEach((element)=>{
-                                    $('#response_table_alumnos').append(
-                                        `
-                                        <tr>
-                                        <td>${count++}</td>
-                                        <td>${element.dni}</td>
-                                         <td>${element.firstName}</td>
-                                        <td>${element.LastName}</td>
-                                          <td>${element.grado}</td>
-                                          <td>${element.section}</td>
-                                          <td>
-                                          <div class=buttons_table>
-                                            <button class="btn-edit" id="editar-estudiante" name="${element.idEstudiante}"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-delete" id="eliminarEstudiante" name="${element.idEstudiante}"><i class="fas fa-trash-alt"></i></button>
-                                            <button class="btn-edit" id="mostrarApoderado" name="${element.idApoderado}"><i class="fas fa-eye"></i></button>
-                                           </div>
-                                          </td>
-                                        </tr>
-                                        `
-                                        );
-                                 })
-                })
+                // $.ajax({
+                //     url:"Controller/ControllerEstudiante.php",
+                //     data:parametro
+                // })
+                // .done(function(response){
+                //     var alumnos = JSON.parse(response)
+                        // let count=1;
+                      
+                        // console.log(alumnos)
+                        tableEstudiante =  $('#response_table_alumnos').DataTable({
+                                stateSave: true,
+                                lengthMenu: [7, 10, 20, 50, 100, 200, 500],
+                                ajax:{
+                                  "url":"Controller/ControllerEstudiante.php",
+                                  "data":parametro
+                                },
+                                columns:[
+                                  { data: "dni" },
+                                  { data: "firstName" },
+                                  { data: "LastName" },
+                                  { data: "grado" },
+                                  { data: "section" },
+                                  { 
+                                    "render":function(data,type,full,meta){
+                                      var idEstudiante=full.idEstudiante
+                                      var idApoderado=full.idApoderado
+                                     return '<button class="btn-edit" id="editar-estudiante" name="'+idEstudiante+'"><i class="fas fa-edit"></i></button>'+" "+
+                                     '<button class="btn-delete" id="eliminarEstudiante" name="'+idEstudiante+'"><i class="fas fa-trash-alt"></i></button>'+" "+
+                                     '<button class="btn-edit" id="mostrarApoderado" name="'+idApoderado+'"><i class="fas fa-eye"></i></button>' 
+                                      }
+                                },
+                                ],
+                        })
+                // })
             }
              // prueba
             $(document).on('click','#checkDisponible',async function(e){
