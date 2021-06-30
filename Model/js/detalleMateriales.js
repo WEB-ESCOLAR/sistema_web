@@ -60,7 +60,7 @@
 
                })
         // OTORGAR LIBREO
-        $(document).on('click','.btn_OtorgarLibro',function(e){
+        $(document).on('click','#prestarLibro',function(e){
           e.preventDefault();
           const idDetalle = $(this).attr("name")
          $('.formularioPrestamo').show();
@@ -118,7 +118,7 @@
              idPrestamoDevolucion:$("#formulario_devolucion").val(),
              action:"Devolver"
          }
-         console.log(param)
+        //  console.log(param)
          await refactorize.getDataController(materialURL2,POST,param);
          location.reload();
        })
