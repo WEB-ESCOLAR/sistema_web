@@ -30,7 +30,9 @@
                  idDetalleMaterial: urlSplit,
                  action:"AgregarDetalleCantidad"
                }
-                await refactorize.getDataController(detalleMaterialURL,POST,param);
+               console.log(param)
+               const response= await refactorize.getDataController(materialURL2,POST,param);
+               console.log(response)
                alertSuccess("Se registro correctamente","",SUCCESS);
                       setTimeout(function(){
                     location.reload();
@@ -118,7 +120,7 @@
              idPrestamoDevolucion:$("#formulario_devolucion").val(),
              action:"Devolver"
          }
-        //  console.log(param)
+         console.log(param)
          await refactorize.getDataController(materialURL2,POST,param);
          location.reload();
        })

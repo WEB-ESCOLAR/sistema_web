@@ -93,7 +93,7 @@
   position: relative;
   font-size: 25px;
 }
-.search_input{
+.dataTables_wrapper .dataTables_filter input{
  width: 300px;
  box-sizing: border-box;
  border-radius: 4px;
@@ -103,10 +103,10 @@
    font-size: 17px;
    font-family: var(--font-quicksandMedium);
 }
-.search_inputBox input[type=text]{
+.dataTables_wrapper .dataTables_filter input input[type=text]{
   padding-left:40px;
 }
-.search_inputBox i{
+.dataTables_wrapper .dataTables_filter input i{
   position:absolute;
   left:0;
   top:8px;

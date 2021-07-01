@@ -87,7 +87,6 @@
         <table class="table-general" id="data_materiales_table">
             <thead>
                 <tr>
-                   <th>N°</th>
                     <th>Nombre Curso</th>
                     <th>Tipo Material</th>
                     <th>Grado</th>

@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
 mostrarCurso();
+      const refactorize = new Refactorize();
+      const {GET,POST} = refactorize.methodHTTP();
+      const {estudianteURL} = refactorize.consumeUrl();
+      const {SUCCESS} = refactorize.typeICON();
 
       showDetalleMaterial();
             $("#tipoMaterial").on('change',function(){
@@ -91,7 +95,8 @@ mostrarCurso();
               showCancelButton: true,
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes, delete it!'
+              cancelButtonText:"Cancelar",
+              confirmButtonText: 'Si eliminar!'
             }).then((result) => {
               if (result.isConfirmed) {
                 $.ajax({
@@ -99,45 +104,13 @@ mostrarCurso();
                     type:"POST",
                     data:param
                 }).done(function(response){
-
-                     Swal.fire(
-                          'Deleted!',
-                          'Your file has been deleted.',
-                          'success'
-                        )
-                    location.reload();
+                    alertModal("Material Eliminado Correctamente","",SUCCESS)
+                    setTimeout(function(){
+                      location.reload();
+                    },2000)
                 })
               }
             })
         })
-
-
-
-
-       //PRESTAR LIBRO
-
-
-
-
-
-
-
-     // })
-
-            // $(document).on('click',"#checkDisponible",function(e){
-
-            // })
-
-             // btn_TblUpdate
-
-        //     $(document).on('click','#detalleMaterial',function(e){
-	       //    e.preventDefault();
-	       //    console.log("detalle material")
-	       //    window.location="DetalleMateriales";
-	       // })
-
-
-
-
 
 })

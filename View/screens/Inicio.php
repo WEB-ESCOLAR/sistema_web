@@ -75,8 +75,18 @@
 		<div style="margin:auto;">
 			<div style="display:flex;justify-content: space-between;">
 
-        <div style="background: yellow;width:45%;height:280px;">
-
+			<div class="content-card">
+						<table class="tblDualCard">
+						  <thead>
+							  <tr>
+							    <th><strong>Curso</strong></th>
+							    <th><strong>Material</strong></th>
+							    <th><strong>Cantidad Registrada</strong></th>
+							  </tr>
+						  </thead>
+						  <tbody id="component_dualcard_table_one">
+						  </tbody>
+						</table>
 				</div>
 		
 				<!-- <div style="background: green;width:45%;height:280px;">

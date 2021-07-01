@@ -24,6 +24,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
     color: #007bff;
     background-color: #fff;
     border: 1px solid #dee2e6;
+    text-decoration: none;
   }
   
   .page-link:hover {
@@ -56,6 +57,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
+    text-decoration: none;
   }
   
   .page-item.disabled .page-link {
@@ -64,6 +66,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
     cursor: auto;
     background-color: #fff;
     border-color: #dee2e6;
+    text-decoration: none;
   }
   
   .pagination-lg .page-link {

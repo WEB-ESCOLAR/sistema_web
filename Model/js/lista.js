@@ -77,11 +77,11 @@ $(document).ready(function(){
                 }
                 const response = await refactorize.getDataController(materialesURL,GET,parametro);
                 tableMaterial=$('#data_materiales_table').DataTable({
+                  "language":refactorize.convertDatatableSpanish(),
                   processing: true,
                   lengthMenu: [10,20,30],
                   data:response,
                   columns:[
-                    {data:null},
                     {data:"nombreCurso"},
                     {data:"tipoMaterial"},
                     {data:"grado"},
@@ -125,6 +125,7 @@ $(document).ready(function(){
                 const param={action:"MostrarApoderado"}
                 const response = await refactorize.getDataController(estudianteURL,GET,param);
                 tableApoderado= $('#response_table_apoderado').DataTable({
+                  "language":refactorize.convertDatatableSpanish(),
                   processing:true,
                   lengthMenu:[7,10,20,50],
                   data:response,
@@ -210,7 +211,8 @@ $(document).ready(function(){
             }
               const alumnos = await refactorize.getDataController(estudianteURL,GET,parametro);
                        tableEstudiante =  $('#response_table_alumnos').DataTable({
-                               processing: true,
+                        "language":refactorize.convertDatatableSpanish(),
+                        processing: true,
                                lengthMenu: [7, 10, 20, 50, 100, 200, 500],
                               data:alumnos,
                                columns:[
@@ -233,11 +235,6 @@ $(document).ready(function(){
            }
 
 
-            // function useCheckBoxList(defaultTableHide,tableFilterHide,color){
-            //   defaultTableHide ? $('#tableDefault').show() : $('#tableDefault').hide();
-            //   tableFilterHide ?  $('#tableFilter').show() : $('#tableFilter').hide();
-            //   $('#btn-document').css("background",color);
-            // }
             function detalleMaterialAction(type){
               const idMaterial = url.split("/")[5];
                return{
@@ -397,6 +394,7 @@ $(document).ready(function(){
             function mostrarDetalleMaterialBody(listData,type){
               // let count=1;
              $('#detalleMaterialTable').DataTable({
+              "language":refactorize.convertDatatableSpanish(),
                 processing: true,
                 lengthMenu: [7, 10, 20, 50, 100, 200, 500],
                 data:listData,
