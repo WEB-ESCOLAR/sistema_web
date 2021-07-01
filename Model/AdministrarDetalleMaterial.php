@@ -55,6 +55,16 @@
         // }
             return $respuestaConsulta;
         }
+        function headerPDF($idMaterial){
+                $sql="SELECT c.descripcion, m.grade, m.tipoMaterial FROM curso c INNER JOIN material m 
+                ON m.idCurso=c.idCurso WHERE m.idMaterial= ?";
+                $respuestaConsulta = $this->getConexion()->prepare($sql);
+                $respuestaConsulta->bindParam(1,$idMaterial);
+                $result= $respuestaConsulta->execute();
+                $result = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
+                return $result;
+    
+    }
 
 
     }
