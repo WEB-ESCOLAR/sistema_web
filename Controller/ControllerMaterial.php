@@ -125,18 +125,19 @@
 		require_once("../Model/AdministrarMaterial.php");
 		require_once("../Model/DetalleMaterial.php");
 		$materialModel = new AdministrarMaterial();
+		$estado=0;
 		$idDetalleMaterial = $_POST["idDetaMate"];
+		$motivo = $_POST["motivo"];
 		$type=$_POST["type"];
 		$fecha=date('Y-m-d h:i:s', time());
 		$idPrestamoDevolucion=$_POST["idPrestamoDevolucion"];
 		$detalleMaterial = new DetalleMaterial($idDetalleMaterial,null);
 		if ($type=="Dañado"){
 			$detalleMaterial->actualizarEstadoMaterial(3);
-		}if($type == "Otros"){
-			$motivo = $_POST["motivo"];	
-			$detalleMaterial->actualizarEstadoMaterial(1);
+			$estado=3;
 		}else{
 			$detalleMaterial->actualizarEstadoMaterial(1);
+			$estado=1;
 		}
 		$materialModel->devolverMaterial($fecha,$motivo,$idDetalleMaterial,$idPrestamoDevolucion,$type,$estado);
 		
