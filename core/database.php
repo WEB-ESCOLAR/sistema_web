@@ -16,7 +16,7 @@
 	    DEFINE("USER","root");
 	    DEFINE("PASSWORD","");
 	    DEFINE("PORT","3306");
-	    DEFINE("DATABASE","escuela_web");
+	    DEFINE("DATABASE","u994122482_web_escolar");
 	}
 
 ?>

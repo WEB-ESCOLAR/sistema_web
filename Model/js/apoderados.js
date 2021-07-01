@@ -5,7 +5,7 @@ $(document).ready(function(){
   const {estudianteURL} = refactorize.consumeUrl();
   const {SUCCESS} = refactorize.typeICON();
 
-	$(document).on('click','.btn-apafa',function(){
+	$(document).on('click','.btn-apafa',function(e){
               e.preventDefault();
               var id = $(this).attr("id");
                  const param={"id":id,"action":"PagoApafa"}
@@ -19,9 +19,9 @@ $(document).ready(function(){
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Si'
               }).then(async (result) => {
-                  if(result.isConfirmed){
-                    refactorize.getDataController(estudianteURL,GET,param);
-                    location.reload();
+                  if(result.isConfirmed){                
+                  await refactorize.getDataController(estudianteURL,POST,param);
+                  location.reload();
                   }
                 })
           })

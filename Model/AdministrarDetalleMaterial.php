@@ -6,7 +6,10 @@
 
 
         function showListDetalleMaterial($type,$idDeMaterial){
-            if($type == "DISPONIBLE"){
+            if($type == "DEFAULT"){
+                $sql="SELECT * from detallematerial where idMaterial=$idDeMaterial";
+            }
+            else if($type == "DISPONIBLE"){
                 $sql = "SELECT * from detallematerial where status='DISPONIBLE'and idMaterial=$idDeMaterial";
             }else if($type == "PRESTADO"){
                 $sql="SELECT pv.idPrestamoDevolucion, pv.idEstudiante,dt.idMaterial,dt.idDetalleMaterial,pv.codePecosa,dt.status,
@@ -21,7 +24,9 @@
             }else{
                 $sql="SELECT pv.idPrestamoDevolucion,e.firstName,e.LastName,e.grado,e.section,pv.fechaHoraDevolucion FROM  prestamodevolucion pv 
                 inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial 
-                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and dt.idMaterial=$idDeMaterial";    
+                inner join estudiante e on e.idEstudiante=pv.idEstudiante 
+                where pv.fechaHoraDevolucion is not null 
+                and dt.idMaterial=$idDeMaterial and dt.status=3";    
         }
             $respuestaConsulta = $this->consulta($sql);
                 while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {

@@ -77,19 +77,19 @@
 				return $curso;
 		}
 
-		function listDetalleMaterial($idMaterial){ //obtener registros de la db.
-			$sql="SELECT * from detallematerial where idMaterial=$idMaterial";
-			$respuestaConsulta = $this->consulta($sql);
-			// $row = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
-			// if(!$row){
-			// 	return 0;
-			// }else{
-				while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
-				$materiales[]=$filas;
-			}
-				return $materiales;
-			// }
-		}
+		// function listDetalleMaterial($idMaterial){ //obtener registros de la db.
+		// 	$sql="SELECT * from detallematerial where idMaterial=$idMaterial";
+		// 	$respuestaConsulta = $this->consulta($sql);
+		// 	// $row = $respuestaConsulta->fetch(PDO::FETCH_ASSOC);
+		// 	// if(!$row){
+		// 	// 	return 0;
+		// 	// }else{
+		// 		while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
+		// 		$materiales[]=$filas;
+		// 	}
+		// 		return $materiales;
+		// 	// }
+		// }
 
 
 		function buscarEstudiante($DNI){//BUSCAR ESTUDIANTE PARA PRESTAR
