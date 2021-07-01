@@ -30,8 +30,10 @@ public function actualizarEstadoMaterial($estado)
 {
   if ($estado==1) {
     $this->setEstado("DISPONIBLE");
-  }else {
+  }else if ($estado==2) {
     $this->setEstado("OCUPADO");
+  }else{
+    $this->setEstado("DAÑADO");
   }
 }
 

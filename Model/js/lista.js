@@ -18,7 +18,7 @@ $(document).ready(function(){
      DANADO:"DANADO"
     }
 
-    
+
     $('#tableFilter').hide();
 
       switch(urlSplit[4]){
@@ -44,7 +44,7 @@ $(document).ready(function(){
       }
 
 
-    //refactorize 
+    //refactorize
     $('#search_Curse').click(function(e){
             e.preventDefault();
             if($('#search_name_curse').val() != "null"){
@@ -54,11 +54,11 @@ $(document).ready(function(){
             }else{
                alertWarning('Seleccionar Curso');
             }
-      
-          });  
+
+          });
     //refactorize
 
-  
+
     $('#refresh_Curse').click(function(e){
             e.preventDefault();
             $('#data_materiales_table').empty()
@@ -117,9 +117,9 @@ $(document).ready(function(){
               })
             }
 
-          
 
-                    
+
+
           async function mostrarApoderados(){
                 const param={action:"MostrarApoderado"}
                 const response = await refactorize.getDataController(estudianteURL,GET,param)
@@ -148,10 +148,10 @@ $(document).ready(function(){
                                 </tr>
                                 `
                                 );
-                              })         
+                              })
           }
-                
-                
+
+
        async function mostrarTotalEstudiantes(grade,section){
           const parametro ={
             grade,section,action:"totalGradeAndSection"
@@ -212,7 +212,7 @@ $(document).ready(function(){
                   `
                   );
            })
-               
+
             }
             function useCheckBoxList(defaultTableHide,tableFilterHide,color){
               defaultTableHide ? $('#tableDefault').show() : $('#tableDefault').hide();
@@ -238,15 +238,15 @@ $(document).ready(function(){
               if( $( this ).is( ':checked' ) ){
               const listData = await refactorize.getDataController(detalleMaterialURL,GET,pressCheckBox(parametroDetalleMaterial.DISPONIBLE));
               $('#btn-document').prop("disabled",true);
-              useCheckBoxList(false,true,"rgba(120, 0, 0, 0.5)") 
+              useCheckBoxList(false,true,"rgba(120, 0, 0, 0.5)")
               tableFilterShow(listData,parametroDetalleMaterial.DISPONIBLE)
             }
                 else{
                   useCheckBoxList(true,false,"rgba(120, 0, 0, 0.5)")
                 }
              });
-                
-                
+
+
              $(document).on('click','#checkPrestado',async function(e){
               if( $( this ).is( ':checked' ) ){
                 const p = pressCheckBox(parametroDetalleMaterial.PRESTADO)
@@ -259,7 +259,7 @@ $(document).ready(function(){
                   useCheckBoxList(true,false,"rgba(120, 0, 0, 0.5)")
                 }
              });
-                
+
               $(document).on('click','#checkDevolucion', async function(e){
               if( $( this ).is( ':checked' ) ){
               const listData =await refactorize.getDataController(detalleMaterialURL,GET,pressCheckBox(parametroDetalleMaterial.DEVUELTO));
@@ -283,13 +283,15 @@ $(document).ready(function(){
              });
 
 
-             $(document).on('click','#btn-document',async function(e){
+             $(document).on('click','#btn-document',  function(e){
               console.log("generar pdf" + stateCheckBox);
               var url = window.location.href;
               const idMaterial = url.split("/")[5];
               console.log(idMaterial);
               if (stateCheckBox == 'DANADO') {
                 window.location="../util/reporteDañados.php?idMaterial="+idMaterial;
+              }else if(stateCheckBox=='PRESTADO'){
+                  window.location="../util/reportePrestados.php?idMaterial="+idMaterial;
               }
             })
 
@@ -435,7 +437,8 @@ $(document).ready(function(){
                     <tr>
                     <td>${countRow++}</td>
                     <td>${element.codigo}</td>
-                       <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" : "<div class='available'>DISPONIBLE</div>"} </td>
+                    <td>${element.status  === "OCUPADO" ? "<div class='inactive'>OCUPADO</div>" :
+                 (element.status  === "DISPONIBLE" ? "<div class='available'>DISPONIBLE</div>" : "<div class='damage'>INACTIVO</div>")} </td>
                       <td>
                       <div class=buttons_table>
 

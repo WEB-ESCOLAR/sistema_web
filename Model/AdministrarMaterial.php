@@ -109,21 +109,25 @@
 			$response->execute();
 		}
 
-		function devolverMaterial($fecha,$motivo,$idDetMate,$idPrestamoDevolucion){
-			$actualizarEstado="update detallematerial set status = 1 where idDetalleMaterial= ?";
-			$registrarDevolucion="update prestamodevolucion set fechaHoraDevolucion=?,motivo=? where idPrestamoDevolucion=?";
-			$responseActualizar = $this->getConexion()->prepare($actualizarEstado);
-			$responseRegistrar = $this->getConexion()->prepare($registrarDevolucion);
-			$responseActualizar->bindParam(1,$idDetMate);
-			$responseRegistrar->bindParam(1,$fecha);
-			$responseRegistrar->bindParam(2,$motivo);
-			$responseRegistrar->bindParam(3,$idPrestamoDevolucion);
-			$responseActualizar->execute();
-			return $responseRegistrar->execute();
-		}
+		function devolverMaterial($fecha,$motivo,$idDetalleMaterial,$idPrestamoDevolucion,$type,$estado){
+
+					$actualizarEstado="update detallematerial set status = ? where idDetalleMaterial= ?";
+					$registrarDevolucion="update prestamodevolucion set fechaHoraDevolucion=?,motivo=?, asunto=? where idPrestamoDevolucion=?";
+
+					$responseActualizar = $this->getConexion()->prepare($actualizarEstado);
+					$responseRegistrar = $this->getConexion()->prepare($registrarDevolucion);
+					$responseActualizar->bindParam(1,$estado);
+					$responseActualizar->bindParam(2,$idDetalleMaterial);
+					$responseRegistrar->bindParam(1,$fecha);
+					$responseRegistrar->bindParam(2,$motivo);
+				  $responseRegistrar->bindParam(3,$type);
+					$responseRegistrar->bindParam(4,$idPrestamoDevolucion);
+					$responseActualizar->execute();
+					return $responseRegistrar->execute();
+				}
 
 		function verMotivo($idDevolucion){
-			$sql="select motivo from prestamodevolucion where idPrestamoDevolucion=?";
+			$sql="select motivo,asunto from prestamodevolucion where idPrestamoDevolucion=?";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$idDevolucion);
 			$response->execute();

@@ -1,5 +1,5 @@
  $(document).ready(function(){
-     
+
   const refactorize = new Refactorize();
   const {GET,POST} = refactorize.methodHTTP();
   const {estudianteURL,materialURL2,detalleMaterialURL} = refactorize.consumeUrl();
@@ -54,7 +54,7 @@
                       }).then( async (result) => {
                         if (result.isConfirmed) {
                         await refactorize.getDataController(materialURL2,POST,param);
-                        location.reload() 
+                        location.reload()
                         }
                     })
 
@@ -107,7 +107,7 @@
        console.log(idPrestamoDevolucion)
        $('.formularioDevolucion').show();
        $('#button_close_devolucion').val(idDetMat);
-      })
+     })
 
        $(document).on('click','#btn_devolverLibro', async function(e){
          e.preventDefault();
@@ -115,11 +115,13 @@
          const param={
              idDetaMate:$('#button_close_devolucion').val(),
              motivo:$('#motivo').val(),
+             type:$('#tipoMotivo').val(),
              idPrestamoDevolucion:$("#formulario_devolucion").val(),
              action:"Devolver"
          }
          console.log(param)
-         await refactorize.getDataController(materialURL2,POST,param);
+         const response = await refactorize.getDataController(materialURL2,POST,param);
+         console.log(response)
          location.reload();
        })
        // -----------------------------------------------------------
@@ -127,22 +129,41 @@
        //MOSTRAR MOTIVO DE DEVOLUCION POR MODAL
        $(document).on('click','#modal_motivo',async function(e){
          e.preventDefault();
+         $('.formularioPrestamo').hide();
+
          const idDevo = $(this).attr("name")
          const param={
             "idDevo":idDevo,
             "action":"verMotivo"
         }
+
         const response = await refactorize.getDataController(materialURL2,GET,param);
         if(response != null){
+
             $('.verMotivo').show();
             $('#vermotivo').val(' '+response.motivo);
+            $('#VerAsunto').text(' '+response.asunto);
+
+            console.log(response)
+
+            if(response.asunto == "Otros"){
+
+            // || response.asunto =="Dañado"){
+                 $('#MotivoLabel').show();
+                 $('#MotivoDiv').show();
+             }else{
+               $('#MotivoLabel').hide();
+               $('#MotivoDiv').hide();
+              
+             }
         }
+
        })
 
 
-      
 
-   
+
+
 
 
 

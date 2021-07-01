@@ -111,6 +111,19 @@ mostrarCurso();
             })
         })
 
+        $("#tipoMotivo").on('change',function(){
+              var dato = $('#tipoMotivo').val();
+              if(dato == "Dañado"){
+                  $('#box_area_motivo').show();
+              } else if(dato =="Otros"){
+                $('#box_area_motivo').show();
+
+              }else{
+                  $('#box_area_motivo').hide();
+              }
+              console.log("dato es " + dato);
+          })
+
 
 
 

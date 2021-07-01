@@ -131,10 +131,18 @@
 		$idDetalleMaterial = $_POST["idDetaMate"];
 		$motivo = $_POST["motivo"];
 		$fecha=date('Y-m-d h:i:s', time());
+		$type=$_POST["type"];
 		$idPrestamoDevolucion=$_POST["idPrestamoDevolucion"];
+		$estado=0;
 		$detalleMaterial = new DetalleMaterial($idDetalleMaterial,null);
-		$detalleMaterial->actualizarEstadoMaterial(1);
-		$materialModel->devolverMaterial($fecha,$motivo,$idDetalleMaterial,$idPrestamoDevolucion);
+		if ($type=="Dañado"){
+			$detalleMaterial->actualizarEstadoMaterial(3);
+			$estado=3;
+		}else{
+			$detalleMaterial->actualizarEstadoMaterial(1);
+			$estado=1;
+		}
+		$materialModel->devolverMaterial($fecha,$motivo,$idDetalleMaterial,$idPrestamoDevolucion,$type,$estado);
 		echo json_encode("Devolviendo");
 	}
 

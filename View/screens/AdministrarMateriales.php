@@ -104,7 +104,7 @@
 
 
 <div class="formularioDevolucion">
-	<form class="form_administrarMat" id="formulario_devolucion">
+	<form style="padding:10px 10px;" class="box_form" id="formulario_devolucion">
 		<div style="margin-top:18px;margin-left:10px">
 			<h2 class="title_form">Devolución</h2>
 		      </div>
@@ -114,16 +114,25 @@
 				<i style="font-size:25px;margin-left:5px;" class="fas fa-times fa-lg"></i></button>
 		          </div>
 
-		        <div class="areaDevolucion">
-		          <label class="label_group">Motivo</label><br>
-							</div>
-							<div class="label_group">
-		          <textarea class="textarea"  id="motivo"></textarea>
-		          </div>
+							<div class="form-group">
+						<label class="label_group"> Seleccione el motivo:  </label>
+						<select id="tipoMotivo"  class="input_txt" required>
+				         <option value="Seleccione el grado">Seleccione el Motivo</option>
+								 <option value="Fin de año">Fin de Año</option>
+				         <option value="Dañado">Dañado</option>
+				    <option value="Otros">Otros</option>
+					</select><br>
+					</div>
 
-          <div style="display:flex;margin-top:10px">
+						<div  id="box_area_motivo" class="form-group">
+							<label  class="label_group">Motivo</label>
+								<div class="label_group">
+								<textarea class="textarea"  id="motivo"></textarea>
+								</div>
+						</div>
+          <div style="display:flex; margin-top:15px;">
 		       <button type="button" style="background: var(--danger)" class="btn_box" id="idEstuAtras">Atras</button>
-		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="btn_devolverLibro" value="Guarda">
+		      <input type="submit" style="background: var(--primary)" class="btn_box"  id="btn_devolverLibro" value="Guardar">
 		      </div>
 
 	</form>
@@ -133,17 +142,27 @@
 
 
 <div class="verMotivo">
-	<form style="height:245px" class="form_administrarMat" id="formulario_ver_motivo">
-		<div style="margin-top:25px;margin-left:10px">
-			<h2 class="title_form">Motivo</h2>
-					</div>
+	<form class="box_form"  id="formulario_ver_motivo">
+		<div class="form-groupApoderado" style="position:relative;top:10px;left:15px;" >
+			<label class="label_group">ASUNTO :</label>
+			<label  id="VerAsunto" ></label>
+		</div>
+		<!-- <div style="margin-left:10px">
+			<h1 class="title_form">Motivo</h1>
+					</div> -->
 
 	      <div class="closeMotivo">
 	        <button class="btn_close" id="button_close_motivo" ><i class="fas fa-times fa-lg"></i></button>
-	          </div>
-	      <div style="margin-top:-50px" class="label_group">
+	       </div>
+				 <div  style="padding:10px" id="box_area_motivo" class="form-group">
+						<label id="MotivoLabel" class="label_group">Motivo</label>
+							<div id="MotivoDiv"class="label_group">
+							<textarea class="textarea"  id="vermotivo"></textarea>
+							</div>
+					</div>
+	      <!-- <div  class="label_group">
 	      <textarea class="textarea"  id="vermotivo" readonly></textarea>
-	        </div>
+	        </div> -->
 	    </form>
 </div>
 

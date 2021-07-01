@@ -17,11 +17,11 @@
                 $sql="SELECT pv.idPrestamoDevolucion,e.firstName,e.LastName,e.grado,e.section,
         pv.fechaHoraDevolucion FROM  prestamodevolucion pv
                 inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial
-                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and pv.asunto is null and dt.idMaterial=$idDeMaterial";
+                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and pv.asunto !='DAÑADO' and dt.idMaterial=$idDeMaterial";
             }else{
-                $sql="SELECT pv.idPrestamoDevolucion,e.firstName,e.LastName,e.grado,e.section,pv.fechaHoraDevolucion FROM  prestamodevolucion pv 
-                inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial 
-                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and dt.idMaterial=$idDeMaterial";    
+                $sql="SELECT pv.idPrestamoDevolucion,e.firstName,e.LastName,e.grado,e.section,pv.fechaHoraDevolucion FROM  prestamodevolucion pv
+                inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial
+                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion  is not null and dt.status = 3 and dt.idMaterial=$idDeMaterial";
         }
             $respuestaConsulta = $this->consulta($sql);
                 while($filas = $respuestaConsulta->fetch(PDO::FETCH_ASSOC)) {
@@ -34,8 +34,11 @@
         }
 
         function showGenerarReporte($type,$idMaterial){
-            if($type == "PRESTADOS"){
-                //sentencia
+            if($type == "PRESTADO"){
+                $sql="SELECT dv.idDetalleMaterial, e.firstName as Nombre ,e.LastName as Apellido,dt.idMaterial,pv.codePecosa,dv.fechaHora,e.section
+            FROM prestamodevolucion pv inner join detallematerial dt on pv.idDetalleMaterial=dt.idDetalleMaterial inner join
+                estudiante e on pv.idEstudiante=e.idEstudiante inner join prestamoDevolucion dv on pv.idDetalleMaterial=dv.idDetalleMaterial
+                WHERE dt.status = 2 and dt.idMaterial = $idMaterial";
             }else if($type == "DEVUELTOS"){
                 // sentencia aca
             }else if($type == "DANADO"){
