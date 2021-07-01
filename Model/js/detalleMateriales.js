@@ -115,10 +115,11 @@
          e.preventDefault();
          console.log("devovler libro")
          const param={
-             idDetaMate:$('#button_close_devolucion').val(),
-             motivo:$('#motivo').val(),
-             idPrestamoDevolucion:$("#formulario_devolucion").val(),
-             action:"Devolver"
+          idDetaMate:$('#button_close_devolucion').val(),
+          motivo:$('#motivo').val(),
+          type:$('#tipoMotivo').val(),
+          idPrestamoDevolucion:$("#formulario_devolucion").val(),
+          action:"Devolver"
          }
          console.log(param)
          await refactorize.getDataController(materialURL2,POST,param);
@@ -138,6 +139,14 @@
         if(response != null){
             $('.verMotivo').show();
             $('#vermotivo').val(' '+response.motivo);
+            if(response.asunto == "Otros"){
+                   $('#MotivoLabel').show();
+                   $('#MotivoDiv').show();
+               }else{
+                 $('#MotivoLabel').hide();
+                 $('#MotivoDiv').hide();
+                
+               }
         }
        })
 

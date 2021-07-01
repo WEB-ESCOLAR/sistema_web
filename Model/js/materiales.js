@@ -81,6 +81,18 @@ mostrarCurso();
             console.log("error" + er)
           })
         }
+            $("#tipoMotivo").on('change',function(){
+              var dato = $('#tipoMotivo').val();
+              if(dato == "Dañado"){
+                  $('#box_area_motivo').show();
+              } else if(dato =="Otros"){
+                $('#box_area_motivo').show();
+
+              }else{
+                  $('#box_area_motivo').hide();
+              }
+              console.log("dato es " + dato);
+          })
 
         $(document).on('click','#deleteMaterial',function(e){
             var id = $(this).attr("name");

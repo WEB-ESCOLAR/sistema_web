@@ -38,8 +38,6 @@ function Header()
 
     // Salto de línea
     $this->Ln(20);
-  $this->AddFont('Quicksand','','QuicksandBold.php');
-  $this->AddFont('Quicksand','','QuicksandRegular.php');
     // Arial bold 15
     $this->SetFont('Quicksand','B',15);
     // Movernos a la derecha

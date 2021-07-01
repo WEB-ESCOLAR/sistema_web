@@ -303,6 +303,7 @@ $(document).ready(function(){
              });
 
              $(document).on('click','#checkDanados', async function(e){
+               console.log("dañado")
                 if( $( this ).is( ':checked' ) ){
               const listData = await refactorize.getDataController(
                 detalleMaterialURL,GET,
@@ -386,6 +387,7 @@ $(document).ready(function(){
                 header= `
                <th>Codigo de Libro</th>
               <th>Descripción</th>
+              <th>Fecha Hora Devolucion</th>
                <th>Accion</th>
               `
               break;
@@ -484,6 +486,7 @@ $(document).ready(function(){
                   body=[
                     {data:"codigo"},
                     {data:"motivo"},
+                    {data:"fechaHoraDevolucion"},
                     {"render":function(data,type,full,meta){
                       var idDetalleMaterial=full.idDetalleMaterial
                       return '<button class="btn-delete" id="eliminarDetalleMaterial" name="'+idDetalleMaterial+'"><i class="fas fa-trash-alt"></i></button>'

@@ -2,8 +2,8 @@
 require('fpdf.php');
 require_once("../Model/AdministrarDetalleMaterial.php");
 
-// $idMaterial = $_REQUEST["idMaterial"];
-$idMaterial = 731965;
+$idMaterial = $_REQUEST["idMaterial"];
+// $idMaterial = 731965;
 $count = 1;
 $materialModel = new AdministrarDetalleMaterial();
 $result=$materialModel->headerPDF($idMaterial);
@@ -72,12 +72,8 @@ while ($data =$resultado->fetch(PDO::FETCH_OBJ)) {
   $pdf->cell(60,8,$count++,'T',0,'C');
   $pdf->cell(60,8,$data->codigo,'T',0,'C');
   $pdf->Multicell(60,8,$data->motivo,'T','C',false);
-  $curso=$data->descripcion;
-  $grado=$data->grade;
-  $tipo=$data->tipoMaterial; 
-  // $pdf->Line(20,45,210-20,45);
 }
 
 
-$pdf->Output('I',utf8_decode("reporteMaterialesDañados.pdf"));
+$pdf->Output('D',utf8_decode("reporteMaterialesDañados.pdf"));
 ?>

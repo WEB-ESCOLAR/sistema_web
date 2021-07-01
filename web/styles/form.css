@@ -15,7 +15,7 @@
 .form-group{
   margin-top: 10px;
 }
-.box_form,.verform-apoderado{
+.box_form,.verform-apoderado,.form_administrarMat{
     position: absolute;
     width: 500px;
     left: 305px;
@@ -125,18 +125,6 @@
 /*REUTILIZAR ESTILOS Y OPTIMIZAR , PUEDES REUTILIZAR ALGUNOS INPUTS DE LA PARTE DEL COMPONENTE FORM DE ARRIBA */
 /*REVISAR  */
 
-.form_administrarMat,.verform-apoderado{
-  position: absolute;
-  width: 440px;
-  height: 330px;
-  background: #FFFFFF;
-  border: 1px solid #4064E3;
-  box-sizing: border-box;
-  border-radius: 10px;
-  z-index: 9999;
-  left: 385px;
-  top: 140px;
-}
 
 .buscarEstudiante button{
   width: 110px;

@@ -109,15 +109,17 @@
 			$response->execute();
 		}
 
-		function devolverMaterial($fecha,$motivo,$idDetMate,$idPrestamoDevolucion){
-			$actualizarEstado="update detallematerial set status = 1 where idDetalleMaterial= ?";
-			$registrarDevolucion="update prestamodevolucion set fechaHoraDevolucion=?,motivo=? where idPrestamoDevolucion=?";
+		function devolverMaterial($fecha,$motivo,$idDetalleMaterial,$idPrestamoDevolucion,$type,$estado){
+			$actualizarEstado="update detallematerial set status = ? where idDetalleMaterial= ?";
+			$registrarDevolucion="update prestamodevolucion set fechaHoraDevolucion=?,motivo=?, asunto=? where idPrestamoDevolucion=?";
 			$responseActualizar = $this->getConexion()->prepare($actualizarEstado);
 			$responseRegistrar = $this->getConexion()->prepare($registrarDevolucion);
-			$responseActualizar->bindParam(1,$idDetMate);
+			$responseActualizar->bindParam(1,$estado);
+			$responseActualizar->bindParam(2,$idDetalleMaterial);
 			$responseRegistrar->bindParam(1,$fecha);
 			$responseRegistrar->bindParam(2,$motivo);
-			$responseRegistrar->bindParam(3,$idPrestamoDevolucion);
+		  $responseRegistrar->bindParam(3,$type);
+			$responseRegistrar->bindParam(4,$idPrestamoDevolucion);
 			$responseActualizar->execute();
 			return $responseRegistrar->execute();
 		}
