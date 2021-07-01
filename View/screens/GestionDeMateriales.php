@@ -84,7 +84,7 @@
 
 
  <div class="cont_Table">
-        <table class="table-general">
+        <table class="table-general" id="data_materiales_table">
             <thead>
                 <tr>
                    <th>N°</th>
@@ -98,8 +98,7 @@
                     <th>ACCIONES</th>
                 </tr>
             </thead>
-            <tbody id="data_materiales_table">
-
+            <tbody >
             </tbody>
         </table>
 

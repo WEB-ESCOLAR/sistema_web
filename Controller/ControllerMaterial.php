@@ -14,9 +14,6 @@
 		case "Eliminar":
 			deleteMaterial();
 			break;
-		case "DetalleMaterial":
-				fetchAllDetalleMaterial();
-				break;
 		case "buscarAlumno":
 				buscar();
 				break;
@@ -96,13 +93,13 @@
 		echo json_encode($resultado);
 	}
 
-	function fetchAllDetalleMaterial(){
-		require_once("../Model/AdministrarMaterial.php");
-		$materialModel = new AdministrarMaterial();
-		$idMaterial = $_GET["id"];
-		$resultado = $materialModel->listDetalleMaterial($idMaterial);
-		echo json_encode($resultado);
-	}
+	// function fetchAllDetalleMaterial(){
+	// 	require_once("../Model/AdministrarMaterial.php");
+	// 	$materialModel = new AdministrarMaterial();
+	// 	$idMaterial = $_GET["id"];
+	// 	$resultado = $materialModel->listDetalleMaterial($idMaterial);
+	// 	echo json_encode($resultado);
+	// }
 
 	function buscar(){
 		require_once("../Model/AdministrarMaterial.php");
