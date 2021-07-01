@@ -41,8 +41,10 @@
         function showGenerarReporte($type,$idMaterial){
             if($type == "PRESTADOS"){
                 //sentencia
-            }else if($type == "DEVUELTOS"){
+            }else if($type == "DEVUELTO"){
                 // sentencia aca
+                $sql="SELECT CONCAT(e.firstName,' ',e.LastName) AS 'nombre',e.section AS 'seccion', pd.fechaHoraDevolucion AS 'fechaDevolucion', pd.motivo AS 'motivo' FROM prestamodevolucion pd INNER JOIN estudiante e ON pd.idEstudiante = e.idEstudiante INNER JOIN detallematerial dm ON dm.idDetalleMaterial = pd.idDetalleMaterial WHERE dm.idMaterial=$idMaterial and pd.fechaHoraDevolucion is not null";
+
             }else if($type == "DANADO"){
 							$sql="SELECT pd.idDetalleMaterial, dm.codigo, pd.motivo from detallematerial dm inner join prestamodevolucion pd
 							on dm.idDetalleMaterial = pd.idDetalleMaterial

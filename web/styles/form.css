@@ -106,7 +106,7 @@
 .dataTables_wrapper .dataTables_filter input input[type=text]{
   padding-left:40px;
 }
-.dataTables_wrapper .dataTables_filter input i{
+/* .dataTables_wrapper .dataTables_filter input i{
   position:absolute;
   left:0;
   top:8px;
@@ -114,7 +114,7 @@
   line-height:20px;
   margin-left: 5px;
   color:var(--crimson);
-}
+} */
 
 
 

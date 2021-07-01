@@ -324,7 +324,11 @@ $(document).ready(function(){
               var url = window.location.href;
               const idMaterial = url.split("/")[5];
               console.log(idMaterial);
-              if (stateCheckBox == 'DANADO') {
+              if (stateCheckBox == 'PRESTADO') {
+                window.location="../util/reportePrestados.php?idMaterial="+idMaterial;
+              }else if(stateCheckBox == 'DEVUELTO') {
+                window.location="../util/reportDevueltos.php?idMaterial="+idMaterial;
+              }else if(stateCheckBox == 'DANADO') {
                 window.location="../util/reporteDañados.php?idMaterial="+idMaterial;
               }
             })
