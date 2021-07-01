@@ -58,6 +58,7 @@
 						<table class="tblDualCard">
 						  <thead>
 							  <tr>
+							  <th><strong>Grado</strong></th>
 							    <th><strong>Curso</strong></th>
 							    <th><strong>Material</strong></th>
 							    <th><strong>Cantidad Registrada</strong></th>
@@ -79,6 +80,7 @@
 						<table class="tblDualCard">
 						  <thead>
 							  <tr>
+							 	 <th><strong>Grado</strong></th>
 							    <th><strong>Curso</strong></th>
 							    <th><strong>Material</strong></th>
 							    <th><strong>Cantidad Registrada</strong></th>

@@ -68,8 +68,9 @@ $(document).ready(function(){
                                     $('#component_dualcard_table_one').append(
                                         `
                                         <tr>
-                                        <td>${element.descripcion}</td>
-                                        <td>${element.tipoMaterial}</td>
+                                        <td>${element.grado}</td>
+                                        <td>${element.nombre}</td>
+                                        <td>${element.tipo}</td>
                                         <td>${element.cantidad}</td>
                                         </tr>
                                         `
