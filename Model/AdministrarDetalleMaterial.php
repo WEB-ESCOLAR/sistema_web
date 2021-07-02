@@ -20,7 +20,7 @@
                 $sql="SELECT pv.idPrestamoDevolucion,e.firstName,e.LastName,e.grado,e.section,
         pv.fechaHoraDevolucion FROM  prestamodevolucion pv
                 inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial
-                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and pv.asunto is null and dt.idMaterial=$idDeMaterial";
+                inner join estudiante e on e.idEstudiante=pv.idEstudiante where pv.fechaHoraDevolucion is not null and dt.status!=3 and dt.idMaterial=$idDeMaterial";
             }else{
                 $sql="SELECT dt.codigo,motivo,pv.fechaHoraDevolucion FROM  prestamodevolucion pv 
                 inner join detallematerial dt on pv.idDetalleMaterial= dt.idDetalleMaterial 
@@ -46,7 +46,9 @@
                     WHERE dt.status = 2 and dt.idMaterial = $idMaterial";
             }else if($type == "DEVUELTO"){
                 // sentencia aca
-                $sql="SELECT CONCAT(e.firstName,' ',e.LastName) AS 'nombre',e.section AS 'seccion', pd.fechaHoraDevolucion AS 'fechaDevolucion', pd.motivo AS 'motivo' FROM prestamodevolucion pd INNER JOIN estudiante e ON pd.idEstudiante = e.idEstudiante INNER JOIN detallematerial dm ON dm.idDetalleMaterial = pd.idDetalleMaterial WHERE dm.idMaterial=$idMaterial and pd.fechaHoraDevolucion is not null";
+                $sql="SELECT CONCAT(e.firstName,' ',e.LastName) AS 'nombre',e.section AS 'seccion', pd.fechaHoraDevolucion AS 'fechaDevolucion', pd.motivo AS 'motivo' 
+                FROM prestamodevolucion pd INNER JOIN estudiante e ON pd.idEstudiante = e.idEstudiante INNER JOIN detallematerial dm ON dm.idDetalleMaterial = pd.idDetalleMaterial 
+                WHERE dm.idMaterial=$idMaterial and pd.fechaHoraDevolucion is not null and dm.status!=3";
 
             }else{    
 							$sql="SELECT pd.idDetalleMaterial, dm.codigo, pd.motivo from detallematerial dm inner join prestamodevolucion pd

@@ -1,7 +1,7 @@
 $(document).ready(function(){
     const refactorize = new Refactorize();
     const {GET,POST} = refactorize.methodHTTP();
-    const {estudianteURL,dashboardURL} = refactorize.consumeUrl();
+    const {estudianteURL,dashboardURL,usuarioURL} = refactorize.consumeUrl();
     const {SUCCESS,WARNING,ERROR} = refactorize.typeICON();
 
       //revision here
@@ -155,7 +155,7 @@ $(document).ready(function(){
           if($('#contraseña1').val() == $('#contraseña2').val()){
               var dataString=$('#configuracionUsuario').serialize();
               const param = dataString+"&action=UpdateUsuario"
-               await refactorize.getDataController(dashboardURL,POST,param);
+               await refactorize.getDataController(usuarioURL,POST,param);
               location.reload()
           }else{
             alertModal("La contraseña no coinciden","Verificar",WARNING);

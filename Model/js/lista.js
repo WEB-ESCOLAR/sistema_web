@@ -417,8 +417,10 @@ $(document).ready(function(){
                         var status=full.status
                         if(status==="OCUPADO"){
                           return '<td><div class="inactive">OCUPADO</div></td>'
+                        }else if(status=="DISPONIBLE"){
+                          return '<td><div class="available">DISPONIBLE</div></td>'
                         }else{
-                          return '<div class="available">DISPONIBLE</div>'
+                          return '<td><div class="damage">INACTIVO</div></td>'
                         }
                       } },
                       {"render":function(data,type,full,meta){
