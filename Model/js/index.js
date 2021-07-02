@@ -82,7 +82,9 @@ $(document).ready(function(){
       $('#button_material').click(function(e){
             e.preventDefault();
             $('.modal').show();
+            $('.modal').css("z-index","100");
             $('#formulario_material').show();
+
       })
 
       $('#button_detalleMaterial').click(function(e){
@@ -108,7 +110,9 @@ $(document).ready(function(){
        // BUTTONES FORMS MODALS MODULES
       $('#button_alumno').click(function(e){
             e.preventDefault();
+                    $('.box_form').css("width","700px");
             $('.modal').show();
+            $('.modal').css("z-index","100");
             $('#titulo_EditarEstudiante').hide();
             $('#formulario_alumno').show();
             $('#modificar_Estudiante').hide();

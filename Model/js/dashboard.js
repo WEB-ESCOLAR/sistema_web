@@ -149,19 +149,16 @@ $(document).ready(function(){
               })
         }
 
-        
+      
+      
         $(document).on('click','#button_Configuracion',async function(e){
           e.preventDefault();
-          const password=$('#contraseña1').val()
+          const password=$('#password').val()
           const password2=$('#contraseña2').val()
           var dataString=$('#configuracionUsuario').serialize();
           console.log("r" + dataString)
-          // console.log(password)
-          // // if(password)
-          if(password == '' || password2 == '' ){
-            alertModal("Debe ingresar password","",WARNING)
-          }
-          if( 8 <= password.length ||  8 <= password2.length){
+          if($("#configuracionUsuario").valid()){
+             if( 8 <= password.length ||  8 <= password2.length){
              alertModal("La contraseña debe ser minimo 7 caracteres","Verificar",WARNING);
           }else{
              if(password == password2){
@@ -172,12 +169,26 @@ $(document).ready(function(){
                     location.reload();
                 },2000)
          
-          }else{
-            alertModal("La contraseña no coinciden","Verificar",WARNING);
+            }else{
+              alertModal("La contraseña no coinciden","Verificar",WARNING);
+            }
           }
           }
          
+         
       })
+
+      $('#configuracionUsuario').validate({
+        rules: {
+          password: { required:true, minlength: 2},
+          contraseña2: { required:true, maxlength: 4}
+        },
+        messages: {
+          password : "Contraseña es obligatorio*",
+          contraseña2 : "Contraseña secundaria es obligatorio*",
+        }
+      });
+
 
 
   });

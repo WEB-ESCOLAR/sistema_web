@@ -26,14 +26,14 @@
 
      <div class="form-group">
      	 <label class="label_group"> Seleccione el Curso:</label>
-    <select  id="curso" class="input_txt" required>
+    <select  id="curso" class="input_txt" name="curso" required>
     <option value="Seleccione el curso">Seleccion el curso</option>
     </select>
      </div>
 
     <div class="form-group">
     	  <label class="label_group">  Seleccione el Grado:  </label>
-    <select id="grado" class="input_txt" required>
+    <select id="grado" class="input_txt" name="grado" required>
     <option  value="Seleccione el grado">Seleccione el grado</option>
     <option  value="Primer">Primer</option>
     <option  value="Segundo">Segundo</option>
@@ -48,18 +48,19 @@
    <div style="display:flex;width:100%;" class="form-group">
         <div style="width: 50%;">
          <label class="label_group">Fecha de recepcion:</label>
-        <input id="fecha_recepcion" type="date" class="input_txt_50" required>
+        <input id="fecha_recepcion" name="fecha" type="date" class="input_txt_50" required>
       </div>
 
       <div style="width:50%;">
          <label class="label_group">  Cantidad:  </label>
-      <input id="cantidad"  type="text" class="input_txt_50" placeholder="Ingresa cantidad aquí..." required>
+      <input id="cantidad"  type="text" name="cantidad" class="input_txt_50"
+       placeholder="Ingresa cantidad aquí..." required>
       </div>
    </div>
 
        <div class="form-group">
        	 <label class="label_group"> Seleccion de Tipo de Material:  </label>
-    <select id="tipoMaterial" class="input_txt" required>
+    <select id="tipoMaterial" name="tipo" class="input_txt" required>
          <option value="Seleccione el grado">Seleccione el Tipo de Material</option>
          <option value="Libros">Libros</option>
     <option value="Otros">Otros</option>

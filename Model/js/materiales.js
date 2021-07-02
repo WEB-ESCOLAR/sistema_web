@@ -3,7 +3,7 @@ $(document).ready(function(){
 mostrarCurso();
       const refactorize = new Refactorize();
       const {GET,POST} = refactorize.methodHTTP();
-      const {estudianteURL} = refactorize.consumeUrl();
+      const {estudianteURL,materialesURL} = refactorize.consumeUrl();
       const {SUCCESS} = refactorize.typeICON();
 
       showDetalleMaterial();
@@ -17,28 +17,16 @@ mostrarCurso();
                 console.log("dato es " + dato);
             })
 
-             $(document).on('click','#agregar_material',function(e){
+             $(document).on('click','#agregar_material',async function(e){
                 e.preventDefault();
-                var param={
-                    curso: $('#curso').val(),
-                    grado: $('#grado').val(),
-                    fechaRecepcion: $('#fecha_recepcion').val(),
-                    cantidad: $('#cantidad').val(),
-                    tipoMaterial: $('#tipoMaterial').val(),
-                    nombreMaterial:$('#nombreMaterial').val(),
-                    action:"Agregar"
-                }
-                 console.log(param);
-                 $.ajax({
-                    url:"Controller/ControllerMaterial.php",
-                    type:"POST",
-                    data:param
-                }).done(function(response){
-                    console.log("RESULTADO ESPERADO AGREGAR " + response);
-                    $('#formulario_material').hide();
+                const formulario_material = $('#formulario_material').serialize();
+                const form_concat=formulario_material+"&action=Agregar"
+                console.log(form_concat)
+                if($('#formulario_material').valid()){
+                 await refactorize.getDataController(materialesURL,POST,form_concat)
+                       $('#formulario_material').hide();
                     location.reload();
-
-                })
+                }
             });
 
 

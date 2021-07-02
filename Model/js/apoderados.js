@@ -51,6 +51,7 @@ $(document).ready(function(){
         //------- CRUD
          $(document).on('click','#editar_apoderado',async function(e){
               e.preventDefault();
+              $('.modal').css("z-index","100");
                var id = $(this).attr("name");
                  const param={
                     "id":id,
@@ -73,7 +74,8 @@ $(document).ready(function(){
               e.preventDefault();
                var datastring = $("#formulario_apoderado").serialize();
                const param = datastring+"&action=UpdateApoderado"
-               const response  = await refactorize.getDataController(estudianteURL,POST,param);
+               if($("#formulario_apoderado").valid()){
+                  const response  = await refactorize.getDataController(estudianteURL,POST,param);
               if(response){
                  alertModal("Datos del Apoderado Actualizado Correctamente","",SUCCESS);
                   $('#formulario_apoderado').hide();
@@ -82,7 +84,8 @@ $(document).ready(function(){
                     location.reload();
                   },2000)
               }
-            })
+              }
+          })
 
 
 

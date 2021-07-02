@@ -65,6 +65,7 @@ $(document).ready(function(){
             break;
         case "AdministrarMateriales":
              mostrarDetalleMaterial();
+             
              break;
         case "Alumnos":
             mostrarEstudiantes(null,null);

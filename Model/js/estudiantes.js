@@ -39,9 +39,8 @@
           $(document).on('click','#agregar_Estudiante',function(e){
             e.preventDefault();
             var datastring = $("#formulario_alumno").serialize();
-             console.log(datastring);
-             console.log(dataExist)
-             $.ajax({
+             if($('#formulario_alumno').valid()){
+              $.ajax({
                 url:"Controller/ControllerEstudiante.php",
                 type:"POST",
                 data:datastring+`&apoderadoExist=${dataExist}&action=AgregarEstudiante`,
@@ -51,6 +50,7 @@
                 $('#formulario_alumno').hide();
                 location.reload();
             })
+             }
         });
 
 
@@ -115,6 +115,7 @@
 
       $(document).on('click','#editar-estudiante',function(e){ // mmodal editar
          e.preventDefault();
+         $('.modal').css("z-index","100");
         $('#formulario_alumno').show();
         $('#form-apoderado').hide();
         $('#modificar_Estudiante').show();
@@ -170,6 +171,7 @@
 
       $(document).on('click','#mostrarApoderado',function(e){
            e.preventDefault();
+           $('.modal').css("z-index","100");
            $('#formVerApoderado').show();
            $("#titulo_MostrarApoderado").show();
            $("#formulario_alumno").hide();

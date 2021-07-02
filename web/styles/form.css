@@ -111,6 +111,20 @@
 .dataTables_wrapper .dataTables_filter input input[type=text]{
   padding-left:40px;
 }
+label.error {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-quicksandMedium);
+}
+
+/* input.error {
+  border: 1px dashed red;
+  font-weight: 300;
+  color: red;
+} */
+
 /* .dataTables_wrapper .dataTables_filter input i{
   position:absolute;
   left:0;
