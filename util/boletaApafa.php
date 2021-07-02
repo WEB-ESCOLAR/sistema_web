@@ -2,6 +2,7 @@
 
 require('fpdf.php');
 require_once("../Model/AdministrarEstudiante.php");
+require_once("../core/initial.php");
 
 date_default_timezone_set('America/Lima');
 
@@ -118,7 +119,9 @@ $pdf->SetXY(111, 49);
 $pdf->Cell(40,10,utf8_decode("DNI: " . $DNI),0,0);
 
 //ESCUDO DEL COLEGIO
-$pdf->Image('https://res.cloudinary.com/df3uvqrte/image/upload/v1622139170/png_image_anzdgw.png',40,5,30,0,'PNG');
+// $pdf->Image('https://res.cloudinary.com/df3uvqrte/image/upload/v1622139170/png_image_anzdgw.png',40,5,30,0,'PNG');
+
+    $pdf->Image(URL."/Web/img/logo_login.jpeg",40,5,30,0,'JPEG');
 
 //CELDA DEL PAGO
 $pdf->SetFillColor(255, 255, 255);

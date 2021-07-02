@@ -28,13 +28,14 @@
   ?>
  <section>
       <div class="imgBx">
-        <img src="https://scontent.flim17-1.fna.fbcdn.net/v/t31.18172-8/21743780_1720594218245794_5836783595616387716_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=e3f864&_nc_ohc=42vL7ZOzmxAAX_S7DkH&_nc_ht=scontent.flim17-1.fna&oh=a80c3cf5feab841ee3f854ede43cbef1&oe=60D4AF7D">
+           <?=  "<img src=".URL."/Web/img/background_colegio.jpeg> </img>"; ?>
+        <!-- <img src="https://scontent.flim17-1.fna.fbcdn.net/v/t31.18172-8/21743780_1720594218245794_5836783595616387716_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=e3f864&_nc_ohc=42vL7ZOzmxAAX_S7DkH&_nc_ht=scontent.flim17-1.fna&oh=a80c3cf5feab841ee3f854ede43cbef1&oe=60D4AF7D"> -->
       </div>
       <div class="contentBx">
         <div class="formBx" >
           <form  id="formulario_login">
             <div class=logo>
-              <img  src="https://res.cloudinary.com/df3uvqrte/image/upload/v1622139170/png_image_anzdgw.png">
+             <?=  "<img src=".URL."/Web/img/logo_login.jpeg> </img>"; ?>
               </div>
             <div class="inputBx">
               <span>Email</span>

@@ -12,12 +12,12 @@
             <div  style="display:flex;width:100%;" class="form-group">
                 <div style="width:50%;">
                   <label class= label_group>Nombres:</label>
-                  <input type="text" id="nombre" name="nombre" class="input_txt_50" placeholder="Escriba su nombres aquí" required>
+                  <input type="text" id="nombre" name="nombre" class="input_txt_50" placeholder="Escriba su nombres aquí" maxlength="15" required>
                 </div>
 
                 <div style="width:50%;">
                   <label class= label_group> Apellidos:</label>
-                  <input type="text" id="apellido"  name="apellido" class="input_txt_50" placeholder="Escriba su apellidos aquí" required>
+                  <input type="text" id="apellido"  name="apellido" class="input_txt_50" placeholder="Escriba su apellidos aquí" maxlength="15" required>
                 </div>
 
                  </div>
@@ -29,7 +29,7 @@
 
                   <div class="form-group">
                     <label class="label_group">Teléfono:</label>
-                  <input type="number" id="telefono"  name="telefono" class="input_txt" placeholder="Escriba su celular aquí"  maxlength="8" required>
+                  <input type="text" id="telefono"  name="telefono" class="input_txt" placeholder="Escriba su celular aquí"  maxlength="9" required>
                   </div>
 
             <div style="display:flex;margin-top:15px;">

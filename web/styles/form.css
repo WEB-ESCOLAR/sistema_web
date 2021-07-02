@@ -1,7 +1,7 @@
 /*efect oscuro*/
 .modal,.modal_agregar_cantidad,.modalAgregarCantid,.formularioPrestamo,.formularioDevolucion,.verMotivo,.modal_verform-apoderado{
   background:rgba(0,0,0,0.25);
-  position: absolute;
+  position: fixed;
   top: 0%;
   left: 0%;
   width:100%;
@@ -15,11 +15,11 @@
 .form-group{
   margin-top: 10px;
 }
-.box_form,.verform-apoderado,.form_administrarMat{
+.box_form,.verform-apoderado,.form_administrarMat,.formVerApoderado{
     position: absolute;
     width: 500px;
-    left: 305px;
-    top: 140px;
+    left: 550px;
+    top: 80px;
     background: #FFFFFF;
     border: 3px solid var(--blue--bold);
     box-sizing: border-box;
@@ -86,6 +86,11 @@
   right: -15px;
   top: -10px;
  }
+/*hide password microsoft edge*/
+  input::-ms-reveal,
+      input::-ms-clear {
+        display: none;
+      }
 
 /*SEARCH INPUT*/
 .search_inputBox{

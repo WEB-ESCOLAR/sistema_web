@@ -180,6 +180,29 @@ section .contentBx .formBx .ingresar input[type="submit"]:hover{
   }
 }
 
+.dt-buttons{
+  float: right;
+}
+.file-excel{
+  background: #42DF48;
+  border: none;
+  position: absolute;
+  right: 380px;
+  font-size: 18px;
+  padding: 7px;
+  border-radius: 10px;
+  color:white;
+
+}
+.file-excel p{
+  margin-right: 5px;
+  font-family: var(--font-quicksandRegular);
+}
+#icon_excel{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 5px;
+}
 /*END LOGIN*/
 
 .container{
@@ -333,6 +356,14 @@ h1{
 .content-card{
   width:45%;
 }
+.form-groupApoderado{
+  margin:15px;
+  display: flex;
+}
+#formVerApoderado{
+  flex-direction: column;
+  display: flex;
+}
 .carddashboard,.form-groupApoderado label{
   font-family: var(--font-quicksandMedium);
   font-size:22px;
@@ -424,7 +455,7 @@ h1{
   line-height: 20px;
 }
 .compLastPayAPAFADivsSDF label{
-  width:35%;
+  width:40%;
 }
 .compLastPayAPAFADivsSDFD{
   display: flex;

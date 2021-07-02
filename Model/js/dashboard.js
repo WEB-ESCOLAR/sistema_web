@@ -152,14 +152,31 @@ $(document).ready(function(){
         
         $(document).on('click','#button_Configuracion',async function(e){
           e.preventDefault();
-          if($('#contraseña1').val() == $('#contraseña2').val()){
-              var dataString=$('#configuracionUsuario').serialize();
+          const password=$('#contraseña1').val()
+          const password2=$('#contraseña2').val()
+          var dataString=$('#configuracionUsuario').serialize();
+          console.log("r" + dataString)
+          // console.log(password)
+          // // if(password)
+          if(password == '' || password2 == '' ){
+            alertModal("Debe ingresar password","",WARNING)
+          }
+          if( 8 <= password.length ||  8 <= password2.length){
+             alertModal("La contraseña debe ser minimo 7 caracteres","Verificar",WARNING);
+          }else{
+             if(password == password2){
               const param = dataString+"&action=UpdateUsuario"
-               await refactorize.getDataController(usuarioURL,POST,param);
-              location.reload()
+               const response = await refactorize.getDataController(usuarioURL,POST,param);
+               alertModal("Datos Actualizado Correctamente!","",SUCCESS);
+               setTimeout(function(){
+                    location.reload();
+                },2000)
+         
           }else{
             alertModal("La contraseña no coinciden","Verificar",WARNING);
           }
+          }
+         
       })
 
 

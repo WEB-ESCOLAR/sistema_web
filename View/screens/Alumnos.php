@@ -120,21 +120,21 @@
         <h2 class="title_form" id="titulo_MostrarApoderado" style="position:relative;top:20px;left:50px;">Datos de su Apoderado</h2>
         <button id="button_close_apoderado" class="btn_closeApoderado"><i style="font-size: 20px;" class="fas fa-times"></i></button>
 
-        <div class="form-groupApoderado" style="position:absolute;top:70px;left:15px;">
+        <div class="form-groupApoderado" >
           <label>Nombre:</label>
-          <p id="VernombreApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+          <p id="VernombreApoderado"></p>
         </div>
-        <div class="form-groupApoderado" style="position:absolute;top:120px;left:15px;">
+        <div class="form-groupApoderado" >
           <label>Apellido:</label>
-          <p id="verapellidoApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+          <p id="verapellidoApoderado"></p>
         </div>
-        <div class="form-groupApoderado" style="position:absolute;top:170px;left:15px;">
+        <div class="form-groupApoderado">
           <label>N° DNI:</label>
-          <p id="verDniApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+          <p id="verDniApoderado"></p>
         </div>
-        <div class="form-groupApoderado" style="position:absolute;top:220px;left:15px;">
+        <div class="form-groupApoderado">
           <label>Telefono:</label>
-          <p id="vertelefonoApoderado" style="position:relative;bottom:29px;left:100px;"></p>
+          <p id="vertelefonoApoderado"></p>
         </div>
       </form>
 
@@ -148,7 +148,7 @@
                     <th>Apellidos</th>
                       <th>Grado</th>
                     <th>Seccion</th>
-                    <th>ACCIONE</th>
+                    <th>ACCIONES</th>
 
                 </tr> 
             </thead>

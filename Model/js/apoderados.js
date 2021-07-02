@@ -11,12 +11,13 @@ $(document).ready(function(){
                  const param={"id":id,"action":"PagoApafa"}
                var name = $(this).attr("name");
                  Swal.fire({
-                title: 'El apoderado ' + name + " realizara el pago de la boleta APAFA?",
+                title: 'Desea realizar el pago APAFA de '+ name +'?',
                 text: "",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
+                cancelButtonText:'No',
                 confirmButtonText: 'Si'
               }).then(async (result) => {
                   if(result.isConfirmed){                

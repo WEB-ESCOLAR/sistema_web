@@ -8,6 +8,9 @@
 		case "Logout":
 			logoutUser();
 			break;
+		case "UpdateUsuario":
+			UpdateUsuario();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -34,7 +37,7 @@
 		$usuario = new Usuario($data["idUser"],$data["firstName"],$data["lastName"],$data["email"],$data["password"],$data["rol"]);
 		if($data){
 			if($usuario->desencriptarContraseña($password)){
-
+				session_start();
 				 $usuario->actualizarEstadoDeSesion(1);
 			     updateStateUser($usuario);
 				 almacenarSesion($usuario);
@@ -62,9 +65,25 @@
 		updateStateUser($usuario);
 		session_destroy();
 	}
+	   function UpdateUsuario(){
+        require_once("../Model/AdministrarUsuario.php");
+        require_once("../Model/Usuario.php");
+        $administrarUsuario=new AdministrarUsuario();
+        session_start();
+		$Usuario = $_SESSION["id"];
+        $firstName=$_POST["firstName"];
+        $lastName=$_POST["lastName"];
+        $email=$_POST["email"];
+        $password=$_POST["password"];
+        $rol = $_SESSION["rol"];
+        $encryption=password_hash($password, PASSWORD_BCRYPT);
+        $configuracionUsuario=new Usuario(intval($Usuario),$firstName,$lastName,$email,$encryption,$rol);
+        almacenarSesion($configuracionUsuario);
+        $administrarUsuario->UpdateUsuario($configuracionUsuario);
+        echo json_encode($administrarUsuario);
+    }
 
 function almacenarSesion(Usuario $usuario){
-	session_start();
 	$_SESSION["rol"]=$usuario->rol;
 	$_SESSION["id"]=$usuario->idUser;
 	$_SESSION["nombre"]=$usuario->firstName;

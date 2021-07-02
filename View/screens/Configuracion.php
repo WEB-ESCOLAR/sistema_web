@@ -6,7 +6,7 @@
       <div class="config_group">
         <label>Nombre</label>
         <input  type="text" class="input_txt_config" 
-        value='<?php echo (isset($_SESSION["nombre"])) ?  $_SESSION["nombre"]  : "" ?>'         placeholder="Ingrese el nombre" name="firstName">
+        value='<?php echo (isset($_SESSION["nombre"])) ?  $_SESSION["nombre"]  : "" ?>'         placeholder="Ingrese el nombre" name="firstName" required>
       </div>
       <div class="config_group">
       
@@ -22,7 +22,7 @@
     <div style="display:flex">
       <div class="config_group">
         <p><label>Email</label>
-        <p><input type="text" class="input_txt_config" 
+        <p><input type="email" class="input_txt_config" 
           value='<?php echo (isset($_SESSION["email"])) ?  $_SESSION["email"]  : "" ?>' 
           placeholder="Ingrese correo electronico" name="email" ></p>
       </div>

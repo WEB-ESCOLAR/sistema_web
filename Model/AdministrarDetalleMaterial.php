@@ -42,7 +42,7 @@
                 //sentencia
                 $sql="SELECT dv.idDetalleMaterial, e.firstName as Nombre ,e.LastName as Apellido,dt.idMaterial,pv.codePecosa,dv.fechaHora,e.section
                 FROM prestamodevolucion pv inner join detallematerial dt on pv.idDetalleMaterial=dt.idDetalleMaterial inner join
-                    estudiante e on pv.idEstudiante=e.idEstudiante inner join prestamoDevolucion dv on pv.idDetalleMaterial=dv.idDetalleMaterial
+                    estudiante e on pv.idEstudiante=e.idEstudiante inner join prestamodevolucion dv on pv.idDetalleMaterial=dv.idDetalleMaterial
                     WHERE dt.status = 2 and dt.idMaterial = $idMaterial";
             }else if($type == "DEVUELTO"){
                 // sentencia aca

@@ -25,7 +25,7 @@ class Refactorize{
             apoderadoURL: controllerDir + "ControllerApoderado.php",
             materialesURL: controllerDir + "ControllerMaterial.php",
             dashboardURL:controllerDir + "ControllerDashboard.php",
-            usuarioURL:controllerDir + "ControllerUsuario.php",
+            usuarioURL:controllerDir + "ControllerLogin.php",
             detalleMaterialURL: "../"+controllerDir + "ControllerDetalleMaterial.php",
             materialURL2: "../"+controllerDir +  "ControllerMaterial.php",
         }

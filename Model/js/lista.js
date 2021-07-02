@@ -4,6 +4,7 @@ $(document).ready(function(){
     const refactorize = new Refactorize()
     const {GET,POST} = refactorize.methodHTTP();
     const {estudianteURL,materialesURL,detalleMaterialURL,materialURL2,apoderadoURL} = refactorize.consumeUrl();
+    const {WARNING} = refactorize.typeICON();
     let stateCheckBox;
     const headerTitleDisponibles=["N°","Codigo Detalle","Estado","Acciones"];
     const headerTitlePrestados=["N°","Codigo Pecosa","Nombre y Apellido","Grado","Seccion","Estado","Acciones"]
@@ -18,6 +19,35 @@ $(document).ready(function(){
      DEVUELTO:"DEVUELTO",
      DANADO:"DANADO"
     }
+
+      // dt_buttons.buttons = [{
+      //                   extend: 'collection',
+      //                   text: '<i class="fa fa-download"></i>',
+      //                   attr:  {
+      //                           "data-content": "Export Data",
+      //                           "class": "ui button buttons-collection pt-2"
+      //                   },
+      //                   buttons: [{
+      //                       extend: 'excel',
+      //                       title: 'Historial de Viajes',
+
+      //                   }, {
+      //                       extend: 'csv',
+      //                       title: 'Historial de Viajes',
+
+      //                   }],
+
+      //               },
+      //               {
+      //                   extend: 'colvis',
+      //                   text: '<i class="fa fa-eye"></i>',
+      //                   attr:  {
+      //                       "data-content": "Show/Hide Columns",
+      //                       "class": "ui button buttons-collection pt-2"
+      //                   },
+      //                   columns: ':not(.noVis)'
+      //               }
+      //           ]
 
     // $('#tableFilter').hide();
 
@@ -126,6 +156,7 @@ $(document).ready(function(){
                 const response = await refactorize.getDataController(estudianteURL,GET,param);
                 tableApoderado= $('#response_table_apoderado').DataTable({
                   "language":refactorize.convertDatatableSpanish(),
+
                   processing:true,
                   lengthMenu:[7,10,20,50],
                   data:response,
@@ -183,7 +214,7 @@ $(document).ready(function(){
               mostrarEstudiantes(grade,section)
               mostrarTotalEstudiantes(grade,section)
             }else{
-              alertWarning("Seeccionar Grado y Seccion")
+              alertModal("Seleccione Grado y Seccion","",WARNING)
             }
           });
 
@@ -212,7 +243,19 @@ $(document).ready(function(){
               const alumnos = await refactorize.getDataController(estudianteURL,GET,parametro);
                        tableEstudiante =  $('#response_table_alumnos').DataTable({
                         "language":refactorize.convertDatatableSpanish(),
-                        processing: true,
+                              dom: 'lBfrtip',
+                        buttons: [
+                        {
+                          extend: 'excelHtml5',
+                          attr:{
+                             "class": "file-excel"
+                          },
+                          text: '<i class="fas fa-file-excel" id="icon_excel"><p>Exportar en Excel: </p></i>',
+                          titleAttr: 'Exportar a excel',
+                          title:"Registros_Estudiantes"
+                        }
+                        ],
+
                                lengthMenu: [7, 10, 20, 50, 100, 200, 500],
                               data:alumnos,
                                columns:[
@@ -361,7 +404,7 @@ $(document).ready(function(){
                   header=`
                    <th>Codigo Detalle</th>
                   <th>Estado</th>
-                  <th>Acciones</th>
+                  <th>ACCIONES</th>
                   `
                   break;
                 case parametroDetalleMaterial.PRESTADO:
@@ -371,7 +414,7 @@ $(document).ready(function(){
                   <th>Grado</th>
                   <th>Seccion</th>
                   <th>Estado</th>
-                  <th>Acciones</th>
+                  <th>ACCIONES</th>
                   `
                   break;
                 case parametroDetalleMaterial.DEVUELTO:
@@ -380,7 +423,7 @@ $(document).ready(function(){
                <th>Grado</th>
                <th>Seccion</th>
                <th>Fecha Hora de Devolucion</th>
-                <th>Acciones</th>
+                <th>ACCIONES</th>
                `
                break;
                case parametroDetalleMaterial.DANADO:
@@ -388,7 +431,7 @@ $(document).ready(function(){
                <th>Codigo de Libro</th>
               <th>Descripción</th>
               <th>Fecha Hora Devolucion</th>
-               <th>Accion</th>
+               <th>ACCIONES</th>
               `
               break;
                default:

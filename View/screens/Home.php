@@ -32,7 +32,7 @@
  <body>
      <div class="sidebar">
   <center>
-    <img src="https://res.cloudinary.com/df3uvqrte/image/upload/v1619064442/image_user_bml1ps.png"></img>
+   <?=  "<img src=".URL."/Web/img/logo_colegio.jpg> </img>"; ?>
     </center>
   <ul>
  <?php

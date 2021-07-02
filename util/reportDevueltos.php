@@ -1,11 +1,13 @@
 <?php
 require('fpdf.php');
+require_once("../core/initial.php");
 require_once("../Model/AdministrarDetalleMaterial.php");
 
 $idMaterial = $_REQUEST["idMaterial"];
 $count = 1;
 $materialModel = new AdministrarDetalleMaterial();
 $result=$materialModel->headerPDF($idMaterial);
+echo URL;
 $curso=$result["descripcion"];
 $fecha=date('Y-m-d h:i:s', time()); 
 $grado=$result["grade"];
@@ -34,7 +36,7 @@ function Header()
     $this->Cell(30,10,utf8_decode("Grado: ".$GLOBALS['grado']),0,0,'C');
     $this->SetXY(78, 40);
     $this->Cell(30,10,utf8_decode("Tipo de Material: ".$GLOBALS['tipo']),0,0,'L');
-    $this->Image('https://res.cloudinary.com/df3uvqrte/image/upload/v1622139170/png_image_anzdgw.png',175,7,25,0,'PNG');
+    $this->Image(URL."/Web/img/logo_login.jpeg",175,7,25,0,'JPEG');
 
     // Salto de línea
     $this->Ln(20);
