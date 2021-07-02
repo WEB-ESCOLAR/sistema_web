@@ -157,8 +157,8 @@
             type:"POST",
             data:datastring+"&action=UpdateEstudiante",
          }).done(function(response){
-            console.log("response is " + response )
-            alertSuccess("Datos del Estudiante Actualizado Correctamente","");
+            console.log("response is " + response );
+            // alertModal("Datos del Estudiante Actualizado Correctamente","",SUCCESS);
             $('#form_estudiante').hide();
             $('.modal').hide();
             setTimeout(function(){

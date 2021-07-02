@@ -27,13 +27,13 @@ function Header()
     $this->Cell(30,10,utf8_decode('REPORTE DE MATERIALES DAÑADOS'),0,0,'C');
     $this->SetXY(5, 30);
     $this->SetFont('Quicksand','B',12);
-    $this->Cell(30,10,utf8_decode("Curso:".$GLOBALS['curso']),0,0,'L');
-    $this->SetXY(80, 30);
+    $this->Cell(30,10,utf8_decode("Curso: ".$GLOBALS['curso']),0,0,'L');
+    $this->SetXY(78, 30);
     $this->Cell(30,10,utf8_decode("Fecha Hora de Reporte:".$GLOBALS['fecha']),0,0,'L');
     $this->SetXY(5, 40);
-    $this->Cell(30,10,utf8_decode("Grado:".$GLOBALS['grado']),0,0,'C');
-    $this->SetXY(80, 40);
-    $this->Cell(30,10,utf8_decode("Tipo de Material:".$GLOBALS['tipo']),0,0,'L');
+    $this->Cell(30,10,utf8_decode("Grado: ".$GLOBALS['grado']),0,0,'C');
+    $this->SetXY(78, 40);
+    $this->Cell(30,10,utf8_decode("Tipo de Material: ".$GLOBALS['tipo']),0,0,'L');
     $this->Image('https://res.cloudinary.com/df3uvqrte/image/upload/v1622139170/png_image_anzdgw.png',175,7,25,0,'PNG');
 
     // Salto de línea

@@ -24,16 +24,16 @@ function Header()
     // Movernos a la derecha
     $this->Cell(80);
     // Título
-    $this->Cell(30,10,utf8_decode('REPORTE DE MATERIALES DEVUELTOS'),0,0,'C');
+    $this->Cell(30,10,utf8_decode('REPORTE DE MATERIALES PRESTADOS'),0,0,'C');
     $this->SetXY(5, 30);
     $this->SetFont('Quicksand','B',12);
-    $this->Cell(30,10,utf8_decode("Curso:".$GLOBALS['curso']),0,0,'L');
+    $this->Cell(30,10,utf8_decode("Curso: ".$GLOBALS['curso']),0,0,'L');
     $this->SetXY(80, 30);
     $this->Cell(30,10,utf8_decode("Fecha Hora de Reporte:".$GLOBALS['fecha']),0,0,'L');
     $this->SetXY(5, 40);
-    $this->Cell(30,10,utf8_decode("Grado:".$GLOBALS['grado']),0,0,'C');
-    $this->SetXY(80, 30);
-    $this->Cell(30,10,utf8_decode("Tipo de Material:".$GLOBALS['tipo']),0,0,'L');
+    $this->Cell(30,10,utf8_decode("Grado: ".$GLOBALS['grado']),0,0,'C');
+    $this->SetXY(80, 40);
+    $this->Cell(30,10,utf8_decode("Tipo de Material: ".$GLOBALS['tipo']),0,0,'L');
     $this->Image('https://res.cloudinary.com/df3uvqrte/image/upload/v1622139170/png_image_anzdgw.png',175,7,25,0,'PNG');
 
     // Salto de línea
@@ -69,7 +69,7 @@ $pdf->AddPage();
 $pdf->SetFont('Quicksand','B',10);
 
 $materialModel = new AdministrarDetalleMaterial();
-$resultado = $materialModel->showGenerarReporte('PRESTADOS  ',$idMaterial);
+$resultado = $materialModel->showGenerarReporte('PRESTADOS',$idMaterial);
 
 $pdf->Cell(25,10,utf8_decode("N°"),0,0,'C');
 $pdf->Cell(50,10,"NOMBRE Y APELLIDO ESTUDIANTE",0,0,'C');

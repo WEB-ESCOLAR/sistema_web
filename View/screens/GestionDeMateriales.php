@@ -91,7 +91,7 @@
                     <th>Tipo Material</th>
                     <th>Grado</th>
                     <th>Total Disponible</th>
-                    <th>Total Inactivo</th>
+                    <th>Total Ocupado</th>
                     <th>Fecha Recepcion</th>
                     <th>Cantidad Registrada</th>
                     <th>ACCIONES</th>
