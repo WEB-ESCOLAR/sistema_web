@@ -103,6 +103,7 @@
       //  ------------------------------------
        $(document).on('click','#modal_devolucion', async function(e){
         e.preventDefault();
+        $('.formularioDevolucion').css("z-index","100");
         var idDetMat = $(this).attr("name");
         var idPrestamoDevolucion = $(this).attr("value");
       $('#formulario_devolucion').val(idPrestamoDevolucion)
@@ -129,26 +130,29 @@
 
        //MOSTRAR MOTIVO DE DEVOLUCION POR MODAL
        $(document).on('click','#modal_motivo',async function(e){
-         e.preventDefault();
-         const idDevo = $(this).attr("name")
-         const param={
-            "idDevo":idDevo,
-            "action":"verMotivo"
-        }
-        const response = await refactorize.getDataController(materialURL2,GET,param);
-        if(response != null){
-            $('.verMotivo').show();
-            $('#vermotivo').val(' '+response.motivo);
-            if(response.asunto == "Otros"){
-                   $('#MotivoLabel').show();
-                   $('#MotivoDiv').show();
-               }else{
-                 $('#MotivoLabel').hide();
-                 $('#MotivoDiv').hide();
-                
-               }
-        }
-       })
+        e.preventDefault();
+        $('.verMotivo').css("z-index","100");
+        const idDevo = $(this).attr("name")
+        const param={
+           "idDevo":idDevo,
+           "action":"verMotivo"
+       }
+       const response = await refactorize.getDataController(materialURL2,GET,param);
+       if(response != null){
+           $('.verMotivo').show();
+           $('.textarea').val(' '+response.motivo);
+           $('#VerAsunto').text(' '+response.asunto);
+           if(response.asunto == "Otros"){
+          
+                  $('#MotivoLabel').show();
+                  $('#MotivoDiv').show();
+              }else{
+                $('#MotivoLabel').hide();
+                $('#MotivoDiv').hide();
+                $('#box_area_motivo').hide();
+              }
+       }
+      })
 
 
       

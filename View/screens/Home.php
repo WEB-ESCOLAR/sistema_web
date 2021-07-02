@@ -55,7 +55,7 @@
   </nav>
     <div class="container">
           <div class="header-container">
-           <p class="title-header"><?= explode("/",$_GET["view"])[0]; ?></p>
+           <p class="title-header"><?= explode("/",$_GET["view"])[0]; ?><span id="cursoMaterial"></span></p>
           <hr class="line-hr"/>
      </div>
       <div class="body-container">

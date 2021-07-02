@@ -3,7 +3,7 @@
         <div style="width:50%;">
               <label class="label_group">Grado </label>
                 <select  id="search_grade_student" class="input_txt_50">
-                 <option  value="null" >Seleccione el grado</option>
+                 <option  value="" >Seleccione el grado</option>
                 <option  value="Primer">Primer</option>
                 <option  value="Segundo">Segundo</option>
                 <option  value="Tercero">Tercero</option>
@@ -16,7 +16,7 @@
       <div style="width:50%;">
          <label class="label_group">Seccion</label>
             <select  id="search_section_student" class="input_txt_50">
-                <option value="null">Seleccione la seccion</option>
+                <option value="">Seleccione la seccion</option>
                   <option value="A">A</option>
                    <option value="B">B</option>
            </select>
@@ -61,8 +61,9 @@
           <div style="display:flex;width:100%;" class="form-group">
             <div style="width:50%;">
               <label class="label_group">Grado </label>
-                <select  value="Primer" id="gradoEstudiante" name="Grado" class="input_txt_50">
-                  <option value="Seleccione el grado">Seleccione el grado</option>
+                <select  value="Primer" id="gradoEstudiante" name="Grado"
+                 class="input_txt_50" required>
+                  <option value="">Seleccione el grado</option>
                   <option  value="Primer">Primer</option>
                   <option  value="Segundo">Segundo</option>
                   <option  value="Tercero">Tercero</option>
@@ -73,8 +74,9 @@
             </div>
             <div style="width:50%;">
               <label class="label_group">Seccion</label>
-                  <select  value="A" id="seccionEstudiante" name="Seccion" class="input_txt_50">
-                      <option  value="Seleccione la seccion">Seleccione la seccion</option>
+                  <select  value="A" id="seccionEstudiante" name="Seccion" 
+                  class="input_txt_50" required>
+                      <option  value="">Seleccione la seccion</option>
                       <option value="A">A</option>
                       <option value="B">B</option>
                   </select>

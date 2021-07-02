@@ -12,6 +12,8 @@ $(document).ready(function(){
 
     var url = window.location.href;
     const urlSplit = url.split("/")
+    let nombreMaterial;
+    let nombreGrado;
     const parametroDetalleMaterial={
      DEFAULT:"DEFAULT",
      PRESTADO:"PRESTADO",
@@ -20,35 +22,7 @@ $(document).ready(function(){
      DANADO:"DANADO"
     }
 
-      // dt_buttons.buttons = [{
-      //                   extend: 'collection',
-      //                   text: '<i class="fa fa-download"></i>',
-      //                   attr:  {
-      //                           "data-content": "Export Data",
-      //                           "class": "ui button buttons-collection pt-2"
-      //                   },
-      //                   buttons: [{
-      //                       extend: 'excel',
-      //                       title: 'Historial de Viajes',
-
-      //                   }, {
-      //                       extend: 'csv',
-      //                       title: 'Historial de Viajes',
-
-      //                   }],
-
-      //               },
-      //               {
-      //                   extend: 'colvis',
-      //                   text: '<i class="fa fa-eye"></i>',
-      //                   attr:  {
-      //                       "data-content": "Show/Hide Columns",
-      //                       "class": "ui button buttons-collection pt-2"
-      //                   },
-      //                   columns: ':not(.noVis)'
-      //               }
-      //           ]
-
+     
     // $('#tableFilter').hide();
 
       switch(urlSplit[4]){
@@ -65,7 +39,7 @@ $(document).ready(function(){
             break;
         case "AdministrarMateriales":
              mostrarDetalleMaterial();
-             
+             mostrarDataDetalleMaterial();
              break;
         case "Alumnos":
             mostrarEstudiantes(null,null);
@@ -109,6 +83,18 @@ $(document).ready(function(){
                 const response = await refactorize.getDataController(materialesURL,GET,parametro);
                 tableMaterial=$('#data_materiales_table').DataTable({
                   "language":refactorize.convertDatatableSpanish(),
+                  dom: 'lBfrtip',
+                  buttons: [
+                  {
+                    extend: 'excelHtml5',
+                    attr:{
+                       "class": "file-excel"
+                    },
+                    text: '<i class="fas fa-file-excel" id="icon_excel"><p>Exportar en Excel: </p></i>',
+                    titleAttr: 'Exportar a excel',
+                    title:"Registro_Materiales"
+                  }
+                  ],
                   processing: true,
                   lengthMenu: [10,20,30],
                   data:response,
@@ -157,7 +143,18 @@ $(document).ready(function(){
                 const response = await refactorize.getDataController(estudianteURL,GET,param);
                 tableApoderado= $('#response_table_apoderado').DataTable({
                   "language":refactorize.convertDatatableSpanish(),
-
+                  dom: 'lBfrtip',
+                  buttons: [
+                  {
+                    extend: 'excelHtml5',
+                    attr:{
+                       "class": "file-excel"
+                    },
+                    text: '<i class="fas fa-file-excel" id="icon_excel"><p>Exportar en Excel: </p></i>',
+                    titleAttr: 'Exportar a excel',
+                    title:"Registros_Apoderados"
+                  }
+                  ],
                   processing:true,
                   lengthMenu:[7,10,20,50],
                   data:response,
@@ -209,7 +206,7 @@ $(document).ready(function(){
             e.preventDefault();
               const grade = $('#search_grade_student').val();
                const  section = $('#search_section_student').val();
-            if(grade != "null" && section != "null"){
+            if(grade != "" && section != ""){
               // $('#response_table_alumnos').empty()
               $('#response_table_alumnos').DataTable().destroy();
               mostrarEstudiantes(grade,section)
@@ -228,8 +225,8 @@ $(document).ready(function(){
             // $('#response_table_alumnos').DataTable().ajax.reload();
             // mostrarEstudiantes(null,null)
             $('#totalStudentsforGradeandSection').empty();
-            $("#search_section_student").val("null")
-            $('#search_grade_student').val("null")
+            $("#search_section_student").val("")
+            $('#search_grade_student').val("")
 
 
           });
@@ -353,6 +350,7 @@ $(document).ready(function(){
                 detalleMaterialURL,GET,
                 detalleMaterialAction(parametroDetalleMaterial.DANADO));
               $('#btn-document').prop("disabled",false);
+
               $('#btn-document').css("background","#C1121F");
               // useCheckBoxList(false,true,"#C1121F")
               tableFilterShow(listData,parametroDetalleMaterial.DANADO)
@@ -398,6 +396,7 @@ $(document).ready(function(){
                   header=`
                     <th>Codigo</th>
                     <th>Estado</th>
+                    <th>Fecha y hora Registro</th>
 									  <th>ACCIONES</th>
                   `
                 break;
@@ -405,6 +404,7 @@ $(document).ready(function(){
                   header=`
                    <th>Codigo Detalle</th>
                   <th>Estado</th>
+                  <th>Fecha y hora Registro</th>
                   <th>ACCIONES</th>
                   `
                   break;
@@ -446,6 +446,18 @@ $(document).ready(function(){
              $('#detalleMaterialTable').DataTable({
               "language":refactorize.convertDatatableSpanish(),
                 processing: true,
+                dom: 'lBfrtip',
+                buttons: [
+                {
+                  extend: 'excelHtml5',
+                  attr:{
+                     "class": "file-excel"
+                  },
+                  text: '<i class="fas fa-file-excel" id="icon_excel"><p>Exportar en Excel: </p></i>',
+                  titleAttr: 'Exportar a excel',
+                  title:nombreMaterial+"_"+stateCheckBox+"-"+nombreGrado+"Grado"
+                }
+                ],
                 lengthMenu: [7, 10, 20, 50, 100, 200, 500],
                 data:listData,
                 columns:bodyShow(type)
@@ -466,7 +478,11 @@ $(document).ready(function(){
                         }else{
                           return '<td><div class="damage">INACTIVO</div></td>'
                         }
-                      } },
+                       
+                      },
+                       
+                    },
+                    {data:"created_at"},
                       {"render":function(data,type,full,meta){
                         var idDetalleMaterial=full.idDetalleMaterial
                         return '<button class="btn-delete" id="eliminarDetalleMaterial" name="'+idDetalleMaterial+'"><i class="fas fa-trash-alt"></i></button>'
@@ -486,6 +502,7 @@ $(document).ready(function(){
                           return '<td><div class="damage">INACTIVO</div></td>'
                         }
                       }},
+                      {data:"created_at"},
                       {"render":function(data,type,full,meta){
                         var idDetalleMaterial=full.idDetalleMaterial
                         return '<button class="btn-delete" id="eliminarDetalleMaterial" name="'+idDetalleMaterial+'"><i class="fas fa-trash-alt"></i></button>'+
@@ -552,6 +569,18 @@ $(document).ready(function(){
                   detalleMaterialAction(parametroDetalleMaterial.DEFAULT));
                   tableFilterShow(listData,parametroDetalleMaterial.DEFAULT)
               }
+              async function mostrarDataDetalleMaterial(){
+                const idMaterial = url.split("/")[5];
+                const param={
+                  id:idMaterial,
+                  action:"mostrarNombreMaterial"
+                }
+                const response = await refactorize.getDataController(materialURL2,POST,param);
+                $('#cursoMaterial').text("-"+response.descripcion)
+                nombreMaterial=response.descripcion
+                nombreGrado=response.grade
+              }
+
 
 
 })

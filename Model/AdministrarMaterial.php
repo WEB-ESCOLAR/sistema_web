@@ -125,7 +125,7 @@
 		}
 
 		function verMotivo($idDevolucion){
-			$sql="select motivo from prestamodevolucion where idPrestamoDevolucion=?";
+			$sql="select motivo,asunto from prestamodevolucion where idPrestamoDevolucion=?";
 			$response = $this->getConexion()->prepare($sql);
 			$response->bindParam(1,$idDevolucion);
 			$response->execute();
@@ -175,6 +175,14 @@
 				$response->bindParam(1,$id);
 				$response->execute();
 			}
+			function mostrarNombreMaterial($id){
+                $sql="SELECT c.descripcion,m.grade FROM curso c inner join material m on c.idCurso=m.idCurso where m.idMaterial=?";
+                $response=$this->getConexion()->prepare($sql);
+                $response->bindParam(1,$id);
+                $response->execute();
+                $result = $response->fetch(PDO::FETCH_ASSOC);
+                return $result;
+            }
 
 	}
 

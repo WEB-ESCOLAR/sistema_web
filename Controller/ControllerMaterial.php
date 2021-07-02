@@ -35,6 +35,9 @@
 			case "loadCurse":
 				loadCurse();
 				break;
+		case "mostrarNombreMaterial":
+			getMostrarDatoMaterial();
+			break;
 		default:
 			echo 'error de seleccion';
 			break;
@@ -179,5 +182,13 @@ function deleteDetalleMaterial(){
 	$materialModel->DeleteDetalle($idDetaMaterial);
 	echo json_encode("Eliminando Detalle");
 }
+function getMostrarDatoMaterial(){
+    require_once("../Model/AdministrarMaterial.php");
+    $materialModel = new AdministrarMaterial();
+    $idMaterial=$_POST["id"];
+    $material = $materialModel->mostrarNombreMaterial($idMaterial);
+	echo json_encode($material);
+}
+
 
  ?>

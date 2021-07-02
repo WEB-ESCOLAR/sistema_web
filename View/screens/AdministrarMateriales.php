@@ -127,7 +127,7 @@
 	</form>
 </div>
 
-
+<!-- 
 <div class="verMotivo">
 	<form style="height:245px" class="form_administrarMat" id="formulario_ver_motivo">
 		<div style="margin-top:25px;margin-left:10px">
@@ -141,7 +141,7 @@
 	      <textarea class="textarea"  id="vermotivo" readonly></textarea>
 	        </div>
 	    </form>
-</div>
+</div> -->
 
 
 <div class="verMotivo">
@@ -157,7 +157,7 @@
 	        <button class="btn_close" id="button_close_motivo" ><i class="fas fa-times fa-lg"></i></button>
 	       </div>
 				 <div  style="padding:10px" id="box_area_motivo" class="form-group">
-						<label id="MotivoLabel" class="label_group">Motivo</label>
+						<label id="MotivoLabel" style="margin-left:15px;" class="label_group">Motivo</label>
 							<div id="MotivoDiv"class="label_group">
 							<textarea class="textarea"  id="vermotivo"></textarea>
 							</div>

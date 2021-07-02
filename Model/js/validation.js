@@ -62,7 +62,9 @@ $('#formulario_alumno').validate({
         dni:{required:true, minlength:2,maxlength:8},
         nombre:{required:true, minlength:2,maxlength:30},
       apellido:{required:true, minlength:2,maxlength:30},
-      celular:{required:true, minlength:2,maxlength:9}
+      celular:{required:true, minlength:2,maxlength:9},
+      Seccion:{required:true},
+      Grado:{required:true}
     },
     messages:{
         Nombre:{
@@ -99,6 +101,12 @@ $('#formulario_alumno').validate({
         required:"Teléfono  requerido*",
         minlength:"Minimo de 2 caracteres",
         maxlength:"Maximo 9 caracteres"
+      },
+      Seccion:{
+          required:"Seleccion la seccion"
+      },
+      Grado:{
+          required:"Seleccione el grado"
       }
     }
 });
@@ -109,7 +117,8 @@ $('#formulario_material').validate({
       grado:{required:true},
       fecha:{required:true},
       cantidad:{required:true, minlength:1,maxlength:2},
-      tipo:{required:true}
+      tipo:{required:true},
+    //   valueNotEquals: "0"
     },
     messages:{
       curso:{

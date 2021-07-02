@@ -89,6 +89,7 @@ $(document).ready(function(){
 
       $('#button_detalleMaterial').click(function(e){
         e.preventDefault();
+        $('.modal_agregar_cantidad').css("z-index","100");
           $('.modal_agregar_cantidad').show();
           $('#formulario_detalleMaterial').show();
       })
@@ -122,13 +123,13 @@ $(document).ready(function(){
             $("#titulo_EditarEstudiante").hide();
             $('#formulario_alumno').show();
             $('#form-apoderado').show();
-            $('#nombreEstudiante').val(null);
-            $('#apellidoEstudiante').val(null);
-            $('#DniEstudiante').val(null);
+            $('#nombreEstudiante').val("");
+            $('#apellidoEstudiante').val("");
+            $('#DniEstudiante').val("");
             $('#DniEstudiante').prop("readonly",false);
             $('#DniEstudiante').css("background","#0000");
-            $('#gradoEstudiante').val("Seleccione el grado");
-            $('#seccionEstudiante').val("Seleccione la seccion");
+            $('#gradoEstudiante').val("");
+            $('#seccionEstudiante').val("");
       })
 
       $(document).on('click','#button_close_prestamo',function(e){
