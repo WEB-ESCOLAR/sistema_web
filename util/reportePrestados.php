@@ -44,8 +44,6 @@ function Header()
     // Movernos a la derecha
     $this->Cell(80);
     // Título
-    $this->Cell(30,10,utf8_decode('REPORTE DE MATERIALES PRESTADOS'),0,0,'C');
-    // Salto de línea
     $this->Ln(20);
 }
 
@@ -68,6 +66,7 @@ $pdf->AddFont('Quicksand','','QuicksandRegular.php');
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Quicksand','B',10);
+$pdf->SetY(59);
 
 $materialModel = new AdministrarDetalleMaterial();
 $resultado = $materialModel->showGenerarReporte('PRESTADOS',$idMaterial);
