@@ -46,7 +46,7 @@
                     WHERE dt.status = 2 and dt.idMaterial = $idMaterial";
             }else if($type == "DEVUELTO"){
                 // sentencia aca
-                $sql="SELECT CONCAT(e.firstName,' ',e.LastName) AS 'nombre',e.section AS 'seccion', pd.fechaHoraDevolucion AS 'fechaDevolucion', CONCAT(pd.asunto,' ',pd.motivo) as 'motivo'
+                $sql="SELECT CONCAT(e.firstName,' ',e.LastName) AS 'nombre',e.section AS 'seccion', pd.fechaHoraDevolucion AS 'fechaDevolucion', pd.asunto, pd.motivo 
                 FROM prestamodevolucion pd INNER JOIN estudiante e ON pd.idEstudiante = e.idEstudiante INNER JOIN detallematerial dm ON dm.idDetalleMaterial = pd.idDetalleMaterial 
                 WHERE dm.idMaterial=$idMaterial and pd.fechaHoraDevolucion is not null and dm.status!=3";
 
