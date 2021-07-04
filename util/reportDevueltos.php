@@ -7,7 +7,6 @@ $idMaterial = $_REQUEST["idMaterial"];
 $count = 1;
 $materialModel = new AdministrarDetalleMaterial();
 $result=$materialModel->headerPDF($idMaterial);
-echo URL;
 $curso=$result["descripcion"];
 $fecha=date('Y-m-d h:i:s', time()); 
 $grado=$result["grade"];
@@ -44,8 +43,6 @@ function Header()
     $this->SetFont('Quicksand','B',15);
     // Movernos a la derecha
     $this->Cell(80);
-    // Título
-    $this->Cell(30,10,utf8_decode('REPORTE DE MATERIALES DEVUELTOS'),0,0,'C');
     // Salto de línea
     $this->Ln(20);
 }
@@ -69,7 +66,8 @@ $pdf->AddFont('Quicksand','B','QuicksandBold.php');
 $pdf->AddFont('Quicksand','','QuicksandRegular.php');
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Quicksand','B',9);
+$pdf->SetFont('Quicksand','B',10);
+$pdf->SetY(59);
 
 $materialModel = new AdministrarDetalleMaterial();
 $resultado = $materialModel->showGenerarReporte('DEVUELTO',$idMaterial);
@@ -79,7 +77,7 @@ $pdf->Cell(60,10,"NOMBRE Y APELLIDO DEL ESTUDIANTE",0,0,'C');
 $pdf->Cell(23,10,"SECCION",0,0,'C');
 $pdf->Cell(40,10,"FECHA HORA DEVOLUCION",0,0,'C');
 $pdf->Cell(50,10,"MOTIVO",0,1,'C');
-$pdf->SetFont('Quicksand','',7.5);
+$pdf->SetFont('Quicksand','',10);
 while ($data=$resultado->fetch(PDO::FETCH_OBJ)) {
   $pdf->cell(15,9,$count++,'T',0,'C');
   $pdf->cell(60,9,$data->nombre,'T',0,'C');
@@ -88,5 +86,5 @@ while ($data=$resultado->fetch(PDO::FETCH_OBJ)) {
   $pdf->Multicell(50,9,utf8_decode($data->motivo),'T','C',false);
 }
 
-$pdf->Output('D','reporteDe.pdf');
+$pdf->Output('D','reporteDevueltos.pdf');
 ?>
