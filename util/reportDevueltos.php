@@ -83,7 +83,8 @@ while ($data=$resultado->fetch(PDO::FETCH_OBJ)) {
   $pdf->cell(60,9,$data->nombre,'T',0,'C');
   $pdf->cell(23,9,$data->seccion,'T',0,'C');
   $pdf->cell(40,9,$data->fechaDevolucion,'T',0,'C');
-  $pdf->Multicell(50,9,utf8_decode($data->motivo),'T','C',false);
+  $data->asunto == "Fin de año" ? $pdf->Multicell(50,9,utf8_decode($data->asunto),'T','C',false) : 
+  $pdf->Multicell(50,9,utf8_decode($data->asunto.'-'.$data->motivo),'T','C',false);
 }
 
 $pdf->Output('D','reporteDevueltos.pdf');

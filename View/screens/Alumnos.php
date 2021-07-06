@@ -47,7 +47,7 @@
               <label class="label_group" >Apellidos del estudiante</label>
               <input id="apellidoEstudiante"  name="Apellido" type="text" class="input_txt_50" placeholder="Ingrese el apellido">
             </div>
-            <div style="width:33%">
+            <div style="width:33%;">
             <label class="label_group">Dni del Alumno</label>
             <input  id="DniEstudiante" name="DNI"type="text" class="input_txt" placeholder="Ingrese el dni del alumno aqui..."
             maxlength="8"  required></p>

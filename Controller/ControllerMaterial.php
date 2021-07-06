@@ -79,6 +79,7 @@
 		$nombreMaterial = isset($_POST["nombreMaterial"]) ? $_POST["nombreMaterial"] : "";
 		$material = new Material($id,$curso,$tipoMaterial,$grado,null,null,$fechaRecepcion,$nombreMaterial,$cantidad);
 		$materialModel->Create($material);
+		echo json_encode(200);
 	}
 
 	function deleteMaterial(){
@@ -172,7 +173,7 @@ function AddDetalle(){
 	$idDetalleMaterial = $_POST["idDetalleMaterial"];
 	$cant=$_POST["cantidad"];
 	$materialModel->agregarDetalle($cant,$idDetalleMaterial);
-
+	echo json_encode(200);
 }
 ////ELIMIANR DETALLE ELIMINAR/////
 function deleteDetalleMaterial(){

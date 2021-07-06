@@ -33,7 +33,7 @@
                console.log(param)
                const response= await refactorize.getDataController(materialURL2,POST,param);
                console.log(response)
-               alertSuccess("Se registro correctamente","",SUCCESS);
+               alertModal("Se registro correctamente","",SUCCESS);
                       setTimeout(function(){
                     location.reload();
                   },2000)
